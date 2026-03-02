@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QuickMenu — Graph-Powered Radial Menu for Unreal Engine</title>
+<meta name="description" content="A fully customizable radial pie menu for the Unreal Editor, configured through a visual node graph. Supports UE 4.27 – 5.7.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   RESET & BASE
+   ============================================ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg-primary: #0a0e17;
+  --bg-secondary: #0d1117;
+  --bg-card: #131a24;
+  --bg-card-hover: #182230;
+  --border: #1e2d3d;
+  --border-hover: #00b4d8;
+  --cyan: #00b4d8;
+  --cyan-glow: rgba(0, 180, 216, 0.15);
+  --cyan-dark: #0090ad;
+  --violet: #7c3aed;
+  --violet-glow: rgba(124, 58, 237, 0.15);
+  --green: #4ade80;
+  --red: #f87171;
+  --text-primary: #e6edf3;
+  --text-secondary: #8b949e;
+  --text-muted: #6e7681;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --max-width: 1200px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--cyan); text-decoration: none; transition: color 0.3s; }
+a:hover { color: #33ccee; }
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ============================================
+   NAVBAR
+   ============================================ */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 16px 0;
+  transition: all 0.4s ease;
+  background: transparent;
+}
+
+.navbar.scrolled {
+  background: rgba(10, 14, 23, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(30, 45, 61, 0.5);
+  padding: 12px 0;
+}
+
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--text-primary);
+}
+
+.nav-logo svg { width: 32px; height: 32px; }
+
+.nav-version {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: var(--cyan);
+  border: 1px solid rgba(0, 180, 216, 0.3);
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--text-primary); }
+
+.btn-nav {
+  background: var(--cyan);
+  color: var(--bg-primary) !important;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all 0.3s;
+}
+.btn-nav:hover {
+  background: #33ccee;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(0, 180, 216, 0.3);
+}
+
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+.nav-hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+/* ============================================
+   HERO — PARALLAX MOUNTAIN
+   ============================================ */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 700px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(124, 58, 237, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 60%, rgba(0, 180, 216, 0.06) 0%, transparent 50%),
+    linear-gradient(180deg, #0a0e17 0%, #0f1923 50%, #141e2e 100%);
+}
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background-image:
+    linear-gradient(rgba(0, 180, 216, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 180, 216, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+}
+
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+}
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: var(--cyan);
+  border-radius: 50%;
+  opacity: 0;
+  animation: particleFloat 8s infinite;
+}
+
+@keyframes particleFloat {
+  0% { opacity: 0; transform: translateY(100vh) scale(0); }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.6; }
+  100% { opacity: 0; transform: translateY(-20vh) scale(1); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  will-change: transform;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 180, 216, 0.08);
+  border: 1px solid rgba(0, 180, 216, 0.2);
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--cyan);
+  margin-bottom: 32px;
+}
+.hero-badge .dot {
+  width: 6px; height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #ffffff 0%, #c0d0e0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-family: var(--font-mono);
+  font-size: clamp(0.85rem, 2vw, 1.05rem);
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+  font-weight: 400;
+}
+.hero-subtitle .comment { color: var(--text-muted); }
+.hero-subtitle .keyword { color: var(--cyan); }
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-ghost {
+  padding: 14px 32px;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 10px;
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.95rem;
+  background: rgba(255,255,255,0.03);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.btn-ghost:hover {
+  border-color: rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.08);
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  padding: 14px 32px;
+  border: 1px solid var(--cyan);
+  border-radius: 10px;
+  color: var(--bg-primary);
+  font-weight: 600;
+  font-size: 0.95rem;
+  background: var(--cyan);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.btn-primary:hover {
+  background: #33ccee;
+  border-color: #33ccee;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 180, 216, 0.3);
+}
+
+/* Mountain silhouette overlay */
+.hero-mountain {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  pointer-events: none;
+  will-change: transform;
+}
+.hero-mountain svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 15;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  animation: bounce 2s infinite;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
+.scroll-indicator svg { width: 20px; height: 20px; opacity: 0.5; }
+
+/* ============================================
+   SECTION COMMON
+   ============================================ */
+section {
+  padding: 100px 0;
+  position: relative;
+}
+
+.section-label {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--cyan);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.section-subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 60px;
+}
+
+/* Fade-in animation */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================
+   FEATURES
+   ============================================ */
+.features { background: var(--bg-primary); }
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.feature-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.feature-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 30px var(--cyan-glow);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: rgba(0,0,0,0.3);
+  border-bottom: 1px solid var(--border);
+}
+.card-header-icon {
+  color: var(--cyan);
+  font-size: 0.75rem;
+  opacity: 0.6;
+}
+.card-header-title {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.card-visual {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-visual svg {
+  width: 80%;
+  height: 80%;
+  opacity: 0.7;
+}
+
+.card-body { padding: 24px; }
+
+.card-body h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.card-body p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* ============================================
+   SHOWCASE
+   ============================================ */
+.showcase {
+  background: var(--bg-secondary);
+  position: relative;
+}
+.showcase::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(0,180,216,0.04) 1px, transparent 1px);
+  background-size: 30px 30px;
+  pointer-events: none;
+}
+
+.showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.showcase-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 24px;
+  background: rgba(19, 26, 36, 0.6);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: all 0.3s;
+}
+.showcase-item:hover {
+  border-color: rgba(0, 180, 216, 0.3);
+  background: rgba(19, 26, 36, 0.9);
+}
+
+.showcase-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 180, 216, 0.08);
+  border: 1px solid rgba(0, 180, 216, 0.15);
+  border-radius: 10px;
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--cyan);
+}
+
+.showcase-text h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.showcase-text p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* ============================================
+   CODE PREVIEW
+   ============================================ */
+.code-section { background: var(--bg-primary); }
+
+.code-block {
+  max-width: 750px;
+  margin: 0 auto;
+  background: #0c1018;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.code-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: rgba(0,0,0,0.4);
+  border-bottom: 1px solid var(--border);
+}
+.code-header-icon {
+  color: var(--cyan);
+  font-size: 0.75rem;
+  opacity: 0.6;
+}
+.code-header .file-name {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-left: 8px;
+}
+
+.code-body {
+  padding: 24px;
+  line-height: 1.8;
+  overflow-x: auto;
+}
+
+.code-body .node { color: var(--cyan); }
+.code-body .action { color: var(--green); }
+.code-body .param { color: #fbbf24; }
+.code-body .line { color: var(--text-muted); }
+.code-body .comment { color: var(--text-muted); font-style: italic; }
+
+/* ============================================
+   PRICING
+   ============================================ */
+.pricing {
+  background: var(--bg-secondary);
+  position: relative;
+}
+.pricing::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(0,180,216,0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.price-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 40px 32px;
+  position: relative;
+  transition: all 0.3s;
+}
+.price-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-4px);
+}
+.price-card.featured {
+  border-color: rgba(0, 180, 216, 0.3);
+  box-shadow: 0 0 40px var(--cyan-glow);
+}
+
+.price-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+.price-tag.cyan {
+  color: var(--cyan);
+  background: rgba(0, 180, 216, 0.1);
+  border: 1px solid rgba(0, 180, 216, 0.2);
+}
+.price-tag.violet {
+  color: var(--violet);
+  background: rgba(124, 58, 237, 0.1);
+  border: 1px solid rgba(124, 58, 237, 0.2);
+}
+
+.price-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.price-amount {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 32px;
+  letter-spacing: -0.03em;
+}
+
+.price-features {
+  list-style: none;
+  margin-bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.price-features li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+.price-features li .check {
+  flex-shrink: 0;
+  color: var(--cyan);
+  font-size: 0.85rem;
+}
+
+.btn-full {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: none;
+}
+.btn-full.cyan {
+  background: var(--cyan);
+  color: var(--bg-primary);
+}
+.btn-full.cyan:hover {
+  background: #33ccee;
+  box-shadow: 0 8px 30px rgba(0, 180, 216, 0.3);
+  transform: translateY(-2px);
+}
+.btn-full.outline {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+}
+.btn-full.outline:hover {
+  border-color: var(--violet);
+  background: rgba(124, 58, 237, 0.05);
+}
+
+/* ============================================
+   COMMUNITY
+   ============================================ */
+.community {
+  background: var(--bg-primary);
+  text-align: center;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-primary);
+}
+.social-btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-hover);
+}
+.social-btn.discord {
+  background: rgba(88, 101, 242, 0.1);
+  border-color: rgba(88, 101, 242, 0.3);
+  color: #5865F2;
+}
+.social-btn.discord:hover {
+  background: rgba(88, 101, 242, 0.2);
+  box-shadow: 0 8px 30px rgba(88, 101, 242, 0.2);
+}
+.social-btn.github:hover {
+  box-shadow: 0 8px 30px rgba(255,255,255,0.05);
+}
+
+.social-btn svg { width: 20px; height: 20px; }
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  padding: 40px 0;
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-copy {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+.footer-links a {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.footer-links a:hover { color: var(--text-primary); }
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 900px) {
+  .features-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+  .showcase-grid { grid-template-columns: 1fr; }
+  .pricing-grid { grid-template-columns: 1fr; max-width: 450px; }
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(10, 14, 23, 0.95);
+    backdrop-filter: blur(20px);
+    padding: 24px;
+    gap: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-hamburger { display: flex; }
+
+  .hero h1 { font-size: 2.8rem; }
+  .hero-buttons { flex-direction: column; align-items: center; }
+  .hero-buttons .btn-ghost,
+  .hero-buttons .btn-primary { width: 200px; text-align: center; }
+
+  section { padding: 60px 0; }
+  .section-title { font-size: 1.8rem; }
+
+  .social-links { flex-direction: column; align-items: center; }
+
+  .footer-content { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ======================================
+     NAVBAR
+     ====================================== -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="#" class="nav-logo">
+      <img src="images/QMLogo.png" alt="QM" style="width:32px; height:32px; filter: invert(1);">
+      QuickMenu
+      <span class="nav-version">v1.0</span>
+    </a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="https://github.com/" target="_blank">Docs</a></li>
+      <li><a href="https://discord.gg/" target="_blank">Discord</a></li>
+      <li><a href="#pricing" class="btn-nav">Buy on FAB</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ======================================
+     HERO
+     ====================================== -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-particles" id="particles"></div>
+
+  <div class="hero-content" id="heroContent">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      Available on FAB — UE 4.27 – 5.7
+    </div>
+    <h1>QuickMenu</h1>
+    <p class="hero-subtitle">
+      <span class="comment">// </span>The graph-powered <span class="keyword">radial menu</span> for Unreal Engine
+    </p>
+    <div class="hero-buttons">
+      <a href="#features" class="btn-ghost">Discover</a>
+      <a href="#pricing" class="btn-primary">Buy on FAB — $19</a>
+    </div>
+  </div>
+
+  <!-- Mountain silhouette — foreground layer for parallax -->
+  <div class="hero-mountain" id="heroMountain">
+    <svg viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Far mountain range (darker) -->
+      <path d="M0,280 L60,260 L120,270 L180,240 L240,250 L300,220 L340,200 L380,180 L420,190 L460,170 L500,150 L540,140 L570,120 L600,130 L640,110 L680,100 L710,80 L740,90 L780,70 L820,85 L860,75 L900,95 L940,105 L980,90 L1020,110 L1060,130 L1100,120 L1140,145 L1180,155 L1220,140 L1260,160 L1300,180 L1340,195 L1380,210 L1420,230 L1440,240 L1440,320 L0,320 Z"
+            fill="#0d1520" opacity="0.7"/>
+      <!-- Near mountain range (foreground) -->
+      <path d="M0,320 L0,290 L40,285 L80,270 L120,280 L160,260 L200,265 L240,250 L280,255 L320,235 L360,220 L400,225 L440,210 L480,195 L510,180 L540,170 L570,175 L600,160 L640,170 L680,155 L720,165 L760,175 L800,185 L840,195 L880,200 L920,210 L960,215 L1000,225 L1040,235 L1080,230 L1120,240 L1160,250 L1200,255 L1240,260 L1280,270 L1320,275 L1360,280 L1400,285 L1440,290 L1440,320 Z"
+            fill="var(--bg-primary)"/>
+    </svg>
+  </div>
+
+  <div class="scroll-indicator">
+    <span>scroll</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ======================================
+     FEATURES
+     ====================================== -->
+<section class="features" id="features">
+  <div class="container" style="text-align:center;">
+    <span class="section-label fade-in">Features</span>
+    <h2 class="section-title fade-in">Supercharge your workflow</h2>
+    <p class="section-subtitle fade-in">Built for speed. Designed for power.</p>
+
+    <div class="features-grid">
+
+      <!-- Card 1 -->
+      <div class="feature-card fade-in">
+        <div class="card-header">
+          <span class="card-header-icon">&#9671;</span>
+          <span class="card-header-title">graph_editor.panel</span>
+        </div>
+        <div class="card-visual">
+          <img src="images/ScreesnshotGraph.png" alt="QuickMenu Graph Editor" style="width:100%; height:100%; object-fit:cover; opacity:0.85;">
+        </div>
+        <div class="card-body">
+          <h3>Graph-Based Configuration</h3>
+          <p>Design your menus visually with a powerful node graph editor. Connect actions, switches, and submenus — no code required.</p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="feature-card fade-in">
+        <div class="card-header">
+          <span class="card-header-icon">&#9671;</span>
+          <span class="card-header-title">context_engine.cpp</span>
+        </div>
+        <div class="card-visual">
+          <img src="images/QuickMenuLook.jpg" alt="QuickMenu Context-Aware Graph" style="width:100%; height:100%; object-fit:cover; opacity:0.85;">
+        </div>
+        <div class="card-body">
+          <h3>Context-Aware Menus</h3>
+          <p>Menus adapt automatically based on your selection, editor mode, and context. The right tools, always at your fingertips.</p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="feature-card fade-in">
+        <div class="card-header">
+          <span class="card-header-icon">&#9671;</span>
+          <span class="card-header-title">pie_menu.widget</span>
+        </div>
+        <div class="card-visual" style="background:#000;">
+          <img src="images/PieWheelLogo.png" alt="QuickMenu Pie Menu" style="width:85%; height:85%; object-fit:contain; opacity:0.9;">
+        </div>
+        <div class="card-body">
+          <h3>Fully Extensible</h3>
+          <p>Add custom Python actions, console commands, or any editor operation. Full source code access, UE 4.27 through 5.7.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ======================================
+     SHOWCASE
+     ====================================== -->
+<section class="showcase" id="showcase">
+  <div class="container" style="text-align:center;">
+    <span class="section-label fade-in">How it works</span>
+    <h2 class="section-title fade-in">One hotkey. Infinite possibilities.</h2>
+    <p class="section-subtitle fade-in">Press V &rarr; Open menu &rarr; Execute action</p>
+
+    <div class="showcase-grid">
+      <div class="showcase-item fade-in">
+        <div class="showcase-icon">V</div>
+        <div class="showcase-text">
+          <h4>Pie Menu</h4>
+          <p>A beautiful radial menu, anywhere in the editor. One keypress away.</p>
+        </div>
+      </div>
+      <div class="showcase-item fade-in">
+        <div class="showcase-icon">&lcub;&rcub;</div>
+        <div class="showcase-text">
+          <h4>Switch Nodes</h4>
+          <p>Route actions dynamically by selection count, editor mode, or context.</p>
+        </div>
+      </div>
+      <div class="showcase-item fade-in">
+        <div class="showcase-icon">&darr;</div>
+        <div class="showcase-text">
+          <h4>SubMenus</h4>
+          <p>Nest menus infinitely with reusable SubMenu nodes.</p>
+        </div>
+      </div>
+      <div class="showcase-item fade-in">
+        <div class="showcase-icon">&star;</div>
+        <div class="showcase-text">
+          <h4>Multi-Version</h4>
+          <p>One codebase, compatible from UE 4.27 to 5.7.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================
+     CODE PREVIEW
+     ====================================== -->
+<section class="code-section">
+  <div class="container" style="text-align:center;">
+    <span class="section-label fade-in">Under the hood</span>
+    <h2 class="section-title fade-in">Visual graph, powerful execution</h2>
+    <p class="section-subtitle fade-in">Your graph compiles down to a fast action tree</p>
+
+    <div class="code-block fade-in">
+      <div class="code-header">
+        <span class="code-header-icon">&#9671;</span>
+        <span class="file-name">quickmenu.graph</span>
+      </div>
+      <div class="code-body" style="text-align:left;">
+<span class="node">Root</span> <span class="line">&rarr;</span> <span class="node">SwitchContext</span>
+<span class="line">  &boxvr;&boxh;</span> <span class="param">Viewport</span> <span class="line">&rarr;</span> <span class="action">WheelOutput</span> <span class="comment">"Transform Tools"</span>
+<span class="line">  &boxv;  &boxvr;&boxh;</span> <span class="action">TransformMode</span> <span class="param">[Translate]</span>
+<span class="line">  &boxv;  &boxvr;&boxh;</span> <span class="action">TransformMode</span> <span class="param">[Rotate]</span>
+<span class="line">  &boxv;  &boxvr;&boxh;</span> <span class="action">TransformMode</span> <span class="param">[Scale]</span>
+<span class="line">  &boxv;  &boxur;&boxh;</span> <span class="action">CoordSpace</span> <span class="param">[World / Local]</span>
+<span class="line">  &boxv;</span>
+<span class="line">  &boxur;&boxh;</span> <span class="param">Blueprint</span> <span class="line">&rarr;</span> <span class="action">WheelOutput</span> <span class="comment">"BP Tools"</span>
+<span class="line">     &boxvr;&boxh;</span> <span class="action">AddComponent</span>
+<span class="line">     &boxur;&boxh;</span> <span class="action">CustomCode</span> <span class="param">[Python]</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================
+     PRICING
+     ====================================== -->
+<section class="pricing" id="pricing">
+  <div class="container" style="text-align:center;">
+    <span class="section-label fade-in">Pricing</span>
+    <h2 class="section-title fade-in">Start building faster workflows today</h2>
+    <p class="section-subtitle fade-in">One purchase. All updates. All versions.</p>
+
+    <div class="pricing-grid" style="grid-template-columns: 1fr; max-width: 450px;">
+      <!-- QuickMenu -->
+      <div class="price-card featured fade-in">
+        <span class="price-tag cyan">FAB</span>
+        <p class="price-name">QuickMenu</p>
+        <p class="price-amount"><span style="font-size:1.5rem; vertical-align:super; opacity:0.7;">$</span>19</p>
+        <ul class="price-features">
+          <li><span class="check">&#10003;</span> Full source code included</li>
+          <li><span class="check">&#10003;</span> All 15+ action node types</li>
+          <li><span class="check">&#10003;</span> Visual graph editor</li>
+          <li><span class="check">&#10003;</span> UE 4.27 – 5.7 support</li>
+          <li><span class="check">&#10003;</span> Commercial use license</li>
+          <li><span class="check">&#10003;</span> Free updates</li>
+        </ul>
+        <a href="#" class="btn-full cyan">Buy on FAB</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================
+     COMMUNITY
+     ====================================== -->
+<section class="community" id="community">
+  <div class="container">
+    <span class="section-label fade-in">Community</span>
+    <h2 class="section-title fade-in">Join the community</h2>
+    <p class="section-subtitle fade-in">Get help, share your setups, suggest features</p>
+
+    <div class="social-links fade-in">
+      <a href="https://discord.gg/" target="_blank" class="social-btn discord">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286z"/></svg>
+        Join Discord
+      </a>
+      <a href="https://github.com/" target="_blank" class="social-btn github">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        View on GitHub
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================
+     FOOTER
+     ====================================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <p class="footer-copy">QuickMenu &copy; 2026 — Made for Unreal Engine developers</p>
+      <ul class="footer-links">
+        <li><a href="https://github.com/" target="_blank">GitHub</a></li>
+        <li><a href="https://discord.gg/" target="_blank">Discord</a></li>
+        <li><a href="#">Documentation</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================
+     JAVASCRIPT
+     ============================================ -->
+<script>
+// ---- Navbar scroll effect ----
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 50);
+}, { passive: true });
+
+// ---- Mobile hamburger ----
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+});
+
+// ---- Parallax hero ----
+const heroContent = document.getElementById('heroContent');
+const heroMountain = document.getElementById('heroMountain');
+
+function handleParallax() {
+  const scrollY = window.scrollY;
+  const heroH = window.innerHeight;
+  if (scrollY > heroH) return;
+
+  // Content moves up faster — goes "behind" the mountain
+  const contentY = scrollY * 0.5;
+  const contentOpacity = 1 - (scrollY / (heroH * 0.6));
+  heroContent.style.transform = `translateY(${-contentY}px)`;
+  heroContent.style.opacity = Math.max(0, contentOpacity);
+
+  // Mountain moves slower — stays in foreground
+  const mountainY = scrollY * 0.15;
+  heroMountain.style.transform = `translateY(${-mountainY}px)`;
+}
+
+window.addEventListener('scroll', handleParallax, { passive: true });
+
+// ---- Particles ----
+const particlesContainer = document.getElementById('particles');
+for (let i = 0; i < 30; i++) {
+  const p = document.createElement('div');
+  p.className = 'particle';
+  p.style.left = Math.random() * 100 + '%';
+  p.style.animationDelay = Math.random() * 8 + 's';
+  p.style.animationDuration = (6 + Math.random() * 6) + 's';
+  p.style.width = p.style.height = (1 + Math.random() * 2) + 'px';
+  particlesContainer.appendChild(p);
+}
+
+// ---- Fade-in on scroll (IntersectionObserver) ----
+const fadeEls = document.querySelectorAll('.fade-in');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      // Stagger animations
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, i * 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+fadeEls.forEach(el => observer.observe(el));
+
+// ---- Close mobile menu on link click ----
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+  });
+});
+</script>
+
+</body>
+</html>

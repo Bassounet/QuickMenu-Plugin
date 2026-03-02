@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>QuickMenu — Graph-Powered Radial Menu for Unreal Engine</title>
 <meta name="description" content="A fully customizable radial pie menu for the Unreal Editor, configured through a visual node graph. Supports UE 4.27 – 5.7.">
+<link rel="icon" type="image/png" href="images/LogoFAB.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -242,12 +243,47 @@ a:hover { color: #33ccee; }
   50% { opacity: 0.4; }
 }
 
+.hero-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.hero-logos-x {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  opacity: 0.4;
+}
+
+.hero-title-icon {
+  flex-shrink: 0;
+  width: clamp(44px, 6vw, 64px);
+  height: clamp(44px, 6vw, 64px);
+  filter: drop-shadow(0 0 15px rgba(0, 180, 216, 0.2));
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+.hero-title-icon:hover { opacity: 1; }
+
+.hero-title-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.hero-title-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
 .hero h1 {
   font-size: clamp(3rem, 8vw, 6rem);
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.05;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   background: linear-gradient(135deg, #ffffff 0%, #c0d0e0 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -530,6 +566,244 @@ section {
 }
 
 /* ============================================
+   INTERACTIVE WHEEL DEMO
+   ============================================ */
+.wheel-demo { background: var(--bg-primary); }
+
+.wheel-demo-layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+}
+
+.wheel-wrapper {
+  position: relative;
+  width: 380px;
+  height: 380px;
+  flex-shrink: 0;
+}
+
+.wheel-center {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70px; height: 70px;
+  background: #1a1a1a;
+  border: 2px solid #333;
+  border-radius: 50%;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  transition: all 0.3s;
+}
+
+.wheel-slice {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 155px;
+  height: 155px;
+  transform-origin: 0 0;
+  cursor: pointer;
+  transition: filter 0.25s, transform 0.25s;
+}
+
+.wheel-slice svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.wheel-slice-bg {
+  fill: #2a2d32;
+  stroke: #1a1a1a;
+  stroke-width: 2;
+  transition: fill 0.25s;
+}
+
+.wheel-slice:hover .wheel-slice-bg { fill: #3a3d42; }
+.wheel-slice.active .wheel-slice-bg { fill: #0077b6; }
+.wheel-slice.green .wheel-slice-bg { fill: #2d6a30; }
+.wheel-slice.green:hover .wheel-slice-bg { fill: #3a8a3d; }
+
+.wheel-slice-label {
+  fill: #e0e0e0;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+.wheel-slice-icon {
+  fill: #ccc;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+.wheel-slice:hover .wheel-slice-label { fill: #fff; }
+.wheel-slice.active .wheel-slice-label { fill: #fff; }
+.wheel-slice:hover {
+  filter: brightness(1.2);
+  transform-origin: 0 0;
+}
+
+.wheel-tooltip {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--cyan);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+.wheel-wrapper:hover .wheel-tooltip { opacity: 1; }
+
+.wheel-info {
+  max-width: 380px;
+}
+.wheel-info .section-label { margin-bottom: 12px; }
+.wheel-info h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+.wheel-info p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+.wheel-info .hint {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  padding: 10px 16px;
+  background: rgba(0, 180, 216, 0.05);
+  border: 1px solid rgba(0, 180, 216, 0.1);
+  border-radius: 8px;
+  display: inline-block;
+}
+
+@media (max-width: 900px) {
+  .wheel-demo-layout {
+    flex-direction: column;
+    gap: 40px;
+    text-align: center;
+  }
+  .wheel-wrapper { width: 300px; height: 300px; }
+  .wheel-slice { width: 120px; height: 120px; }
+  .wheel-center { width: 56px; height: 56px; }
+}
+
+/* ============================================
+   FEATURE DETAIL SECTIONS (alternating layout)
+   ============================================ */
+.feature-detail {
+  position: relative;
+  overflow: hidden;
+}
+.feature-detail.alt { background: var(--bg-secondary); }
+
+.feature-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.feature-detail.reverse .feature-detail-grid {
+  direction: rtl;
+}
+.feature-detail.reverse .feature-detail-grid > * {
+  direction: ltr;
+}
+
+.feature-detail-text .section-label { margin-bottom: 12px; }
+.feature-detail-text h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+.feature-detail-text p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.feature-detail-highlights {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.feature-detail-highlights li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+.feature-detail-highlights li .hl-icon {
+  flex-shrink: 0;
+  color: var(--cyan);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.feature-detail-visual {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+}
+.feature-detail-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.feature-detail-visual::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  box-shadow: inset 0 0 40px rgba(0,0,0,0.3);
+  pointer-events: none;
+}
+
+@media (max-width: 900px) {
+  .feature-detail-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    text-align: center;
+  }
+  .feature-detail.reverse .feature-detail-grid {
+    direction: ltr;
+  }
+  .feature-detail-highlights { align-items: center; }
+}
+
+/* ============================================
    CODE PREVIEW
    ============================================ */
 .code-section { background: var(--bg-primary); }
@@ -709,6 +983,88 @@ section {
 }
 
 /* ============================================
+   FAQ
+   ============================================ */
+.faq { background: var(--bg-primary); }
+
+.faq-list {
+  max-width: 750px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.faq-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+.faq-item:hover,
+.faq-item.open {
+  border-color: rgba(0, 180, 216, 0.3);
+}
+
+.faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  background: none;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: color 0.3s;
+}
+.faq-question:hover { color: var(--cyan); }
+
+.faq-chevron {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: var(--text-muted);
+  transition: transform 0.3s ease, color 0.3s;
+}
+.faq-item.open .faq-chevron {
+  transform: rotate(180deg);
+  color: var(--cyan);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+}
+.faq-item.open .faq-answer {
+  max-height: 300px;
+}
+
+.faq-answer-inner {
+  padding: 0 24px 20px;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.faq-answer-inner code {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  background: rgba(0, 180, 216, 0.08);
+  border: 1px solid rgba(0, 180, 216, 0.15);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--cyan);
+}
+
+/* ============================================
    COMMUNITY
    ============================================ */
 .community {
@@ -816,6 +1172,7 @@ section {
   .nav-hamburger { display: flex; }
 
   .hero h1 { font-size: 2.8rem; }
+  .hero-title-icon { width: 36px; height: 36px; }
   .hero-buttons { flex-direction: column; align-items: center; }
   .hero-buttons .btn-ghost,
   .hero-buttons .btn-primary { width: 200px; text-align: center; }
@@ -837,7 +1194,7 @@ section {
 <nav class="navbar" id="navbar">
   <div class="container">
     <a href="#" class="nav-logo">
-      <img src="images/QMLogo.png" alt="QM" style="width:32px; height:32px; filter: invert(1);">
+      <img src="images/LogoFAB.png" alt="QuickMenu" style="width:32px; height:32px;">
       QuickMenu
       <span class="nav-version">v1.0</span>
     </a>
@@ -847,6 +1204,7 @@ section {
     <ul class="nav-links" id="navLinks">
       <li><a href="#features">Features</a></li>
       <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#faq">FAQ</a></li>
       <li><a href="https://github.com/" target="_blank">Docs</a></li>
       <li><a href="https://discord.gg/" target="_blank">Discord</a></li>
       <li><a href="#pricing" class="btn-nav">Buy on FAB</a></li>
@@ -871,9 +1229,18 @@ section {
     <p class="hero-subtitle">
       <span class="comment">// </span>The graph-powered <span class="keyword">radial menu</span> for Unreal Engine
     </p>
+    <div class="hero-logos">
+      <div class="hero-title-icon">
+        <img src="images/PieWheelLogo.png" alt="Radial Menu">
+      </div>
+      <span class="hero-logos-x">&times;</span>
+      <div class="hero-title-icon">
+        <img src="images/UE-Icon-White.png" alt="Unreal Engine">
+      </div>
+    </div>
     <div class="hero-buttons">
       <a href="#features" class="btn-ghost">Discover</a>
-      <a href="#pricing" class="btn-primary">Buy on FAB — $19</a>
+      <a href="#pricing" class="btn-primary">Buy on FAB — $18.99</a>
     </div>
   </div>
 
@@ -915,7 +1282,7 @@ section {
           <span class="card-header-title">graph_editor.panel</span>
         </div>
         <div class="card-visual">
-          <img src="images/ScreesnshotGraph.png" alt="QuickMenu Graph Editor" style="width:100%; height:100%; object-fit:cover; opacity:0.85;">
+          <img src="images/ScreesnshotGraph3.png" alt="QuickMenu Graph Editor" style="width:100%; height:100%; object-fit:cover; opacity:0.85;">
         </div>
         <div class="card-body">
           <h3>Graph-Based Configuration</h3>
@@ -930,7 +1297,7 @@ section {
           <span class="card-header-title">context_engine.cpp</span>
         </div>
         <div class="card-visual">
-          <img src="images/QuickMenuLook.jpg" alt="QuickMenu Context-Aware Graph" style="width:100%; height:100%; object-fit:cover; opacity:0.85;">
+          <img src="images/LogoFAB.png" alt="QuickMenu Context-Aware Graph" style="width:100%; height:100%; object-fit:cover; opacity:0.85;">
         </div>
         <div class="card-body">
           <h3>Context-Aware Menus</h3>
@@ -1000,6 +1367,100 @@ section {
 </section>
 
 <!-- ======================================
+     INTERACTIVE WHEEL DEMO
+     ====================================== -->
+<section class="wheel-demo" id="wheel-demo">
+  <div class="container">
+    <div class="wheel-demo-layout">
+      <div class="wheel-wrapper fade-in" id="wheelWrapper">
+        <div class="wheel-center" id="wheelCenter">V</div>
+        <div class="wheel-tooltip" id="wheelTooltip">Hover a slice</div>
+        <!-- Slices are generated by JS -->
+      </div>
+      <div class="wheel-info fade-in">
+        <span class="section-label">Try it</span>
+        <h2>Your tools, one press away</h2>
+        <p>This is what QuickMenu feels like. A radial menu appears instantly at your cursor — hover a slice to select an action. Fast, intuitive, zero friction.</p>
+        <p>Every slice, icon, and label is fully customizable through the graph editor.</p>
+        <div class="hint">&#9654; Hover the slices — click "Theme" or "Refresh" for real actions!</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================
+     GRAPH CUSTOM
+     ====================================== -->
+<section class="feature-detail" id="graph-custom">
+  <div class="container">
+    <div class="feature-detail-grid">
+      <div class="feature-detail-text fade-in">
+        <span class="section-label">Graph Editor</span>
+        <h2>Design your menus visually</h2>
+        <p>QuickMenu's node graph editor lets you build complex menu structures without writing a single line of code. Drag, connect, and configure — your menu is ready in seconds.</p>
+        <ul class="feature-detail-highlights">
+          <li><span class="hl-icon">&#9671;</span> Drag &amp; drop node-based editor</li>
+          <li><span class="hl-icon">&#9671;</span> 15+ built-in action node types</li>
+          <li><span class="hl-icon">&#9671;</span> Connect Switch, SubMenu, and Action nodes</li>
+          <li><span class="hl-icon">&#9671;</span> Live preview of your menu layout</li>
+        </ul>
+      </div>
+      <div class="feature-detail-visual fade-in">
+        <img src="images/ScreesnshotGraph.png" alt="QuickMenu Graph Editor">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================
+     CONTEXT AWARE
+     ====================================== -->
+<section class="feature-detail alt reverse" id="context-aware">
+  <div class="container">
+    <div class="feature-detail-grid">
+      <div class="feature-detail-text fade-in">
+        <span class="section-label">Context Aware</span>
+        <h2>The right tools, right when you need them</h2>
+        <p>Your radial menu adapts in real-time based on what you're doing. Selected a static mesh? You get mesh tools. Working in the Blueprint editor? You get BP actions. No configuration switching needed.</p>
+        <ul class="feature-detail-highlights">
+          <li><span class="hl-icon">&#9671;</span> Automatic detection of selection type</li>
+          <li><span class="hl-icon">&#9671;</span> Switch nodes route by editor mode</li>
+          <li><span class="hl-icon">&#9671;</span> Filter by selection count (none, single, multi)</li>
+          <li><span class="hl-icon">&#9671;</span> Works across Viewport, BP, Material editors</li>
+        </ul>
+      </div>
+      <div class="feature-detail-visual fade-in">
+        <img src="images/LogoFAB.png" alt="QuickMenu Context-Aware Menus">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================
+     BUILD YOUR WHEEL
+     ====================================== -->
+<section class="feature-detail" id="build-wheel">
+  <div class="container">
+    <div class="feature-detail-grid">
+      <div class="feature-detail-text fade-in">
+        <span class="section-label">Build Your Wheel</span>
+        <h2>Select nodes, press W, done.</h2>
+        <p>Building a wheel is instant. Select the nodes you want in your radial menu, press W, and QuickMenu automatically creates a Wheel Output with everything connected. Your custom pie menu is ready to use immediately.</p>
+        <ul class="feature-detail-highlights">
+          <li><span class="hl-icon">&#9671;</span> Select nodes &rarr; Press W &rarr; Wheel created</li>
+          <li><span class="hl-icon">&#9671;</span> Auto-connects all selected action nodes</li>
+          <li><span class="hl-icon">&#9671;</span> Nest wheels inside other wheels with SubMenus</li>
+          <li><span class="hl-icon">&#9671;</span> Reorder and customize slices visually</li>
+        </ul>
+      </div>
+      <div class="feature-detail-visual fade-in">
+        <img src="images/PieWheelLogo.png" alt="QuickMenu Build Your Wheel" style="padding: 40px; background: #000;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================
      CODE PREVIEW
      ====================================== -->
 <section class="code-section">
@@ -1043,7 +1504,7 @@ section {
       <div class="price-card featured fade-in">
         <span class="price-tag cyan">FAB</span>
         <p class="price-name">QuickMenu</p>
-        <p class="price-amount"><span style="font-size:1.5rem; vertical-align:super; opacity:0.7;">$</span>19</p>
+        <p class="price-amount"><span style="font-size:1.5rem; vertical-align:super; opacity:0.7;">$</span>18<span style="font-size:1.5rem; opacity:0.7;">.99</span></p>
         <ul class="price-features">
           <li><span class="check">&#10003;</span> Full source code included</li>
           <li><span class="check">&#10003;</span> All 15+ action node types</li>
@@ -1054,6 +1515,91 @@ section {
         </ul>
         <a href="#" class="btn-full cyan">Buy on FAB</a>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================
+     FAQ
+     ====================================== -->
+<section class="faq" id="faq">
+  <div class="container" style="text-align:center;">
+    <span class="section-label fade-in">FAQ</span>
+    <h2 class="section-title fade-in">Frequently asked questions</h2>
+    <p class="section-subtitle fade-in">Everything you need to know about QuickMenu</p>
+
+    <div class="faq-list">
+
+      <div class="faq-item fade-in">
+        <button class="faq-question">
+          What Unreal Engine versions are supported?
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">QuickMenu supports Unreal Engine 4.27 through 5.7. One single purchase covers all versions, and you get free updates as new UE versions come out.</div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <button class="faq-question">
+          Do I get the full source code?
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Yes! QuickMenu ships with full C++ and Blueprint source code. You can extend, modify, and integrate it into your project however you like.</div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <button class="faq-question">
+          How does the graph editor work?
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">The graph editor lets you visually design your radial menus using nodes. Connect action nodes, switch nodes, and submenu nodes to build complex context-aware workflows — no code required.</div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <button class="faq-question">
+          Can I create custom nodes?
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Absolutely. You can create your own action nodes with custom Python scripts, console commands, or any editor operation. The plugin is fully extensible.</div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <button class="faq-question">
+          What does "context-aware" mean?
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">QuickMenu adapts based on what you're doing. Select a mesh? Get mesh tools. In the Blueprint editor? Get BP-specific actions. Switch nodes route your menu dynamically based on selection count, editor mode, and more.</div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <button class="faq-question">
+          Can I rebind the hotkey?
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Yes, the hotkey is fully bindable. You can set it to any key or key combination through Unreal's standard input settings.</div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <button class="faq-question">
+          Is there a trial version?
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">There's no trial at the moment, but you can check out the documentation and video demos to see exactly what QuickMenu can do before purchasing.</div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1162,6 +1708,145 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
 fadeEls.forEach(el => observer.observe(el));
+
+// ---- Interactive Wheel Demo ----
+(function() {
+  const wrapper = document.getElementById('wheelWrapper');
+  const tooltip = document.getElementById('wheelTooltip');
+  const center  = document.getElementById('wheelCenter');
+  if (!wrapper) return;
+
+  const themes = [
+    { name: 'Cyan',    color: '#00b4d8' },
+    { name: 'Violet',  color: '#7c3aed' },
+    { name: 'Orange',  color: '#f59e0b' },
+    { name: 'Rose',    color: '#f43f5e' },
+    { name: 'Green',   color: '#10b981' },
+  ];
+  let themeIdx = 0;
+
+  const slices = [
+    { label: 'Transform', icon: '✥', type: 'active' },
+    { label: 'Theme',     icon: '🎨', type: '', action: 'theme' },
+    { label: 'Translate', icon: '✦', type: '' },
+    { label: 'Refresh',   icon: '↻', type: '', action: 'refresh' },
+    { label: 'Scale',     icon: '⤢', type: '' },
+    { label: 'Play',      icon: '▶', type: '' },
+    { label: 'Add...',    icon: '+', type: 'green' },
+    { label: 'Shapes',    icon: '◧', type: '' },
+  ];
+
+  const n = slices.length;
+  const angleStep = 360 / n;
+  const R = 155;    // outer radius
+  const r = 38;     // inner radius (center hole)
+  const gap = 1.5;  // degree gap between slices
+
+  slices.forEach((s, i) => {
+    const startDeg = i * angleStep + gap / 2 - 90;
+    const endDeg   = (i + 1) * angleStep - gap / 2 - 90;
+    const startRad = startDeg * Math.PI / 180;
+    const endRad   = endDeg * Math.PI / 180;
+
+    // Outer arc points
+    const ox1 = Math.cos(startRad) * R;
+    const oy1 = Math.sin(startRad) * R;
+    const ox2 = Math.cos(endRad) * R;
+    const oy2 = Math.sin(endRad) * R;
+
+    // Inner arc points
+    const ix1 = Math.cos(endRad) * r;
+    const iy1 = Math.sin(endRad) * r;
+    const ix2 = Math.cos(startRad) * r;
+    const iy2 = Math.sin(startRad) * r;
+
+    const largeArc = angleStep - gap > 180 ? 1 : 0;
+
+    const path = [
+      `M ${ix2} ${iy2}`,
+      `L ${ox1} ${oy1}`,
+      `A ${R} ${R} 0 ${largeArc} 1 ${ox2} ${oy2}`,
+      `L ${ix1} ${iy1}`,
+      `A ${r} ${r} 0 ${largeArc} 0 ${ix2} ${iy2}`,
+      'Z'
+    ].join(' ');
+
+    // Label position (midpoint angle, between inner and outer)
+    const midDeg = (startDeg + endDeg) / 2;
+    const midRad = midDeg * Math.PI / 180;
+    const labelR = (R + r) / 2 + 12;
+    const iconR  = (R + r) / 2 - 8;
+    const lx = Math.cos(midRad) * labelR;
+    const ly = Math.sin(midRad) * labelR;
+    const icx = Math.cos(midRad) * iconR;
+    const icy = Math.sin(midRad) * iconR;
+
+    const div = document.createElement('div');
+    div.className = 'wheel-slice' + (s.type ? ' ' + s.type : '');
+    div.style.cssText = 'position:absolute; top:50%; left:50%; width:' + R*2 + 'px; height:' + R*2 + 'px; transform: translate(-50%, -50%); pointer-events:none;';
+
+    div.innerHTML = `
+      <svg viewBox="${-R} ${-R} ${R*2} ${R*2}" style="overflow:visible;">
+        <path class="wheel-slice-bg" d="${path}" style="pointer-events:all; cursor:pointer;" />
+        <text class="wheel-slice-icon" x="${icx}" y="${icy}" dy="0.35em">${s.icon}</text>
+        <text class="wheel-slice-label" x="${lx}" y="${ly}" dy="0.35em">${s.label}</text>
+      </svg>
+    `;
+
+    const pathEl = div.querySelector('path');
+    pathEl.addEventListener('mouseenter', () => {
+      tooltip.textContent = s.label;
+      tooltip.style.opacity = '1';
+      center.textContent = s.icon;
+      center.style.borderColor = s.type === 'green' ? '#4ade80' : 'var(--cyan)';
+      center.style.color = s.type === 'green' ? '#4ade80' : 'var(--cyan)';
+    });
+    pathEl.addEventListener('mouseleave', () => {
+      tooltip.style.opacity = '0';
+      center.textContent = 'V';
+      center.style.borderColor = '#333';
+      center.style.color = 'var(--text-muted)';
+    });
+
+    // Real actions on click
+    if (s.action === 'theme') {
+      pathEl.addEventListener('click', () => {
+        themeIdx = (themeIdx + 1) % themes.length;
+        const t = themes[themeIdx];
+        document.documentElement.style.setProperty('--cyan', t.color);
+        document.documentElement.style.setProperty('--cyan-glow', t.color + '26');
+        document.documentElement.style.setProperty('--cyan-dark', t.color);
+        document.documentElement.style.setProperty('--border-hover', t.color);
+        tooltip.textContent = 'Theme → ' + t.name;
+        center.style.borderColor = t.color;
+        center.style.color = t.color;
+      });
+    }
+    if (s.action === 'refresh') {
+      pathEl.addEventListener('click', () => {
+        tooltip.textContent = 'Refreshing...';
+        center.textContent = '↻';
+        wrapper.style.transition = 'transform 0.5s ease';
+        wrapper.style.transform = 'rotate(360deg)';
+        setTimeout(() => { location.reload(); }, 600);
+      });
+    }
+
+    wrapper.appendChild(div);
+  });
+})();
+
+// ---- FAQ Accordions ----
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    const wasOpen = item.classList.contains('open');
+    // Close all others
+    document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+    // Toggle current
+    if (!wasOpen) item.classList.add('open');
+  });
+});
 
 // ---- Close mobile menu on link click ----
 document.querySelectorAll('.nav-links a').forEach(link => {

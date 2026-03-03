@@ -57,11 +57,39 @@ a:hover { color: #33ccee; }
 }
 
 /* ============================================
+   SOON AVAILABLE BANNER
+   ============================================ */
+.soon-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1100;
+  background: linear-gradient(90deg, var(--cyan), var(--violet), var(--cyan));
+  background-size: 200% 100%;
+  animation: bannerShimmer 4s ease-in-out infinite;
+  padding: 12px 0;
+  text-align: center;
+}
+.soon-banner span {
+  font-family: var(--font-sans);
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  font-weight: 800;
+  color: #0a0e17;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+@keyframes bannerShimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* ============================================
    NAVBAR
    ============================================ */
 .navbar {
   position: fixed;
-  top: 0;
+  top: 44px;
   left: 0;
   right: 0;
   z-index: 1000;
@@ -587,8 +615,8 @@ section {
 
 .wheel-wrapper {
   position: relative;
-  width: 380px;
-  height: 380px;
+  width: 480px;
+  height: 480px;
   flex-shrink: 0;
 }
 
@@ -596,7 +624,7 @@ section {
   position: absolute;
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
-  width: 70px; height: 70px;
+  width: 85px; height: 85px;
   background: #1a1a1a;
   border: 2px solid #333;
   border-radius: 50%;
@@ -605,7 +633,7 @@ section {
   align-items: center;
   justify-content: center;
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   color: var(--text-muted);
   transition: all 0.3s;
 }
@@ -613,8 +641,8 @@ section {
 .wheel-slice {
   position: absolute;
   top: 50%; left: 50%;
-  width: 155px;
-  height: 155px;
+  width: 200px;
+  height: 200px;
   transform-origin: 0 0;
   cursor: pointer;
   transition: filter 0.25s, transform 0.25s;
@@ -641,7 +669,7 @@ section {
 .wheel-slice-label {
   fill: #e0e0e0;
   font-family: 'Inter', sans-serif;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 500;
   text-anchor: middle;
   pointer-events: none;
@@ -650,7 +678,7 @@ section {
 .wheel-slice-icon {
   fill: #ccc;
   font-family: 'Inter', sans-serif;
-  font-size: 14px;
+  font-size: 17px;
   text-anchor: middle;
   pointer-events: none;
 }
@@ -685,6 +713,36 @@ section {
   max-width: 380px;
 }
 .wheel-info .section-label { margin-bottom: 12px; }
+.wheel-info .try-it-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #0a0e17;
+  background: var(--cyan);
+  padding: 10px 24px;
+  border-radius: 50px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  animation: tryItPulse 2s ease-in-out infinite;
+  box-shadow: 0 0 20px rgba(0, 180, 216, 0.4), 0 0 60px rgba(0, 180, 216, 0.15);
+  cursor: default;
+}
+.wheel-info .try-it-badge .try-arrow {
+  display: inline-block;
+  animation: tryItArrow 1.5s ease-in-out infinite;
+  font-size: 1.1rem;
+}
+@keyframes tryItPulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(0, 180, 216, 0.4), 0 0 60px rgba(0, 180, 216, 0.15); }
+  50% { transform: scale(1.05); box-shadow: 0 0 30px rgba(0, 180, 216, 0.6), 0 0 80px rgba(0, 180, 216, 0.25); }
+}
+@keyframes tryItArrow {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-6px); }
+}
 .wheel-info h2 {
   font-size: clamp(1.8rem, 3.5vw, 2.5rem);
   font-weight: 700;
@@ -715,9 +773,9 @@ section {
     gap: 40px;
     text-align: center;
   }
-  .wheel-wrapper { width: 300px; height: 300px; }
-  .wheel-slice { width: 120px; height: 120px; }
-  .wheel-center { width: 56px; height: 56px; }
+  .wheel-wrapper { width: 360px; height: 360px; }
+  .wheel-slice { width: 150px; height: 150px; }
+  .wheel-center { width: 68px; height: 68px; }
 }
 
 /* ============================================
@@ -1120,6 +1178,146 @@ section {
 .social-btn svg { width: 20px; height: 20px; }
 
 /* ============================================
+   CONTACT SECTION
+   ============================================ */
+.contact {
+  background: var(--bg-secondary);
+  text-align: center;
+}
+.contact-layout {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 60px;
+  margin-top: 40px;
+}
+.contact-form {
+  flex: 1;
+  max-width: 500px;
+}
+.contact-form .form-group {
+  margin-bottom: 16px;
+  text-align: left;
+}
+.contact-form label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 6px;
+}
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  transition: border-color 0.3s;
+  outline: none;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--cyan);
+}
+.contact-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+.contact-form .btn-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  background: var(--cyan);
+  color: #0a0e17;
+  font-weight: 700;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 8px;
+}
+.contact-form .btn-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 180, 216, 0.3);
+}
+.contact-sidebar {
+  flex-shrink: 0;
+  text-align: left;
+  max-width: 320px;
+}
+.contact-sidebar h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.contact-sidebar p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+.contact-email-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--cyan);
+  transition: all 0.3s;
+}
+.contact-email-link:hover {
+  border-color: var(--cyan);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 180, 216, 0.15);
+}
+.contact-email-link svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+.contact-status {
+  margin-top: 16px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  padding: 10px 16px;
+  border-radius: 8px;
+  display: none;
+}
+.contact-status.success {
+  display: block;
+  color: var(--green);
+  background: rgba(74, 222, 128, 0.08);
+  border: 1px solid rgba(74, 222, 128, 0.2);
+}
+.contact-status.error {
+  display: block;
+  color: var(--red);
+  background: rgba(248, 113, 113, 0.08);
+  border: 1px solid rgba(248, 113, 113, 0.2);
+}
+
+@media (max-width: 900px) {
+  .contact-layout {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+  .contact-sidebar { text-align: center; }
+}
+
+/* ============================================
    FOOTER
    ============================================ */
 .footer {
@@ -1197,6 +1395,13 @@ section {
 <body>
 
 <!-- ======================================
+     SOON AVAILABLE BANNER
+     ====================================== -->
+<div class="soon-banner">
+  <span>&#9733; Soon Available &#9733;</span>
+</div>
+
+<!-- ======================================
      NAVBAR
      ====================================== -->
 <nav class="navbar" id="navbar">
@@ -1213,8 +1418,9 @@ section {
       <li><a href="#features">Features</a></li>
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
       <li><a href="https://github.com/" target="_blank">Docs</a></li>
-      <li><a href="https://discord.gg/" target="_blank">Discord</a></li>
+      <li><a href="https://discord.gg/bThEnFzy" target="_blank">Discord</a></li>
       <li><a href="#pricing" class="btn-nav">Buy on FAB</a></li>
     </ul>
   </div>
@@ -1386,7 +1592,7 @@ section {
         <!-- Slices are generated by JS -->
       </div>
       <div class="wheel-info fade-in">
-        <span class="section-label">Try it</span>
+        <span class="try-it-badge"><span class="try-arrow">&#9664;</span> Try it live</span>
         <h2>Your tools, one press away</h2>
         <p>This is what QuickMenu feels like. A radial menu appears instantly at your cursor — hover a slice to select an action. Fast, intuitive, zero friction.</p>
         <p>Every slice, icon, and label is fully customizable through the graph editor.</p>
@@ -1593,7 +1799,7 @@ section {
     <p class="section-subtitle fade-in">Get help, share your setups, suggest features</p>
 
     <div class="social-links fade-in">
-      <a href="https://discord.gg/" target="_blank" class="social-btn discord">
+      <a href="https://discord.gg/bThEnFzy" target="_blank" class="social-btn discord">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286z"/></svg>
         Join Discord
       </a>
@@ -1601,6 +1807,49 @@ section {
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
         View on GitHub
       </a>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================
+     CONTACT
+     ====================================== -->
+<section class="contact" id="contact">
+  <div class="container">
+    <span class="section-label fade-in">Contact</span>
+    <h2 class="section-title fade-in">Get in touch</h2>
+    <p class="section-subtitle fade-in">Have a question, a feature request, or need support? Drop us a message.</p>
+
+    <div class="contact-layout fade-in">
+      <form class="contact-form" id="contactForm">
+        <div class="form-group">
+          <label for="contactName">Name</label>
+          <input type="text" id="contactName" name="name" placeholder="Your name" required>
+        </div>
+        <div class="form-group">
+          <label for="contactEmail">Email</label>
+          <input type="email" id="contactEmail" name="email" placeholder="you@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="contactSubject">Subject</label>
+          <input type="text" id="contactSubject" name="subject" placeholder="What's this about?">
+        </div>
+        <div class="form-group">
+          <label for="contactMessage">Message</label>
+          <textarea id="contactMessage" name="message" placeholder="Tell us more..." required></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Send message &#10148;</button>
+        <div class="contact-status" id="contactStatus"></div>
+      </form>
+
+      <div class="contact-sidebar">
+        <h3>Or write to us directly</h3>
+        <p>Prefer email? You can reach us anytime at the address below. We typically respond within 24 hours.</p>
+        <a href="mailto:quickmenu@lux-studio.fr" class="contact-email-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          quickmenu@lux-studio.fr
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -1614,7 +1863,7 @@ section {
       <p class="footer-copy">QuickMenu &copy; 2026 — Made for Unreal Engine developers</p>
       <ul class="footer-links">
         <li><a href="https://github.com/" target="_blank">GitHub</a></li>
-        <li><a href="https://discord.gg/" target="_blank">Discord</a></li>
+        <li><a href="https://discord.gg/bThEnFzy" target="_blank">Discord</a></li>
         <li><a href="#">Documentation</a></li>
       </ul>
     </div>
@@ -1717,8 +1966,8 @@ fadeEls.forEach(el => observer.observe(el));
 
   const n = slices.length;
   const angleStep = 360 / n;
-  const R = 155;    // outer radius
-  const r = 38;     // inner radius (center hole)
+  const R = 200;    // outer radius
+  const r = 48;     // inner radius (center hole)
   const gap = 1.5;  // degree gap between slices
 
   slices.forEach((s, i) => {
@@ -1912,6 +2161,25 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     });
 
     wrapper.appendChild(div);
+  });
+})();
+
+// ---- Contact Form (mailto) ----
+(function() {
+  const form = document.getElementById('contactForm');
+  if (!form) return;
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('contactName').value.trim();
+    const email = document.getElementById('contactEmail').value.trim();
+    const subject = document.getElementById('contactSubject').value.trim() || 'QuickMenu Contact';
+    const message = document.getElementById('contactMessage').value.trim();
+    const body = 'From: ' + name + ' (' + email + ')\n\n' + message;
+    const mailtoUrl = 'mailto:quickmenu@lux-studio.fr?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    window.location.href = mailtoUrl;
+    const status = document.getElementById('contactStatus');
+    status.textContent = 'Your email client should open shortly. If not, write to quickmenu@lux-studio.fr directly.';
+    status.className = 'contact-status success';
   });
 })();
 

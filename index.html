@@ -259,13 +259,21 @@ a:hover { color: #33ccee; }
 
 .hero-title-icon {
   flex-shrink: 0;
-  width: clamp(44px, 6vw, 64px);
-  height: clamp(44px, 6vw, 64px);
+  width: clamp(120px, 18vw, 200px);
+  height: clamp(120px, 18vw, 200px);
   filter: drop-shadow(0 0 15px rgba(0, 180, 216, 0.2));
   opacity: 0.8;
   transition: opacity 0.3s;
 }
 .hero-title-icon:hover { opacity: 1; }
+
+/* Hero mini wheel */
+.hero-wheel-mini {
+  position: relative;
+  width: clamp(160px, 22vw, 260px);
+  height: clamp(160px, 22vw, 260px);
+  flex-shrink: 0;
+}
 
 .hero-title-icon img {
   width: 100%;
@@ -348,7 +356,7 @@ a:hover { color: #33ccee; }
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 10;
+  z-index: 4;
   pointer-events: none;
   will-change: transform;
 }
@@ -642,7 +650,7 @@ section {
 .wheel-slice-icon {
   fill: #ccc;
   font-family: 'Inter', sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   text-anchor: middle;
   pointer-events: none;
 }
@@ -1172,7 +1180,7 @@ section {
   .nav-hamburger { display: flex; }
 
   .hero h1 { font-size: 2.8rem; }
-  .hero-title-icon { width: 36px; height: 36px; }
+  .hero-title-icon { width: 120px; height: 120px; }
   .hero-buttons { flex-direction: column; align-items: center; }
   .hero-buttons .btn-ghost,
   .hero-buttons .btn-primary { width: 200px; text-align: center; }
@@ -1230,8 +1238,8 @@ section {
       <span class="comment">// </span>The graph-powered <span class="keyword">radial menu</span> for Unreal Engine
     </p>
     <div class="hero-logos">
-      <div class="hero-title-icon">
-        <img src="images/PieWheelLogo.png" alt="Radial Menu">
+      <div class="hero-wheel-mini" id="heroMiniWheel">
+        <div class="wheel-center" style="width:50px;height:50px;font-size:0.6rem;">V</div>
       </div>
       <span class="hero-logos-x">&times;</span>
       <div class="hero-title-icon">
@@ -1297,7 +1305,7 @@ section {
           <span class="card-header-title">context_engine.cpp</span>
         </div>
         <div class="card-visual">
-          <img src="images/LogoFAB.png" alt="QuickMenu Context-Aware Graph" style="width:100%; height:100%; object-fit:cover; opacity:0.85;">
+          <img src="images/SwitchContext.png" alt="QuickMenu Context-Aware Graph" style="width:100%; height:100%; object-fit:cover; opacity:0.85;">
         </div>
         <div class="card-body">
           <h3>Context-Aware Menus</h3>
@@ -1430,7 +1438,7 @@ section {
         </ul>
       </div>
       <div class="feature-detail-visual fade-in">
-        <img src="images/LogoFAB.png" alt="QuickMenu Context-Aware Menus">
+        <img src="images/SwitchContext.png" alt="QuickMenu Context-Aware Menus">
       </div>
     </div>
   </div>
@@ -1444,10 +1452,10 @@ section {
     <div class="feature-detail-grid">
       <div class="feature-detail-text fade-in">
         <span class="section-label">Build Your Wheel</span>
-        <h2>Select nodes, press W, done.</h2>
-        <p>Building a wheel is instant. Select the nodes you want in your radial menu, press W, and QuickMenu automatically creates a Wheel Output with everything connected. Your custom pie menu is ready to use immediately.</p>
+        <h2>Select nodes, press V, done.</h2>
+        <p>Building a wheel is instant. Select the nodes you want in your radial menu, press V, and QuickMenu automatically creates a Wheel Output with everything connected. Your custom pie menu is ready to use immediately.</p>
         <ul class="feature-detail-highlights">
-          <li><span class="hl-icon">&#9671;</span> Select nodes &rarr; Press W &rarr; Wheel created</li>
+          <li><span class="hl-icon">&#9671;</span> Select nodes &rarr; Press V &rarr; Wheel created</li>
           <li><span class="hl-icon">&#9671;</span> Auto-connects all selected action nodes</li>
           <li><span class="hl-icon">&#9671;</span> Nest wheels inside other wheels with SubMenus</li>
           <li><span class="hl-icon">&#9671;</span> Reorder and customize slices visually</li>
@@ -1460,35 +1468,6 @@ section {
   </div>
 </section>
 
-<!-- ======================================
-     CODE PREVIEW
-     ====================================== -->
-<section class="code-section">
-  <div class="container" style="text-align:center;">
-    <span class="section-label fade-in">Under the hood</span>
-    <h2 class="section-title fade-in">Visual graph, powerful execution</h2>
-    <p class="section-subtitle fade-in">Your graph compiles down to a fast action tree</p>
-
-    <div class="code-block fade-in">
-      <div class="code-header">
-        <span class="code-header-icon">&#9671;</span>
-        <span class="file-name">quickmenu.graph</span>
-      </div>
-      <div class="code-body" style="text-align:left;">
-<span class="node">Root</span> <span class="line">&rarr;</span> <span class="node">SwitchContext</span>
-<span class="line">  &boxvr;&boxh;</span> <span class="param">Viewport</span> <span class="line">&rarr;</span> <span class="action">WheelOutput</span> <span class="comment">"Transform Tools"</span>
-<span class="line">  &boxv;  &boxvr;&boxh;</span> <span class="action">TransformMode</span> <span class="param">[Translate]</span>
-<span class="line">  &boxv;  &boxvr;&boxh;</span> <span class="action">TransformMode</span> <span class="param">[Rotate]</span>
-<span class="line">  &boxv;  &boxvr;&boxh;</span> <span class="action">TransformMode</span> <span class="param">[Scale]</span>
-<span class="line">  &boxv;  &boxur;&boxh;</span> <span class="action">CoordSpace</span> <span class="param">[World / Local]</span>
-<span class="line">  &boxv;</span>
-<span class="line">  &boxur;&boxh;</span> <span class="param">Blueprint</span> <span class="line">&rarr;</span> <span class="action">WheelOutput</span> <span class="comment">"BP Tools"</span>
-<span class="line">     &boxvr;&boxh;</span> <span class="action">AddComponent</span>
-<span class="line">     &boxur;&boxh;</span> <span class="action">CustomCode</span> <span class="param">[Python]</span>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ======================================
      PRICING
@@ -1774,8 +1753,8 @@ fadeEls.forEach(el => observer.observe(el));
     // Label position (midpoint angle, between inner and outer)
     const midDeg = (startDeg + endDeg) / 2;
     const midRad = midDeg * Math.PI / 180;
-    const labelR = (R + r) / 2 + 12;
-    const iconR  = (R + r) / 2 - 8;
+    const labelR = (R + r) / 2 + 20;
+    const iconR  = (R + r) / 2 - 18;
     const lx = Math.cos(midRad) * labelR;
     const ly = Math.sin(midRad) * labelR;
     const icx = Math.cos(midRad) * iconR;
@@ -1847,6 +1826,94 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     if (!wasOpen) item.classList.add('open');
   });
 });
+
+// ---- Hero Mini Wheel ----
+(function() {
+  const wrapper = document.getElementById('heroMiniWheel');
+  if (!wrapper) return;
+
+  const heroCenter = wrapper.querySelector('.wheel-center');
+  const slices = [
+    { label: 'Transform', icon: '✥', type: 'active' },
+    { label: 'Theme',     icon: '🎨', type: '' },
+    { label: 'Translate', icon: '✦', type: '' },
+    { label: 'Refresh',   icon: '↻', type: '' },
+    { label: 'Scale',     icon: '⤢', type: '' },
+    { label: 'Play',      icon: '▶', type: '' },
+    { label: 'Add...',    icon: '+', type: 'green' },
+    { label: 'Shapes',    icon: '◧', type: '' },
+  ];
+
+  const rect = wrapper.getBoundingClientRect();
+  const size = Math.max(rect.width, 160);
+  const R = size / 2;
+  const r = R * 0.24;
+  const gap = 1.5;
+  const n = slices.length;
+  const angleStep = 360 / n;
+
+  slices.forEach((s, i) => {
+    const startDeg = i * angleStep + gap / 2 - 90;
+    const endDeg   = (i + 1) * angleStep - gap / 2 - 90;
+    const startRad = startDeg * Math.PI / 180;
+    const endRad   = endDeg * Math.PI / 180;
+
+    const ox1 = Math.cos(startRad) * R;
+    const oy1 = Math.sin(startRad) * R;
+    const ox2 = Math.cos(endRad) * R;
+    const oy2 = Math.sin(endRad) * R;
+    const ix1 = Math.cos(endRad) * r;
+    const iy1 = Math.sin(endRad) * r;
+    const ix2 = Math.cos(startRad) * r;
+    const iy2 = Math.sin(startRad) * r;
+    const largeArc = angleStep - gap > 180 ? 1 : 0;
+
+    const path = [
+      `M ${ix2} ${iy2}`, `L ${ox1} ${oy1}`,
+      `A ${R} ${R} 0 ${largeArc} 1 ${ox2} ${oy2}`,
+      `L ${ix1} ${iy1}`,
+      `A ${r} ${r} 0 ${largeArc} 0 ${ix2} ${iy2}`, 'Z'
+    ].join(' ');
+
+    const midDeg = (startDeg + endDeg) / 2;
+    const midRad = midDeg * Math.PI / 180;
+    const labelR = (R + r) / 2 + (R * 0.12);
+    const iconR  = (R + r) / 2 - (R * 0.1);
+    const lx = Math.cos(midRad) * labelR;
+    const ly = Math.sin(midRad) * labelR;
+    const icx = Math.cos(midRad) * iconR;
+    const icy = Math.sin(midRad) * iconR;
+
+    const div = document.createElement('div');
+    div.className = 'wheel-slice' + (s.type ? ' ' + s.type : '');
+    div.style.cssText = 'position:absolute;top:50%;left:50%;width:'+R*2+'px;height:'+R*2+'px;transform:translate(-50%,-50%);pointer-events:none;';
+
+    const fontSize = Math.max(8, R * 0.07);
+    const iconSize = Math.max(10, R * 0.09);
+
+    div.innerHTML = `
+      <svg viewBox="${-R} ${-R} ${R*2} ${R*2}" style="overflow:visible;">
+        <path class="wheel-slice-bg" d="${path}" style="pointer-events:all;cursor:pointer;" />
+        <text class="wheel-slice-icon" x="${icx}" y="${icy}" dy="0.35em" style="font-size:${iconSize}px">${s.icon}</text>
+        <text class="wheel-slice-label" x="${lx}" y="${ly}" dy="0.35em" style="font-size:${fontSize}px">${s.label}</text>
+      </svg>
+    `;
+
+    const pathEl = div.querySelector('path');
+    pathEl.addEventListener('mouseenter', () => {
+      heroCenter.textContent = s.icon;
+      heroCenter.style.borderColor = s.type === 'green' ? '#4ade80' : 'var(--cyan)';
+      heroCenter.style.color = s.type === 'green' ? '#4ade80' : 'var(--cyan)';
+    });
+    pathEl.addEventListener('mouseleave', () => {
+      heroCenter.textContent = 'V';
+      heroCenter.style.borderColor = '#333';
+      heroCenter.style.color = 'var(--text-muted)';
+    });
+
+    wrapper.appendChild(div);
+  });
+})();
 
 // ---- Close mobile menu on link click ----
 document.querySelectorAll('.nav-links a').forEach(link => {

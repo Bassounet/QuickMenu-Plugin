@@ -917,104 +917,19 @@ section {
 .code-body .comment { color: var(--text-muted); font-style: italic; }
 
 /* ============================================
-   PRICING
+   CTA BOTTOM
    ============================================ */
-.pricing {
+.cta-bottom {
   background: var(--bg-secondary);
   position: relative;
+  padding: 80px 0;
 }
-.pricing::before {
+.cta-bottom::before {
   content: '';
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(ellipse at 50% 0%, rgba(0,180,216,0.04) 0%, transparent 60%);
+  background: radial-gradient(ellipse at 50% 50%, rgba(0,180,216,0.06) 0%, transparent 60%);
   pointer-events: none;
-}
-
-.pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  max-width: 800px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
-}
-
-.price-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 40px 32px;
-  position: relative;
-  transition: all 0.3s;
-}
-.price-card:hover {
-  border-color: var(--border-hover);
-  transform: translateY(-4px);
-}
-.price-card.featured {
-  border-color: rgba(0, 180, 216, 0.3);
-  box-shadow: 0 0 40px var(--cyan-glow);
-}
-
-.price-tag {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  padding: 4px 10px;
-  border-radius: 4px;
-  margin-bottom: 16px;
-}
-.price-tag.cyan {
-  color: var(--cyan);
-  background: rgba(0, 180, 216, 0.1);
-  border: 1px solid rgba(0, 180, 216, 0.2);
-}
-.price-tag.violet {
-  color: var(--violet);
-  background: rgba(124, 58, 237, 0.1);
-  border: 1px solid rgba(124, 58, 237, 0.2);
-}
-
-.price-name {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 8px;
-}
-
-.price-amount {
-  font-size: 3.5rem;
-  font-weight: 800;
-  margin-bottom: 32px;
-  letter-spacing: -0.03em;
-}
-
-.price-features {
-  list-style: none;
-  margin-bottom: 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.price-features li {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-}
-.price-features li .check {
-  flex-shrink: 0;
-  color: var(--cyan);
-  font-size: 0.85rem;
 }
 
 .btn-full {
@@ -1311,7 +1226,6 @@ section {
 @media (max-width: 900px) {
   .features-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
   .showcase-grid { grid-template-columns: 1fr; }
-  .pricing-grid { grid-template-columns: 1fr; max-width: 450px; }
 }
 
 @media (max-width: 768px) {
@@ -1489,8 +1403,8 @@ section {
           <img src="images/PieWheelLogo.png" alt="QuickMenu Pie Menu" style="width:85%; height:85%; object-fit:contain; opacity:0.9;">
         </div>
         <div class="card-body">
-          <h3>Fully Extensible</h3>
-          <p>Add custom Python actions, console commands, or any editor operation. Full source code access, UE 4.27 through 5.7.</p>
+          <h3>Live Editing &amp; Extensibility</h3>
+          <p>Add/remove actions from the open menu with + and X buttons. Python custom code, dynamic labels, conditional visibility. Full C++ source.</p>
         </div>
       </div>
 
@@ -1511,29 +1425,43 @@ section {
       <div class="showcase-item fade-in">
         <div class="showcase-icon">V</div>
         <div class="showcase-text">
-          <h4>Pie Menu</h4>
-          <p>A beautiful radial menu, anywhere in the editor. One keypress away.</p>
+          <h4>Material-Rendered Pie Menu</h4>
+          <p>Dynamic RGBA32F texture, multi-ring hierarchy (4 levels, 12 wedges), mouse wheel cycling with flash animation, dead zone anti-misclick.</p>
+        </div>
+      </div>
+      <div class="showcase-item fade-in">
+        <div class="showcase-icon">40+</div>
+        <div class="showcase-text">
+          <h4>Action Nodes</h4>
+          <p>Spawn, Viewport, Transform, Play, Build, Level, Blueprint, Material, Niagara, Sequencer, PCG, Properties, Bookmarks, and more.</p>
+        </div>
+      </div>
+      <div class="showcase-item fade-in">
+        <div class="showcase-icon">&#9881;</div>
+        <div class="showcase-text">
+          <h4>Live Editing</h4>
+          <p>Add actions with "+", remove with "X" directly from the open menu. Changes saved in real-time, no graph editing needed.</p>
         </div>
       </div>
       <div class="showcase-item fade-in">
         <div class="showcase-icon">&lcub;&rcub;</div>
         <div class="showcase-text">
-          <h4>Switch Nodes</h4>
-          <p>Route actions dynamically by selection count, editor mode, or context.</p>
+          <h4>5 Switch Nodes</h4>
+          <p>ActorClass, EditorContext (48+ tabs), EditorMode, SelectionCount, BlueprintContext. Menus adapt in real-time.</p>
         </div>
       </div>
       <div class="showcase-item fade-in">
-        <div class="showcase-icon">&darr;</div>
+        <div class="showcase-icon">&#9889;</div>
         <div class="showcase-text">
-          <h4>SubMenus</h4>
-          <p>Nest menus infinitely with reusable SubMenu nodes.</p>
+          <h4>Auto-Wire &amp; Shortcuts</h4>
+          <p>Press S/W to auto-connect nodes. Drop pins on nodes. Focus mode, search, compact mode, inline editing.</p>
         </div>
       </div>
       <div class="showcase-item fade-in">
-        <div class="showcase-icon">&star;</div>
+        <div class="showcase-icon">&#120031;</div>
         <div class="showcase-text">
-          <h4>Multi-Version</h4>
-          <p>One codebase, compatible from UE 4.27 to 5.7.</p>
+          <h4>Python &amp; Custom Code</h4>
+          <p>Inline Python scripts, dynamic labels at runtime, conditional visibility. Console commands, fully extensible C++ base.</p>
         </div>
       </div>
     </div>
@@ -1556,7 +1484,7 @@ section {
         <h2>Your tools, one press away</h2>
         <p>This is what QuickMenu feels like. A radial menu appears instantly at your cursor — hover a slice to select an action. Fast, intuitive, zero friction.</p>
         <p>Every slice, icon, and label is fully customizable through the graph editor.</p>
-        <div class="hint">&#9654; Hover the slices — click "Theme" or "Refresh" for real actions!</div>
+        <div class="hint">&#9654; Hover the slices — click to open FAB, GitHub, Discord, or change the theme!</div>
       </div>
     </div>
   </div>
@@ -1571,12 +1499,12 @@ section {
       <div class="feature-detail-text fade-in">
         <span class="section-label">Graph Editor</span>
         <h2>Design your menus visually</h2>
-        <p>QuickMenu's node graph editor lets you build complex menu structures without writing a single line of code. Drag, connect, and configure — your menu is ready in seconds.</p>
+        <p>A full-featured node graph editor packed with UX polish. Auto-wire connections, drop pins on nodes, focus mode, compact mode, inline editing, icon previews, and a global search &mdash; everything you need to build complex menus fast.</p>
         <ul class="feature-detail-highlights">
-          <li><span class="hl-icon">&#9671;</span> Drag &amp; drop node-based editor</li>
-          <li><span class="hl-icon">&#9671;</span> 15+ built-in action node types</li>
-          <li><span class="hl-icon">&#9671;</span> Connect Switch, SubMenu, and Action nodes</li>
-          <li><span class="hl-icon">&#9671;</span> Live preview of your menu layout</li>
+          <li><span class="hl-icon">&#9671;</span> Auto-wire: drop pins on nodes, auto-connect compatible pins</li>
+          <li><span class="hl-icon">&#9671;</span> Focus mode &amp; compact mode for complex graphs</li>
+          <li><span class="hl-icon">&#9671;</span> Find/Search with highlighting, Wheel List with drag-drop</li>
+          <li><span class="hl-icon">&#9671;</span> Pin icons, friendly names, inline property editing</li>
         </ul>
       </div>
       <div class="feature-detail-visual fade-in">
@@ -1595,12 +1523,12 @@ section {
       <div class="feature-detail-text fade-in">
         <span class="section-label">Context Aware</span>
         <h2>The right tools, right when you need them</h2>
-        <p>Your radial menu adapts in real-time based on what you're doing. Selected a static mesh? You get mesh tools. Working in the Blueprint editor? You get BP actions. No configuration switching needed.</p>
+        <p>5 Switch node types evaluate every time you press V. The graph re-evaluates dynamically &mdash; your menu always matches exactly what you're doing, no manual switching ever.</p>
         <ul class="feature-detail-highlights">
-          <li><span class="hl-icon">&#9671;</span> Automatic detection of selection type</li>
-          <li><span class="hl-icon">&#9671;</span> Switch nodes route by editor mode</li>
-          <li><span class="hl-icon">&#9671;</span> Filter by selection count (none, single, multi)</li>
-          <li><span class="hl-icon">&#9671;</span> Works across Viewport, BP, Material editors</li>
+          <li><span class="hl-icon">&#9671;</span> SwitchEditorContext &mdash; 48+ tabs (Level, BP, Material, Niagara, PCG...)</li>
+          <li><span class="hl-icon">&#9671;</span> SwitchActorClass &mdash; route by selected actor type</li>
+          <li><span class="hl-icon">&#9671;</span> SwitchSelectionCount &mdash; 0, 1, 2-5, 5+ with custom thresholds</li>
+          <li><span class="hl-icon">&#9671;</span> SwitchEditorMode &amp; SwitchBlueprintContext</li>
         </ul>
       </div>
       <div class="feature-detail-visual fade-in">
@@ -1638,31 +1566,15 @@ section {
 
 
 <!-- ======================================
-     PRICING
+     CTA BOTTOM
      ====================================== -->
-<section class="pricing" id="pricing">
+<section class="cta-bottom" id="pricing">
   <div class="container" style="text-align:center;">
-    <span class="section-label fade-in">Pricing</span>
-    <h2 class="section-title fade-in">Start building faster workflows today</h2>
-    <p class="section-subtitle fade-in">One purchase. All updates. All versions.</p>
-
-    <div class="pricing-grid" style="grid-template-columns: 1fr; max-width: 450px;">
-      <!-- QuickMenu -->
-      <div class="price-card featured fade-in">
-        <span class="price-tag cyan">FAB</span>
-        <p class="price-name">QuickMenu</p>
-        <p class="price-amount"><span style="font-size:1.5rem; vertical-align:super; opacity:0.7;">$</span>9<span style="font-size:1.5rem; opacity:0.7;">.99</span></p>
-        <p style="font-size:0.95rem; color:var(--text-secondary); margin-top:-8px; margin-bottom:12px;">~8.50 EUR</p>
-        <ul class="price-features">
-          <li><span class="check">&#10003;</span> Full source code included</li>
-          <li><span class="check">&#10003;</span> All 15+ action node types</li>
-          <li><span class="check">&#10003;</span> Visual graph editor</li>
-          <li><span class="check">&#10003;</span> UE 4.27 – 5.7 support</li>
-          <li><span class="check">&#10003;</span> Commercial use license</li>
-          <li><span class="check">&#10003;</span> Free updates</li>
-        </ul>
-        <a href="#" class="btn-full cyan">Buy on FAB</a>
-      </div>
+    <h2 class="section-title fade-in">Get QuickMenu for <span style="color:var(--cyan);">$9.99</span></h2>
+    <p class="section-subtitle fade-in" style="max-width:550px; margin:0 auto 12px;">One purchase. All updates. UE 4.27 &ndash; 5.7. Full source code. <span style="color:var(--text-muted);">~8.50 EUR</span></p>
+    <div class="fade-in" style="display:flex; gap:16px; justify-content:center; margin-top:28px; flex-wrap:wrap;">
+      <a href="#" class="btn-primary" style="font-size:1.05rem; padding:16px 40px;">Buy on FAB &mdash; $9.99</a>
+      <a href="https://github.com/Bassounet/QuickMenu-Plugin" target="_blank" class="btn-ghost" style="font-size:1.05rem; padding:16px 40px;">View on GitHub</a>
     </div>
   </div>
 </section>
@@ -2002,14 +1914,14 @@ document.querySelectorAll('.faq-question').forEach(btn => {
 
   const heroCenter = wrapper.querySelector('.wheel-center');
   const slices = [
-    { label: 'FAB',       icon: '🛒', type: 'active' },
-    { label: 'GitHub',    icon: '⟐',  type: '' },
-    { label: 'Discord',   icon: '💬', type: '' },
-    { label: 'Features',  icon: '✦',  type: '' },
-    { label: 'Pricing',   icon: '💰', type: '' },
-    { label: 'FAQ',       icon: '❓', type: '' },
-    { label: 'Theme',     icon: '🎨', type: '' },
-    { label: 'Top',       icon: '▲',  type: 'green' },
+    { label: 'FAB',       icon: '🛒', type: 'active', action: 'https://fab.com' },
+    { label: 'GitHub',    icon: '⟐',  type: '',       action: 'https://github.com/Bassounet/QuickMenu-Plugin' },
+    { label: 'Discord',   icon: '💬', type: '',       action: 'https://discord.gg/bQPDVa6x' },
+    { label: 'Features',  icon: '✦',  type: '',       action: 'scroll-features' },
+    { label: 'Pricing',   icon: '💰', type: '',       action: 'scroll-pricing' },
+    { label: 'FAQ',       icon: '❓', type: '',       action: 'scroll-faq' },
+    { label: 'Theme',     icon: '🎨', type: '',       action: 'theme' },
+    { label: 'Top',       icon: '▲',  type: 'green',  action: 'scroll-top' },
   ];
 
   const rect = wrapper.getBoundingClientRect();
@@ -2078,6 +1990,35 @@ document.querySelectorAll('.faq-question').forEach(btn => {
       heroCenter.style.borderColor = '#333';
       heroCenter.style.color = 'var(--text-muted)';
     });
+
+    // Click actions
+    if (s.action) {
+      pathEl.addEventListener('click', () => {
+        if (s.action.startsWith('http')) {
+          window.open(s.action, '_blank');
+        } else if (s.action.startsWith('scroll-')) {
+          const target = s.action.replace('scroll-', '');
+          const el = document.getElementById(target);
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        } else if (s.action === 'theme') {
+          const themes = [
+            { name: 'Cyan', color: '#00b4d8' },
+            { name: 'Violet', color: '#7c3aed' },
+            { name: 'Orange', color: '#f59e0b' },
+            { name: 'Rose', color: '#f43f5e' },
+            { name: 'Green', color: '#10b981' },
+          ];
+          const current = getComputedStyle(document.documentElement).getPropertyValue('--cyan').trim();
+          let idx = themes.findIndex(t => t.color === current);
+          idx = (idx + 1) % themes.length;
+          const t = themes[idx];
+          document.documentElement.style.setProperty('--cyan', t.color);
+          document.documentElement.style.setProperty('--cyan-glow', t.color + '26');
+          document.documentElement.style.setProperty('--cyan-dark', t.color);
+          document.documentElement.style.setProperty('--border-hover', t.color);
+        }
+      });
+    }
 
     wrapper.appendChild(div);
   });

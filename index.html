@@ -1229,22 +1229,47 @@ section {
 .qm-wheel .wheel-slice.green .wheel-slice-bg { fill: #2d6a30; }
 .qm-hint {
   position: fixed;
-  bottom: 30px;
+  bottom: 40px;
   left: 50%;
-  transform: translateX(-50%);
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  padding: 8px 20px;
-  border-radius: 8px;
+  transform: translateX(-50%) scale(0.9);
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  background: linear-gradient(135deg, rgba(0, 180, 216, 0.15), rgba(124, 58, 237, 0.15));
+  border: 2px solid var(--cyan);
+  padding: 16px 36px;
+  border-radius: 50px;
   z-index: 10001;
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: opacity 0.5s, transform 0.5s;
   pointer-events: none;
+  box-shadow: 0 0 30px rgba(0, 180, 216, 0.3), 0 0 80px rgba(0, 180, 216, 0.1);
+  animation: hintGlow 2s ease-in-out infinite;
+  backdrop-filter: blur(10px);
 }
-.qm-hint.active { opacity: 1; }
+.qm-hint .v-key {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: var(--cyan);
+  color: #0a0e17;
+  font-weight: 800;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  margin: 0 6px;
+  box-shadow: 0 2px 0 rgba(0, 180, 216, 0.5), 0 0 15px rgba(0, 180, 216, 0.4);
+}
+.qm-hint.active {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+@keyframes hintGlow {
+  0%, 100% { box-shadow: 0 0 30px rgba(0, 180, 216, 0.3), 0 0 80px rgba(0, 180, 216, 0.1); }
+  50% { box-shadow: 0 0 40px rgba(0, 180, 216, 0.5), 0 0 100px rgba(0, 180, 216, 0.2); }
+}
 
 /* ============================================
    FOOTER
@@ -1328,7 +1353,7 @@ section {
 <div class="qm-wheel" id="qmWheel">
   <div class="qm-wheel-center">V</div>
 </div>
-<div class="qm-hint" id="qmHint">Press <span style="color:var(--cyan); font-weight:600;">V</span> anywhere to try QuickMenu</div>
+<div class="qm-hint" id="qmHint">Press <span class="v-key">V</span> anywhere to try QuickMenu</div>
 
 <!-- ======================================
      SOON AVAILABLE BANNER
@@ -1849,14 +1874,14 @@ fadeEls.forEach(el => observer.observe(el));
   let themeIdx = 0;
 
   const slices = [
-    { label: 'Transform', icon: '✥', type: 'active' },
-    { label: 'Theme',     icon: '🎨', type: '', action: 'theme' },
-    { label: 'Translate', icon: '✦', type: '' },
-    { label: 'Refresh',   icon: '↻', type: '', action: 'refresh' },
-    { label: 'Scale',     icon: '⤢', type: '' },
-    { label: 'Play',      icon: '▶', type: '' },
-    { label: 'Add...',    icon: '+', type: 'green' },
-    { label: 'Shapes',    icon: '◧', type: '' },
+    { label: 'FAB',       icon: '🛒', type: 'active', action: 'https://fab.com' },
+    { label: 'GitHub',    icon: '⟐',  type: '',       action: 'https://github.com/Bassounet/QuickMenu-Plugin' },
+    { label: 'Discord',   icon: '💬', type: '',       action: 'https://discord.gg/bQPDVa6x' },
+    { label: 'Features',  icon: '✦',  type: '',       action: 'scroll-features' },
+    { label: 'Pricing',   icon: '💰', type: '',       action: 'scroll-pricing' },
+    { label: 'FAQ',       icon: '❓', type: '',       action: 'scroll-faq' },
+    { label: 'Theme',     icon: '🎨', type: '',       action: 'theme' },
+    { label: 'Top',       icon: '▲',  type: 'green',  action: 'scroll-top' },
   ];
 
   const n = slices.length;
@@ -1931,27 +1956,26 @@ fadeEls.forEach(el => observer.observe(el));
       center.style.color = 'var(--text-muted)';
     });
 
-    // Real actions on click
-    if (s.action === 'theme') {
+    // Click actions
+    if (s.action) {
       pathEl.addEventListener('click', () => {
-        themeIdx = (themeIdx + 1) % themes.length;
-        const t = themes[themeIdx];
-        document.documentElement.style.setProperty('--cyan', t.color);
-        document.documentElement.style.setProperty('--cyan-glow', t.color + '26');
-        document.documentElement.style.setProperty('--cyan-dark', t.color);
-        document.documentElement.style.setProperty('--border-hover', t.color);
-        tooltip.textContent = 'Theme → ' + t.name;
-        center.style.borderColor = t.color;
-        center.style.color = t.color;
-      });
-    }
-    if (s.action === 'refresh') {
-      pathEl.addEventListener('click', () => {
-        tooltip.textContent = 'Refreshing...';
-        center.textContent = '↻';
-        wrapper.style.transition = 'transform 0.5s ease';
-        wrapper.style.transform = 'rotate(360deg)';
-        setTimeout(() => { location.reload(); }, 600);
+        if (s.action.startsWith('http')) {
+          window.open(s.action, '_blank');
+        } else if (s.action.startsWith('scroll-')) {
+          const target = s.action.replace('scroll-', '');
+          const el = document.getElementById(target);
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        } else if (s.action === 'theme') {
+          themeIdx = (themeIdx + 1) % themes.length;
+          const t = themes[themeIdx];
+          document.documentElement.style.setProperty('--cyan', t.color);
+          document.documentElement.style.setProperty('--cyan-glow', t.color + '26');
+          document.documentElement.style.setProperty('--cyan-dark', t.color);
+          document.documentElement.style.setProperty('--border-hover', t.color);
+          tooltip.textContent = 'Theme → ' + t.name;
+          center.style.borderColor = t.color;
+          center.style.color = t.color;
+        }
       });
     }
 
@@ -1978,14 +2002,14 @@ document.querySelectorAll('.faq-question').forEach(btn => {
 
   const heroCenter = wrapper.querySelector('.wheel-center');
   const slices = [
-    { label: 'Transform', icon: '✥', type: 'active' },
+    { label: 'FAB',       icon: '🛒', type: 'active' },
+    { label: 'GitHub',    icon: '⟐',  type: '' },
+    { label: 'Discord',   icon: '💬', type: '' },
+    { label: 'Features',  icon: '✦',  type: '' },
+    { label: 'Pricing',   icon: '💰', type: '' },
+    { label: 'FAQ',       icon: '❓', type: '' },
     { label: 'Theme',     icon: '🎨', type: '' },
-    { label: 'Translate', icon: '✦', type: '' },
-    { label: 'Refresh',   icon: '↻', type: '' },
-    { label: 'Scale',     icon: '⤢', type: '' },
-    { label: 'Play',      icon: '▶', type: '' },
-    { label: 'Add...',    icon: '+', type: 'green' },
-    { label: 'Shapes',    icon: '◧', type: '' },
+    { label: 'Top',       icon: '▲',  type: 'green' },
   ];
 
   const rect = wrapper.getBoundingClientRect();
@@ -2078,9 +2102,9 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     mouseY = e.clientY;
   });
 
-  // Show hint after 3 seconds on page, hide after 8s
-  setTimeout(() => { hint.classList.add('active'); }, 3000);
-  setTimeout(() => { hint.classList.remove('active'); }, 10000);
+  // Show hint immediately, hide after 15s
+  setTimeout(() => { hint.classList.add('active'); }, 500);
+  setTimeout(() => { hint.classList.remove('active'); }, 15000);
 
   function executeAction(action) {
     if (!action) return;

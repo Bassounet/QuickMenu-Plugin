@@ -1423,45 +1423,52 @@ section {
 
     <div class="showcase-grid">
       <div class="showcase-item fade-in">
-        <div class="showcase-icon">V</div>
+        <div class="showcase-icon">&#9678;</div>
         <div class="showcase-text">
-          <h4>Material-Rendered Pie Menu</h4>
-          <p>Dynamic RGBA32F texture, multi-ring hierarchy (4 levels, 12 wedges), mouse wheel cycling with flash animation, dead zone anti-misclick.</p>
+          <h4>The Pie Menu</h4>
+          <p>Material-rendered radial menu. Multi-ring (4 levels, 12 wedges), mouse wheel cycling, dead zone, icons, flash animations.</p>
+        </div>
+      </div>
+      <div class="showcase-item fade-in">
+        <div class="showcase-icon">&lcub;&rcub;</div>
+        <div class="showcase-text">
+          <h4>Context-Aware</h4>
+          <p>5 Switch nodes, 48+ editor contexts. Menus adapt in real-time to your selection, editor tab, and mode.</p>
+        </div>
+      </div>
+      <div class="showcase-item fade-in">
+        <div class="showcase-icon">&#9889;</div>
+        <div class="showcase-text">
+          <h4>Graph Editor</h4>
+          <p>Visual node editor with auto-wire, focus mode, compact mode, search, inline editing, Wheel List.</p>
         </div>
       </div>
       <div class="showcase-item fade-in">
         <div class="showcase-icon">40+</div>
         <div class="showcase-text">
           <h4>Action Nodes</h4>
-          <p>Spawn, Viewport, Transform, Play, Build, Level, Blueprint, Material, Niagara, Sequencer, PCG, Properties, Bookmarks, and more.</p>
-        </div>
-      </div>
-      <div class="showcase-item fade-in">
-        <div class="showcase-icon">&#9881;</div>
-        <div class="showcase-text">
-          <h4>Live Editing</h4>
-          <p>Add actions with "+", remove with "X" directly from the open menu. Changes saved in real-time, no graph editing needed.</p>
-        </div>
-      </div>
-      <div class="showcase-item fade-in">
-        <div class="showcase-icon">&lcub;&rcub;</div>
-        <div class="showcase-text">
-          <h4>5 Switch Nodes</h4>
-          <p>ActorClass, EditorContext (48+ tabs), EditorMode, SelectionCount, BlueprintContext. Menus adapt in real-time.</p>
-        </div>
-      </div>
-      <div class="showcase-item fade-in">
-        <div class="showcase-icon">&#9889;</div>
-        <div class="showcase-text">
-          <h4>Auto-Wire &amp; Shortcuts</h4>
-          <p>Press S/W to auto-connect nodes. Drop pins on nodes. Focus mode, search, compact mode, inline editing.</p>
+          <p>Spawn, Viewport, Transform, BP, Material, Niagara, Sequencer, PCG, Properties, Bookmarks, and more.</p>
         </div>
       </div>
       <div class="showcase-item fade-in">
         <div class="showcase-icon">&#120031;</div>
         <div class="showcase-text">
-          <h4>Python &amp; Custom Code</h4>
-          <p>Inline Python scripts, dynamic labels at runtime, conditional visibility. Console commands, fully extensible C++ base.</p>
+          <h4>Python &amp; Extensibility</h4>
+          <p>Inline Python, dynamic labels, conditional visibility, console commands. Full C++ source code.</p>
+        </div>
+      </div>
+      <div class="showcase-item fade-in">
+        <div class="showcase-icon">&#9000;</div>
+        <div class="showcase-text">
+          <h4>Shortcuts &amp; Panel</h4>
+          <p>V, E, S, W, mouse wheel, arrows. Dockable panel with shortcuts, docs, and console.</p>
+        </div>
+      </div>
+      <div class="showcase-item fade-in">
+        <div class="showcase-icon">&#8644;</div>
+        <div class="showcase-text">
+          <h4>Multi-Version</h4>
+          <p>One codebase, UE 4.27 to 5.7. Editor-only, zero runtime overhead. Centralized compat macros.</p>
         </div>
       </div>
     </div>
@@ -1491,37 +1498,38 @@ section {
 </section>
 
 <!-- ======================================
-     GRAPH CUSTOM
+     1. THE PIE MENU
      ====================================== -->
-<section class="feature-detail" id="graph-custom">
+<section class="feature-detail" id="pie-menu">
   <div class="container">
     <div class="feature-detail-grid">
       <div class="feature-detail-text fade-in">
-        <span class="section-label">Graph Editor</span>
-        <h2>Design your menus visually</h2>
-        <p>A full-featured node graph editor packed with UX polish. Auto-wire connections, drop pins on nodes, focus mode, compact mode, inline editing, icon previews, and a global search &mdash; everything you need to build complex menus fast.</p>
+        <span class="section-label">The Pie Menu</span>
+        <h2>Beautiful, fast, precise</h2>
+        <p>A material-rendered radial menu with dynamic RGBA32F texture. Multi-ring hierarchy up to 4 levels deep, 12 wedges per ring, with smooth animations and a 35px dead zone to prevent misclicks.</p>
         <ul class="feature-detail-highlights">
-          <li><span class="hl-icon">&#9671;</span> Auto-wire: drop pins on nodes, auto-connect compatible pins</li>
-          <li><span class="hl-icon">&#9671;</span> Focus mode &amp; compact mode for complex graphs</li>
-          <li><span class="hl-icon">&#9671;</span> Find/Search with highlighting, Wheel List with drag-drop</li>
-          <li><span class="hl-icon">&#9671;</span> Pin icons, friendly names, inline property editing</li>
+          <li><span class="hl-icon">&#9671;</span> Material-based rendering with vertex fallback</li>
+          <li><span class="hl-icon">&#9671;</span> Multi-ring: 4 levels deep, 12 wedges per ring</li>
+          <li><span class="hl-icon">&#9671;</span> Mouse wheel cycling with flash wrap-around animation</li>
+          <li><span class="hl-icon">&#9671;</span> Custom icons (Slate brush or UTexture2D) on each wedge</li>
+          <li><span class="hl-icon">&#9671;</span> Live editing: + to add, X to remove, directly from the menu</li>
         </ul>
       </div>
-      <div class="feature-detail-visual fade-in">
-        <img src="images/ScreesnshotGraph.png" alt="QuickMenu Graph Editor">
+      <div class="feature-detail-visual fade-in" style="background:#000; padding:40px;">
+        <img src="images/PieWheelLogo.png" alt="QuickMenu Pie Menu" style="width:85%; object-fit:contain;">
       </div>
     </div>
   </div>
 </section>
 
 <!-- ======================================
-     CONTEXT AWARE
+     2. CONTEXT-AWARE
      ====================================== -->
 <section class="feature-detail alt reverse" id="context-aware">
   <div class="container">
     <div class="feature-detail-grid">
       <div class="feature-detail-text fade-in">
-        <span class="section-label">Context Aware</span>
+        <span class="section-label">Context-Aware</span>
         <h2>The right tools, right when you need them</h2>
         <p>5 Switch node types evaluate every time you press V. The graph re-evaluates dynamically &mdash; your menu always matches exactly what you're doing, no manual switching ever.</p>
         <ul class="feature-detail-highlights">
@@ -1529,6 +1537,7 @@ section {
           <li><span class="hl-icon">&#9671;</span> SwitchActorClass &mdash; route by selected actor type</li>
           <li><span class="hl-icon">&#9671;</span> SwitchSelectionCount &mdash; 0, 1, 2-5, 5+ with custom thresholds</li>
           <li><span class="hl-icon">&#9671;</span> SwitchEditorMode &amp; SwitchBlueprintContext</li>
+          <li><span class="hl-icon">&#9671;</span> Re-evaluated on every V press &mdash; always up to date</li>
         </ul>
       </div>
       <div class="feature-detail-visual fade-in">
@@ -1539,26 +1548,126 @@ section {
 </section>
 
 <!-- ======================================
-     BUILD YOUR WHEEL
+     3. GRAPH EDITOR
      ====================================== -->
-<section class="feature-detail" id="build-wheel">
+<section class="feature-detail" id="graph-editor">
   <div class="container">
     <div class="feature-detail-grid">
       <div class="feature-detail-text fade-in">
-        <span class="section-label">Build Your Wheel</span>
-        <h2>Press S, Press W. You're done.</h2>
-        <p>Building a wheel takes seconds. Select your Action nodes and press S — a Submenu appears, already connected. Select the Submenu, press W — a Wheel Output is created and wired up. No manual linking, everything connects automatically.</p>
+        <span class="section-label">Graph Editor</span>
+        <h2>Design your menus visually</h2>
+        <p>A full-featured node graph editor packed with UX polish. Build complex menu structures without writing a single line of code &mdash; drag, connect, and configure.</p>
         <ul class="feature-detail-highlights">
-          <li><span class="hl-icon">&#9671;</span> Select Actions, Press S &rarr; Submenu connected to them</li>
-          <li><span class="hl-icon">&#9671;</span> Select Submenu, Press W &rarr; Wheel Output connected</li>
-          <li><span class="hl-icon">&#9671;</span> Everything wires up automatically &mdash; ready to use</li>
-          <li><span class="hl-icon">&#9671;</span> Nest wheels inside other wheels with SubMenus</li>
+          <li><span class="hl-icon">&#9671;</span> Auto-wire: drop pins on nodes, auto-connect compatible pins</li>
+          <li><span class="hl-icon">&#9671;</span> Focus mode &amp; compact mode for complex graphs</li>
+          <li><span class="hl-icon">&#9671;</span> Find/Search with highlighting, Wheel List with drag-drop</li>
+          <li><span class="hl-icon">&#9671;</span> Pin icons, friendly names, inline property editing</li>
+          <li><span class="hl-icon">&#9671;</span> Icon preview in dropdowns, scrollable combo with cycling</li>
+        </ul>
+      </div>
+      <div class="feature-detail-visual fade-in">
+        <img src="images/ScreesnshotGraph.png" alt="QuickMenu Graph Editor">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================
+     4. 40+ ACTION NODES
+     ====================================== -->
+<section class="feature-detail alt reverse" id="actions">
+  <div class="container">
+    <div class="feature-detail-grid">
+      <div class="feature-detail-text fade-in">
+        <span class="section-label">40+ Action Nodes</span>
+        <h2>Every editor action, one press away</h2>
+        <p>15 categories of actions covering virtually every Unreal Engine editor operation. From spawning actors to Niagara, Sequencer, PCG, and Blueprint operations &mdash; it's all built in.</p>
+        <ul class="feature-detail-highlights">
+          <li><span class="hl-icon">&#9671;</span> Spawn, Viewport, Transform, Play, Build, Level/Asset</li>
+          <li><span class="hl-icon">&#9671;</span> Blueprint: AddComponent, CompileOp, AddVariable, Interface...</li>
+          <li><span class="hl-icon">&#9671;</span> Material, Niagara, PCG, Sequencer, StaticMesh editors</li>
+          <li><span class="hl-icon">&#9671;</span> Properties, Bookmarks, Scalability, ConsoleCommand</li>
+          <li><span class="hl-icon">&#9671;</span> GoToWheel &mdash; navigate between wheels from the menu</li>
+        </ul>
+      </div>
+      <div class="feature-detail-visual fade-in">
+        <img src="images/ScreesnshotGraph3.png" alt="QuickMenu Action Nodes">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================
+     5. PYTHON & EXTENSIBILITY
+     ====================================== -->
+<section class="feature-detail" id="extensibility">
+  <div class="container">
+    <div class="feature-detail-grid">
+      <div class="feature-detail-text fade-in">
+        <span class="section-label">Python &amp; Extensibility</span>
+        <h2>Make it truly yours</h2>
+        <p>Write custom Python scripts executed inline, with dynamic labels computed at runtime and conditional visibility. Extend with C++ by inheriting from UQMGraphNode_ActionBase. Full source code included.</p>
+        <ul class="feature-detail-highlights">
+          <li><span class="hl-icon">&#9671;</span> CustomCode node &mdash; inline Python execution</li>
+          <li><span class="hl-icon">&#9671;</span> Dynamic labels &mdash; wedge text computed at runtime</li>
+          <li><span class="hl-icon">&#9671;</span> Conditional visibility &mdash; show/hide wedges with Python</li>
+          <li><span class="hl-icon">&#9671;</span> ConsoleCommand node for any UE console command</li>
+          <li><span class="hl-icon">&#9671;</span> Full C++ source &mdash; create your own action node types</li>
+        </ul>
+      </div>
+      <div class="feature-detail-visual fade-in">
+        <img src="images/ScreesnshotGraph.png" alt="QuickMenu Extensibility">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================
+     6. SHORTCUTS & PANEL
+     ====================================== -->
+<section class="feature-detail alt reverse" id="shortcuts">
+  <div class="container">
+    <div class="feature-detail-grid">
+      <div class="feature-detail-text fade-in">
+        <span class="section-label">Shortcuts &amp; Panel</span>
+        <h2>Press S, Press W. You're done.</h2>
+        <p>Every action has a shortcut. Build wheels in seconds with auto-connect, and manage everything from the dockable Quick Menu Panel with shortcuts, docs, and a console.</p>
+        <ul class="feature-detail-highlights">
+          <li><span class="hl-icon">&#9671;</span> V &rarr; Open pie menu &bull; E &rarr; Jump to graph editor</li>
+          <li><span class="hl-icon">&#9671;</span> Press S &rarr; Submenu auto-connected to selected Actions</li>
+          <li><span class="hl-icon">&#9671;</span> Press W &rarr; Wheel Output auto-connected to Submenu</li>
+          <li><span class="hl-icon">&#9671;</span> Mouse wheel cycling, arrow key navigation, Enter to execute</li>
+          <li><span class="hl-icon">&#9671;</span> Dockable Panel: shortcuts editor, integrated docs, console</li>
         </ul>
       </div>
       <div class="feature-detail-visual fade-in">
         <video autoplay loop muted playsinline style="width:100%; border-radius:12px;">
           <source src="images/PressS_PressW_Done.mp4" type="video/mp4">
         </video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================
+     7. MULTI-VERSION
+     ====================================== -->
+<section class="feature-detail" id="multi-version">
+  <div class="container">
+    <div class="feature-detail-grid">
+      <div class="feature-detail-text fade-in">
+        <span class="section-label">Multi-Version</span>
+        <h2>One plugin, every engine version</h2>
+        <p>A single codebase compiles from UE 4.27 to 5.7. Centralized compatibility macros, conditional modules, automatic feature flags. Editor-only with zero runtime overhead.</p>
+        <ul class="feature-detail-highlights">
+          <li><span class="hl-icon">&#9671;</span> UE 4.27, 5.0, 5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 5.7</li>
+          <li><span class="hl-icon">&#9671;</span> QuickMenuCompat.h &mdash; centralized version macros</li>
+          <li><span class="hl-icon">&#9671;</span> Editor-only plugin &mdash; zero impact on packaged builds</li>
+          <li><span class="hl-icon">&#9671;</span> Safe removal &mdash; no breakage if plugin is uninstalled</li>
+        </ul>
+      </div>
+      <div class="feature-detail-visual fade-in">
+        <img src="images/ScreesnshotGraph3.png" alt="QuickMenu Multi-Version">
       </div>
     </div>
   </div>

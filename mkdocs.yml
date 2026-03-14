@@ -1,0 +1,99 @@
+site_name: Quick Menu
+site_url: https://quickmenuplugin.com
+site_description: Radial pie menu plugin for Unreal Engine — press V to access 44+ editor actions instantly.
+site_author: Quick Menu
+
+repo_url: https://github.com/Bassounet/QuickMenu-Plugin
+repo_name: QuickMenu-Plugin
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: deep purple
+      accent: amber
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep purple
+      accent: amber
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.action.edit
+    - content.code.copy
+  icon:
+    repo: fontawesome/brands/github
+
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Installation: getting-started/installation.md
+    - Your First Wheel: getting-started/first-wheel.md
+  - Concepts:
+    - Graph System: concepts/graph-system.md
+    - Context Detection: concepts/context-detection.md
+  - Node Reference:
+    - Structural Nodes: nodes/structural.md
+    - Switch Nodes: nodes/switches.md
+    - "Actions: Spawn": nodes/actions-spawn.md
+    - "Actions: Viewport": nodes/actions-viewport.md
+    - "Actions: Transform": nodes/actions-transform.md
+    - "Actions: Actor": nodes/actions-actor.md
+    - "Actions: Editor": nodes/actions-editor.md
+    - "Actions: Blueprint": nodes/actions-blueprint.md
+    - "Actions: Specialized": nodes/actions-specialized.md
+    - "Actions: Utility": nodes/actions-utility.md
+  - Customization:
+    - Graph Editor: customization/graph-editor.md
+    - Wedge Appearance: customization/wedge-appearance.md
+    - Pie Menu: customization/pie-menu.md
+    - Keyboard Shortcuts: customization/shortcuts.md
+    - Quick Menu Panel: customization/panel.md
+    - Project Settings: customization/settings.md
+    - Python Examples: customization/python-examples.md
+    - "C++ Reference": customization/cpp-reference.md
+  - Troubleshooting:
+    - Common Issues: troubleshooting/common-issues.md
+    - Version Compatibility: troubleshooting/compatibility.md
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+
+plugins:
+  - search
+
+extra:
+  social:
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/bThEnFzy
+      name: Discord
+    - icon: fontawesome/brands/github
+      link: https://github.com/Bassounet/QuickMenu-Plugin
+      name: GitHub
+
+copyright: "&copy; 2026 Quick Menu"

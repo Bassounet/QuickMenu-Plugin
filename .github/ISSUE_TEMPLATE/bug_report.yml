@@ -1,0 +1,70 @@
+name: Bug Report
+description: Report a bug with Quick Menu
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: ue-version
+    attributes:
+      label: Unreal Engine Version
+      options:
+        - "5.7"
+        - "5.6"
+        - "5.5"
+        - "5.4"
+        - "5.3"
+        - "5.2"
+        - "5.1"
+        - "5.0"
+        - "4.27"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: qm-version
+    attributes:
+      label: Quick Menu Version
+      description: Check in Plugins window or About
+      options:
+        - "1.0"
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Describe the bug clearly and concisely.
+      placeholder: "When I press V in the Material Editor, the menu opens but all wedges are blank..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Minimal steps to trigger the bug.
+      placeholder: |
+        1. Open a Material asset
+        2. Press V
+        3. Observe blank wedges
+    validations:
+      required: true
+
+  - type: textarea
+    id: graph-setup
+    attributes:
+      label: Graph setup
+      description: Describe or screenshot your Quick Menu Graph. Which nodes, which connections?
+      placeholder: "Root → SwitchEditorContext → WheelOutput with 4 actions (SetViewMode, ToggleSnap, GridSize, ShowFlag)"
+    validations:
+      required: false
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log output
+      description: Paste any relevant lines from the Output Log (Window → Developer Tools → Output Log). Filter by "LogQuickMenu" if possible.
+      render: shell
+    validations:
+      required: false

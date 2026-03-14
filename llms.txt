@@ -1,0 +1,28 @@
+# Quick Menu
+> Radial pie menu plugin for Unreal Engine (4.27–5.7). Press V to access 44+ editor actions instantly. Context-aware, graph-configured, fully customizable.
+
+## Documentation
+- [Getting Started](https://quickmenuplugin.com/docs/getting-started/)
+- [Graph System & Concepts](https://quickmenuplugin.com/docs/concepts/)
+- [Node Reference](https://quickmenuplugin.com/docs/nodes/)
+- [Customization & Settings](https://quickmenuplugin.com/docs/customization/)
+- [Keyboard Shortcuts](https://quickmenuplugin.com/docs/shortcuts/)
+- [Python Custom Code](https://quickmenuplugin.com/docs/python/)
+- [Troubleshooting](https://quickmenuplugin.com/docs/troubleshooting/)
+- [Changelog](https://quickmenuplugin.com/docs/changelog/)
+- [Full AI-readable reference](https://quickmenuplugin.com/llms-full.txt)
+
+## Videos
+- #1 Quick Menu in 2 Minutes (install, press V, first impression)
+- #2 Creating Your First Wheel (graph editor, Root, WheelOutput, adding actions)
+- #3 Context-Aware Menus (Switch nodes, dynamic menus)
+- #4 SubMenus & Nested Wheels (SubMenu node, composition)
+- #5 Python Actions (CustomCode node, practical examples)
+- #6 Blueprint Actions (ComponentOp, ComponentProperty)
+- #7 Advanced Graph Patterns (combining everything)
+
+## Links
+- Website: https://quickmenuplugin.com
+- Discord: https://discord.gg/bThEnFzy
+- GitHub: https://github.com/Bassounet/QuickMenu-Plugin
+- Wiki: https://github.com/Bassounet/QuickMenu-Plugin/wiki

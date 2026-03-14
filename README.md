@@ -6,23 +6,23 @@ nu Banner](https://user-images.githubusercontent.com/YOUR_BANNER_IMAGE.png) -->
 
 The graph-powered radial menu for Unreal Engine.
 
-Press **V** to open a fully customizable pie menu. Design your menus visually with a node graph editor, add context-aware switching, submenus, and 40+ built-in action types.
+Press **V** to open a fully customizable pie menu. Design your menus visually with a node graph editor, add context-aware switching, submenus, and 44+ built-in action types.
 
 ## How to use
 
 Get the plugin on the [**FAB Marketplace**](https://www.fab.com) <!-- TODO: Replace with actual FAB listing URL -->
 
-Read the [**Getting Started**](https://github.com/Bassounet/QuickMenu-Plugin/wiki/Getting-Started) guide
+Read the [**Getting Started**](https://docs.quickmenuplugin.com/getting-started/installation/) guide
 
-Check the [**FAQ**](https://github.com/Bassounet/QuickMenu-Plugin/wiki/FAQ) for common questions
+Check the [**Troubleshooting**](https://docs.quickmenuplugin.com/troubleshooting/common-issues/) for common questions
 
-Visit the [**Website**](https://quickmenuplugin.com) | Join the [**Discord**](https://discord.gg/bThEnFzy)
+Visit the [**Website**](https://quickmenuplugin.com) | Read the [**Docs**](https://docs.quickmenuplugin.com) | Join the [**Discord**](https://discord.gg/bThEnFzy)
 
 ## Features
 
 - **Graph-Based Configuration** -- Design your menus visually with a powerful node graph editor. Drag, drop, and connect nodes to build your ideal workflow.
 - **Context-Aware Menus** -- Menus adapt automatically based on your selection, editor mode, active tab, and more. 48+ editor contexts supported.
-- **40+ Built-in Action Types** -- Viewport, transform, play, build, spawn, blueprint operations, material, sequencer, Niagara, PCG, and more.
+- **44+ Built-in Action Types** -- Viewport, transform, play, build, spawn, blueprint operations, material, sequencer, Niagara, PCG, and more.
 - **Submenus & Navigation** -- Nest menus with SubMenu nodes, navigate between wheels with GoToWheel.
 - **Live Editing** -- Add or remove actions directly from the pie menu at runtime without restarting the editor.
 - **Python Integration** -- Write custom Python actions with inline code execution, dynamic labels, and visibility conditions.
@@ -46,7 +46,7 @@ Visit the [**Website**](https://quickmenuplugin.com) | Join the [**Discord**](ht
 ## Changelog
 
 **Version 1.0** -- Initial release
-> - 40+ action node types across 15 categories
+> - 44+ action node types across 15 categories
 > - Graph-based menu editor with Root, Switch, WheelOutput, and SubMenu nodes
 > - 5 Switch node types: EditorContext (48 contexts), EditorMode, SelectionCount, ActorClass, BlueprintContext
 > - Radial pie menu widget with nested rings (up to 4 levels, 12 wedges per ring)

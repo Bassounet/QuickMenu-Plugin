@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Ask on Discord
+    url: https://discord.gg/bThEnFzy
+    about: Get help from the community — questions, setup issues, general support.
+  - name: Read the Documentation
+    url: https://docs.quickmenuplugin.com
+    about: Check the docs first — installation, node reference, troubleshooting.
+  - name: Feature Discussion
+    url: https://github.com/Bassounet/QuickMenu-Plugin/discussions/categories/ideas
+    about: Discuss feature ideas with the community before opening a formal request.

@@ -2,15 +2,15 @@
 > Radial pie menu plugin for Unreal Engine (4.27–5.7). Press V to access 44+ editor actions instantly. Context-aware, graph-configured, fully customizable.
 
 ## Documentation
-- [Getting Started](https://quickmenuplugin.com/docs/getting-started/)
-- [Graph System & Concepts](https://quickmenuplugin.com/docs/concepts/)
-- [Node Reference](https://quickmenuplugin.com/docs/nodes/)
-- [Customization & Settings](https://quickmenuplugin.com/docs/customization/)
-- [Keyboard Shortcuts](https://quickmenuplugin.com/docs/shortcuts/)
-- [Python Custom Code](https://quickmenuplugin.com/docs/python/)
-- [Troubleshooting](https://quickmenuplugin.com/docs/troubleshooting/)
-- [Changelog](https://quickmenuplugin.com/docs/changelog/)
-- [Full AI-readable reference](https://quickmenuplugin.com/llms-full.txt)
+- [Getting Started](https://docs.quickmenuplugin.com/getting-started/)
+- [Graph System & Concepts](https://docs.quickmenuplugin.com/concepts/)
+- [Node Reference](https://docs.quickmenuplugin.com/nodes/)
+- [Customization & Settings](https://docs.quickmenuplugin.com/customization/)
+- [Keyboard Shortcuts](https://docs.quickmenuplugin.com/shortcuts/)
+- [Python Custom Code](https://docs.quickmenuplugin.com/python/)
+- [Troubleshooting](https://docs.quickmenuplugin.com/troubleshooting/)
+- [Changelog](https://docs.quickmenuplugin.com/changelog/)
+- [Full AI-readable reference](https://docs.quickmenuplugin.com/llms-full.txt)
 
 ## Videos
 - #1 Quick Menu in 2 Minutes (install, press V, first impression)

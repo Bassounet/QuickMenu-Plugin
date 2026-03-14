@@ -878,7 +878,7 @@ All action nodes inherit from `UQMGraphNode_ActionBase`, which provides:
 ## Links
 
 - Website: https://quickmenuplugin.com
-- Documentation: https://quickmenuplugin.com/docs/
+- Documentation: https://docs.quickmenuplugin.com
 - Discord: https://discord.gg/bThEnFzy
 - GitHub: https://github.com/Bassounet/QuickMenu-Plugin
 - Wiki: https://github.com/Bassounet/QuickMenu-Plugin/wiki

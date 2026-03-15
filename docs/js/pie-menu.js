@@ -123,37 +123,38 @@
 
       const r = isHovered ? OUTER_RADIUS + 10 : OUTER_RADIUS;
 
-      // Wedge with rounded corners
+      // Wedge with all 4 corners rounded
       ctx.beginPath();
-      // We draw the wedge as a path and use roundRect-style corners via line segments
       const cr = CORNER_RADIUS;
-      // Outer arc start/end points adjusted for corner radius
-      const outerCornerAngle = cr / r;
-      const innerCornerAngle = cr / INNER_RADIUS;
+      const oca = cr / r;           // outer corner angle offset
+      const ica = cr / INNER_RADIUS; // inner corner angle offset
 
-      // Start at outer arc (after corner)
-      ctx.arc(centerX, centerY, r, a0 + outerCornerAngle, a1 - outerCornerAngle);
+      // Point helper
+      const px = (angle, radius) => centerX + Math.cos(angle) * radius;
+      const py = (angle, radius) => centerY + Math.sin(angle) * radius;
 
-      // Outer-end to inner-end corner
-      const oe_x = centerX + Math.cos(a1 - outerCornerAngle) * r;
-      const oe_y = centerY + Math.sin(a1 - outerCornerAngle) * r;
-      const ie_x = centerX + Math.cos(a1 - innerCornerAngle) * INNER_RADIUS;
-      const ie_y = centerY + Math.sin(a1 - innerCornerAngle) * INNER_RADIUS;
-      const corner1_x = centerX + Math.cos(a1) * r;
-      const corner1_y = centerY + Math.sin(a1) * r;
-      ctx.arcTo(corner1_x, corner1_y, ie_x, ie_y, cr);
+      // Corner 1: outer-start (inner→outer at a0)
+      ctx.moveTo(px(a0 + oca, r), py(a0 + oca, r));
+
+      // Outer arc
+      ctx.arc(centerX, centerY, r, a0 + oca, a1 - oca);
+
+      // Corner 2: outer-end (outer→inner at a1)
+      ctx.quadraticCurveTo(px(a1, r), py(a1, r), px(a1, r - cr), py(a1, r - cr));
+      ctx.lineTo(px(a1, INNER_RADIUS + cr), py(a1, INNER_RADIUS + cr));
+
+      // Corner 3: inner-end (radial→inner arc at a1)
+      ctx.quadraticCurveTo(px(a1, INNER_RADIUS), py(a1, INNER_RADIUS), px(a1 - ica, INNER_RADIUS), py(a1 - ica, INNER_RADIUS));
 
       // Inner arc (reversed)
-      ctx.arc(centerX, centerY, INNER_RADIUS, a1 - innerCornerAngle, a0 + innerCornerAngle, true);
+      ctx.arc(centerX, centerY, INNER_RADIUS, a1 - ica, a0 + ica, true);
 
-      // Inner-start to outer-start corner
-      const is_x = centerX + Math.cos(a0 + innerCornerAngle) * INNER_RADIUS;
-      const is_y = centerY + Math.sin(a0 + innerCornerAngle) * INNER_RADIUS;
-      const os_x = centerX + Math.cos(a0 + outerCornerAngle) * r;
-      const os_y = centerY + Math.sin(a0 + outerCornerAngle) * r;
-      const corner2_x = centerX + Math.cos(a0) * INNER_RADIUS;
-      const corner2_y = centerY + Math.sin(a0) * INNER_RADIUS;
-      ctx.arcTo(corner2_x, corner2_y, os_x, os_y, cr);
+      // Corner 4: inner-start (inner arc→radial at a0)
+      ctx.quadraticCurveTo(px(a0, INNER_RADIUS), py(a0, INNER_RADIUS), px(a0, INNER_RADIUS + cr), py(a0, INNER_RADIUS + cr));
+      ctx.lineTo(px(a0, r - cr), py(a0, r - cr));
+
+      // Corner 1 finish: radial→outer arc at a0
+      ctx.quadraticCurveTo(px(a0, r), py(a0, r), px(a0 + oca, r), py(a0 + oca, r));
 
       ctx.closePath();
 

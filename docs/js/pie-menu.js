@@ -113,7 +113,8 @@
     const sliceAngle = (Math.PI * 2) / SECTIONS.length;
     const startOffset = -Math.PI / 2 - sliceAngle / 2;
 
-    const GAP = 0.02; // radians gap between wedges
+    const GAP = 0.06; // radians gap between wedges
+    const CORNER_RADIUS = 8; // rounded corners
 
     for (let i = 0; i < SECTIONS.length; i++) {
       const a0 = startOffset + i * sliceAngle + GAP / 2;
@@ -122,10 +123,38 @@
 
       const r = isHovered ? OUTER_RADIUS + 10 : OUTER_RADIUS;
 
-      // Wedge
+      // Wedge with rounded corners
       ctx.beginPath();
-      ctx.arc(centerX, centerY, r, a0, a1);
-      ctx.arc(centerX, centerY, INNER_RADIUS, a1, a0, true);
+      // We draw the wedge as a path and use roundRect-style corners via line segments
+      const cr = CORNER_RADIUS;
+      // Outer arc start/end points adjusted for corner radius
+      const outerCornerAngle = cr / r;
+      const innerCornerAngle = cr / INNER_RADIUS;
+
+      // Start at outer arc (after corner)
+      ctx.arc(centerX, centerY, r, a0 + outerCornerAngle, a1 - outerCornerAngle);
+
+      // Outer-end to inner-end corner
+      const oe_x = centerX + Math.cos(a1 - outerCornerAngle) * r;
+      const oe_y = centerY + Math.sin(a1 - outerCornerAngle) * r;
+      const ie_x = centerX + Math.cos(a1 - innerCornerAngle) * INNER_RADIUS;
+      const ie_y = centerY + Math.sin(a1 - innerCornerAngle) * INNER_RADIUS;
+      const corner1_x = centerX + Math.cos(a1) * r;
+      const corner1_y = centerY + Math.sin(a1) * r;
+      ctx.arcTo(corner1_x, corner1_y, ie_x, ie_y, cr);
+
+      // Inner arc (reversed)
+      ctx.arc(centerX, centerY, INNER_RADIUS, a1 - innerCornerAngle, a0 + innerCornerAngle, true);
+
+      // Inner-start to outer-start corner
+      const is_x = centerX + Math.cos(a0 + innerCornerAngle) * INNER_RADIUS;
+      const is_y = centerY + Math.sin(a0 + innerCornerAngle) * INNER_RADIUS;
+      const os_x = centerX + Math.cos(a0 + outerCornerAngle) * r;
+      const os_y = centerY + Math.sin(a0 + outerCornerAngle) * r;
+      const corner2_x = centerX + Math.cos(a0) * INNER_RADIUS;
+      const corner2_y = centerY + Math.sin(a0) * INNER_RADIUS;
+      ctx.arcTo(corner2_x, corner2_y, os_x, os_y, cr);
+
       ctx.closePath();
 
       const baseColor = SECTIONS[i].color;

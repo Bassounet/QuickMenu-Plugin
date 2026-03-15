@@ -99,6 +99,6 @@ extra:
       name: GitHub
 
 extra_javascript:
-  - js/pie-menu.js?v=2
+  - js/pie-menu.js?v=3
 
 copyright: "&copy; 2026 Quick Menu"

@@ -105,9 +105,11 @@
     const sliceAngle = (Math.PI * 2) / SECTIONS.length;
     const startOffset = -Math.PI / 2 - sliceAngle / 2;
 
+    const GAP = 0.02; // radians gap between wedges
+
     for (let i = 0; i < SECTIONS.length; i++) {
-      const a0 = startOffset + i * sliceAngle;
-      const a1 = a0 + sliceAngle;
+      const a0 = startOffset + i * sliceAngle + GAP / 2;
+      const a1 = a0 + sliceAngle - GAP;
       const isHovered = i === hoveredIndex;
 
       const r = isHovered ? OUTER_RADIUS + 10 : OUTER_RADIUS;

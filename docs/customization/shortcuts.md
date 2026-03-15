@@ -37,6 +37,10 @@ Hold the key, then click on the canvas to spawn a node at that position:
 
 These are the defaults — fully customizable in **Project Settings → Quick Menu → Node Spawn Shortcuts**. You can add your own key → node class mappings.
 
+### S + Click and Shift+C in action
+
+![Hold S to spawn SubMenu, Shift+C to auto-wire nodes](../img/Shortcut_S_ShiftC.gif)
+
 ## Graph Editor — Node Operations
 
 | Key | Action |

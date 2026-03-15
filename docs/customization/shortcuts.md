@@ -39,7 +39,9 @@ These are the defaults — fully customizable in **Project Settings → Quick Me
 
 ### S + Click and Shift+C in action
 
-![Hold S to spawn SubMenu, Shift+C to auto-wire nodes](../img/Shortcut_S_ShiftC.gif)
+<video autoplay loop muted playsinline style="max-width: 100%; border-radius: 8px;">
+  <source src="../img/ShortcutShiftC_ClicS.mp4" type="video/mp4">
+</video>
 
 ## Graph Editor — Node Operations
 

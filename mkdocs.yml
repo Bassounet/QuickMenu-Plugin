@@ -98,4 +98,7 @@ extra:
       link: https://github.com/Bassounet/QuickMenu-Plugin
       name: GitHub
 
+extra_javascript:
+  - js/pie-menu.js
+
 copyright: "&copy; 2026 Quick Menu"

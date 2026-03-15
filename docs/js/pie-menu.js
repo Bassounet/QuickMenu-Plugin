@@ -1,0 +1,239 @@
+(function () {
+  'use strict';
+
+  const SECTIONS = [
+    { label: '🏠 Home', url: '/', color: '#7c4dff' },
+    { label: '🚀 Getting Started', url: '/getting-started/installation/', color: '#651fff' },
+    { label: '🧠 Concepts', url: '/concepts/graph-system/', color: '#536dfe' },
+    { label: '📦 Node Reference', url: '/nodes/structural/', color: '#448aff' },
+    { label: '🎨 Customization', url: '/customization/graph-editor/', color: '#40c4ff' },
+    { label: '⌨️ Shortcuts', url: '/customization/shortcuts/', color: '#18ffff' },
+    { label: '🐍 Python', url: '/customization/python-examples/', color: '#69f0ae' },
+    { label: '🔧 Troubleshooting', url: '/troubleshooting/common-issues/', color: '#ffd740' },
+    { label: '🔄 Refresh', url: null, color: '#ff6e40' },
+  ];
+
+  const INNER_RADIUS = 60;
+  const OUTER_RADIUS = 160;
+  const LABEL_RADIUS = 115;
+
+  let overlay = null;
+  let canvas = null;
+  let ctx = null;
+  let hoveredIndex = -1;
+  let centerX = 0;
+  let centerY = 0;
+  let isOpen = false;
+
+  function createOverlay() {
+    overlay = document.createElement('div');
+    overlay.id = 'qm-pie-overlay';
+    overlay.style.cssText =
+      'position:fixed;top:0;left:0;width:100%;height:100%;z-index:99999;cursor:default;display:none;';
+
+    canvas = document.createElement('canvas');
+    canvas.style.cssText = 'position:absolute;top:0;left:0;';
+    overlay.appendChild(canvas);
+    ctx = canvas.getContext('2d');
+
+    // Hint label
+    const hint = document.createElement('div');
+    hint.id = 'qm-pie-hint';
+    hint.style.cssText =
+      'position:fixed;bottom:20px;left:50%;transform:translateX(-50%);' +
+      'background:rgba(30,30,30,0.85);color:#ccc;padding:6px 16px;border-radius:20px;' +
+      'font-size:12px;font-family:system-ui;pointer-events:none;z-index:100000;display:none;';
+    hint.textContent = 'Press V to open Quick Menu';
+    document.body.appendChild(hint);
+
+    overlay.addEventListener('mousemove', onMouseMove);
+    overlay.addEventListener('click', onMouseClick);
+    overlay.addEventListener('contextmenu', function (e) {
+      e.preventDefault();
+      closeMenu();
+    });
+
+    document.body.appendChild(overlay);
+  }
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  function openMenu(x, y) {
+    if (isOpen) return;
+    isOpen = true;
+    centerX = x;
+    centerY = y;
+    resizeCanvas();
+    overlay.style.display = 'block';
+    hoveredIndex = -1;
+    draw();
+  }
+
+  function closeMenu() {
+    if (!isOpen) return;
+    isOpen = false;
+    overlay.style.display = 'none';
+  }
+
+  function getWedgeIndex(mx, my) {
+    const dx = mx - centerX;
+    const dy = my - centerY;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+    if (dist < INNER_RADIUS || dist > OUTER_RADIUS + 30) return -1;
+
+    let angle = Math.atan2(dy, dx);
+    if (angle < 0) angle += Math.PI * 2;
+
+    const sliceAngle = (Math.PI * 2) / SECTIONS.length;
+    const offset = -Math.PI / 2 - sliceAngle / 2;
+    let adjusted = angle - offset;
+    if (adjusted < 0) adjusted += Math.PI * 2;
+
+    return Math.floor(adjusted / sliceAngle) % SECTIONS.length;
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Dim background
+    ctx.fillStyle = 'rgba(0,0,0,0.4)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    const sliceAngle = (Math.PI * 2) / SECTIONS.length;
+    const startOffset = -Math.PI / 2 - sliceAngle / 2;
+
+    for (let i = 0; i < SECTIONS.length; i++) {
+      const a0 = startOffset + i * sliceAngle;
+      const a1 = a0 + sliceAngle;
+      const isHovered = i === hoveredIndex;
+
+      const r = isHovered ? OUTER_RADIUS + 10 : OUTER_RADIUS;
+
+      // Wedge
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, r, a0, a1);
+      ctx.arc(centerX, centerY, INNER_RADIUS, a1, a0, true);
+      ctx.closePath();
+
+      const baseColor = SECTIONS[i].color;
+      ctx.fillStyle = isHovered ? baseColor : hexToRgba(baseColor, 0.7);
+      ctx.fill();
+
+      // Border
+      ctx.strokeStyle = 'rgba(255,255,255,0.15)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+
+      // Label
+      const midAngle = (a0 + a1) / 2;
+      const lx = centerX + Math.cos(midAngle) * LABEL_RADIUS;
+      const ly = centerY + Math.sin(midAngle) * LABEL_RADIUS;
+
+      ctx.save();
+      ctx.font = isHovered ? 'bold 13px system-ui' : '12px system-ui';
+      ctx.fillStyle = isHovered ? '#fff' : 'rgba(255,255,255,0.9)';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(SECTIONS[i].label, lx, ly);
+      ctx.restore();
+    }
+
+    // Center circle
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, INNER_RADIUS - 2, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(20,20,20,0.9)';
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+
+    // Center text
+    ctx.font = 'bold 11px system-ui';
+    ctx.fillStyle = 'rgba(255,255,255,0.5)';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('Quick Menu', centerX, centerY);
+  }
+
+  function hexToRgba(hex, alpha) {
+    const r = parseInt(hex.slice(1, 3), 16);
+    const g = parseInt(hex.slice(3, 5), 16);
+    const b = parseInt(hex.slice(5, 7), 16);
+    return `rgba(${r},${g},${b},${alpha})`;
+  }
+
+  function onMouseMove(e) {
+    const newIndex = getWedgeIndex(e.clientX, e.clientY);
+    if (newIndex !== hoveredIndex) {
+      hoveredIndex = newIndex;
+      overlay.style.cursor = newIndex >= 0 ? 'pointer' : 'default';
+      draw();
+    }
+  }
+
+  function onMouseClick(e) {
+    if (hoveredIndex < 0) {
+      closeMenu();
+      return;
+    }
+
+    const section = SECTIONS[hoveredIndex];
+    closeMenu();
+
+    if (section.url === null) {
+      // Refresh
+      window.location.reload();
+    } else {
+      window.location.href = section.url;
+    }
+  }
+
+  // Keyboard
+  document.addEventListener('keydown', function (e) {
+    // Don't trigger in inputs/textareas
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable) return;
+    // Don't trigger if search is open
+    if (document.querySelector('.md-search__input:focus')) return;
+
+    if (e.key === 'v' || e.key === 'V') {
+      if (isOpen) {
+        closeMenu();
+      } else {
+        // Open at center of viewport
+        openMenu(window.innerWidth / 2, window.innerHeight / 2);
+      }
+      e.preventDefault();
+    }
+
+    if (e.key === 'Escape' && isOpen) {
+      closeMenu();
+      e.preventDefault();
+    }
+  });
+
+  // Init
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', createOverlay);
+  } else {
+    createOverlay();
+  }
+
+  // Show hint briefly on first visit
+  setTimeout(function () {
+    const hint = document.getElementById('qm-pie-hint');
+    if (hint && !sessionStorage.getItem('qm-hint-shown')) {
+      hint.style.display = 'block';
+      sessionStorage.setItem('qm-hint-shown', '1');
+      setTimeout(function () {
+        hint.style.opacity = '0';
+        hint.style.transition = 'opacity 1s';
+        setTimeout(function () {
+          hint.style.display = 'none';
+        }, 1000);
+      }, 4000);
+    }
+  }, 2000);
+})();

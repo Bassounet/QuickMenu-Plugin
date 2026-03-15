@@ -68,12 +68,39 @@ Opened with **Ctrl+F**. Search across all nodes in the current graph.
 - The preview panel shows that wheel
 - Click the breadcrumb bar or press Escape to exit
 
+## Compact Mode
+
+Nodes can be collapsed to a smaller visual footprint — useful when your graph gets large and you want to reduce clutter.
+
+- **H** — toggle compact/expanded on selected nodes
+- Or right-click a node → **Toggle Compact**
+- Compact nodes show only the node title and pins — no properties, no details
+- The node stays fully functional: connections, execution, and preview all work the same
+
+**Tip:** Compact mode is great for action nodes you've already configured. Keep your Switch and WheelOutput nodes expanded for readability, compact everything else.
+
 ## Comment Nodes
 
 - Press **C** with nodes selected to create a group comment around them
 - Double-click to rename
 - Click the color swatch to change the comment color
 - Resizable — drag edges to fit your node group
+- Comments are purely visual — they don't affect execution
+
+**Tip:** Use comments to group related actions (e.g., "Transform Tools", "Spawn Actors") so your graph stays organized as it grows.
+
+## Subgraph Navigation
+
+When you use **SubMenu** nodes, each SubMenu acts as a subgraph — a reusable group of actions that can be referenced from multiple wheels.
+
+- **Double-click a SubMenu node** to navigate into it (the graph canvas shows only that SubMenu's children)
+- A **breadcrumb bar** appears at the top showing your navigation path (e.g., Root > Main Tools > Spawn SubMenu)
+- **Click any breadcrumb** to jump back to that level
+- **Backspace** — go back one level
+- **Shift+Space** — jump directly to the root graph
+- **Escape** — exit current subgraph
+
+This lets you work on deeply nested menus without losing context. The Wheel List and Preview panel update to reflect the current subgraph.
 
 ## Two Workflows
 

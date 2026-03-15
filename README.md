@@ -8,7 +8,7 @@ Press **V** to open a fully customizable pie menu. Design your menus visually wi
 
 <p align="center">
   <a href="https://docs.quickmenuplugin.com">
-    <img src="https://docs.quickmenuplugin.com/img/ThumbnailV1.png" alt="Quick Menu Overview" width="800"/>
+    <img src="docs/img/Showcase.gif" alt="Quick Menu Showcase" width="800"/>
   </a>
 </p>
 

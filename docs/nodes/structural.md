@@ -41,6 +41,8 @@ Groups actions into an expandable wedge. When the user hovers this wedge in the 
 - 1 menu output (blue) — connect to a WheelOutput or another SubMenu pin
 - N menu inputs (blue) — children, each pin = one child wedge
 
+![SubMenu node](/img/SubmenuNode.png)
+
 **Nesting:** SubMenus can be nested up to 4 levels deep (sub-menu within sub-menu).
 
 **Pin auto-naming:** When you connect an action node to a menu pin, the pin's friendly name updates to match the action label (e.g., "Translate", "Rotate" instead of "Pin 0", "Pin 1").

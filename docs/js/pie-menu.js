@@ -2,15 +2,15 @@
   'use strict';
 
   const SECTIONS = [
-    { label: '🏠 Home', url: '/', color: '#7c4dff' },
-    { label: '🚀 Getting Started', url: '/getting-started/installation/', color: '#651fff' },
-    { label: '🧠 Concepts', url: '/concepts/graph-system/', color: '#536dfe' },
-    { label: '📦 Node Reference', url: '/nodes/structural/', color: '#448aff' },
-    { label: '🎨 Customization', url: '/customization/graph-editor/', color: '#40c4ff' },
-    { label: '⌨️ Shortcuts', url: '/customization/shortcuts/', color: '#18ffff' },
-    { label: '🐍 Python', url: '/customization/python-examples/', color: '#69f0ae' },
-    { label: '🔧 Troubleshooting', url: '/troubleshooting/common-issues/', color: '#ffd740' },
-    { label: '🔄 Refresh', url: null, color: '#ff6e40' },
+    { icon: '🏠', label: 'Home', url: '/', color: '#7c4dff' },
+    { icon: '🚀', label: 'Getting Started', url: '/getting-started/installation/', color: '#651fff' },
+    { icon: '🧠', label: 'Concepts', url: '/concepts/graph-system/', color: '#536dfe' },
+    { icon: '📦', label: 'Nodes', url: '/nodes/structural/', color: '#448aff' },
+    { icon: '🎨', label: 'Customize', url: '/customization/graph-editor/', color: '#40c4ff' },
+    { icon: '⌨️', label: 'Shortcuts', url: '/customization/shortcuts/', color: '#18ffff' },
+    { icon: '🐍', label: 'Python', url: '/customization/python-examples/', color: '#69f0ae' },
+    { icon: '🔧', label: 'Troubleshoot', url: '/troubleshooting/common-issues/', color: '#ffd740' },
+    { icon: '🔄', label: 'Refresh', url: null, color: '#ff6e40' },
   ];
 
   const INNER_RADIUS = 60;
@@ -172,11 +172,19 @@
       const ly = centerY + Math.sin(midAngle) * LABEL_RADIUS;
 
       ctx.save();
-      ctx.font = isHovered ? 'bold 13px system-ui' : '12px system-ui';
-      ctx.fillStyle = isHovered ? '#fff' : 'rgba(255,255,255,0.9)';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      ctx.fillText(SECTIONS[i].label, lx, ly);
+
+      // Icon above
+      ctx.font = isHovered ? '18px system-ui' : '16px system-ui';
+      ctx.fillStyle = isHovered ? '#fff' : 'rgba(255,255,255,0.9)';
+      ctx.fillText(SECTIONS[i].icon, lx, ly - 9);
+
+      // Label below
+      ctx.font = isHovered ? 'bold 11px system-ui' : '10px system-ui';
+      ctx.fillStyle = isHovered ? '#fff' : 'rgba(255,255,255,0.85)';
+      ctx.fillText(SECTIONS[i].label, lx, ly + 10);
+
       ctx.restore();
     }
 

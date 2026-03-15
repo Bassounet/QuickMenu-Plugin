@@ -2,6 +2,8 @@
 
 Switch nodes route execution flow based on the current editor context. They have one exec input and multiple exec outputs — one per case, plus a Default.
 
+![Switch node](/img/SwitchNode.png)
+
 ## Switch: Editor Context
 
 Routes based on the active editor tab. Supports **61 contexts** including:

@@ -72,6 +72,10 @@ Opened with **Ctrl+F**. Search nodes by name, label, or property value.
 - **Default** — searches the current graph and all its subgraphs (SubMenu nodes)
 - **Search All Graphs** (toggle button next to the search box) — searches across **every QuickMenu Graph asset** in your project, not just the one you have open. Results from other graphs show the asset name so you know where each match lives
 
+<video autoplay loop muted playsinline style="max-width: 100%; border-radius: 8px;">
+  <source src="/img/FindResultModes.mp4" type="video/mp4">
+</video>
+
 ## Focus Mode
 
 - Double-click a WheelOutput in the Wheel List to enter Focus Mode

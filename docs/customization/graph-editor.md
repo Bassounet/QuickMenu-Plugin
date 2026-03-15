@@ -83,6 +83,10 @@ Opened with **Ctrl+F**. Search nodes by name, label, or property value.
 - The preview panel shows that wheel
 - Click the breadcrumb bar or press Escape to exit
 
+<video autoplay loop muted playsinline style="max-width: 100%; border-radius: 8px;">
+  <source src="/img/FocuesesWheels.mp4" type="video/mp4">
+</video>
+
 ## Compact Mode
 
 Nodes can be collapsed to a smaller visual footprint — useful when your graph gets large and you want to reduce clutter.

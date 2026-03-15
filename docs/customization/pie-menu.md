@@ -63,3 +63,7 @@ When you press V, Quick Menu evaluates your graph:
 If no wheel matches the current context:
 - Falls back to a Default wheel (if one exists)
 - Or shows a **"Create Wheel" panel** (configurable in Project Settings)
+
+![No wheel for this context](/img/NoWheelForThisContext.png)
+
+![Fallback wheel](/img/FallBackWheel.png)

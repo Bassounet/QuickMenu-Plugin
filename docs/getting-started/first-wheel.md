@@ -8,7 +8,7 @@ This guide walks you through creating a Quick Menu Graph and your first pie menu
 2. Name it (e.g., "MyMenuGraph")
 3. Double-click to open it in the graph editor
 
-<!-- Screenshot: Content Browser → Add → Quick Menu -->
+<!-- TODO: Screenshot Content Browser → Add → Quick Menu -->
 
 ## Step 2: Understand the Layout
 
@@ -19,7 +19,7 @@ The graph editor has 4 panels:
 - **Preview** (right) — live pie menu preview of the selected wheel
 - **Find Results** (bottom, Ctrl+F) — search across all nodes
 
-<!-- Screenshot: graph editor with panels labeled -->
+<!-- TODO: Screenshot graph editor with panels labeled -->
 
 ## Step 3: Add a WheelOutput
 
@@ -39,7 +39,7 @@ The **Root** node is already placed. Now add a wheel:
 
 **Shortcut:** Select your action nodes, then hold **W** and click — a WheelOutput spawns and auto-wires all selected actions.
 
-<!-- Screenshot: graph with Root → WheelOutput + 4 actions connected -->
+![Simple graph with Root, WheelOutput and actions](/img/GraphSimple.png)
 
 ## Step 5: Set as Active Graph
 
@@ -52,7 +52,7 @@ Or: right-click the graph in Content Browser → **Set as Active Menu**
 
 Press **V** anywhere in the editor. Your pie menu appears with your actions.
 
-<!-- Screenshot: pie menu open with the 4 actions -->
+![Pie menu with created wheel](/img/CreatedWheelEmpty.png)
 
 ## Next Steps
 

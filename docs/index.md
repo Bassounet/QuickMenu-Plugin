@@ -8,6 +8,10 @@ Quick Menu is a radial pie menu plugin for Unreal Engine that gives you instant 
 
 ![Quick Menu overview](/img/ThumbnailV1.png)
 
+<video autoplay loop muted playsinline style="max-width: 100%; border-radius: 8px; margin-top: 1em;">
+  <source src="/img/ShowcaseWheel.mp4" type="video/mp4">
+</video>
+
 ## Features
 
 - **44 built-in actions** covering viewport, transforms, spawning, blueprints, materials, sequencer, and more

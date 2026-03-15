@@ -31,19 +31,17 @@ The **Root** node is already placed. Now add a wheel:
 2. Connect the Root's exec output (white pin) to the WheelOutput's exec input
 3. Name your wheel in the Details panel (e.g., "Main Tools")
 
-**Shortcut:** Hold **W** and click on the canvas to instantly spawn a WheelOutput.
+**Shortcut:** Hold **W** and click on the canvas to instantly spawn a WheelOutput. If you have action nodes selected, it auto-wires them all.
+
+<video autoplay loop muted playsinline style="max-width: 100%; border-radius: 8px;">
+  <source src="/img/SmartAutoWiringWClick.mp4" type="video/mp4">
+</video>
 
 ## Step 4: Add Actions
 
 1. Right-click the canvas → browse **Actions** categories or search
 2. Add a few action nodes (e.g., Transform Mode, Select Op, Spawn Shape)
 3. Connect each action's menu output (blue pin) to a WheelOutput menu input pin
-
-**Shortcut:** Select your action nodes, then hold **W** and click — a WheelOutput spawns and auto-wires all selected actions.
-
-<video autoplay loop muted playsinline style="max-width: 100%; border-radius: 8px;">
-  <source src="/img/SmartAutoWiringWClick.mp4" type="video/mp4">
-</video>
 
 ![Simple graph with Root, WheelOutput and actions](/img/GraphSimple.png)
 

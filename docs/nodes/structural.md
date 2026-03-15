@@ -9,6 +9,8 @@ These nodes define the structure of your menu graph — the flow from entry poin
 - Starting point for menu evaluation
 - Every graph must have exactly one Root
 
+![Root node](/img/RootNode.png)
+
 ## WheelOutput
 
 The terminal node that defines a pie menu wheel. Each input pin becomes one wedge.
@@ -25,6 +27,8 @@ The terminal node that defines a pie menu wheel. Each input pin becomes one wedg
 - Select the node and press **=** to add a menu pin
 - Press **-** to remove the last menu pin
 - Or right-click → Add Menu Pin / Remove Menu Pin
+
+![WheelOutput node](/img/WheelOutpoutNode.png)
 
 ## SubMenu
 

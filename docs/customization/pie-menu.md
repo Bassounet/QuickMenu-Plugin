@@ -48,7 +48,7 @@ The pie menu is not just a launcher — it's also a live editor:
 ### Customizing wedge settings from the pie menu
 
 <video autoplay loop muted playsinline style="max-width: 100%; border-radius: 8px;">
-  <source src="/img/WedgeSettingsThroughPieMenu.mp4" type="video/mp4">
+  <source src="/img/WedgeSettingsThroughPieMenuV2.mp4" type="video/mp4">
 </video>
 
 ## Context-Aware Behavior

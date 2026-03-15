@@ -174,35 +174,33 @@
     }
   }
 
-  function onMouseClick(e) {
-    if (hoveredIndex < 0) {
-      closeMenu();
-      return;
-    }
-
+  function navigateHovered() {
+    if (hoveredIndex < 0) return;
     const section = SECTIONS[hoveredIndex];
-    closeMenu();
-
     if (section.url === null) {
-      // Refresh
       window.location.reload();
     } else {
       window.location.href = section.url;
     }
   }
 
-  // Keyboard
+  function onMouseClick(e) {
+    if (hoveredIndex < 0) {
+      closeMenu();
+      return;
+    }
+    navigateHovered();
+    closeMenu();
+  }
+
+  // Keyboard — hold V to open, release V to execute + close (like Unreal)
   document.addEventListener('keydown', function (e) {
-    // Don't trigger in inputs/textareas
+    if (e.repeat) return;
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable) return;
-    // Don't trigger if search is open
     if (document.querySelector('.md-search__input:focus')) return;
 
     if (e.key === 'v' || e.key === 'V') {
-      if (isOpen) {
-        closeMenu();
-      } else {
-        // Open at center of viewport
+      if (!isOpen) {
         openMenu(window.innerWidth / 2, window.innerHeight / 2);
       }
       e.preventDefault();
@@ -211,6 +209,18 @@
     if (e.key === 'Escape' && isOpen) {
       closeMenu();
       e.preventDefault();
+    }
+  });
+
+  document.addEventListener('keyup', function (e) {
+    if (e.key === 'v' || e.key === 'V') {
+      if (isOpen) {
+        if (hoveredIndex >= 0) {
+          navigateHovered();
+        }
+        closeMenu();
+        e.preventDefault();
+      }
     }
   });
 

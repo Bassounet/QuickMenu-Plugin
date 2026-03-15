@@ -66,4 +66,6 @@ If no wheel matches the current context:
 
 ![No wheel for this context](/img/NoWheelForThisContext.png)
 
+![Created wheel (empty)](/img/CreatedWheelEmpty.png)
+
 ![Fallback wheel](/img/FallBackWheel.png)

@@ -39,6 +39,10 @@ The **Root** node is already placed. Now add a wheel:
 
 **Shortcut:** Select your action nodes, then hold **W** and click — a WheelOutput spawns and auto-wires all selected actions.
 
+<video autoplay loop muted playsinline style="max-width: 100%; border-radius: 8px;">
+  <source src="/img/SmartAutoWiringWClick.mp4" type="video/mp4">
+</video>
+
 ![Simple graph with Root, WheelOutput and actions](/img/GraphSimple.png)
 
 ## Step 5: Set as Active Graph
@@ -52,7 +56,7 @@ Or: right-click the graph in Content Browser → **Set as Active Menu**
 
 Press **V** anywhere in the editor. Your pie menu appears with your actions.
 
-![Pie menu with created wheel](/img/CreatedWheelEmpty.png)
+<!-- TODO: Screenshot pie menu result -->
 
 ## Next Steps
 

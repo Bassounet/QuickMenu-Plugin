@@ -20,3 +20,9 @@ Toggle `bAutoLabel` off in the Details panel to set a custom label instead. This
 ## Pin Auto-Naming
 
 When you connect an action node to a WheelOutput menu pin, the pin's friendly name updates to match the action label. This means the Wheel List shows meaningful names like "Translate", "Rotate" rather than "Pin 0", "Pin 1".
+
+## Customizing wedges from the pie menu
+
+<video autoplay loop muted playsinline style="max-width: 100%; border-radius: 8px;">
+  <source src="/img/WedgeSettingsThroughPieMenu.mp4" type="video/mp4">
+</video>

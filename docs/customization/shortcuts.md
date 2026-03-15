@@ -77,3 +77,9 @@ When you spawn a WheelOutput or SubMenu with nodes already selected:
 This means: select 5 action nodes → press **W + click** → instant wheel with all 5 connected.
 
 **Shift+C** does the same for existing nodes: select actions + a WheelOutput → Shift+C → all wired up.
+
+### Smart Auto-Wiring in action
+
+<video autoplay loop muted playsinline style="max-width: 100%; border-radius: 8px;">
+  <source src="/img/SmartAutoWiringWClick.mp4" type="video/mp4">
+</video>

@@ -79,6 +79,10 @@ Nodes can be collapsed to a smaller visual footprint — useful when your graph 
 
 **Tip:** Compact mode is great for action nodes you've already configured. Keep your Switch and WheelOutput nodes expanded for readability, compact everything else.
 
+<video autoplay loop muted playsinline style="max-width: 100%; border-radius: 8px;">
+  <source src="/img/Compactnode.mp4" type="video/mp4">
+</video>
+
 ## Comment Nodes
 
 - Press **C** with nodes selected to create a group comment around them
@@ -88,6 +92,10 @@ Nodes can be collapsed to a smaller visual footprint — useful when your graph 
 - Comments are purely visual — they don't affect execution
 
 **Tip:** Use comments to group related actions (e.g., "Transform Tools", "Spawn Actors") so your graph stays organized as it grows.
+
+<video autoplay loop muted playsinline style="max-width: 100%; border-radius: 8px;">
+  <source src="/img/CommentGroup.mp4" type="video/mp4">
+</video>
 
 ## Subgraph Navigation
 
@@ -101,6 +109,10 @@ When you use **SubMenu** nodes, each SubMenu acts as a subgraph — a reusable g
 - **Escape** — exit current subgraph
 
 This lets you work on deeply nested menus without losing context. The Wheel List and Preview panel update to reflect the current subgraph.
+
+<video autoplay loop muted playsinline style="max-width: 100%; border-radius: 8px;">
+  <source src="/img/SubgraphCollapseExpand.mp4" type="video/mp4">
+</video>
 
 ## Two Workflows
 

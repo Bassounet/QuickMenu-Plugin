@@ -38,53 +38,112 @@
     overlay.appendChild(canvas);
     ctx = canvas.getContext('2d');
 
-    // Animated banner
+    // Animated banner — catchy AF
     const banner = document.createElement('div');
     banner.id = 'qm-pie-banner';
-    banner.innerHTML = '<span style="margin-right:8px;font-size:16px;">⌨️</span> Press <kbd style="background:rgba(255,255,255,0.15);padding:2px 8px;border-radius:4px;font-weight:bold;font-family:system-ui;border:1px solid rgba(255,255,255,0.2);">V</kbd> anywhere to try the Quick Menu navigation';
-    banner.style.cssText =
-      'position:fixed;bottom:0;left:0;width:100%;z-index:100000;' +
-      'background:linear-gradient(135deg, #7c4dff 0%, #536dfe 50%, #448aff 100%);' +
-      'color:#fff;padding:10px 20px;font-size:13px;font-family:system-ui;' +
-      'text-align:center;cursor:pointer;pointer-events:auto;' +
-      'transform:translateY(100%);transition:transform 0.5s cubic-bezier(0.16,1,0.3,1),opacity 0.4s;' +
-      'box-shadow:0 -2px 10px rgba(0,0,0,0.2);display:none;';
+    banner.innerHTML = `
+      <div class="qm-banner-content">
+        <div class="qm-banner-glow"></div>
+        <span class="qm-banner-text">
+          🎯 <strong>Try it now!</strong> Hold
+          <span class="qm-key-wrapper">
+            <span class="qm-key-ring"></span>
+            <kbd class="qm-key">V</kbd>
+          </span>
+          anywhere on this page to open the Quick Menu
+          <span class="qm-banner-arrow">↗</span>
+        </span>
+        <span class="qm-banner-close">✕</span>
+      </div>
+    `;
 
-    // Close button
-    const closeBtn = document.createElement('span');
-    closeBtn.textContent = '✕';
-    closeBtn.style.cssText =
-      'position:absolute;right:16px;top:50%;transform:translateY(-50%);' +
-      'cursor:pointer;opacity:0.6;font-size:14px;padding:4px 8px;';
-    closeBtn.addEventListener('click', function (e) {
-      e.stopPropagation();
-      dismissBanner();
-    });
-    banner.appendChild(closeBtn);
-
-    // Pulse animation on the V key
     const style = document.createElement('style');
     style.textContent = `
-      @keyframes qm-pulse { 0%,100% { opacity:1; } 50% { opacity:0.5; } }
-      #qm-pie-banner kbd { animation: qm-pulse 2s ease-in-out infinite; }
+      #qm-pie-banner {
+        position: fixed; bottom: 20px; left: 50%; z-index: 100000;
+        transform: translateX(-50%) translateY(120px) scale(0.9);
+        transition: transform 0.6s cubic-bezier(0.16,1,0.3,1), opacity 0.4s;
+        display: none; pointer-events: auto; opacity: 0;
+      }
+      .qm-banner-content {
+        position: relative; overflow: hidden;
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        border: 1px solid rgba(124, 77, 255, 0.4);
+        border-radius: 16px; padding: 14px 40px 14px 24px;
+        box-shadow: 0 8px 32px rgba(124, 77, 255, 0.3), 0 0 60px rgba(124, 77, 255, 0.1);
+        font-family: system-ui; font-size: 14px; color: #e0e0ff;
+        white-space: nowrap;
+      }
+      .qm-banner-glow {
+        position: absolute; top: -50%; left: -20%; width: 140%; height: 200%;
+        background: conic-gradient(from 0deg, transparent, rgba(124,77,255,0.15), transparent, rgba(68,138,255,0.15), transparent);
+        animation: qm-glow-spin 4s linear infinite;
+      }
+      @keyframes qm-glow-spin { to { transform: rotate(360deg); } }
+      .qm-banner-text { position: relative; z-index: 1; }
+      .qm-banner-text strong { color: #fff; font-size: 15px; }
+      .qm-key-wrapper {
+        position: relative; display: inline-block; margin: 0 4px; vertical-align: middle;
+      }
+      .qm-key-ring {
+        position: absolute; inset: -4px; border-radius: 10px;
+        border: 2px solid rgba(124, 77, 255, 0.6);
+        animation: qm-ring-pulse 1.5s ease-in-out infinite;
+      }
+      @keyframes qm-ring-pulse {
+        0%, 100% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.3); opacity: 0; }
+      }
+      .qm-key {
+        display: inline-block; padding: 3px 12px; font-size: 16px; font-weight: 900;
+        font-family: system-ui; color: #fff; letter-spacing: 1px;
+        background: linear-gradient(180deg, #7c4dff 0%, #651fff 100%);
+        border-radius: 6px; border: 1px solid rgba(255,255,255,0.2);
+        box-shadow: 0 2px 8px rgba(124,77,255,0.5), inset 0 1px 0 rgba(255,255,255,0.2);
+        animation: qm-key-bounce 2s ease-in-out infinite;
+      }
+      @keyframes qm-key-bounce {
+        0%, 100% { transform: translateY(0); }
+        30% { transform: translateY(-3px); }
+        50% { transform: translateY(0); }
+        70% { transform: translateY(-2px); }
+      }
+      .qm-banner-arrow {
+        display: inline-block; margin-left: 6px; font-size: 16px;
+        animation: qm-arrow-bounce 1s ease-in-out infinite alternate;
+      }
+      @keyframes qm-arrow-bounce {
+        from { transform: translate(0, 0); }
+        to { transform: translate(3px, -3px); }
+      }
+      .qm-banner-close {
+        position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+        cursor: pointer; opacity: 0.4; font-size: 14px; padding: 4px 8px;
+        z-index: 2; transition: opacity 0.2s;
+      }
+      .qm-banner-close:hover { opacity: 1; }
     `;
     document.head.appendChild(style);
-
     document.body.appendChild(banner);
 
     function dismissBanner() {
-      banner.style.transform = 'translateY(100%)';
-      setTimeout(function () { banner.style.display = 'none'; }, 500);
+      banner.style.transform = 'translateX(-50%) translateY(120px) scale(0.9)';
+      banner.style.opacity = '0';
+      setTimeout(function () { banner.style.display = 'none'; }, 600);
       sessionStorage.setItem('qm-banner-dismissed', '1');
     }
 
+    banner.querySelector('.qm-banner-close').addEventListener('click', function (e) {
+      e.stopPropagation();
+      dismissBanner();
+    });
+
     // Dismiss on first V press
-    function onFirstV() {
-      if (banner.style.display !== 'none') dismissBanner();
-      document.removeEventListener('keydown', onFirstV);
-    }
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'v' || e.key === 'V') onFirstV();
+    document.addEventListener('keydown', function onFirstV(e) {
+      if (e.key === 'v' || e.key === 'V') {
+        dismissBanner();
+        document.removeEventListener('keydown', onFirstV);
+      }
     });
 
     // Track mouse position globally
@@ -318,15 +377,15 @@
     createOverlay();
   }
 
-  // Show banner after a short delay on first visit
+  // Show banner after delay
   setTimeout(function () {
     const b = document.getElementById('qm-pie-banner');
     if (b && !sessionStorage.getItem('qm-banner-dismissed')) {
       b.style.display = 'block';
-      // Trigger slide-up animation
       requestAnimationFrame(function () {
         requestAnimationFrame(function () {
-          b.style.transform = 'translateY(0)';
+          b.style.transform = 'translateX(-50%) translateY(0) scale(1)';
+          b.style.opacity = '1';
         });
       });
     }

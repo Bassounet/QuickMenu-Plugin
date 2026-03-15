@@ -37,11 +37,18 @@ The pie menu is not just a launcher — it's also a live editor:
 - **"+" button** — appears on the wheel when there's room for more wedges. Click to open the action picker and add a new action directly, without opening the graph editor.
 - **"X" button** — appears on removable wedges. Click to remove an action inline.
 - **E key** (configurable) — press while the pie menu is open to jump straight to the graph editor, focused on the current wheel.
+- **Right-click a wedge** — opens wedge settings (label, color, icon) directly from the pie menu.
 
 ### Inline editing in action
 
 <video autoplay loop muted playsinline style="max-width: 100%; border-radius: 8px;">
   <source src="/img/InlineEditingXPieMenu.mp4" type="video/mp4">
+</video>
+
+### Customizing wedge settings from the pie menu
+
+<video autoplay loop muted playsinline style="max-width: 100%; border-radius: 8px;">
+  <source src="/img/WedgeSettingsThroughPieMenu.mp4" type="video/mp4">
 </video>
 
 ## Context-Aware Behavior

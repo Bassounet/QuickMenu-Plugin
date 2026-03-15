@@ -24,6 +24,8 @@
   let centerX = 0;
   let centerY = 0;
   let isOpen = false;
+  let lastMouseX = 0;
+  let lastMouseY = 0;
 
   function createOverlay() {
     overlay = document.createElement('div');
@@ -45,6 +47,12 @@
       'font-size:12px;font-family:system-ui;pointer-events:none;z-index:100000;display:none;';
     hint.textContent = 'Press V to open Quick Menu';
     document.body.appendChild(hint);
+
+    // Track mouse position globally
+    document.addEventListener('mousemove', function (e) {
+      lastMouseX = e.clientX;
+      lastMouseY = e.clientY;
+    });
 
     overlay.addEventListener('mousemove', onMouseMove);
     overlay.addEventListener('click', onMouseClick);
@@ -203,7 +211,7 @@
 
     if (e.key === 'v' || e.key === 'V') {
       if (!isOpen) {
-        openMenu(window.innerWidth / 2, window.innerHeight / 2);
+        openMenu(lastMouseX || window.innerWidth / 2, lastMouseY || window.innerHeight / 2);
       }
       e.preventDefault();
     }

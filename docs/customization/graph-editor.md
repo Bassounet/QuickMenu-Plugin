@@ -13,6 +13,8 @@ The graph editor is where you build and organize your Quick Menu graphs.
 
 The main node graph. Drag, zoom, connect nodes. Right-click for the context menu to add nodes.
 
+![Graph editor overview](/img/OverviewGraph.png)
+
 ### Wheel List (Left Sidebar)
 
 Displays all WheelOutput nodes organized by category.
@@ -34,6 +36,8 @@ Displays all WheelOutput nodes organized by category.
 - New categories auto-create when you drag a wheel to the "Drop here for new category" zone
 - Category state (collapsed/expanded) persists between sessions
 
+![Wheel List panel](/img/WheelsList.png)
+
 ### Preview Panel (Right Sidebar)
 
 Live, interactive rendering of the selected wheel as a pie menu.
@@ -52,14 +56,21 @@ Live, interactive rendering of the selected wheel as a pie menu.
 - When a single action node is selected: a temporary preview with just that action
 - When nothing relevant is selected: the last previewed wheel
 
+![Preview panel](/img/WheelPreview.png)
+
 ### Find Results (Bottom)
 
-Opened with **Ctrl+F**. Search across all nodes in the current graph.
+Opened with **Ctrl+F**. Search nodes by name, label, or property value.
 
 - Type a query and press Enter — results list all matching nodes
 - **Double-click a result** to zoom the graph canvas to that node
 - Matches node names, labels, and property values (e.g., searching "Translate" finds TransformMode nodes set to Translate)
 - Results show a badge indicating which subgraph the node belongs to
+
+**Search scope:**
+
+- **Default** — searches the current graph and all its subgraphs (SubMenu nodes)
+- **Search All Graphs** (toggle button next to the search box) — searches across **every QuickMenu Graph asset** in your project, not just the one you have open. Results from other graphs show the asset name so you know where each match lives
 
 ## Focus Mode
 

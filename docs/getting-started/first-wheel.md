@@ -21,7 +21,7 @@ The graph editor has 4 panels:
 - **Preview** (right) — live pie menu preview of the selected wheel
 - **Find Results** (bottom, Ctrl+F) — search across all nodes
 
-<!-- TODO: Screenshot graph editor with panels labeled -->
+![Graph editor with 4 panels](/img/OverviewGraph.png)
 
 ## Step 3: Add a WheelOutput
 

@@ -1,3 +1,7 @@
+<div style="text-align: center; margin-bottom: 1em;">
+  <img src="/img/LogoGray2.svg" alt="Quick Menu logo" style="width: 120px;">
+</div>
+
 # Quick Menu
 
 Quick Menu is a radial pie menu plugin for Unreal Engine that gives you instant access to editor actions with a single keypress. Press **V** to open a context-aware pie menu at your cursor. Select an action by hovering and releasing.

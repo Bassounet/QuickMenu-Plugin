@@ -34,6 +34,8 @@ theme:
     - search.highlight
     - content.action.edit
     - content.code.copy
+  logo: img/LogoGray2.svg
+  favicon: img/LogoGray2.svg
   icon:
     repo: fontawesome/brands/github
 

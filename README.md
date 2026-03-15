@@ -6,6 +6,12 @@ The graph-powered radial menu for Unreal Engine.
 
 Press **V** to open a fully customizable pie menu. Design your menus visually with a node graph editor, add context-aware switching, submenus, and 44+ built-in action types.
 
+<p align="center">
+  <a href="https://docs.quickmenuplugin.com">
+    <img src="https://docs.quickmenuplugin.com/img/ThumbnailV1.png" alt="Quick Menu Overview" width="800"/>
+  </a>
+</p>
+
 ## Get Started
 
 <!-- TODO: Replace with actual FAB listing URL -->

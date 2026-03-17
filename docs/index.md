@@ -3,7 +3,6 @@
 <img src="img/LogoGray2.svg" alt="Quick Menu" class="qm-hero__logo">
 
 <p class="qm-hero__title">QUICK<span>MENU</span></p>
-<p class="qm-hero__subtitle">Radial Pie Menu for the Unreal Engine Editor</p>
 <p class="qm-hero__badge">UE 4.27 — 5.7</p>
 
 <video autoplay loop muted playsinline class="qm-hero__video">

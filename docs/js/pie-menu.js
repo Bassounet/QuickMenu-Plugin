@@ -4,12 +4,11 @@
   const SECTIONS = [
     { icon: '🏠', label: 'Home', url: '/', color: '#7c4dff' },
     { icon: '🚀', label: 'Getting Started', url: '/getting-started/installation/', color: '#651fff' },
-    { icon: '🧠', label: 'Concepts', url: '/concepts/graph-system/', color: '#536dfe' },
     { icon: '📦', label: 'Nodes', url: '/nodes/structural/', color: '#448aff' },
     { icon: '🎨', label: 'Customize', url: '/customization/graph-editor/', color: '#40c4ff' },
-    { icon: '⌨️', label: 'Shortcuts', url: '/customization/shortcuts/', color: '#18ffff' },
     { icon: '🐍', label: 'Python', url: '/customization/python-examples/', color: '#69f0ae' },
     { icon: '🔧', label: 'Troubleshoot', url: '/troubleshooting/common-issues/', color: '#ffd740' },
+    { icon: '💬', label: 'Discord', url: 'https://discord.gg/BQG6KZJY', color: '#5865F2' },
     { icon: '🔄', label: 'Refresh', url: null, color: '#ff6e40' },
   ];
 
@@ -205,7 +204,7 @@
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     // Dim background
-    ctx.fillStyle = 'rgba(0,0,0,0.4)';
+    ctx.fillStyle = 'rgba(0,0,0,0.75)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     const sliceAngle = (Math.PI * 2) / SECTIONS.length;
@@ -257,7 +256,7 @@
       ctx.closePath();
 
       const baseColor = SECTIONS[i].color;
-      ctx.fillStyle = isHovered ? baseColor : hexToRgba(baseColor, 0.7);
+      ctx.fillStyle = baseColor;
       ctx.fill();
 
       // Border
@@ -275,14 +274,14 @@
       ctx.textBaseline = 'middle';
 
       // Icon above
-      ctx.font = isHovered ? '18px system-ui' : '16px system-ui';
-      ctx.fillStyle = isHovered ? '#fff' : 'rgba(255,255,255,0.9)';
-      ctx.fillText(SECTIONS[i].icon, lx, ly - 9);
+      ctx.font = isHovered ? '24px system-ui' : '22px system-ui';
+      ctx.fillStyle = '#fff';
+      ctx.fillText(SECTIONS[i].icon, lx, ly - 12);
 
       // Label below
-      ctx.font = isHovered ? 'bold 11px system-ui' : '10px system-ui';
-      ctx.fillStyle = isHovered ? '#fff' : 'rgba(255,255,255,0.85)';
-      ctx.fillText(SECTIONS[i].label, lx, ly + 10);
+      ctx.font = isHovered ? 'bold 14px system-ui' : '13px system-ui';
+      ctx.fillStyle = '#fff';
+      ctx.fillText(SECTIONS[i].label, lx, ly + 14);
 
       ctx.restore();
     }
@@ -297,8 +296,8 @@
     ctx.stroke();
 
     // Center text
-    ctx.font = 'bold 11px system-ui';
-    ctx.fillStyle = 'rgba(255,255,255,0.5)';
+    ctx.font = 'bold 14px system-ui';
+    ctx.fillStyle = 'rgba(255,255,255,0.7)';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText('Quick Menu', centerX, centerY);

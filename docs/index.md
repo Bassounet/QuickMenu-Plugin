@@ -1,48 +1,127 @@
-<div style="text-align: center; margin-bottom: 1em;">
-  <img src="/img/LogoGray2.svg" alt="Quick Menu logo" style="width: 120px;">
+<div class="qm-hero" markdown>
+
+<img src="img/LogoGray2.svg" alt="Quick Menu" class="qm-hero__logo">
+
+<p class="qm-hero__title">QUICK<span>MENU</span></p>
+<p class="qm-hero__subtitle">Radial Pie Menu for the Unreal Engine Editor</p>
+<p class="qm-hero__badge">UE 4.27 — 5.7</p>
+
+<video autoplay loop muted playsinline class="qm-hero__video">
+  <source src="img/ShowcaseWheel.mp4" type="video/mp4">
+</video>
+
 </div>
 
 # Quick Menu
 
-Quick Menu is a radial pie menu plugin for Unreal Engine that gives you instant access to editor actions with a single keypress. Press **V** to open a context-aware pie menu at your cursor. Select an action by hovering and releasing.
+Press **V** to summon a context-aware radial menu at your cursor. Hover a wedge, release — done. No menus to dig through, no shortcuts to memorize.
 
-![Quick Menu overview](/img/ThumbnailV1.png)
-
-<video autoplay loop muted playsinline style="max-width: 100%; border-radius: 8px; margin-top: 1em;">
-  <source src="/img/ShowcaseWheel.mp4" type="video/mp4">
-</video>
+<a href="getting-started/installation/" class="qm-cta">Get Started</a>
 
 ## Features
 
-- **44 built-in actions** covering viewport, transforms, spawning, blueprints, materials, sequencer, and more
-- **Context-aware** — the menu adapts to what you're doing (Level Editor, Blueprint, Material, Sequencer...)
-- **Visual graph editor** — configure menus by connecting nodes, no code required
-- **Nested sub-menus** — organize actions into expandable groups (up to 4 levels deep)
-- **Python scripting** — create custom actions with inline Python code
-- **61+ editor contexts** supported out of the box
-- **UE 4.27 through 5.7** compatible
+<div class="qm-features" markdown>
+
+<div class="qm-feature" markdown>
+
+### 44+ Actions
+Viewport, transforms, spawning, blueprints, materials, sequencer — all built in.
+
+</div>
+<div class="qm-feature" markdown>
+
+### Context-Aware
+The menu adapts to what you're doing: Level Editor, Blueprint, Material, Sequencer and 61+ contexts.
+
+</div>
+<div class="qm-feature" markdown>
+
+### Visual Graph Editor
+Configure menus by connecting nodes. No code required. Drag, drop, wire.
+
+</div>
+<div class="qm-feature" markdown>
+
+### Nested Sub-Menus
+Organize actions into groups up to 4 levels deep. Keep it clean, keep it fast.
+
+</div>
+<div class="qm-feature" markdown>
+
+### Python Scripting
+Create custom actions with inline Python. Dynamic labels, visibility conditions, full API access.
+
+</div>
+<div class="qm-feature" markdown>
+
+### Multi-Version
+Works on UE 4.27 through 5.7. One plugin, every version.
+
+</div>
+
+</div>
 
 ## Quick Start
 
-1. [Install the plugin](getting-started/installation.md)
-2. [Create your first wheel](getting-started/first-wheel.md)
-3. Press **V** and start using it
+<div class="qm-steps" markdown>
+
+<div class="qm-step" markdown>
+<div class="qm-step__num">1</div>
+
+<a href="getting-started/installation/">Install the plugin</a>
+</div>
+
+<div class="qm-step" markdown>
+<div class="qm-step__num">2</div>
+
+<a href="getting-started/first-wheel/">Create your first wheel</a>
+</div>
+
+<div class="qm-step" markdown>
+<div class="qm-step__num">3</div>
+
+Press **V** and go
+</div>
+
+</div>
 
 ## Documentation
 
-| Section | What's in it |
-|---------|-------------|
-| [Getting Started](getting-started/installation.md) | Installation, first wheel, default graphs |
-| [Concepts](concepts/graph-system.md) | Graph system, pins, evaluation flow, context detection |
-| [Node Reference](nodes/structural.md) | Every node type with properties and options |
-| [Customization](customization/graph-editor.md) | Graph editor, pie menu editing, project settings |
-| [Keyboard Shortcuts](customization/shortcuts.md) | All shortcuts for pie menu and graph editor |
-| [Python Examples](customization/python-examples.md) | 11 ready-to-use Python code snippets |
-| [Troubleshooting](troubleshooting/common-issues.md) | Common problems and solutions |
-| [Version Compatibility](troubleshooting/compatibility.md) | Feature support across UE versions |
+<div class="qm-docs-grid" markdown>
 
-## Links
+<a href="getting-started/installation/">
+<strong>Getting Started</strong>
+<span>Installation & first wheel</span>
+</a>
 
-- [Discord](https://discord.gg/bThEnFzy) — community support and feature requests
-- [GitHub](https://github.com/Bassounet/QuickMenu-Plugin) — bug reports and issues
-- [Wiki](https://github.com/Bassounet/QuickMenu-Plugin/wiki) — community wiki
+<a href="concepts/graph-system/">
+<strong>Concepts</strong>
+<span>Graph system & context detection</span>
+</a>
+
+<a href="nodes/structural/">
+<strong>Node Reference</strong>
+<span>Every node type documented</span>
+</a>
+
+<a href="customization/graph-editor/">
+<strong>Customization</strong>
+<span>Graph editor, pie menu, settings</span>
+</a>
+
+<a href="customization/python-examples/">
+<strong>Python Examples</strong>
+<span>11 ready-to-use snippets</span>
+</a>
+
+<a href="troubleshooting/common-issues/">
+<strong>Troubleshooting</strong>
+<span>Common issues & version compat</span>
+</a>
+
+</div>
+
+## Community
+
+- [Discord](https://discord.gg/bThEnFzy) — Support & feature requests
+- [GitHub](https://github.com/Bassounet/QuickMenu-Plugin) — Bug reports & issues

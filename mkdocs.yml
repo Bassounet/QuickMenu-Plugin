@@ -12,15 +12,15 @@ theme:
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: deep purple
-      accent: amber
+      primary: teal
+      accent: green
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: deep purple
-      accent: amber
+      primary: teal
+      accent: green
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
@@ -98,7 +98,10 @@ extra:
       link: https://github.com/Bassounet/QuickMenu-Plugin
       name: GitHub
 
+extra_css:
+  - stylesheets/home.css?v=1
+
 extra_javascript:
-  - js/pie-menu.js?v=7
+  - js/pie-menu.js?v=8
 
 copyright: "&copy; 2026 Quick Menu"

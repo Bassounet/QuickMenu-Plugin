@@ -1,0 +1,210 @@
+/* ── Quick Menu Docs — Homepage Hero & DA Theme ── */
+
+/* Header bar tagline after site name */
+.md-header__title::after {
+  content: "Radial Pie Menu for the Unreal Engine Editor";
+  font-size: 0.65em;
+  font-weight: 300;
+  opacity: 0.7;
+  margin-left: 1.2em;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+/* Theme overrides — ocean teal/green matching DA */
+:root {
+  --qm-green: #3cb371;
+  --qm-dark: #0d1b2a;
+  --qm-ocean: #1b2838;
+  --qm-teal: #1a3a3a;
+}
+
+/* Hero section */
+.qm-hero {
+  position: relative;
+  text-align: center;
+  padding: 2.5rem 1.5rem 1rem;
+  margin: -1rem -0.6rem 2rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--qm-dark) 0%, var(--qm-teal) 50%, #0f2b2b 100%);
+  overflow: hidden;
+}
+.qm-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 60%, rgba(60, 179, 113, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.qm-hero__logo {
+  width: 90px;
+  filter: brightness(1.2);
+  margin-bottom: 0.5rem;
+}
+.qm-hero__title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  margin: 0;
+  color: #fff;
+}
+.qm-hero__title span {
+  color: var(--qm-green);
+}
+.qm-hero__subtitle {
+  font-size: 1.15rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.75);
+  margin: 0.3rem 0 1.2rem;
+  letter-spacing: 0.03em;
+}
+.qm-hero__badge {
+  display: inline-block;
+  background: rgba(60,179,113,0.15);
+  border: 1px solid rgba(60,179,113,0.35);
+  color: var(--qm-green);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.25em 0.9em;
+  border-radius: 20px;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.05em;
+}
+.qm-hero__video {
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  margin-top: 0.5rem;
+}
+
+/* Feature cards */
+.qm-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+.qm-feature {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 1.2rem 1.4rem;
+  transition: border-color 0.2s, background 0.2s;
+}
+.qm-feature:hover {
+  border-color: rgba(60,179,113,0.4);
+  background: rgba(60,179,113,0.05);
+}
+.qm-feature__icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.3rem;
+}
+.qm-feature h3 {
+  margin: 0.3rem 0 0.2rem;
+  font-size: 1rem;
+  color: var(--qm-green);
+}
+.qm-feature p {
+  margin: 0;
+  font-size: 0.88rem;
+  opacity: 0.8;
+  line-height: 1.5;
+}
+
+/* Quick start steps */
+.qm-steps {
+  display: flex;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  flex-wrap: wrap;
+}
+.qm-step {
+  flex: 1;
+  min-width: 180px;
+  text-align: center;
+  padding: 1.2rem 1rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px;
+}
+.qm-step__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--qm-green);
+  color: #000;
+  font-weight: 800;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+.qm-step a {
+  color: var(--qm-green) !important;
+  font-weight: 600;
+}
+
+/* CTA button */
+.qm-cta {
+  display: inline-block;
+  background: var(--qm-green);
+  color: #000 !important;
+  font-weight: 700;
+  padding: 0.65em 2em;
+  border-radius: 8px;
+  text-decoration: none !important;
+  font-size: 1rem;
+  transition: background 0.2s, transform 0.15s;
+  margin-top: 0.5rem;
+}
+.qm-cta:hover {
+  background: #4ecf8a;
+  transform: translateY(-1px);
+}
+
+/* Docs grid */
+.qm-docs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.8rem;
+  margin: 1.5rem 0;
+}
+.qm-docs-grid a {
+  display: block;
+  padding: 0.9rem 1.1rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  text-decoration: none !important;
+  transition: border-color 0.2s;
+}
+.qm-docs-grid a:hover {
+  border-color: rgba(60,179,113,0.4);
+}
+.qm-docs-grid a strong {
+  color: var(--qm-green);
+}
+.qm-docs-grid a span {
+  display: block;
+  font-size: 0.82rem;
+  opacity: 0.65;
+  margin-top: 0.2rem;
+}
+
+/* Hide default h1 on home (we use hero title instead) */
+.md-content h1:first-of-type {
+  display: none;
+}
+
+/* Light mode adjustments */
+[data-md-color-scheme="default"] .qm-hero {
+  background: linear-gradient(135deg, #1a2332 0%, #1a3a3a 50%, #0f2b2b 100%);
+  color: #fff;
+}
+[data-md-color-scheme="default"] .qm-feature,
+[data-md-color-scheme="default"] .qm-step,
+[data-md-color-scheme="default"] .qm-docs-grid a {
+  background: rgba(0,0,0,0.03);
+  border-color: rgba(0,0,0,0.1);
+}

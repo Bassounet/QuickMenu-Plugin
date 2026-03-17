@@ -1,17 +1,6 @@
 /* ── Quick Menu Docs — Homepage Hero & DA Theme ── */
 
-/* Header bar tagline after site name — disabled */
-/*
-.md-header__title::after {
-  content: "Radial Pie Menu for the Unreal Engine Editor";
-  font-size: 0.65em;
-  font-weight: 300;
-  opacity: 0.7;
-  margin-left: 1.2em;
-  letter-spacing: 0.04em;
-  white-space: nowrap;
-}
-*/
+/* Header subtitle — disabled */
 
 /* Theme overrides — ocean teal/green matching DA */
 :root {

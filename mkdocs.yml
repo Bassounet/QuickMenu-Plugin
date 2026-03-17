@@ -99,7 +99,7 @@ extra:
       name: GitHub
 
 extra_css:
-  - stylesheets/home.css?v=1
+  - stylesheets/home.css?v=2
 
 extra_javascript:
   - js/pie-menu.js?v=8

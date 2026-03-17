@@ -15,22 +15,22 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --bg-primary: #0a0e17;
-  --bg-secondary: #0d1117;
-  --bg-card: #131a24;
-  --bg-card-hover: #182230;
-  --border: #1e2d3d;
-  --border-hover: #00b4d8;
-  --cyan: #00b4d8;
-  --cyan-glow: rgba(0, 180, 216, 0.15);
-  --cyan-dark: #0090ad;
-  --violet: #7c3aed;
-  --violet-glow: rgba(124, 58, 237, 0.15);
-  --green: #4ade80;
+  --bg-primary: #080e12;
+  --bg-secondary: #0a1218;
+  --bg-card: #0f1a1f;
+  --bg-card-hover: #152428;
+  --border: #1a2e2e;
+  --border-hover: #4ea65b;
+  --cyan: #4ea65b;
+  --cyan-glow: rgba(78, 166, 91, 0.15);
+  --cyan-dark: #3d8a4a;
+  --violet: #2a7a6a;
+  --violet-glow: rgba(42, 122, 106, 0.15);
+  --green: #4ea65b;
   --red: #f87171;
-  --text-primary: #e6edf3;
-  --text-secondary: #8b949e;
-  --text-muted: #6e7681;
+  --text-primary: #e2ebe6;
+  --text-secondary: #7a9a8e;
+  --text-muted: #5a7a6e;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
   --max-width: 1200px;
@@ -48,7 +48,7 @@ body {
 }
 
 a { color: var(--cyan); text-decoration: none; transition: color 0.3s; }
-a:hover { color: #33ccee; }
+a:hover { color: #6bc478; }
 
 .container {
   max-width: var(--max-width);
@@ -65,7 +65,7 @@ a:hover { color: #33ccee; }
   left: 0;
   right: 0;
   z-index: 1100;
-  background: linear-gradient(90deg, var(--cyan), var(--violet), var(--cyan));
+  background: linear-gradient(90deg, #4ea65b, #2a7a6a, #4ea65b);
   background-size: 200% 100%;
   animation: bannerShimmer 4s ease-in-out infinite;
   padding: 12px 0;
@@ -128,7 +128,7 @@ a:hover { color: #33ccee; }
   font-size: 0.65rem;
   font-weight: 500;
   color: var(--cyan);
-  border: 1px solid rgba(0, 180, 216, 0.3);
+  border: 1px solid rgba(78, 166, 91, 0.3);
   padding: 2px 8px;
   border-radius: 4px;
   letter-spacing: 0.05em;
@@ -159,9 +159,9 @@ a:hover { color: #33ccee; }
   transition: all 0.3s;
 }
 .btn-nav:hover {
-  background: #33ccee;
+  background: #6bc478;
   transform: translateY(-1px);
-  box-shadow: 0 4px 20px rgba(0, 180, 216, 0.3);
+  box-shadow: 0 4px 20px rgba(78, 166, 91, 0.3);
 }
 
 .nav-hamburger {
@@ -200,9 +200,22 @@ a:hover { color: #33ccee; }
   inset: 0;
   z-index: 1;
   background:
-    radial-gradient(ellipse at 30% 20%, rgba(124, 58, 237, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 70% 60%, rgba(0, 180, 216, 0.06) 0%, transparent 50%),
-    linear-gradient(180deg, #0a0e17 0%, #0f1923 50%, #141e2e 100%);
+    radial-gradient(ellipse at 50% 0%, rgba(78, 166, 91, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 40%, rgba(42, 122, 106, 0.08) 0%, transparent 60%),
+    linear-gradient(180deg, #0a1a1a 0%, #081410 50%, #080e12 100%);
+}
+
+.hero-octopus {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  height: auto;
+  opacity: 0.06;
+  z-index: 2;
+  pointer-events: none;
+  filter: brightness(0.5) sepia(1) hue-rotate(90deg) saturate(0.5);
 }
 
 .hero-grid {
@@ -210,8 +223,8 @@ a:hover { color: #33ccee; }
   inset: 0;
   z-index: 2;
   background-image:
-    linear-gradient(rgba(0, 180, 216, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 180, 216, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(78, 166, 91, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(78, 166, 91, 0.03) 1px, transparent 1px);
   background-size: 60px 60px;
   mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
   -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
@@ -251,8 +264,8 @@ a:hover { color: #33ccee; }
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(0, 180, 216, 0.08);
-  border: 1px solid rgba(0, 180, 216, 0.2);
+  background: rgba(78, 166, 91, 0.08);
+  border: 1px solid rgba(78, 166, 91, 0.2);
   padding: 6px 16px;
   border-radius: 50px;
   font-family: var(--font-mono);
@@ -289,7 +302,7 @@ a:hover { color: #33ccee; }
   flex-shrink: 0;
   width: clamp(120px, 18vw, 200px);
   height: clamp(120px, 18vw, 200px);
-  filter: drop-shadow(0 0 15px rgba(0, 180, 216, 0.2));
+  filter: drop-shadow(0 0 15px rgba(78, 166, 91, 0.2));
   opacity: 0.8;
   transition: opacity 0.3s;
 }
@@ -372,10 +385,10 @@ a:hover { color: #33ccee; }
   transition: all 0.3s;
 }
 .btn-primary:hover {
-  background: #33ccee;
-  border-color: #33ccee;
+  background: #6bc478;
+  border-color: #6bc478;
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(0, 180, 216, 0.3);
+  box-shadow: 0 8px 30px rgba(78, 166, 91, 0.3);
 }
 
 /* Mountain silhouette overlay */
@@ -571,7 +584,7 @@ section {
   transition: all 0.3s;
 }
 .showcase-item:hover {
-  border-color: rgba(0, 180, 216, 0.3);
+  border-color: rgba(78, 166, 91, 0.3);
   background: rgba(19, 26, 36, 0.9);
 }
 
@@ -582,8 +595,8 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 180, 216, 0.08);
-  border: 1px solid rgba(0, 180, 216, 0.15);
+  background: rgba(78, 166, 91, 0.08);
+  border: 1px solid rgba(78, 166, 91, 0.15);
   border-radius: 10px;
   font-family: var(--font-mono);
   font-size: 1.1rem;
@@ -727,7 +740,7 @@ section {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   animation: tryItPulse 2s ease-in-out infinite;
-  box-shadow: 0 0 20px rgba(0, 180, 216, 0.4), 0 0 60px rgba(0, 180, 216, 0.15);
+  box-shadow: 0 0 20px rgba(78, 166, 91, 0.4), 0 0 60px rgba(78, 166, 91, 0.15);
   cursor: default;
 }
 .wheel-info .try-it-badge .try-arrow {
@@ -736,8 +749,8 @@ section {
   font-size: 1.1rem;
 }
 @keyframes tryItPulse {
-  0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(0, 180, 216, 0.4), 0 0 60px rgba(0, 180, 216, 0.15); }
-  50% { transform: scale(1.05); box-shadow: 0 0 30px rgba(0, 180, 216, 0.6), 0 0 80px rgba(0, 180, 216, 0.25); }
+  0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(78, 166, 91, 0.4), 0 0 60px rgba(78, 166, 91, 0.15); }
+  50% { transform: scale(1.05); box-shadow: 0 0 30px rgba(78, 166, 91, 0.6), 0 0 80px rgba(78, 166, 91, 0.25); }
 }
 @keyframes tryItArrow {
   0%, 100% { transform: translateX(0); }
@@ -761,8 +774,8 @@ section {
   font-size: 0.8rem;
   color: var(--text-muted);
   padding: 10px 16px;
-  background: rgba(0, 180, 216, 0.05);
-  border: 1px solid rgba(0, 180, 216, 0.1);
+  background: rgba(78, 166, 91, 0.05);
+  border: 1px solid rgba(78, 166, 91, 0.1);
   border-radius: 8px;
   display: inline-block;
 }
@@ -949,8 +962,8 @@ section {
   color: var(--bg-primary);
 }
 .btn-full.cyan:hover {
-  background: #33ccee;
-  box-shadow: 0 8px 30px rgba(0, 180, 216, 0.3);
+  background: #6bc478;
+  box-shadow: 0 8px 30px rgba(78, 166, 91, 0.3);
   transform: translateY(-2px);
 }
 .btn-full.outline {
@@ -960,7 +973,7 @@ section {
 }
 .btn-full.outline:hover {
   border-color: var(--violet);
-  background: rgba(124, 58, 237, 0.05);
+  background: rgba(42, 122, 106, 0.05);
 }
 
 /* ============================================
@@ -985,7 +998,7 @@ section {
 }
 .faq-item:hover,
 .faq-item.open {
-  border-color: rgba(0, 180, 216, 0.3);
+  border-color: rgba(78, 166, 91, 0.3);
 }
 
 .faq-question {
@@ -1038,8 +1051,8 @@ section {
 .faq-answer-inner code {
   font-family: var(--font-mono);
   font-size: 0.8rem;
-  background: rgba(0, 180, 216, 0.08);
-  border: 1px solid rgba(0, 180, 216, 0.15);
+  background: rgba(78, 166, 91, 0.08);
+  border: 1px solid rgba(78, 166, 91, 0.15);
   padding: 2px 6px;
   border-radius: 4px;
   color: var(--cyan);
@@ -1137,7 +1150,7 @@ section {
   font-family: var(--font-mono);
   font-size: 0.7rem;
   color: var(--cyan);
-  box-shadow: 0 0 20px rgba(0, 180, 216, 0.3);
+  box-shadow: 0 0 20px rgba(78, 166, 91, 0.3);
 }
 .qm-wheel .wheel-slice:hover .wheel-slice-bg { fill: #4a4d52; }
 .qm-wheel .wheel-slice.active .wheel-slice-bg { fill: var(--cyan); }
@@ -1151,7 +1164,7 @@ section {
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--text-primary);
-  background: linear-gradient(135deg, rgba(0, 180, 216, 0.15), rgba(124, 58, 237, 0.15));
+  background: linear-gradient(135deg, rgba(78, 166, 91, 0.15), rgba(42, 122, 106, 0.15));
   border: 2px solid var(--cyan);
   padding: 16px 36px;
   border-radius: 50px;
@@ -1159,7 +1172,7 @@ section {
   opacity: 0;
   transition: opacity 0.5s, transform 0.5s;
   pointer-events: none;
-  box-shadow: 0 0 30px rgba(0, 180, 216, 0.3), 0 0 80px rgba(0, 180, 216, 0.1);
+  box-shadow: 0 0 30px rgba(78, 166, 91, 0.3), 0 0 80px rgba(78, 166, 91, 0.1);
   animation: hintGlow 2s ease-in-out infinite;
   backdrop-filter: blur(10px);
 }
@@ -1175,15 +1188,15 @@ section {
   font-size: 1.2rem;
   border-radius: 8px;
   margin: 0 6px;
-  box-shadow: 0 2px 0 rgba(0, 180, 216, 0.5), 0 0 15px rgba(0, 180, 216, 0.4);
+  box-shadow: 0 2px 0 rgba(78, 166, 91, 0.5), 0 0 15px rgba(78, 166, 91, 0.4);
 }
 .qm-hint.active {
   opacity: 1;
   transform: translateX(-50%) scale(1);
 }
 @keyframes hintGlow {
-  0%, 100% { box-shadow: 0 0 30px rgba(0, 180, 216, 0.3), 0 0 80px rgba(0, 180, 216, 0.1); }
-  50% { box-shadow: 0 0 40px rgba(0, 180, 216, 0.5), 0 0 100px rgba(0, 180, 216, 0.2); }
+  0%, 100% { box-shadow: 0 0 30px rgba(78, 166, 91, 0.3), 0 0 80px rgba(78, 166, 91, 0.1); }
+  50% { box-shadow: 0 0 40px rgba(78, 166, 91, 0.5), 0 0 100px rgba(78, 166, 91, 0.2); }
 }
 
 /* ============================================
@@ -1282,7 +1295,7 @@ section {
 <nav class="navbar" id="navbar">
   <div class="container">
     <a href="#" class="nav-logo">
-      <img src="images/LogoFAB.png" alt="QuickMenu" style="width:32px; height:32px;">
+      <img src="images/LogoGray2.svg" alt="QuickMenu" style="width:32px; height:32px;">
       QuickMenu
       <span class="nav-version">v1.0</span>
     </a>
@@ -1293,7 +1306,7 @@ section {
       <li><a href="#features">Features</a></li>
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="#faq">FAQ</a></li>
-      <li><a href="https://github.com/" target="_blank">Docs</a></li>
+      <li><a href="https://docs.quickmenuplugin.com" target="_blank">Docs</a></li>
       <li><a href="https://discord.gg/bThEnFzy" target="_blank">Discord</a></li>
       <li><a href="#pricing" class="btn-nav">Buy on FAB</a></li>
     </ul>
@@ -1308,6 +1321,8 @@ section {
   <div class="hero-grid"></div>
   <div class="hero-particles" id="particles"></div>
 
+  <img src="images/LogoGray2.svg" alt="" class="hero-octopus" aria-hidden="true">
+
   <div class="hero-content" id="heroContent">
     <div class="hero-badge">
       <span class="dot"></span>
@@ -1315,7 +1330,7 @@ section {
     </div>
     <h1>QuickMenu</h1>
     <p class="hero-subtitle">
-      <span class="comment">// </span>The graph-powered <span class="keyword">radial menu</span> for Unreal Engine
+      <span class="comment">// </span>The graph-powered <span class="keyword">radial menu</span> for the Unreal Editor.<br>For every role, every window, every skill level.
     </p>
     <div class="hero-logos">
       <div class="hero-wheel-mini" id="heroMiniWheel">
@@ -1327,7 +1342,7 @@ section {
       </div>
     </div>
     <div class="hero-buttons">
-      <a href="#features" class="btn-ghost">Discover</a>
+      <a href="#features" class="btn-ghost">See features</a>
       <a href="#pricing" class="btn-primary">Buy on FAB — $9.99</a>
     </div>
   </div>
@@ -1337,7 +1352,7 @@ section {
     <svg viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <!-- Far mountain range (darker) -->
       <path d="M0,280 L60,260 L120,270 L180,240 L240,250 L300,220 L340,200 L380,180 L420,190 L460,170 L500,150 L540,140 L570,120 L600,130 L640,110 L680,100 L710,80 L740,90 L780,70 L820,85 L860,75 L900,95 L940,105 L980,90 L1020,110 L1060,130 L1100,120 L1140,145 L1180,155 L1220,140 L1260,160 L1300,180 L1340,195 L1380,210 L1420,230 L1440,240 L1440,320 L0,320 Z"
-            fill="#0d1520" opacity="0.7"/>
+            fill="#0a1614" opacity="0.7"/>
       <!-- Near mountain range (foreground) -->
       <path d="M0,320 L0,290 L40,285 L80,270 L120,280 L160,260 L200,265 L240,250 L280,255 L320,235 L360,220 L400,225 L440,210 L480,195 L510,180 L540,170 L570,175 L600,160 L640,170 L680,155 L720,165 L760,175 L800,185 L840,195 L880,200 L920,210 L960,215 L1000,225 L1040,235 L1080,230 L1120,240 L1160,250 L1200,255 L1240,260 L1280,270 L1320,275 L1360,280 L1400,285 L1440,290 L1440,320 Z"
             fill="var(--bg-primary)"/>
@@ -1358,8 +1373,8 @@ section {
 <section class="features" id="features">
   <div class="container" style="text-align:center;">
     <span class="section-label fade-in">Features</span>
-    <h2 class="section-title fade-in">Supercharge your workflow</h2>
-    <p class="section-subtitle fade-in">Built for speed. Designed for power.</p>
+    <h2 class="section-title fade-in">What it does</h2>
+    <p class="section-subtitle fade-in">An editor plugin for all skill levels. Every role and every Unreal window gets its own wheel.</p>
 
     <div class="features-grid">
 
@@ -1374,7 +1389,7 @@ section {
         </div>
         <div class="card-body">
           <h3>Graph-Based Configuration</h3>
-          <p>Design your menus visually with a powerful node graph editor. Connect actions, switches, and submenus — no code required.</p>
+          <p>Design your menus in a node graph. Connect actions, switches, and submenus — no code required.</p>
         </div>
       </div>
 
@@ -1389,7 +1404,7 @@ section {
         </div>
         <div class="card-body">
           <h3>Context-Aware Menus</h3>
-          <p>Menus adapt automatically based on your selection, editor mode, and context. The right tools, always at your fingertips.</p>
+          <p>Each Unreal window &mdash; Level Editor, Blueprint, Material, Niagara, Sequencer &mdash; gets its own dedicated wheel. The menu adapts to your current context automatically.</p>
         </div>
       </div>
 
@@ -1418,7 +1433,7 @@ section {
 <section class="showcase" id="showcase">
   <div class="container" style="text-align:center;">
     <span class="section-label fade-in">How it works</span>
-    <h2 class="section-title fade-in">One hotkey. Infinite possibilities.</h2>
+    <h2 class="section-title fade-in">One hotkey. That's it.</h2>
     <p class="section-subtitle fade-in">Press V &rarr; Open menu &rarr; Execute action</p>
 
     <div class="showcase-grid">
@@ -1433,7 +1448,7 @@ section {
         <div class="showcase-icon">&lcub;&rcub;</div>
         <div class="showcase-text">
           <h4>Context-Aware</h4>
-          <p>5 Switch nodes, 48+ editor contexts. Menus adapt in real-time to your selection, editor tab, and mode.</p>
+          <p>48+ editor contexts. Each window and each role gets its own wheel, adapting in real-time to your selection and mode.</p>
         </div>
       </div>
       <div class="showcase-item fade-in">
@@ -1488,8 +1503,8 @@ section {
       </div>
       <div class="wheel-info fade-in">
         <span class="try-it-badge"><span class="try-arrow">&#9664;</span> Try it live</span>
-        <h2>Your tools, one press away</h2>
-        <p>This is what QuickMenu feels like. A radial menu appears instantly at your cursor — hover a slice to select an action. Fast, intuitive, zero friction.</p>
+        <h2>Try it</h2>
+        <p>A radial menu at your cursor. Hover a slice, click to execute. That's the whole UX.</p>
         <p>Every slice, icon, and label is fully customizable through the graph editor.</p>
         <div class="hint">&#9654; Hover the slices — click to open FAB, GitHub, Discord, or change the theme!</div>
       </div>
@@ -1505,7 +1520,7 @@ section {
     <div class="feature-detail-grid">
       <div class="feature-detail-text fade-in">
         <span class="section-label">The Pie Menu</span>
-        <h2>Beautiful, fast, precise</h2>
+        <h2>The radial menu</h2>
         <p>A material-rendered radial menu with dynamic RGBA32F texture. Multi-ring hierarchy up to 4 levels deep, 12 wedges per ring, with smooth animations and a 35px dead zone to prevent misclicks.</p>
         <ul class="feature-detail-highlights">
           <li><span class="hl-icon">&#9671;</span> Material-based rendering with vertex fallback</li>
@@ -1530,8 +1545,8 @@ section {
     <div class="feature-detail-grid">
       <div class="feature-detail-text fade-in">
         <span class="section-label">Context-Aware</span>
-        <h2>The right tools, right when you need them</h2>
-        <p>5 Switch node types evaluate every time you press V. The graph re-evaluates dynamically &mdash; your menu always matches exactly what you're doing, no manual switching ever.</p>
+        <h2>One wheel per window, one wheel per role</h2>
+        <p>Whether you're a level designer, a technical artist, or a beginner &mdash; QuickMenu gives each Unreal Editor window its own dedicated wheel. 5 Switch node types evaluate every time you press V, so the menu always matches exactly what you're doing.</p>
         <ul class="feature-detail-highlights">
           <li><span class="hl-icon">&#9671;</span> SwitchEditorContext &mdash; 48+ tabs (Level, BP, Material, Niagara, PCG...)</li>
           <li><span class="hl-icon">&#9671;</span> SwitchActorClass &mdash; route by selected actor type</li>
@@ -1556,7 +1571,7 @@ section {
       <div class="feature-detail-text fade-in">
         <span class="section-label">Graph Editor</span>
         <h2>Design your menus visually</h2>
-        <p>A full-featured node graph editor packed with UX polish. Build complex menu structures without writing a single line of code &mdash; drag, connect, and configure.</p>
+        <p>A node graph editor for building menu structures. Drag, connect, configure — no code needed.</p>
         <ul class="feature-detail-highlights">
           <li><span class="hl-icon">&#9671;</span> Auto-wire: drop pins on nodes, auto-connect compatible pins</li>
           <li><span class="hl-icon">&#9671;</span> Focus mode &amp; compact mode for complex graphs</li>
@@ -1580,8 +1595,8 @@ section {
     <div class="feature-detail-grid">
       <div class="feature-detail-text fade-in">
         <span class="section-label">40+ Action Nodes</span>
-        <h2>Every editor action, one press away</h2>
-        <p>15 categories of actions covering virtually every Unreal Engine editor operation. From spawning actors to Niagara, Sequencer, PCG, and Blueprint operations &mdash; it's all built in.</p>
+        <h2>40+ built-in actions</h2>
+        <p>15 categories covering most Unreal Editor operations. Spawn, Viewport, Transform, BP, Material, Niagara, Sequencer, PCG, and more.</p>
         <ul class="feature-detail-highlights">
           <li><span class="hl-icon">&#9671;</span> Spawn, Viewport, Transform, Play, Build, Level/Asset</li>
           <li><span class="hl-icon">&#9671;</span> Blueprint: AddComponent, CompileOp, AddVariable, Interface...</li>
@@ -1605,7 +1620,7 @@ section {
     <div class="feature-detail-grid">
       <div class="feature-detail-text fade-in">
         <span class="section-label">Python &amp; Extensibility</span>
-        <h2>Make it truly yours</h2>
+        <h2>Python scripts &amp; custom nodes</h2>
         <p>Write custom Python scripts executed inline, with dynamic labels computed at runtime and conditional visibility. Extend with C++ by inheriting from UQMGraphNode_ActionBase. Full source code included.</p>
         <ul class="feature-detail-highlights">
           <li><span class="hl-icon">&#9671;</span> CustomCode node &mdash; inline Python execution</li>
@@ -1787,7 +1802,7 @@ section {
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286z"/></svg>
         Join Discord
       </a>
-      <a href="https://github.com/" target="_blank" class="social-btn github">
+      <a href="https://github.com/Bassounet/QuickMenu-Plugin" target="_blank" class="social-btn github">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
         View on GitHub
       </a>
@@ -1803,9 +1818,9 @@ section {
     <div class="footer-content">
       <p class="footer-copy">QuickMenu &copy; 2026 — Made for Unreal Engine developers</p>
       <ul class="footer-links">
-        <li><a href="https://github.com/" target="_blank">GitHub</a></li>
+        <li><a href="https://github.com/Bassounet/QuickMenu-Plugin" target="_blank">GitHub</a></li>
         <li><a href="https://discord.gg/bThEnFzy" target="_blank">Discord</a></li>
-        <li><a href="#">Documentation</a></li>
+        <li><a href="https://docs.quickmenuplugin.com" target="_blank">Documentation</a></li>
       </ul>
     </div>
   </div>
@@ -1886,7 +1901,7 @@ fadeEls.forEach(el => observer.observe(el));
   if (!wrapper) return;
 
   const themes = [
-    { name: 'Cyan',    color: '#00b4d8' },
+    { name: 'Green',   color: '#4ea65b' },
     { name: 'Violet',  color: '#7c3aed' },
     { name: 'Orange',  color: '#f59e0b' },
     { name: 'Rose',    color: '#f43f5e' },
@@ -2111,7 +2126,7 @@ document.querySelectorAll('.faq-question').forEach(btn => {
           if (el) el.scrollIntoView({ behavior: 'smooth' });
         } else if (s.action === 'theme') {
           const themes = [
-            { name: 'Cyan', color: '#00b4d8' },
+            { name: 'Green', color: '#4ea65b' },
             { name: 'Violet', color: '#7c3aed' },
             { name: 'Orange', color: '#f59e0b' },
             { name: 'Rose', color: '#f43f5e' },
@@ -2170,7 +2185,7 @@ document.querySelectorAll('.faq-question').forEach(btn => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else if (action === 'theme') {
       const themes = [
-        { name: 'Cyan', color: '#00b4d8' },
+        { name: 'Green', color: '#4ea65b' },
         { name: 'Violet', color: '#7c3aed' },
         { name: 'Orange', color: '#f59e0b' },
         { name: 'Rose', color: '#f43f5e' },

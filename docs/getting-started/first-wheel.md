@@ -10,7 +10,7 @@ This guide walks you through creating a Quick Menu Graph and your first pie menu
 
 <div class="video-container">
 <video autoplay="true" loop="true" muted="true" playsinline="true" width="100%">
-<source src="../img/CreateQuickMenuGraph.mp4" type="video/mp4">
+<source src="/img/CreateQuickMenuGraph.mp4" type="video/mp4">
 </video>
 </div>
 
@@ -37,7 +37,7 @@ The **Root** node is already placed. Now add a wheel:
 
 <div class="video-container">
 <video autoplay="true" loop="true" muted="true" playsinline="true" width="100%">
-<source src="../img/SmartAutoWiringWClick.mp4" type="video/mp4">
+<source src="/img/SmartAutoWiringWClick.mp4" type="video/mp4">
 </video>
 </div>
 

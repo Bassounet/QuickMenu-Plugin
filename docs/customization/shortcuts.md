@@ -38,7 +38,7 @@ Hold the key, then click on the canvas to spawn a node at that position:
 These are the defaults — fully customizable in **Project Settings → Quick Menu → Node Spawn Shortcuts**. You can add your own key → node class mappings.
 
 <div class="video-container">
-<video autoplay="true" loop="true" muted="true" playsinline="true" width="100%">
+<video autoplay="true" loop="true" muted="true" playsinline="true">
 <source src="/img/ShortcutShiftC_ClicS.mp4" type="video/mp4">
 </video>
 </div>
@@ -79,7 +79,7 @@ This means: select 5 action nodes → press **W + click** → instant wheel with
 **Shift+C** does the same for existing nodes: select actions + a WheelOutput → Shift+C → all wired up.
 
 <div class="video-container">
-<video autoplay="true" loop="true" muted="true" playsinline="true" width="100%">
+<video autoplay="true" loop="true" muted="true" playsinline="true">
 <source src="/img/SmartAutoWiringWClick.mp4" type="video/mp4">
 </video>
 </div>

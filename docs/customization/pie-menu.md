@@ -39,13 +39,13 @@ The pie menu is not just a launcher — it's also a live editor:
 - **E key** (configurable) — press while the pie menu is open to jump straight to the graph editor, focused on the current wheel.
 
 <div class="video-container">
-<video autoplay="true" loop="true" muted="true" playsinline="true" width="100%">
+<video autoplay="true" loop="true" muted="true" playsinline="true">
 <source src="/img/InlineEditingXPieMenu.mp4" type="video/mp4">
 </video>
 </div>
 
 <div class="video-container">
-<video autoplay="true" loop="true" muted="true" playsinline="true" width="100%">
+<video autoplay="true" loop="true" muted="true" playsinline="true">
 <source src="/img/WedgeSettingsThroughPieMenuV2.mp4" type="video/mp4">
 </video>
 </div>

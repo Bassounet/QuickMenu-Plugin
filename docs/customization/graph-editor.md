@@ -68,7 +68,7 @@ Opened with **Ctrl+F**. Search across all nodes in the current graph.
 - Results show a badge indicating which subgraph the node belongs to
 
 <div class="video-container">
-<video autoplay="true" loop="true" muted="true" playsinline="true" width="100%">
+<video autoplay="true" loop="true" muted="true" playsinline="true">
 <source src="/img/FindResultModes.mp4" type="video/mp4">
 </video>
 </div>
@@ -81,7 +81,7 @@ Opened with **Ctrl+F**. Search across all nodes in the current graph.
 - Click the breadcrumb bar or press Escape to exit
 
 <div class="video-container">
-<video autoplay="true" loop="true" muted="true" playsinline="true" width="100%">
+<video autoplay="true" loop="true" muted="true" playsinline="true">
 <source src="/img/FocuesesWheels.mp4" type="video/mp4">
 </video>
 </div>
@@ -94,7 +94,7 @@ Opened with **Ctrl+F**. Search across all nodes in the current graph.
 - Resizable — drag edges to fit your node group
 
 <div class="video-container">
-<video autoplay="true" loop="true" muted="true" playsinline="true" width="100%">
+<video autoplay="true" loop="true" muted="true" playsinline="true">
 <source src="/img/CommentGroup.mp4" type="video/mp4">
 </video>
 </div>

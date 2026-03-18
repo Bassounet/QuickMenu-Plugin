@@ -2,9 +2,10 @@
 
 Quick Menu uses **graph assets** (like Blueprint graphs, but simpler) to define your menus. You create a Quick Menu Graph in the Content Browser, then set it as active in Project Settings.
 
-![Quick Menu Graph asset in the Content Browser](/img/IconContentBrowserLogoSolo.png)
+<img src="/img/IconContentBrowserLogoSolo.png" alt="Quick Menu Graph asset in the Content Browser" style="max-width: 120px; margin: 0;">
+<img src="/img/QM_MasterDefault.png" alt="Quick Menu Graph thumbnail" style="max-width: 120px; margin: 0;">
 
-![Quick Menu Graph editor overview](/img/QM_MasterDefault.png)
+These are the **Quick Menu Graph** assets you'll find in your Content Browser.
 
 ## Evaluation Flow
 

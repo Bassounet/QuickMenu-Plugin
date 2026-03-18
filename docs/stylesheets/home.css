@@ -1,12 +1,23 @@
 /* ── Quick Menu Docs — Homepage Hero & DA Theme ── */
 
-/* Force video elements to display properly */
+/* Global image and video sizing */
+.md-content img {
+  display: block;
+  max-width: 900px;
+  width: 100%;
+  margin: 1.5rem auto;
+  border-radius: 8px;
+}
 .md-content video {
   display: block;
+  max-width: 900px;
   width: 100%;
-  max-width: 100%;
+  margin: 1.5rem auto;
   border-radius: 8px;
-  margin: 1rem 0;
+}
+.video-container {
+  max-width: 900px;
+  margin: 1.5rem auto;
 }
 
 /* Theme overrides — ocean teal/green matching thumbnail */

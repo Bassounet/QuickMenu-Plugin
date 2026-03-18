@@ -8,9 +8,7 @@ This guide walks you through creating a Quick Menu Graph and your first pie menu
 2. Name it (e.g., "MyMenuGraph")
 3. Double-click to open it in the graph editor
 
-<video autoplay loop muted playsinline style="max-width: 100%; border-radius: 8px;">
-  <source src="/img/CreateQuickMenuGraph.mp4" type="video/mp4">
-</video>
+<!-- Screenshot: Content Browser → Add → Quick Menu -->
 
 ## Step 2: Understand the Layout
 
@@ -21,7 +19,7 @@ The graph editor has 4 panels:
 - **Preview** (right) — live pie menu preview of the selected wheel
 - **Find Results** (bottom, Ctrl+F) — search across all nodes
 
-![Graph editor with 4 panels](/img/OverviewGraph.png)
+<!-- Screenshot: graph editor with panels labeled -->
 
 ## Step 3: Add a WheelOutput
 
@@ -31,11 +29,7 @@ The **Root** node is already placed. Now add a wheel:
 2. Connect the Root's exec output (white pin) to the WheelOutput's exec input
 3. Name your wheel in the Details panel (e.g., "Main Tools")
 
-**Shortcut:** Hold **W** and click on the canvas to instantly spawn a WheelOutput. If you have action nodes selected, it auto-wires them all.
-
-<video autoplay loop muted playsinline style="max-width: 100%; border-radius: 8px;">
-  <source src="/img/SmartAutoWiringWClick.mp4" type="video/mp4">
-</video>
+**Shortcut:** Hold **W** and click on the canvas to instantly spawn a WheelOutput.
 
 ## Step 4: Add Actions
 
@@ -43,7 +37,9 @@ The **Root** node is already placed. Now add a wheel:
 2. Add a few action nodes (e.g., Transform Mode, Select Op, Spawn Shape)
 3. Connect each action's menu output (blue pin) to a WheelOutput menu input pin
 
-![Simple graph with Root, WheelOutput and actions](/img/GraphSimple.png)
+**Shortcut:** Select your action nodes, then hold **W** and click — a WheelOutput spawns and auto-wires all selected actions.
+
+<!-- Screenshot: graph with Root → WheelOutput + 4 actions connected -->
 
 ## Step 5: Set as Active Graph
 
@@ -56,7 +52,7 @@ Or: right-click the graph in Content Browser → **Set as Active Menu**
 
 Press **V** anywhere in the editor. Your pie menu appears with your actions.
 
-<!-- TODO: Screenshot pie menu result -->
+<!-- Screenshot: pie menu open with the 4 actions -->
 
 ## Next Steps
 

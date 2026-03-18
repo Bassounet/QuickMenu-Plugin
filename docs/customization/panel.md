@@ -4,8 +4,6 @@ The Quick Menu Panel is a dockable editor tab that serves as a central hub for c
 
 **Open it:** Window → Quick Menu Panel
 
-![Quick Menu Panel](/img/QuickMenuPanel.png)
-
 ## Header
 
 - **Active Graph dropdown** — quickly switch which graph is active without going to Project Settings

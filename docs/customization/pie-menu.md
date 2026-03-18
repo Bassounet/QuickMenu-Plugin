@@ -63,8 +63,8 @@ If no wheel matches the current context:
 - Falls back to a Default wheel (if one exists)
 - Or shows a **"Create Wheel" panel** (configurable in Project Settings)
 
-![No wheel for this context](../img/NoWheelForThisContext.png)
+![No wheel for this context](/img/NoWheelForThisContext.png)
 
-![Created wheel (empty)](../img/CreatedWheelEmpty.png)
+![Created wheel (empty)](/img/CreatedWheelEmpty.png)
 
-![Fallback wheel](../img/FallBackWheel.png)
+![Fallback wheel](/img/FallBackWheel.png)

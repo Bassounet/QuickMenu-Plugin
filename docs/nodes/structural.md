@@ -9,13 +9,13 @@ These nodes define the structure of your menu graph — the flow from entry poin
 - Starting point for menu evaluation
 - Every graph must have exactly one Root
 
-![Root node](../img/RootNode.png)
+![Root node](/img/RootNode.png)
 
 ## WheelOutput
 
 The terminal node that defines a pie menu wheel. Each input pin becomes one wedge.
 
-![WheelOutput node](../img/WheelOutpoutNode.png)
+![WheelOutput node](/img/WheelOutpoutNode.png)
 
 **Properties:**
 
@@ -43,7 +43,7 @@ The terminal node that defines a pie menu wheel. Each input pin becomes one wedg
 
 Groups actions into an expandable wedge. When the user hovers this wedge in the pie menu, children expand as a nested ring.
 
-![SubMenu node](../img/SubmenuNode.png)
+![SubMenu node](/img/SubmenuNode.png)
 
 **Properties:**
 

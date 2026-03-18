@@ -7,7 +7,7 @@ The graph editor is where you build and organize your Quick Menu graphs.
 - Double-click a Quick Menu Graph asset in the Content Browser
 - Or right-click a graph asset → "Edit"
 
-![Graph editor overview](../img/OverviewGraph.png)
+![Graph editor overview](/img/OverviewGraph.png)
 
 ## Editor Panels
 
@@ -17,7 +17,7 @@ The main node graph. Drag, zoom, connect nodes. Right-click for the context menu
 
 ### Wheel List (Left Sidebar)
 
-![Wheel List panel](../img/WheelsList.png)
+![Wheel List panel](/img/WheelsList.png)
 
 Displays all WheelOutput nodes organized by category.
 
@@ -40,7 +40,7 @@ Displays all WheelOutput nodes organized by category.
 
 ### Preview Panel (Right Sidebar)
 
-![Preview panel](../img/WheelPreview.png)
+![Preview panel](/img/WheelPreview.png)
 
 Live, interactive rendering of the selected wheel as a pie menu.
 

@@ -23,7 +23,7 @@ The graph editor has 4 panels:
 - **Preview** (right) — live pie menu preview of the selected wheel
 - **Find Results** (bottom, Ctrl+F) — search across all nodes
 
-![Graph editor with 4 panels](../img/OverviewGraph.png)
+![Graph editor with 4 panels](/img/OverviewGraph.png)
 
 ## Step 3: Add a WheelOutput
 
@@ -49,7 +49,7 @@ The **Root** node is already placed. Now add a wheel:
 
 **Shortcut:** Select your action nodes, then hold **W** and click — a WheelOutput spawns and auto-wires all selected actions.
 
-![Simple graph with Root, WheelOutput and actions](../img/GraphSimple.png)
+![Simple graph with Root, WheelOutput and actions](/img/GraphSimple.png)
 
 ## Step 5: Set as Active Graph
 
@@ -59,19 +59,19 @@ There are 3 ways to set a Quick Menu Graph as the active graph:
 
 When a graph is open, click the **Active** badge in the top-left corner of the Graph tab. The green checkmark confirms the graph is currently active.
 
-![Set active from graph editor](../img/SetActiveFromGraph.png)
+![Set active from graph editor](/img/SetActiveFromGraph.png)
 
 ### From the Quick Menu Panel
 
 Open the **Quick Menu** panel (click the octopus icon in the toolbar). Use the **Active Graph** dropdown at the top to select which graph to use.
 
-![Set active from Quick Menu panel](../img/SetActiveFromPanel.png)
+![Set active from Quick Menu panel](/img/SetActiveFromPanel.png)
 
 ### From the Content Browser
 
 Right-click on any **Quick Menu Graph** asset in the Content Browser and select **Active Menu** to set it as the active graph.
 
-![Set active from Content Browser](../img/SetActiveFromContentBrowser.png)
+![Set active from Content Browser](/img/SetActiveFromContentBrowser.png)
 
 ## Step 6: Try It
 

@@ -18,7 +18,7 @@
 <div class="qm-feature" markdown>
 <div class="qm-feature__icon"></div>
 
-### 44+ Actions
+### 45+ Actions
 
 Viewport, transforms, spawning, blueprints, materials, sequencer — all built in.
 </div>

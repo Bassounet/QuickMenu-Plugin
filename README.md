@@ -21,7 +21,7 @@ Read the [**Getting Started**](https://docs.quickmenuplugin.com/getting-started/
 
 Check the [**Troubleshooting**](https://docs.quickmenuplugin.com/troubleshooting/common-issues/) for common questions
 
-[**Website**](https://quickmenuplugin.com) | [**Docs**](https://docs.quickmenuplugin.com) | [**Discord**](https://discord.gg/bThEnFzy) | [**YouTube**](https://youtube.com) <!-- TODO: Replace with actual YouTube channel URL -->
+[**Website**](https://quickmenuplugin.com) | [**Docs**](https://docs.quickmenuplugin.com) | [**Discord**](https://discord.gg/YYc2v8k5BA) | [**YouTube**](https://youtube.com) <!-- TODO: Replace with actual YouTube channel URL -->
 
 ## Features
 

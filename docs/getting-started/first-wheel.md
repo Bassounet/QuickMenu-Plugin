@@ -8,7 +8,7 @@ This guide walks you through creating a Quick Menu Graph and your first pie menu
 2. Name it (e.g., "MyMenuGraph")
 3. Double-click to open it in the graph editor
 
-<video autoplay loop muted playsinline style="max-width: 100%; border-radius: 8px;"><source src="../img/CreateQuickMenuGraph.mp4" type="video/mp4"></video>
+<video autoplay loop muted playsinline style="max-width: 100%; border-radius: 8px; display: block;" controls><source src="../img/CreateQuickMenuGraph.mp4" type="video/mp4"></video>
 
 ## Step 2: Understand the Layout
 
@@ -31,7 +31,7 @@ The **Root** node is already placed. Now add a wheel:
 
 **Shortcut:** Hold **W** and click on the canvas to instantly spawn a WheelOutput.
 
-<video autoplay loop muted playsinline style="max-width: 100%; border-radius: 8px;"><source src="../img/SmartAutoWiringWClick.mp4" type="video/mp4"></video>
+<video autoplay loop muted playsinline style="max-width: 100%; border-radius: 8px; display: block;" controls><source src="../img/SmartAutoWiringWClick.mp4" type="video/mp4"></video>
 
 ## Step 4: Add Actions
 

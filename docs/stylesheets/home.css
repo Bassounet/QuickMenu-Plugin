@@ -106,7 +106,7 @@
 .qm-hero {
   position: relative;
   text-align: center;
-  padding: 4rem 2rem 2.5rem;
+  padding: 5rem 2rem 3rem;
   margin: -1rem -0.6rem 2rem;
   border-radius: 12px;
   background: linear-gradient(135deg, var(--qm-dark) 0%, var(--qm-teal) 50%, #0f2b2b 100%);
@@ -143,9 +143,9 @@
 .qm-hero__title {
   position: relative;
   z-index: 1;
-  font-size: 3.2rem;
+  font-size: 4.5rem;
   font-weight: 800;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   margin: 0;
   color: #fff;
 }
@@ -155,10 +155,10 @@
 .qm-hero__subtitle {
   position: relative;
   z-index: 1;
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   font-weight: 300;
-  color: rgba(255,255,255,0.75);
-  margin: 0.5rem 0 1.5rem;
+  color: rgba(255,255,255,0.85);
+  margin: 0.6rem 0 1.5rem;
   letter-spacing: 0.03em;
 }
 .qm-hero__badge {

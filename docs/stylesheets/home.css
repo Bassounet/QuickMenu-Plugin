@@ -1,5 +1,14 @@
 /* ── Quick Menu Docs — Homepage Hero & DA Theme ── */
 
+/* Force video elements to display properly */
+.md-content video {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
 /* Theme overrides — ocean teal/green matching thumbnail */
 :root {
   --qm-green: #3cb371;

@@ -101,7 +101,7 @@ plugins:
   - search
 
 extra_css:
-  - stylesheets/home.css
+  - stylesheets/home.css?v=3
 
 extra_javascript:
   - javascripts/video-autoplay.js

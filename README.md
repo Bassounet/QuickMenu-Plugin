@@ -52,7 +52,7 @@ Check the [**Troubleshooting**](https://docs.quickmenuplugin.com/troubleshooting
 ## Support
 
 - **Docs:** [docs.quickmenuplugin.com](https://docs.quickmenuplugin.com)
-- **Discord:** [Join the server](https://discord.gg/bThEnFzy)
+- **Discord:** [Join the server](https://discord.gg/YYc2v8k5BA)
 - **Bugs:** [Report an issue](https://github.com/Bassounet/QuickMenu-Plugin/issues/new?template=bug_report.yml)
 - **Features:** [Request a feature](https://github.com/Bassounet/QuickMenu-Plugin/issues/new?template=feature_request.yml)
 - **AI Help:** Paste [llms-full.txt](https://docs.quickmenuplugin.com/llms-full.txt) into ChatGPT/Claude with your question

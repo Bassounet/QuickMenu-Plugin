@@ -1,7 +1,7 @@
 /* ── Quick Menu Docs — Homepage Hero & DA Theme ── */
 
 /* Global image and video sizing */
-.md-content img {
+.md-content img:not(.qm-hero__logo) {
   display: block;
   max-width: 1200px;
   width: 100%;

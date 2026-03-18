@@ -61,5 +61,5 @@
 
 ## Community
 
-- [:fontawesome-brands-discord: Discord](https://discord.gg/bThEnFzy) — support and feature requests
+- [:fontawesome-brands-discord: Discord](https://discord.gg/BQG6KZJY) — support and feature requests
 - [:fontawesome-brands-github: GitHub](https://github.com/Bassounet/QuickMenu-Plugin) — bug reports and issues

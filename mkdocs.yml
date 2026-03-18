@@ -94,6 +94,9 @@ markdown_extensions:
   - toc:
       permalink: true
 
+hooks:
+  - hooks/fix_paths.py
+
 plugins:
   - search
 

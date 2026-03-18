@@ -6,6 +6,9 @@
 
 <h2 class="qm-hero__title">QUICK<span>MENU</span></h2>
 <p class="qm-hero__subtitle">Radial Pie Menu for the Unreal Engine Editor</p>
+<video autoplay loop muted playsinline class="qm-hero__video">
+  <source src="img/ShowcaseWheel.mp4" type="video/mp4">
+</video>
 <a href="getting-started/installation/" class="qm-cta">Get Started →</a>
 
 </div>

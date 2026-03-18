@@ -311,6 +311,11 @@
   margin-top: 0;
 }
 
+/* Hide site title in sidebar (already in header) */
+.md-nav--primary > .md-nav__title {
+  display: none;
+}
+
 /* Hide default h1 on home (we use hero title instead) */
 .md-content h1:first-of-type {
   display: none;

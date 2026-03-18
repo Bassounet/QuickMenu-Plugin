@@ -68,6 +68,10 @@ nav:
     - Content Browser: customization/content-browser.md
     - Python Examples: customization/python-examples.md
     - "C++ Reference": customization/cpp-reference.md
+  - Guides:
+    - Context-Aware Menu: guides/context-aware-menu.md
+    - Organize with Sub-Menus: guides/organize-with-submenus.md
+    - Custom Python Actions: guides/custom-python-actions.md
   - Troubleshooting:
     - Common Issues: troubleshooting/common-issues.md
     - Version Compatibility: troubleshooting/compatibility.md

@@ -7,6 +7,8 @@ The graph editor is where you build and organize your Quick Menu graphs.
 - Double-click a Quick Menu Graph asset in the Content Browser
 - Or right-click a graph asset → "Edit"
 
+![Graph editor overview](../img/OverviewGraph.png)
+
 ## Editor Panels
 
 ### Graph Canvas (Center)
@@ -14,6 +16,8 @@ The graph editor is where you build and organize your Quick Menu graphs.
 The main node graph. Drag, zoom, connect nodes. Right-click for the context menu to add nodes.
 
 ### Wheel List (Left Sidebar)
+
+![Wheel List panel](../img/WheelsList.png)
 
 Displays all WheelOutput nodes organized by category.
 
@@ -35,6 +39,8 @@ Displays all WheelOutput nodes organized by category.
 - Category state (collapsed/expanded) persists between sessions
 
 ### Preview Panel (Right Sidebar)
+
+![Preview panel](../img/WheelPreview.png)
 
 Live, interactive rendering of the selected wheel as a pie menu.
 
@@ -61,6 +67,8 @@ Opened with **Ctrl+F**. Search across all nodes in the current graph.
 - Matches node names, labels, and property values (e.g., searching "Translate" finds TransformMode nodes set to Translate)
 - Results show a badge indicating which subgraph the node belongs to
 
+<video autoplay loop muted playsinline style="max-width: 100%; border-radius: 8px;"><source src="../img/FindResultModes.mp4" type="video/mp4"></video>
+
 ## Focus Mode
 
 - Double-click a WheelOutput in the Wheel List to enter Focus Mode
@@ -68,12 +76,16 @@ Opened with **Ctrl+F**. Search across all nodes in the current graph.
 - The preview panel shows that wheel
 - Click the breadcrumb bar or press Escape to exit
 
+<video autoplay loop muted playsinline style="max-width: 100%; border-radius: 8px;"><source src="../img/FocuesesWheels.mp4" type="video/mp4"></video>
+
 ## Comment Nodes
 
 - Press **C** with nodes selected to create a group comment around them
 - Double-click to rename
 - Click the color swatch to change the comment color
 - Resizable — drag edges to fit your node group
+
+<video autoplay loop muted playsinline style="max-width: 100%; border-radius: 8px;"><source src="../img/CommentGroup.mp4" type="video/mp4"></video>
 
 ## Two Workflows
 

@@ -67,7 +67,11 @@ Opened with **Ctrl+F**. Search across all nodes in the current graph.
 - Matches node names, labels, and property values (e.g., searching "Translate" finds TransformMode nodes set to Translate)
 - Results show a badge indicating which subgraph the node belongs to
 
-<video autoplay loop muted playsinline style="max-width: 100%; border-radius: 8px; display: block;"><source src="../img/FindResultModes.mp4" type="video/mp4"></video>
+<div class="video-container">
+<video autoplay="true" loop="true" muted="true" playsinline="true" width="100%">
+<source src="/img/FindResultModes.mp4" type="video/mp4">
+</video>
+</div>
 
 ## Focus Mode
 
@@ -76,7 +80,11 @@ Opened with **Ctrl+F**. Search across all nodes in the current graph.
 - The preview panel shows that wheel
 - Click the breadcrumb bar or press Escape to exit
 
-<video autoplay loop muted playsinline style="max-width: 100%; border-radius: 8px; display: block;"><source src="../img/FocuesesWheels.mp4" type="video/mp4"></video>
+<div class="video-container">
+<video autoplay="true" loop="true" muted="true" playsinline="true" width="100%">
+<source src="/img/FocuesesWheels.mp4" type="video/mp4">
+</video>
+</div>
 
 ## Comment Nodes
 
@@ -85,7 +93,11 @@ Opened with **Ctrl+F**. Search across all nodes in the current graph.
 - Click the color swatch to change the comment color
 - Resizable — drag edges to fit your node group
 
-<video autoplay loop muted playsinline style="max-width: 100%; border-radius: 8px; display: block;"><source src="../img/CommentGroup.mp4" type="video/mp4"></video>
+<div class="video-container">
+<video autoplay="true" loop="true" muted="true" playsinline="true" width="100%">
+<source src="/img/CommentGroup.mp4" type="video/mp4">
+</video>
+</div>
 
 ## Two Workflows
 

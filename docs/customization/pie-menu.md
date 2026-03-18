@@ -38,9 +38,17 @@ The pie menu is not just a launcher — it's also a live editor:
 - **"X" button** — appears on removable wedges. Click to remove an action inline.
 - **E key** (configurable) — press while the pie menu is open to jump straight to the graph editor, focused on the current wheel.
 
-<video autoplay loop muted playsinline style="max-width: 100%; border-radius: 8px; display: block;"><source src="../img/InlineEditingXPieMenu.mp4" type="video/mp4"></video>
+<div class="video-container">
+<video autoplay="true" loop="true" muted="true" playsinline="true" width="100%">
+<source src="/img/InlineEditingXPieMenu.mp4" type="video/mp4">
+</video>
+</div>
 
-<video autoplay loop muted playsinline style="max-width: 100%; border-radius: 8px; display: block;"><source src="../img/WedgeSettingsThroughPieMenuV2.mp4" type="video/mp4"></video>
+<div class="video-container">
+<video autoplay="true" loop="true" muted="true" playsinline="true" width="100%">
+<source src="/img/WedgeSettingsThroughPieMenuV2.mp4" type="video/mp4">
+</video>
+</div>
 
 ## Context-Aware Behavior
 

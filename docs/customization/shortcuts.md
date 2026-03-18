@@ -37,7 +37,7 @@ Hold the key, then click on the canvas to spawn a node at that position:
 
 These are the defaults — fully customizable in **Project Settings → Quick Menu → Node Spawn Shortcuts**. You can add your own key → node class mappings.
 
-<video autoplay loop muted playsinline style="max-width: 100%; border-radius: 8px;"><source src="../img/ShortcutShiftC_ClicS.mp4" type="video/mp4"></video>
+<video autoplay loop muted playsinline style="max-width: 100%; border-radius: 8px; display: block;"><source src="../img/ShortcutShiftC_ClicS.mp4" type="video/mp4"></video>
 
 ## Graph Editor — Node Operations
 
@@ -74,4 +74,4 @@ This means: select 5 action nodes → press **W + click** → instant wheel with
 
 **Shift+C** does the same for existing nodes: select actions + a WheelOutput → Shift+C → all wired up.
 
-<video autoplay loop muted playsinline style="max-width: 100%; border-radius: 8px;"><source src="../img/SmartAutoWiringWClick.mp4" type="video/mp4"></video>
+<video autoplay loop muted playsinline style="max-width: 100%; border-radius: 8px; display: block;"><source src="../img/SmartAutoWiringWClick.mp4" type="video/mp4"></video>

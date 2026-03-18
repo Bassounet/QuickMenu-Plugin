@@ -8,7 +8,7 @@ This guide walks you through creating a Quick Menu Graph and your first pie menu
 2. Name it (e.g., "MyMenuGraph")
 3. Double-click to open it in the graph editor
 
-<video autoplay loop muted playsinline style="max-width: 100%; border-radius: 8px; display: block;" controls><source src="../img/CreateQuickMenuGraph.mp4" type="video/mp4"></video>
+<video autoplay loop muted playsinline style="max-width: 100%; border-radius: 8px; display: block;"><source src="../img/CreateQuickMenuGraph.mp4" type="video/mp4"></video>
 
 ## Step 2: Understand the Layout
 
@@ -31,7 +31,7 @@ The **Root** node is already placed. Now add a wheel:
 
 **Shortcut:** Hold **W** and click on the canvas to instantly spawn a WheelOutput.
 
-<video autoplay loop muted playsinline style="max-width: 100%; border-radius: 8px; display: block;" controls><source src="../img/SmartAutoWiringWClick.mp4" type="video/mp4"></video>
+<video autoplay loop muted playsinline style="max-width: 100%; border-radius: 8px; display: block;"><source src="../img/SmartAutoWiringWClick.mp4" type="video/mp4"></video>
 
 ## Step 4: Add Actions
 
@@ -45,10 +45,25 @@ The **Root** node is already placed. Now add a wheel:
 
 ## Step 5: Set as Active Graph
 
-1. Go to **Edit → Project Settings → Plugins → Quick Menu**
-2. Set **Active Graph** to your newly created graph
+There are 3 ways to set a Quick Menu Graph as the active graph:
 
-Or: right-click the graph in Content Browser → **Set as Active Menu**
+### From the Graph Editor
+
+When a graph is open, click the **Active** badge in the top-left corner of the Graph tab. The green checkmark confirms the graph is currently active.
+
+![Set active from graph editor](../img/SetActiveFromGraph.png)
+
+### From the Quick Menu Panel
+
+Open the **Quick Menu** panel (click the octopus icon in the toolbar). Use the **Active Graph** dropdown at the top to select which graph to use.
+
+![Set active from Quick Menu panel](../img/SetActiveFromPanel.png)
+
+### From the Content Browser
+
+Right-click on any **Quick Menu Graph** asset in the Content Browser and select **Active Menu** to set it as the active graph.
+
+![Set active from Content Browser](../img/SetActiveFromContentBrowser.png)
 
 ## Step 6: Try It
 

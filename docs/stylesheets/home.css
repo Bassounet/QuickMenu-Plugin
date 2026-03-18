@@ -3,20 +3,20 @@
 /* Global image and video sizing */
 .md-content img {
   display: block;
-  max-width: 900px;
+  max-width: 450px;
   width: 100%;
   margin: 1.5rem auto;
   border-radius: 8px;
 }
 .md-content video {
   display: block;
-  max-width: 900px !important;
+  max-width: 450px !important;
   width: 100% !important;
   margin: 1.5rem auto;
   border-radius: 8px;
 }
 .video-container {
-  max-width: 900px;
+  max-width: 450px;
   width: 100%;
   margin: 1.5rem auto;
 }

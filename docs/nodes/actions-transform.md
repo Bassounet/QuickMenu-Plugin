@@ -16,7 +16,7 @@ Sets the coordinate system for transforms.
 
 Selection operations in the viewport.
 
-**Options:** Select All, None, Invert, by Class, by Material, by Hierarchy, Children, Parent, Next, Previous.
+**Options:** All, None, Invert, All of Same Class, All Lights, All Static Meshes, All Skeletal Meshes, Same Material, Immediate Children, All Descendants.
 
 ## Reset Transform
 

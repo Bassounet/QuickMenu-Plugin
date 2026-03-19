@@ -92,6 +92,8 @@ Opened with **Ctrl+F**. Search across all nodes in the current graph.
 - Double-click to rename
 - Click the color swatch to change the comment color
 - Resizable — drag edges to fit your node group
+- **Alt+E** — create a comment auto-named from the first SubMenu/WheelOutput found in selection, with a random saturated color
+- **Right-click a comment → Auto Name & Color** — automatically renames from contained SubMenu/WheelOutput and assigns a random color
 
 <div class="video-container">
 <video autoplay="true" loop="true" muted="true" playsinline="true">

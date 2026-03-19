@@ -11,7 +11,7 @@ Press **V** (or your configured hotkey) anywhere in the editor. The pie menu app
 - **Sub-menus** expand as nested rings when you hover their parent wedge
 - **Back arrow** appears at the center when inside a sub-menu — click to go back
 - **Go To Wheel** wedges navigate to another wheel (with breadcrumb history)
-- **Mouse wheel** can scroll through options in some contexts
+- **Mouse wheel** can zoom the pie menu (preview mode only)
 - **Move cursor to center** (dead zone) to deselect all
 
 ## Activation Modes
@@ -35,7 +35,7 @@ Set in Project Settings or the Quick Menu Panel:
 The pie menu is not just a launcher — it's also a live editor:
 
 - **"+" button** — appears on the wheel when there's room for more wedges. Click to open the action picker and add a new action directly, without opening the graph editor.
-- **"X" button** — appears on removable wedges. Click to remove an action inline.
+- **"X" button** — appears on hover for connected wedges. Requires **two clicks**: the first shows a confirmation prompt, the second removes the connection.
 - **E key** (configurable) — press while the pie menu is open to jump straight to the graph editor, focused on the current wheel.
 
 <div class="video-container">
@@ -49,6 +49,11 @@ The pie menu is not just a launcher — it's also a live editor:
 <source src="/img/WedgeSettingsThroughPieMenuV2.mp4" type="video/mp4">
 </video>
 </div>
+
+## Visual Indicators
+
+- **Submenu indicator arc** — Wedges that lead to a SubMenu or GoToWheel display a thin bright arc (3px) offset slightly outside the wedge outer edge, making them visually distinct from pure action wedges.
+- **Warning toast** — When an action cannot execute, a shake animation overlay appears on the wedge as a warning.
 
 ## Context-Aware Behavior
 

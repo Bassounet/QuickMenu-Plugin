@@ -4,7 +4,7 @@
 
 Toggles viewport features.
 
-**Options:** Show Grid, Realtime, Stats, FPS, Fullscreen, Game View, Immersive, Safe Frames, Bookmarks.
+**Options:** Show Grid, Realtime, Stats, FPS, Fullscreen, Game View, Immersive, Safe Frames, Bookmarks, Toggle Cinematic, Toggle Viewport UI, Reset Show Flags.
 
 ## Open Panel
 
@@ -22,7 +22,7 @@ Operations on multi-instance panels.
 
 Basic edit operations.
 
-**Options:** Undo, Redo, Cut, Copy, Paste, Duplicate, Delete, Settings, Preferences.
+**Options:** Undo, Redo, Cut, Copy, Paste, Duplicate, Delete, Project Settings, Editor Preferences, Plugins.
 
 ## Editor Mode
 
@@ -48,7 +48,7 @@ Runs build operations.
 
 Level management operations.
 
-**Options:** New Level, Open Level, Save Current, Save All, Import, Export, Levels Window.
+**Options:** New Level, Open Level, Save Current, Save All, Import, Export, Levels Window, Fix Up Redirectors.
 
 ## Play Op
 

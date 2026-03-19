@@ -24,6 +24,8 @@ All shortcuts are customizable in the Quick Menu Panel (Window → Quick Menu Pa
 | **Shift+Space** | Jump directly to root graph |
 | **Ctrl+F** | Find in graph (search nodes by name) |
 | **Ctrl+E** | Toggle preview panel |
+| **Ctrl+L** | Auto-layout selected nodes |
+| **Alt+E** | Create comment around selection, auto-named from SubMenu/WheelOutput, random color |
 
 ## Graph Editor — Node Spawn (Hold + Click)
 

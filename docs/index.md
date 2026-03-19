@@ -59,6 +59,15 @@
 
 </div>
 
+## AI-Powered Documentation
+
+Quick Menu ships AI-ready files designed for large language models:
+
+- **`docs/llms.txt`** — concise plugin overview for quick questions
+- **`docs/llms-full.txt`** — complete detailed reference for deep dives
+
+Copy either file's contents into ChatGPT, Claude, Gemini, or any AI assistant and ask your question — the AI will give you a personalized answer adapted to your experience level.
+
 ## Community
 
 - [:fontawesome-brands-discord: Discord](https://discord.gg/YYc2v8k5BA) — support and feature requests

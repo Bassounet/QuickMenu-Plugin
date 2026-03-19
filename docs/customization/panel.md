@@ -31,10 +31,20 @@ Built-in documentation of all node types and action types.
 
 ## Tab 3 — Console Commands
 
-Manage custom console commands defined in Project Settings.
+A searchable list of console commands with one-click Run buttons.
+
+**Sources:**
+
+- **From Active Graph** — lists all ConsoleCommand action nodes found in the active graph
+- **Predefined categories** — Performance Stats, Rendering Stats, Engine Stats, Memory & Objects, Visualization Toggles, Rendering Settings, Framerate, Cleanup & Misc (**55 predefined commands** covering `stat`, `show`, `r.`, `sg.`, `t.MaxFPS`, `slomo`, and more)
+- **Custom commands** — user-defined commands from Project Settings
+
+**Features:**
 
 - Toggle commands on/off
-- Edit command values inline
+- Commands with configurable values display **editable fields** (not just Run buttons), allowing direct value editing from the panel
+- CVar state capture and reset to initial values
+- Search/filter across all commands
 - Add/remove custom commands
 
 ## Support Links

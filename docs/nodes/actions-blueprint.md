@@ -40,7 +40,7 @@ Adds a typed member variable to the Blueprint.
 
 Operations on items in the My Blueprint panel.
 
-**Options:** Delete, Rename.
+**Options:** Delete, Rename, Delete Unused Variables.
 
 ## BP: Interface
 
@@ -52,4 +52,4 @@ Interface management.
 
 Compile and debug operations.
 
-**Options:** Compile, Toggle Breakpoints, Find References, Open Parent, Class Settings, Defaults, Diff, Merge.
+**Options:** Compile, Compile All, Save & Compile, Toggle Breakpoints, Clear All Breakpoints, Find References, Go to Parent Class, Open Class Settings.

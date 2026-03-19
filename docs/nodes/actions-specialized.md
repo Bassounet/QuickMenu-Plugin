@@ -10,13 +10,13 @@ Material editor operations.
 
 Sequencer playback and controls.
 
-**Options:** Play Forward, Play Reverse, Stop, Go to Start, Go to End, Toggle Loop, Set Playback Speed (0.1x/0.25x/0.5x/1x/2x), Toggle Auto Key, Toggle Auto Scroll, Save, Render Movie, Toggle Snap.
+**Options:** Play / Pause, Stop, Go to Start, Go to End, Step Forward, Step Backward, Toggle Loop, Set Playback Speed (0.25x/0.5x/1x/2x), Toggle Auto Key, Refresh Tree, Force Evaluate, Save Sequence.
 
 ## Static Mesh Op
 
 Static mesh editor operations.
 
-**Options:** Auto Collision, Simple Collision, Complex Collision, Remove Collision, Auto Generate LODs, Remove LODs, Add Socket, Rename Socket, Delete Socket, Enable Nanite, Disable Nanite, Refresh.
+**Options:** Add Box Collision, Add Sphere Collision, Add Capsule Collision, Auto Convex Collision, Remove All Collision, Generate LODs, Remove All LODs, Add Socket, Enable Nanite, Disable Nanite, Refresh, Save.
 
 ## Niagara Op
 

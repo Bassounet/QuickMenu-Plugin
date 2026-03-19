@@ -23,10 +23,10 @@ The terminal node that defines a pie menu wheel. Each input pin becomes one wedg
 |----------|------|---------|-------------|
 | **WheelName** | String | "Wheel" | Display name in the Wheel List and for Go To Wheel navigation |
 | **Category** | String | — | Groups this wheel in the Wheel List sidebar |
-| **CategoryColor** | LinearColor | Gray | Color swatch shown next to the category |
-| **CategoryIconBrush** | Name | None | Slate brush icon for the category |
 | **SortOrder** | int32 | 0 | Sort priority within its category |
 | **NumMenuPins** | int32 | 4 | Number of menu input pins (1–10) |
+
+> **Note:** Wedge colors and icons are set on individual action and SubMenu nodes (via `WedgeColor` and `IconBrushName`), not on the WheelOutput node.
 
 **Pins:**
 
@@ -50,6 +50,7 @@ Groups actions into an expandable wedge. When the user hovers this wedge in the 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
 | **SubMenuName** | String | "SubMenu" | Display name shown on the parent wedge |
+| **WedgeColor** | LinearColor | Transparent | Custom color for this wedge |
 | **IconBrushName** | Name | None | Slate brush for the submenu icon |
 | **NumMenuPins** | int32 | 2 | Number of child menu input pins (1–16) |
 

@@ -122,3 +122,16 @@ Use this in the **Is Visible Code** field:
 ```python
 result = unreal.EditorLevelLibrary.get_editor_world() is not None
 ```
+
+## 12. Set Wedge Colors by Label (Graph Scripting)
+
+Quick Menu exposes UFUNCTIONs for Python graph scripting:
+
+- `GetAllNodes()` — returns all nodes in the active graph
+- `SetWedgeColorByLabel(Label, Color)` — sets the wedge color for nodes matching a label
+
+```python
+# Example: color all "Translate" wedges blue
+graph = unreal.QuickMenuGraphAsset.get_active_graph()
+graph.set_wedge_color_by_label("Translate", unreal.LinearColor(0.2, 0.4, 1.0, 1.0))
+```

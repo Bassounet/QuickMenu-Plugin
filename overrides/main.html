@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% if page.previous_page or page.next_page %}
+  <nav class="md-top-nav" aria-label="Top navigation">
+    {% if page.previous_page %}
+    <a href="{{ page.previous_page.url | url }}" class="md-top-nav__link md-top-nav__link--prev" aria-label="Previous: {{ page.previous_page.title }}">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      <span class="md-top-nav__title">
+        <span class="md-top-nav__direction">Previous</span>
+        <span class="md-ellipsis">{{ page.previous_page.title }}</span>
+      </span>
+    </a>
+    {% endif %}
+    {% if page.next_page %}
+    <a href="{{ page.next_page.url | url }}" class="md-top-nav__link md-top-nav__link--next" aria-label="Next: {{ page.next_page.title }}">
+      <span class="md-top-nav__title">
+        <span class="md-top-nav__direction">Next</span>
+        <span class="md-ellipsis">{{ page.next_page.title }}</span>
+      </span>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+    </a>
+    {% endif %}
+  </nav>
+  {% endif %}
+  {{ super() }}
+{% endblock %}

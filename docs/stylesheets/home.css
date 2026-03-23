@@ -1,48 +1,14 @@
 /* ── Quick Menu Docs — Homepage Hero & DA Theme ── */
 
-/* Top prev/next navigation */
-.md-top-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem 0;
-  margin-bottom: 1rem;
-  border-bottom: 1px solid rgba(60, 179, 113, 0.2);
-}
-.md-top-nav__link {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--md-default-fg-color--light);
-  font-size: 0.8rem;
-  text-decoration: none;
-  padding: 0.4rem 0.8rem;
-  border-radius: 4px;
-  transition: background 0.2s, color 0.2s;
-}
-.md-top-nav__link:hover {
-  background: rgba(60, 179, 113, 0.1);
-  color: #3cb371;
-}
-.md-top-nav__link svg {
-  width: 18px;
-  height: 18px;
-  fill: currentColor;
-  flex-shrink: 0;
-}
-.md-top-nav__link--next {
-  margin-left: auto;
-}
-.md-top-nav__direction {
-  display: block;
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  opacity: 0.6;
-}
-.md-top-nav__title {
-  display: flex;
-  flex-direction: column;
+/* Top navigation bar - sticky */
+.md-content .md-footer__inner[aria-label="Top navigation"] {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--md-default-bg-color);
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  margin: 0 -0.8rem 1rem;
+  padding: 0 0.8rem;
 }
 
 /* Global image and video sizing */

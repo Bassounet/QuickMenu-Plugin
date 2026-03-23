@@ -1,14 +1,36 @@
 /* ── Quick Menu Docs — Homepage Hero & DA Theme ── */
 
-/* Top navigation bar - sticky */
-.md-content .md-footer__inner[aria-label="Top navigation"] {
+/* Top page navigation - sticky under header */
+.md-top-pager {
   position: sticky;
-  top: 0;
-  z-index: 10;
+  top: 48px; /* height of md-header */
+  z-index: 3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background: var(--md-default-bg-color);
   border-bottom: 1px solid var(--md-default-fg-color--lightest);
-  margin: 0 -0.8rem 1rem;
-  padding: 0 0.8rem;
+  padding: 0.4rem 1.2rem;
+  font-size: 0.75rem;
+}
+.md-top-pager__link {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--md-default-fg-color--light);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.md-top-pager__link:hover {
+  color: #3cb371;
+}
+.md-top-pager__link svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+.md-top-pager__link--next {
+  margin-left: auto;
 }
 
 /* Global image and video sizing */

@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 
-{% block header %}
-  {{ super() }}
+{% block content %}
   {% if page.previous_page or page.next_page %}
   <nav class="md-top-pager" aria-label="Page navigation">
     {% if page.previous_page %}
@@ -18,4 +17,5 @@
     {% endif %}
   </nav>
   {% endif %}
+  {{ super() }}
 {% endblock %}

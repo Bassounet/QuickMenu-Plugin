@@ -8,7 +8,7 @@ Press **V** to open a fully customizable pie menu. Design your menus visually wi
 
 <p align="center">
   <a href="https://docs.quickmenuplugin.com">
-    <img src="docs/img/Showcase.gif" alt="Quick Menu Showcase" width="800"/>
+    <video src="https://github.com/Bassounet/QuickMenu-Plugin/raw/main/docs/img/Showcase.mp4" width="800" autoplay loop muted></video>
   </a>
 </p>
 

@@ -4,25 +4,25 @@
 
 Toggles viewport features.
 
-**Options:** Show Grid, Realtime, Stats, FPS, Fullscreen, Game View, Immersive, Safe Frames, Bookmarks, Toggle Cinematic, Toggle Viewport UI, Reset Show Flags.
+**Options:** Toggle Grid, Toggle Realtime, Toggle Stats, Toggle Fullscreen, Toggle Game View, High-Res Screenshot, Toggle Viewport UI, Reset Show Flags, Toggle Cinematic.
 
 ## Open Panel
 
 Opens an editor tab/panel.
 
-**Options:** Content Browser, Details, Outliner, Output Log, World Settings, Layers, Levels, Modes, Blueprint Editor, Material Editor, Sequencer, Niagara, Animation, Cascade, Foliage, Landscape, Statistics.
+**Options:** Viewport, Details, World Outliner, Content Browser, Output Log, World Settings, Layers, Levels, Place Actors, Statistics, Message Log, Env Light Mixer, HLOD Outliner, Sequencer, Data Layers, Session Frontend, Device Manager.
 
 ## Panel Instance
 
 Operations on multi-instance panels.
 
-**Options:** Add New or Close Last for: Viewport, Details, Outliner, Content Browser.
+**Options:** Add New or Close Last for: Viewport, Details, Scene Outliner, Content Browser.
 
 ## Edit Op
 
 Basic edit operations.
 
-**Options:** Undo, Redo, Cut, Copy, Paste, Duplicate, Delete, Project Settings, Editor Preferences, Plugins.
+**Options:** Undo, Redo, Duplicate, Delete, Copy, Paste, Project Settings, Editor Preferences, Plugins.
 
 ## Editor Mode
 
@@ -42,22 +42,22 @@ Viewport bookmark operations.
 
 Runs build operations.
 
-**Options:** Build All, Lighting Only, Navigation, Geometry, HLODs, Texture Streaming, Virtual Textures, Shaders, Reflection Captures, Preview Shadows, GPU Lightmass, Precomputed Visibility, Minimap.
+**Options:** Build All, Build Lighting, Build Navigation, Build Geometry, Build HLODs, Build Texture Streaming, Live Coding, Reflection Captures, Virtual Texture, Minimap, Landscape Splines, All Landscape, Recompile Shaders.
 
 ## Level Op
 
 Level management operations.
 
-**Options:** New Level, Open Level, Save Current, Save All, Import, Export, Levels Window, Fix Up Redirectors.
+**Options:** New Level, Open Level, Save Current Level, Save All, Import Asset, Export Selected, Fix Up Redirectors.
 
 ## Play Op
 
 PIE (Play In Editor) session controls.
 
-**Options:** Play, Simulate, Stop, Pause, Resume, Eject, Possess, Play in New Window, Play Standalone.
+**Options:** Play, Simulate, Stop, Pause / Resume, Eject, Possess, Play (New Window), Standalone Game.
 
 ## Scalability
 
 Engine quality and scalability settings.
 
-**Options:** Low, Medium, High, Epic, Cinematic + Material Quality Low/Medium/High/Epic.
+**Options:** Quality: Low/Medium/High/Epic/Cinematic + Material Quality: Low/Medium/High.

@@ -51,7 +51,7 @@ A searchable list of console commands with one-click Run buttons.
 
 | Link | URL |
 |------|-----|
-| Discord | [discord.gg/bThEnFzy](https://discord.gg/bThEnFzy) |
+| Discord | [discord.gg/YYc2v8k5BA](https://discord.gg/YYc2v8k5BA) |
 | GitHub | [github.com/Bassounet/QuickMenu-Plugin](https://github.com/Bassounet/QuickMenu-Plugin) |
 | Wiki | [github.com/Bassounet/QuickMenu-Plugin/wiki](https://github.com/Bassounet/QuickMenu-Plugin/wiki) |
 

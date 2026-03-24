@@ -4,7 +4,7 @@ Switch nodes route execution flow based on the current editor context. They have
 
 ## Switch: Editor Context
 
-Routes based on the active editor tab. Supports **61 contexts** including:
+Routes based on the active editor tab. Supports **49 contexts** including:
 
 - **General:** Level Editor, Content Browser
 - **Blueprint:** Blueprint Editor, Widget Blueprint, Animation Blueprint

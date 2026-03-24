@@ -43,10 +43,10 @@ See [Context Detection](../concepts/context-detection.md) for a detailed walkthr
 
 ## "Wedge limit reached"
 
-Each wheel supports a maximum of 12 wedges. Use SubMenu nodes to group related actions and reduce top-level wedge count.
+Each wheel supports a maximum of 10 wedges. Use SubMenu nodes to group related actions and reduce top-level wedge count.
 
 ## Getting Help
 
-- [Discord](https://discord.gg/bThEnFzy) — community support
+- [Discord](https://discord.gg/YYc2v8k5BA) — community support
 - [GitHub Issues](https://github.com/Bassounet/QuickMenu-Plugin/issues) — bug reports
 - [GitHub Discussions](https://github.com/Bassounet/QuickMenu-Plugin/discussions) — Q&A, ideas, showcase

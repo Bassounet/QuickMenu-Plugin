@@ -26,7 +26,7 @@ Check the [**Troubleshooting**](https://docs.quickmenuplugin.com/troubleshooting
 ## Features
 
 - **Graph-Based Configuration** — Design your menus visually with a powerful node graph editor. Drag, drop, and connect nodes to build your ideal workflow.
-- **Context-Aware Menus** — Menus adapt automatically based on your selection, editor mode, active tab, and more. 61+ editor contexts supported.
+- **Context-Aware Menus** — Menus adapt automatically based on your selection, editor mode, active tab, and more. 49 editor contexts supported.
 - **44+ Built-in Action Types** — Viewport, transform, play, build, spawn, blueprint operations, material, sequencer, Niagara, PCG, and more.
 - **Submenus & Navigation** — Nest menus with SubMenu nodes, navigate between wheels with GoToWheel.
 - **Live Editing** — Add or remove actions directly from the pie menu without restarting the editor.
@@ -63,7 +63,7 @@ Check the [**Troubleshooting**](https://docs.quickmenuplugin.com/troubleshooting
 > - 44+ action node types across 15 categories
 > - Graph-based menu editor with Root, Switch, WheelOutput, and SubMenu nodes
 > - 5 Switch node types: EditorContext (61 contexts), EditorMode, SelectionCount, ActorClass, BlueprintContext
-> - Radial pie menu widget with nested rings (up to 4 levels, 12 wedges per ring)
+> - Radial pie menu widget with nested rings (up to 4 levels, 10 wedges per ring)
 > - Live editing: add/remove actions directly from the pie menu
 > - Context-aware menus with automatic switching
 > - Quick Menu Panel (dockable tab with shortcuts and console)

@@ -31,7 +31,7 @@ The terminal node that defines a pie menu wheel. Each input pin becomes one wedg
 **Pins:**
 
 - 1 exec input (white) — receives execution flow
-- N menu inputs (blue) — each pin = one wedge (max 12)
+- N menu inputs (blue) — each pin = one wedge (max 10)
 
 **Adding/removing pins:**
 

@@ -23,6 +23,6 @@
 
 ## Links
 - Website: https://quickmenuplugin.com
-- Discord: https://discord.gg/bThEnFzy
+- Discord: https://discord.gg/YYc2v8k5BA
 - GitHub: https://github.com/Bassounet/QuickMenu-Plugin
 - Wiki: https://github.com/Bassounet/QuickMenu-Plugin/wiki

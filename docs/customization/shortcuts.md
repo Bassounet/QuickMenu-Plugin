@@ -52,7 +52,7 @@ These are the defaults — fully customizable in **Project Settings → Quick Me
 | **C** | Create group comment around selected nodes |
 | **H** | Toggle compact/expanded display on selected node |
 | **F2** | Rename selected wheel |
-| **Shift+C** | Connect selected action nodes to selected WheelOutput/SubMenu (auto-wires them) |
+| **Ctrl+C** | Connect selected action nodes to selected WheelOutput/SubMenu (auto-wires them) |
 | **=** | Add a menu pin to selected WheelOutput/SubMenu |
 | **-** | Remove last menu pin from selected WheelOutput/SubMenu |
 | **Shift+Ctrl+N** | Create new wheel category |
@@ -78,7 +78,7 @@ When you spawn a WheelOutput or SubMenu with nodes already selected:
 
 This means: select 5 action nodes → press **W + click** → instant wheel with all 5 connected.
 
-**Shift+C** does the same for existing nodes: select actions + a WheelOutput → Shift+C → all wired up.
+**Ctrl+C** does the same for existing nodes: select actions + a WheelOutput → Ctrl+C → all wired up.
 
 <div class="video-container">
 <video autoplay="true" loop="true" muted="true" playsinline="true">

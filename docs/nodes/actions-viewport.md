@@ -4,13 +4,13 @@
 
 Changes viewport rendering mode.
 
-**Options:** Lit, Unlit, Wireframe, Detail Lighting, Lighting Only, Light Complexity, Shader Complexity, Lightmap Density, Reflections, Buffer Visualization, Nanite Visualization, Lumen Visualization, Path Tracing, LOD Coloration, Collision (Pawn), Collision (Visibility).
+**Options:** Lit, Unlit, Wireframe, Detail Lighting, Lighting Only, Shader Complexity, Light Complexity, Path Tracing, Reflection Override, Collision (Pawn), Collision (Visibility), LOD Coloration.
 
 ## Show Flag
 
 Toggles viewport overlays on/off.
 
-**Options:** Collision, Navigation, Fog, Volumes, Bounds, BSP, Particles, Billboard Sprites, Decals, Skeletal Meshes, Static Meshes, Landscape, Instanced Foliage, Lighting, Shadows, Post Processing, Translucency, Widget Components, Splines, Mesh Edges, HLODs, Motion Blur, Temporal AA, Ambient Occlusion, Bloom, Deferred Lighting, Grid.
+**Options:** Collision, Navigation, Fog, Bounds, Volumes, BSP, Billboard Sprites, Landscape, Post Process, Decals, Particles, Instanced Foliage, Grid, Mesh Edges, HLODs, Motion Blur, Temporal AA, Ambient Occlusion, Bloom, Deferred Lighting.
 
 ## Toggle Snap
 

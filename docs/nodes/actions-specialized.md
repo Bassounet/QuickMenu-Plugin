@@ -4,7 +4,7 @@
 
 Material editor operations.
 
-**Options:** Apply Changes, Refresh, Delete Node, Clean Unused, Preview: Plane/Cylinder/Sphere/Cube/Preview Mesh, Toggle Live Preview, Toggle Stats.
+**Options:** Apply Changes, Refresh Previews, Delete Selected, Clean Unused, Toggle Live Preview, Toggle Stats, Preview: Plane/Cylinder/Sphere/Cube.
 
 ## Sequencer Op
 
@@ -22,7 +22,7 @@ Static mesh editor operations.
 
 Niagara system controls.
 
-**Options:** Compile, Apply, Reset, Toggle Loop, Speed (0.25x/0.5x/1x/2x), Save, Auto Compile, Toggle Bounds.
+**Options:** Compile, Reset Simulation, Toggle Looping, Speed: 0.25x/0.5x/1x/2x, Save.
 
 > Only visible when the Niagara plugin is loaded.
 

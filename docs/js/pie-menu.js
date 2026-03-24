@@ -8,7 +8,7 @@
     { icon: '🎨', label: 'Customize', url: '/customization/graph-editor/', color: '#40c4ff' },
     { icon: '🐍', label: 'Python', url: '/customization/python-examples/', color: '#69f0ae' },
     { icon: '🔧', label: 'Troubleshoot', url: '/troubleshooting/common-issues/', color: '#ffd740' },
-    { icon: '💬', label: 'Discord', url: 'https://discord.gg/BQG6KZJY', color: '#5865F2' },
+    { icon: '💬', label: 'Discord', url: 'https://discord.gg/YYc2v8k5BA', color: '#5865F2' },
     { icon: '🔄', label: 'Refresh', url: null, color: '#ff6e40' },
   ];
 

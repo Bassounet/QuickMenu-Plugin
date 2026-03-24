@@ -10,7 +10,7 @@ Common operations on selected actors.
 
 Toggles actor properties on/off.
 
-**Options:** Mobility (Static/Movable), Collision, Hidden in Game, Cast Shadows, Simulate Physics.
+**Options:** Cycle Mobility, Cycle Collision, Toggle Hidden In Game, Toggle Cast Shadows, Toggle Simulate Physics.
 
 ## Align Op
 

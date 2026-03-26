@@ -14,8 +14,7 @@ Press **V** to open a fully customizable pie menu. Design your menus visually wi
 
 ## Get Started
 
-<!-- TODO: Replace with actual FAB listing URL -->
-Get the plugin on the [**FAB Marketplace**](https://www.fab.com)
+Get the plugin on the [**FAB Marketplace**](https://www.fab.com/listings/885143e3-d6ec-4c71-b9f1-32aed3bf60c8)
 
 Read the [**Getting Started**](https://docs.quickmenuplugin.com/getting-started/installation/) guide
 

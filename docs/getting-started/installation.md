@@ -2,7 +2,7 @@
 
 ## From Fab
 
-1. Get Quick Menu on [Fab](https://www.fab.com/) <!-- TODO: add real link -->
+1. Get Quick Menu on [Fab](https://www.fab.com/listings/885143e3-d6ec-4c71-b9f1-32aed3bf60c8)
 2. In the Epic Games Launcher, go to **Library → Vault**
 3. Click **Install to Engine** and select your UE version
 4. Open your project in the editor

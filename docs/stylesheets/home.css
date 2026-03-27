@@ -341,12 +341,17 @@
 /* ── Docs grid ── */
 .qm-docs-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1rem;
   margin: 1.5rem 0 3rem;
 }
+.qm-docs-grid p {
+  margin: 0;
+}
 .qm-docs-grid a {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   padding: 1.2rem 1.3rem;
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.1);
@@ -354,6 +359,7 @@
   border-radius: 8px;
   text-decoration: none !important;
   transition: border-color 0.2s, background 0.2s, transform 0.15s;
+  position: relative;
 }
 .qm-docs-grid a:hover {
   border-color: rgba(60,179,113,0.5);
@@ -370,6 +376,20 @@
   font-size: 0.85rem;
   color: rgba(255,255,255,0.55);
   margin-top: 0.3rem;
+}
+.qm-docs-grid a .qm-step {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--qm-green);
+  border-radius: 50%;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
 }
 
 /* Nav section titles — more prominent */

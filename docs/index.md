@@ -18,42 +18,50 @@
 <div class="qm-docs-grid" markdown>
 
 <a href="getting-started/installation/">
-<strong>Getting Started</strong>
-<span>Installation, first wheel</span>
+<span class="qm-step">1</span>
+<strong>🚀 Getting Started</strong>
+<span>Install the plugin & create your first wheel</span>
 </a>
 
 <a href="concepts/graph-system/">
-<strong>Concepts</strong>
-<span>Graph system, context detection</span>
+<span class="qm-step">2</span>
+<strong>💡 Concepts</strong>
+<span>Understand graph system & context detection</span>
 </a>
 
 <a href="nodes/structural/">
-<strong>Node Reference</strong>
-<span>Every node type with properties</span>
+<span class="qm-step">3</span>
+<strong>📦 Node Reference</strong>
+<span>Every node type with all their properties</span>
 </a>
 
 <a href="customization/graph-editor/">
-<strong>Customization</strong>
-<span>Graph editor, settings, appearance</span>
+<span class="qm-step">4</span>
+<strong>🎨 Customization</strong>
+<span>Graph editor, settings & appearance</span>
 </a>
 
 <a href="customization/shortcuts/">
-<strong>Keyboard Shortcuts</strong>
+<span class="qm-step">5</span>
+<strong>⌨️ Keyboard Shortcuts</strong>
 <span>All shortcuts for pie menu & editor</span>
 </a>
 
 <a href="customization/python-examples/">
-<strong>Python Examples</strong>
+<span class="qm-step">6</span>
+<strong>🐍 Python Examples</strong>
 <span>11 ready-to-use code snippets</span>
 </a>
 
 <a href="troubleshooting/common-issues/">
-<strong>Troubleshooting</strong>
-<span>Common problems and solutions</span>
+<span class="qm-step">7</span>
+<strong>🔧 Troubleshooting</strong>
+<span>Common problems & solutions</span>
 </a>
 
 <a href="troubleshooting/compatibility/">
-<strong>Version Compatibility</strong>
+<span class="qm-step">8</span>
+<strong>📋 Version Compatibility</strong>
 <span>Feature support across UE versions</span>
 </a>
 

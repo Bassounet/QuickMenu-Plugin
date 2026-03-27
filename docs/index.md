@@ -63,8 +63,8 @@
 
 Quick Menu ships AI-ready files designed for large language models:
 
-- <a href="https://raw.githubusercontent.com/Bassounet/QuickMenu-Plugin/main/llms.txt" download="llms.txt">**Download llms.txt**</a> — concise plugin overview for quick questions
-- <a href="https://raw.githubusercontent.com/Bassounet/QuickMenu-Plugin/main/llms-full.txt" download="llms-full.txt">**Download llms-full.txt**</a> — complete detailed reference for deep dives
+- <a href="llms.txt" download="llms.txt">**Download llms.txt**</a> — concise plugin overview for quick questions
+- <a href="llms-full.txt" download="llms-full.txt">**Download llms-full.txt**</a> — complete detailed reference for deep dives
 
 Copy either file's contents into ChatGPT, Claude, Gemini, or any AI assistant and ask your question — the AI will give you a personalized answer adapted to your experience level.
 

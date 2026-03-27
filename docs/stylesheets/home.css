@@ -341,17 +341,20 @@
 /* ── Docs grid ── */
 .qm-docs-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 1fr;
   gap: 1rem;
   margin: 1.5rem 0 3rem;
 }
 .qm-docs-grid p {
   margin: 0;
+  display: flex;
 }
 .qm-docs-grid a {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  justify-content: center;
+  width: 100%;
   padding: 1.2rem 1.3rem;
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.1);

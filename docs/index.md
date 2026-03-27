@@ -59,7 +59,7 @@
 
 </div>
 
-## AI-Powered Documentation
+## LLM Ready Documentation
 
 Quick Menu ships AI-ready files designed for large language models:
 

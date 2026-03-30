@@ -20,7 +20,7 @@ Read the [**Getting Started**](https://docs.quickmenuplugin.com/getting-started/
 
 Check the [**Troubleshooting**](https://docs.quickmenuplugin.com/troubleshooting/common-issues/) for common questions
 
-[**Website**](https://quickmenuplugin.com) | [**Docs**](https://docs.quickmenuplugin.com) | [**Discord**](https://discord.gg/YYc2v8k5BA) | [**YouTube**](https://youtube.com) <!-- TODO: Replace with actual YouTube channel URL -->
+[**Website**](https://quickmenuplugin.com) | [**Docs**](https://docs.quickmenuplugin.com) | [**Discord**](https://discord.gg/YYc2v8k5BA) |
 
 ## Features
 
@@ -66,7 +66,7 @@ Check the [**Troubleshooting**](https://docs.quickmenuplugin.com/troubleshooting
 > - Context-aware menus with automatic switching
 > - Quick Menu Panel (dockable tab with shortcuts and console)
 > - Python custom code actions (optional, requires Python plugin)
-> - Multi-version compatibility: UE 4.27 – 5.7
+> - Multi-version compatibility: UE 5.0 – 5.7
 > - Configurable hotkey (default: V)
 > - Material-based pie rendering with vertex fallback
 

@@ -76,6 +76,7 @@ nav:
   - Troubleshooting:
     - Common Issues: troubleshooting/common-issues.md
     - Version Compatibility: troubleshooting/compatibility.md
+  - Changelog: changelog.md
 
 markdown_extensions:
   - admonition

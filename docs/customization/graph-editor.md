@@ -15,6 +15,11 @@ The graph editor is where you build and organize your Quick Menu graphs.
 
 The main node graph. Drag, zoom, connect nodes. Right-click for the context menu to add nodes.
 
+- **Watermark** — displays "ROOT" or the current subgraph name in the bottom-right corner, similar to Blueprint editor
+- **Right-click menu** — search nodes by name or by action/operation keyword. Results show a tree-view with the node name and the matching action underneath. Includes a "Can't find your action? Request it!" link to Discord.
+- **Copy-paste** — Ctrl+C/V preserves all pin connections between pasted nodes
+- **Back to Root** — when navigating back from a subgraph, the parent graph focuses on the subgraph node
+
 ### Wheel List (Left Sidebar)
 
 ![Wheel List panel](/img/WheelsList.png)

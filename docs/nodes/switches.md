@@ -29,8 +29,8 @@ Routes based on the current editing mode:
 
 Routes based on how many actors are selected in the viewport.
 
-- User defines which counts (0, 1, 2, 5...) get dedicated outputs
-- Unmatched counts go to Default
+- User defines which counts (1, 2, 5...) get dedicated outputs
+- Default pin handles 0 selections (labeled "Default (0 selection)")
 - Dynamic — add as many count cases as needed
 
 ## Switch: Actor Class
@@ -51,8 +51,10 @@ Routes based on the active panel in the Blueprint Editor:
 
 All Switch nodes share:
 - **Cases** array — the list of case values/enums that create output pins
-- **Default pin** — always present, handles unmatched cases
+- **Default pin** — always present, handles unmatched cases (only one Default allowed per switch)
 - **Compact mode** — toggle via H key for a smaller visual footprint
+- **Mouse wheel cycling** — scroll the mouse wheel over a dropdown to quickly cycle through options
+- **Duplicate warning** — if two cases have the same value, a yellow warning displays which cases are duplicated
 
 ## Related
 

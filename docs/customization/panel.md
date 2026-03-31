@@ -2,7 +2,7 @@
 
 The Quick Menu Panel is a dockable editor tab that serves as a central hub for configuration and support.
 
-**Open it:** Window → Quick Menu Panel
+**Open it:** Window → Quick Menu Panel (auto-opens on first plugin activation)
 
 ![Quick Menu Panel](/img/QuickMenuPanel.png)
 
@@ -46,6 +46,15 @@ A searchable list of console commands with one-click Run buttons.
 - CVar state capture and reset to initial values
 - Search/filter across all commands
 - Add/remove custom commands
+
+## Tab 4 — Settings
+
+Appearance settings for the pie menu:
+
+- **Icon Size** — multiplier for wedge icons (0.5–3.0)
+- **Wheel Size** — multiplier for overall pie menu size (0.5–2.0)
+
+Changes apply immediately and persist across sessions.
 
 ## Support Links
 

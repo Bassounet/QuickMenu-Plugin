@@ -1,6 +1,6 @@
 # Quick Menu — Unreal Engine Plugin
 # Complete Reference (llms-full.txt)
-# Version: 1.0 | Engine: UE 4.27 – 5.7 | Site: quickmenuplugin.com
+# Version: 1.0.1 | Engine: UE 5.0 – 5.7 | Site: quickmenuplugin.com
 
 ## What is Quick Menu?
 
@@ -16,7 +16,7 @@ Everything is configured through a **visual node graph** — no config files, no
 - Supports nested sub-menus (up to 4 levels deep)
 - Python scripting support for custom actions
 - Works across Level Editor, Blueprint Editor, Material Editor, Sequencer, Niagara, PCG, and 49 editor contexts total
-- Compatible with UE 4.27 through 5.7
+- Compatible with UE 5.0 through 5.7
 
 ---
 
@@ -791,17 +791,15 @@ Each wheel supports a maximum of 10 wedges. Use SubMenu nodes to group related a
 
 ## Version Compatibility
 
-| Feature | UE 4.27 | UE 5.0-5.1 | UE 5.2-5.4 | UE 5.5-5.7 |
-|---------|---------|-------------|-------------|-------------|
-| Core pie menu | Yes | Yes | Yes | Yes |
-| Graph editor | Yes | Yes | Yes | Yes |
-| All Switch nodes | Yes | Yes | Yes | Yes |
-| Most action nodes | Yes | Yes | Yes | Yes |
-| BP: Component Op | No | Yes | Yes | Yes |
-| BP: Component Property | No | Yes | Yes | Yes |
-| Custom Code (Python) | Requires Python plugin | Requires Python plugin | Requires Python plugin | Requires Python plugin |
-| Content Browser context menu | No | Yes | Yes | Yes |
-| Asset Definition (thumbnails) | No | No (5.1+ only) | Yes | Yes |
+| Feature | UE 5.0-5.1 | UE 5.2-5.4 | UE 5.5-5.7 |
+|---------|-------------|-------------|-------------|
+| Core pie menu | Yes | Yes | Yes |
+| Graph editor | Yes | Yes | Yes |
+| All Switch nodes | Yes | Yes | Yes |
+| All action nodes | Yes | Yes | Yes |
+| Custom Code (Python) | Requires Python plugin | Requires Python plugin | Requires Python plugin |
+| Content Browser context menu | Yes | Yes | Yes |
+| Asset Definition (thumbnails) | 5.1+ only | Yes | Yes |
 
 ---
 

@@ -11,7 +11,7 @@ Press **V** (or your configured hotkey) anywhere in the editor. The pie menu app
 - **Sub-menus** expand as nested rings when you hover their parent wedge
 - **Back arrow** appears at the center when inside a sub-menu — click to go back
 - **Go To Wheel** wedges navigate to another wheel (with breadcrumb history)
-- **Mouse wheel** can zoom the pie menu (preview mode only)
+- **Mouse wheel** resizes the pie menu while open (0.5x–2.0x zoom)
 - **Move cursor to center** (dead zone) to deselect all
 
 ## Activation Modes

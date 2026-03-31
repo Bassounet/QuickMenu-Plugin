@@ -10,6 +10,8 @@ Found at: **Edit → Project Settings → Plugins → Quick Menu**
 | **Activation Mode** | Click and Release | When the hovered wedge executes |
 | **Node Spawn Shortcuts** | Empty | List of key + node class pairs for quick node creation in the graph editor |
 | **Offer Create Wheel** | true | Show "Create Wheel" panel when no wheel matches the current context |
+| **Icon Size Multiplier** | 1.1 | Scale factor for pie menu wedge icons (0.5–3.0) |
+| **Wheel Size Multiplier** | 1.0 | Scale factor for the overall pie menu size (0.5–2.0) |
 | **Custom Console Commands** | Empty | User-defined console commands available in the Quick Menu panel |
 
 ## Activation Modes

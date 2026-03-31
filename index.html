@@ -123,6 +123,35 @@ a:hover { color: #6bc478; }
 
 .nav-logo svg { width: 32px; height: 32px; }
 
+.release-banner {
+  background: linear-gradient(90deg, rgba(78, 166, 91, 0.15) 0%, rgba(78, 166, 91, 0.05) 100%);
+  border-bottom: 1px solid rgba(78, 166, 91, 0.25);
+  text-align: center;
+  padding: 10px 20px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+}
+.release-banner a {
+  color: var(--cyan);
+  text-decoration: none;
+  font-weight: 600;
+}
+.release-banner a:hover {
+  text-decoration: underline;
+}
+.release-banner .release-new {
+  background: var(--cyan);
+  color: #0a0a0a;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 3px;
+  margin-right: 8px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
 .nav-version {
   font-family: var(--font-mono);
   font-size: 0.65rem;
@@ -1330,6 +1359,15 @@ section {
 </div>
 
 <!-- ======================================
+     RELEASE BANNER
+     ====================================== -->
+<div class="release-banner">
+  <span class="release-new">New</span>
+  Version 1.0.1 is out — resizable wheel, better copy-paste, switch improvements &amp; more.
+  <a href="https://docs.quickmenuplugin.com/changelog/" target="_blank">See changelog &rarr;</a>
+</div>
+
+<!-- ======================================
      NAVBAR
      ====================================== -->
 <nav class="navbar" id="navbar">
@@ -1337,7 +1375,7 @@ section {
     <a href="#" class="nav-logo">
       <img src="images/LogoGray2.svg" alt="QuickMenu" style="width:32px; height:32px;">
       QuickMenu
-      <span class="nav-version">v1.0</span>
+      <span class="nav-version">v1.0.1</span>
     </a>
     <button class="nav-hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>

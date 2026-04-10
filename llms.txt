@@ -1,5 +1,6 @@
 # Quick Menu
-> Radial pie menu plugin for Unreal Engine (5.0–5.7). Press V to access 44+ editor actions instantly. Context-aware, graph-configured, fully customizable.
+> Version: 1.0.2 | Engine: UE 5.0-5.7
+> Radial pie menu plugin for Unreal Engine. Press V to access 44+ editor actions across 49 editor contexts. Context-aware, graph-configured, fully customizable.
 
 ## Documentation
 - [Getting Started](https://docs.quickmenuplugin.com/getting-started/)

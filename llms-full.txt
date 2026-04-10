@@ -1,6 +1,6 @@
-# Quick Menu — Unreal Engine Plugin
+# Quick Menu - Unreal Engine Plugin
 # Complete Reference (llms-full.txt)
-# Version: 1.0.1 | Engine: UE 5.0 – 5.7 | Site: quickmenuplugin.com
+# Version: 1.0.2 | Engine: UE 5.0-5.7 | Site: quickmenuplugin.com
 
 ## What is Quick Menu?
 
@@ -496,31 +496,41 @@ This means: select 5 action nodes → press W + click → instant wheel with all
 
 ## Quick Menu Panel
 
-The Quick Menu Panel is a dockable editor tab (Window → Quick Menu Panel) that serves as a central hub for configuration and support.
+The Quick Menu Panel is a dockable editor tab that serves as the central hub for setup, support, shortcuts, console tools, and appearance tuning.
 
 ### Panel Sections
 
 **Header:**
-- **Active Graph dropdown** — quickly switch which graph is active without going to Project Settings
-- **Activation Mode selector** — Click & Release / Click Only / Release Only, changeable directly from the panel
-- Support links: Discord, GitHub, Wiki (clickable icons)
+- Version and release badge
+- Report Bug button that opens GitHub issues
+- Active Graph dropdown plus quick create and open actions
+- Direct links to Discord, GitHub, and Documentation
 
-**Tab 1 — Shortcuts:**
-- Lists all keyboard shortcuts organized by section (Pie Menu, Node Spawn, Graph Editor)
-- Each shortcut has an editable key binding badge — click it, press a new key to rebind
-- Reset button appears when a binding has been changed from default
-- Node Spawn shortcuts show the hold+click shortcuts (W, S, C by default)
+**Tab 1 - Shortcuts:**
+- Lists graph editor, node-spawn, and pie menu shortcuts
+- Key bindings can be edited directly from the panel
 
-**Tab 2 — Docs:**
-- Built-in documentation of all node types and action types
-- Organized by category, browsable in-editor
+**Tab 2 - Docs:**
+- Searchable in-editor help for quick start, panel tour, controls, settings, action families, and support resources
+- Includes quick actions such as Create Graph plus direct links back to the full docs and support channels
 
-**Tab 3 — Console Commands:**
-- Lists custom console commands defined in Project Settings
-- Toggle commands on/off with one click
-- Edit command values inline (commands with parameters show editable value fields, not just Run buttons)
-- Tracks last-applied values and can reset to initial CVar values
-- Add/remove custom commands
+**Tab 3 - Console Commands:**
+- Surfaces ConsoleCommand nodes from the active graph
+- Includes built-in diagnostics and editable value commands
+- Supports add, edit, run, remove, and reset flows for custom commands
+
+**Tab 4 - Settings:**
+- Activation Mode plus appearance controls (icon size, wheel size, wedge gap, grayscale overrides)
+- Live preview footer can use a stable demo wheel or the active graph
+- Reset Wheel Appearance restores the appearance overrides to defaults
+
+**Tab 5 - About:**
+- Overview, version, author credit, and quick links to Docs, GitHub, and Support
+
+### Footer Behavior
+
+- On most tabs the footer shows the current active-graph status, open-key reminder, and quick links
+- On the Settings tab the footer switches to the read-only live preview widget
 
 ### Support Links
 
@@ -528,7 +538,7 @@ The Quick Menu Panel is a dockable editor tab (Window → Quick Menu Panel) that
 |------|-----|
 | Discord | https://discord.gg/YYc2v8k5BA |
 | GitHub | https://github.com/Bassounet/QuickMenu-Plugin |
-| Wiki | https://github.com/Bassounet/QuickMenu-Plugin/wiki |
+| Documentation | https://docs.quickmenuplugin.com/ |
 
 Report bugs via GitHub Issues. Join Discord for community support and feature requests.
 
@@ -919,9 +929,8 @@ All action nodes inherit from `UQMGraphNode_ActionBase`, which provides:
 ## Links
 
 - Website: https://quickmenuplugin.com
-- Documentation: https://docs.quickmenuplugin.com
-- Discord: https://discord.gg/YYc2v8k5BA
+- Docs: https://docs.quickmenuplugin.com
+- Support: https://discord.gg/YYc2v8k5BA
 - GitHub: https://github.com/Bassounet/QuickMenu-Plugin
-- Wiki: https://github.com/Bassounet/QuickMenu-Plugin/wiki
-- YouTube: TBD
-- UE Marketplace: TBD
+- Changelog: https://docs.quickmenuplugin.com/changelog/
+- Fab: https://www.fab.com/listings/885143e3-d6ec-4c71-b9f1-32aed3bf60c8

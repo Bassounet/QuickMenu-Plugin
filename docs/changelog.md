@@ -10,10 +10,24 @@ Format follows [Keep a Changelog](https://keepachangelog.com/).
 
 ### Added
 - **Wedge gap control** — adjustable pixel spacing between wedges (0–20 px) in Settings, also tunable live via middle-mouse drag on the wheel (shows "GAP X.X" in center)
+    <div style="display: flex; gap: 10px; align-items: start; flex-wrap: wrap;">
+    <video autoplay="true" loop="true" muted="true" playsinline="true" style="max-width: 400px; max-height: 400px;">
+    <source src="/img/changelog/ADD_GapSizeable.mp4" type="video/mp4">
+    </video>
+    <video autoplay="true" loop="true" muted="true" playsinline="true" style="max-width: 400px; max-height: 400px;">
+    <source src="/img/changelog/ADD_GapSizeableWheelMouse.mp4" type="video/mp4">
+    </video>
+    </div>
 
 - **Neutral gray wedge mode** — "Force Neutral Gray Wedges" setting overrides all category colors with a uniform editor-style gray, with adjustable separator darkness
+    <video autoplay="true" loop="true" muted="true" playsinline="true" style="max-width: 600px; max-height: 400px;">
+    <source src="/img/changelog/ADD_ForceGreyWheel.mp4" type="video/mp4">
+    </video>
 
 - **Interactive live wheel preview** in the Settings tab — real-time preview of the active wheel (or a demo wheel), updates instantly as you change appearance settings
+    <video autoplay="true" loop="true" muted="true" playsinline="true" style="max-width: 600px; max-height: 400px;">
+    <source src="/img/changelog/ADD_PreviewWheelSettings.mp4" type="video/mp4">
+    </video>
 
 - **Level Editor docked panel** — Quick Menu panel now registers as a Level Editor tab and auto-docks on first launch instead of floating as a nomad tab
 

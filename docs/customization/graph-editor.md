@@ -20,6 +20,20 @@ The main node graph. Drag, zoom, connect nodes. Right-click for the context menu
 - **Copy-paste** — Ctrl+C/V preserves all pin connections between pasted nodes
 - **Back to Root** — when navigating back from a subgraph, the parent graph focuses on the subgraph node
 
+### Inline Property Panel on Nodes
+
+Since 1.0.3, action node properties are edited **directly on the node in the graph** — no roundtrip through the Details panel for common properties.
+
+Depending on the node type, the inline panel exposes:
+
+- **Color swatch** — click to open the color picker for the wedge fill
+- **Label field** — editable text, or auto-generated (toggle `bAutoLabel`)
+- **Type-specific options** — dropdowns, enums, sliders matching the action (e.g. a Transform Mode selector on `TransformMode`, a component picker on `BP: Component Op`)
+- **Asset picker** — for `Open Asset`, browse Content Browser and pick any asset
+- **Blueprint action picker** — for `BP: Add Node`, search and pick any spawnable Blueprint action
+
+The Details panel remains available for advanced or rarely used properties; the inline panel simply covers the 90% case without a focus shift.
+
 ### Wheel List (Left Sidebar)
 
 ![Wheel List panel](/img/WheelsList.png)

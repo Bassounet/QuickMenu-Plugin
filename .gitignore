@@ -1,6 +1,13 @@
 # Visual Studio 2015 user specific files
 .vs/
 
+# Claude local settings
+.claude/
+
+# Python
+__pycache__/
+*.pyc
+
 # Compiled Object files
 *.slo
 *.lo

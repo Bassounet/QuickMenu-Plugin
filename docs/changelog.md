@@ -6,6 +6,55 @@ Format follows [Keep a Changelog](https://keepachangelog.com/).
 
 ---
 
+## [1.0.3] - 2026-04-17
+
+### Reported
+- Play In Viewport / Play In New Viewport opening in the wrong viewport when a Blueprint or asset editor was focused — PIE always dropped into the Level Editor viewport regardless of where the action was triggered from
+    <video autoplay="true" loop="true" muted="true" playsinline="true" style="max-width: 600px; max-height: 400px;">
+    <source src="/img/changelog/1.0.3/ISSUE_PlayViewport-PlayNewViewport.mp4" type="video/mp4">
+    </video>
+
+### Added
+- **BP Add Node action** — new action node that spawns an arbitrary Blueprint node via a searchable picker (31,000+ spawnable actions). Removes the need for a separate action node per Blueprint node type
+    <video autoplay="true" loop="true" muted="true" playsinline="true" style="max-width: 600px; max-height: 400px;">
+    <source src="/img/changelog/1.0.3/ADD_BPAddNode.mp4" type="video/mp4">
+    </video>
+    <div style="display: flex; gap: 10px; align-items: start; flex-wrap: wrap; margin-top: 8px;">
+    <img src="/img/changelog/1.0.3/ADD_BPAddNode1.png" alt="BP Add Node picker — searchable Blueprint action list" style="max-width: 400px;">
+    <img src="/img/changelog/1.0.3/ADD_BPAddNode2.png" alt="BP Add Node inline properties" style="max-width: 400px;">
+    </div>
+
+- **Open Asset action** — new action node that opens any referenced asset in its editor (Blueprint, Material, Level, Widget, Niagara, DataTable, etc.). The wedge uses the asset thumbnail as its icon automatically
+    <img src="/img/changelog/1.0.3/ADD_OpenAsset.png" alt="Open Asset node with inline asset picker and right-click spawn menu" style="max-width: 800px;">
+
+- **Inline property panel on graph nodes** — action node properties (color, name, type-specific options, asset picker, Blueprint action picker) are now edited directly on the node in the graph instead of in the Details panel. Visible in the BP Add Node and Open Asset screenshots above
+
+- **Gesture-based hotkey system** — the same key can bind multiple gestures (`Tap`, `Hold`, `Drag`) to different graphs, with per-binding `TapThresholdMs` and `DragPixelThreshold`. Legacy `Open Menu Key` + `Active Graph` are auto-migrated to the new `Hotkey Bindings` array on first launch
+    <img src="/img/changelog/1.0.3/ADD_GestureHotkeys.png" alt="Project Settings — Hotkey Bindings array with Hold and Tap entries" style="max-width: 800px;">
+
+- **Wheel usable during Play In Editor** — new `Allow Wheel During Play In Editor` setting (default on). When disabled, hotkeys pass through to the running game
+    <video autoplay="true" loop="true" muted="true" playsinline="true" style="max-width: 600px; max-height: 400px;">
+    <source src="/img/changelog/1.0.3/ADD_WheelInPIE.mp4" type="video/mp4">
+    </video>
+
+### Fixed
+- **Play In Viewport / Play In New Viewport routing** — `Play Op` actions now start the PIE session in the correct viewport based on the active editor context (Blueprint editor, asset editor, or Level Editor). Previously every variant defaulted to the Level Editor viewport
+    <video autoplay="true" loop="true" muted="true" playsinline="true" style="max-width: 600px; max-height: 400px;">
+    <source src="/img/changelog/1.0.3/FIX_PlayViewport-PlayNewViewport.mp4" type="video/mp4">
+    </video>
+
+- **Viewport toggles targeting wrong viewport** — `Set View Mode` (Lit, Unlit, Wireframe, Detail Lighting…) now acts on the currently focused viewport. When a Blueprint editor is open it toggles its internal viewport; otherwise it falls back to the Level Editor viewport. Previously the toggle always applied to the Level Editor regardless of focus
+
+- **Subgraph exec connections lost during compat graph packaging** — `ImportNodesFromText` resolved `LinkedTo` pins in text order, silently dropping links to Subgraph `ExecIn` pins created later via `PostPasteNode`. A new `RepairSubgraphExecLinks` pass re-parses the snapshot text and manually reconnects the lost links
+
+- **Fake enum variants in right-click node search** — `TFieldIterator<FEnumProperty>` was surfacing inherited `UEdGraphNode` enums (`EnabledState`, `AdvancedPinDisplay`) as phantom action variants (Enabled / Disabled / Development Only / Hidden / No Pins / Shown), most visible on `BP Add Node`. Now filtered to only action-specific enums
+
+### Changed
+- Default for `Force Neutral Gray Wedges` flipped to `true` (the neutral editor-style look is now the default; per-category colors can still be re-enabled in Settings)
+- `Open Menu Key` + `Active Graph` settings are now marked as **Legacy** and read-only once migrated to `Hotkey Bindings`
+
+---
+
 ## [1.0.2] - 2026-04-10
 
 ### Added

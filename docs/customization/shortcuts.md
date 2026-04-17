@@ -15,6 +15,26 @@ All shortcuts are customizable in the Quick Menu Panel (Window → Quick Menu Pa
 | **Ctrl+Y** | Redo (refreshes menu) |
 | **E** (configurable) | Jump to graph editor for current wheel |
 
+## Hotkey Bindings & Gestures
+
+Since 1.0.3, the same key can trigger **different gestures** — each bound to a different graph. Configure under **Project Settings → Quick Menu → Hotkey Bindings**.
+
+| Gesture | Trigger |
+|---------|---------|
+| **Tap** | Press and release within `TapThresholdMs` (default 200 ms) without dragging. Opens the menu in sticky mode (stays open until clicked) |
+| **Hold** | Press longer than `TapThresholdMs`. Release executes the hovered wedge (classic press-hold-release flow) |
+| **Drag** | Press and move the mouse beyond `DragPixelThreshold` (default 8 px) before releasing |
+
+Each binding maps `(Key, Gesture)` → a specific graph.
+
+**Example setup:**
+
+- `V` + **Tap** → `QM_Favorites` (a small wheel with your most-used actions)
+- `V` + **Hold** → `QM_MasterDefault` (the full context-aware wheel)
+
+!!! tip "Legacy migration"
+    If you used Quick Menu 1.0.2 or earlier, your `Open Menu Key` + `Active Graph` settings are automatically migrated to a single `Hold` binding on first launch. The legacy fields remain visible in Project Settings as read-only for reference, but new configuration should go through **Hotkey Bindings**.
+
 ## Graph Editor — Navigation
 
 | Key | Action |

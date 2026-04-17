@@ -8,6 +8,16 @@ Navigates to another wheel in the current graph.
 
 When clicked in the pie menu, replaces the current wheel with the target wheel. A back arrow appears at the center to return to the previous wheel (breadcrumb navigation). Uses the `QuickMenu.GoToWheel` custom brush as its default icon.
 
+## Open Asset
+
+*Added in 1.0.3.*
+
+Opens any referenced asset in its dedicated editor (Blueprint, Material, Level, Widget Blueprint, Niagara, DataTable, etc.).
+
+**Property:** `Asset` — pick any asset from the Content Browser via an inline asset picker on the node.
+
+The wedge uses the asset's thumbnail as its icon by default, and its label defaults to the asset name. Both are overridable via the inline property panel.
+
 ## Repeat Last
 
 Re-executes the last action used via Quick Menu.

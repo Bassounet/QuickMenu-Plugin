@@ -1,6 +1,6 @@
-# Quick Menu — Unreal Engine Plugin
+# Quick Menu - Unreal Engine Plugin
 # Complete Reference (llms-full.txt)
-# Version: 1.0.1 | Engine: UE 5.0 – 5.7 | Site: quickmenuplugin.com
+# Version: 1.0.3 | Engine: UE 5.0-5.7 | Site: quickmenuplugin.com
 
 ## What is Quick Menu?
 
@@ -9,13 +9,14 @@ Quick Menu is a radial pie menu plugin for Unreal Engine that gives you instant 
 Everything is configured through a **visual node graph** — no config files, no code required. Connect nodes to build menus that react to your editor context, organize actions into nested sub-menus, and customize every wedge with icons and colors.
 
 **Key facts:**
-- Hotkey: **V** (configurable)
-- 44 built-in action types covering viewport, transforms, spawning, blueprints, materials, sequencer, and more
+- Hotkey: **V** (configurable; same key can bind multiple gestures — `Tap`, `Hold`, `Drag` — to different graphs)
+- 46 built-in action types covering viewport, transforms, spawning, blueprints, materials, sequencer, and more
 - 5 context switch types for dynamic menus
-- Visual graph editor — drag, drop, connect
+- Visual graph editor — drag, drop, connect; action-node properties are edited **inline on the node** (no Details panel roundtrip)
 - Supports nested sub-menus (up to 4 levels deep)
 - Python scripting support for custom actions
 - Works across Level Editor, Blueprint Editor, Material Editor, Sequencer, Niagara, PCG, and 49 editor contexts total
+- Usable during Play In Editor (togglable via `Allow Wheel During Play In Editor` setting)
 - Compatible with UE 5.0 through 5.7
 
 ---
@@ -221,7 +222,7 @@ Icons prefixed with `QuickMenu.` are resolved from the QuickMenu style set rathe
 |--------|-------------|---------|
 | **Scalability** | Engine quality settings | Quality: Low/Medium/High/Epic/Cinematic + Material Quality: Low/Medium/High |
 
-#### Blueprint Actions (8 actions)
+#### Blueprint Actions (9 actions)
 
 | Action | What it does | Notes |
 |--------|-------------|-------|
@@ -230,6 +231,7 @@ Icons prefixed with `QuickMenu.` are resolved from the QuickMenu style set rathe
 | **BP: Component Property** | Set component properties | Mobility, Visibility, Collision, Physics. Requires UE 5.0+ |
 | **BP: Add Graph** | Adds a new graph | Function, Macro, Event Dispatcher |
 | **BP: Add Variable** | Adds a typed variable | Bool, Byte, Int, Int64, Float, Double, Name, String, Text, Vector, Rotator, Transform |
+| **BP: Add Node** | Spawns an arbitrary Blueprint node at mouse position | Pick any spawnable Blueprint action from a searchable picker (functions, events, variables, macros, flow control…). Replaces the need for a dedicated action node per Blueprint node type |
 | **BP: My Blueprint Op** | Panel item operations | Delete, Rename, Delete Unused Variables |
 | **BP: Interface** | Interface management | Implement or Remove interface |
 | **BP: Compile Op** | Compile and debug | Compile, Compile All, Save & Compile, Toggle Breakpoint, Clear All Breakpoints, Find References, Go to Parent Class, Open Class Settings |
@@ -268,11 +270,12 @@ Only visible when the Niagara plugin is loaded.
 
 Only visible when the PCG plugin is loaded.
 
-#### Navigation & Utility (2 actions)
+#### Navigation & Utility (3 actions)
 
 | Action | What it does | Notes |
 |--------|-------------|-------|
 | **Go To Wheel** | Navigates to another wheel in the current graph | Pick target wheel from dropdown. Creates a "breadcrumb" navigation — back arrow returns to previous wheel. Default icon: `QuickMenu.GoToWheel` |
+| **Open Asset** | Opens any referenced asset in its dedicated editor | Pick any asset from the Content Browser (Blueprint, Material, Level, Widget, etc.). The action uses the asset's thumbnail as its icon |
 | **Repeat Last** | Re-executes the last action used via Quick Menu | Label dynamically shows what the last action was |
 
 #### Graph Editor (1 action)
@@ -351,7 +354,7 @@ Every action node has properties that control how its wedge looks in the pie men
   - **IconTexture** — assign a custom UTexture2D for a fully custom icon
 - **Compact mode** — toggles between a full-size and compact node display in the graph editor (H key or right-click → Toggle Compact)
 
-These properties are editable in the Details panel when a node is selected in the graph editor.
+These properties are editable **directly on the node** via an inline property panel (color swatch, name field, type-specific options, asset pickers, Blueprint action pickers) — no Details panel roundtrip. The Details panel remains available for advanced properties.
 
 ### Wheel List Panel (Left Sidebar)
 
@@ -436,6 +439,20 @@ Opened with **Ctrl+F**. Search across all nodes in the current graph.
 | **Ctrl+Y** | Redo (refreshes menu) |
 | **E** (configurable) | Jump to graph editor for current wheel |
 
+#### Hotkey Bindings & Gestures
+
+Quick Menu supports multiple **gestures** on the same key, each bound to a different graph. Configure them under **Project Settings → Quick Menu → Hotkey Bindings**.
+
+| Gesture | Trigger |
+|---------|---------|
+| **Tap** | Press and release within `TapThresholdMs` (default 200 ms) without dragging. Opens the menu in sticky mode (stays open until clicked) |
+| **Hold** | Press longer than `TapThresholdMs`. Release to execute the hovered wedge (press-hold-release flow) |
+| **Drag** | Press and move the mouse beyond `DragPixelThreshold` (default 8 px) before releasing |
+
+Each binding maps `(Key, Gesture)` → a specific graph. Example: `V Tap` opens a quick favorites wheel, `V Hold` opens the full context-aware wheel.
+
+The legacy `Open Menu Key` + `Active Graph` settings are automatically migrated into `Hotkey Bindings` on first launch (one `Hold` binding). They remain visible in Project Settings as read-only **Legacy** fields.
+
 ### Graph Editor — Navigation
 
 | Key | Action |
@@ -496,31 +513,41 @@ This means: select 5 action nodes → press W + click → instant wheel with all
 
 ## Quick Menu Panel
 
-The Quick Menu Panel is a dockable editor tab (Window → Quick Menu Panel) that serves as a central hub for configuration and support.
+The Quick Menu Panel is a dockable editor tab that serves as the central hub for setup, support, shortcuts, console tools, and appearance tuning.
 
 ### Panel Sections
 
 **Header:**
-- **Active Graph dropdown** — quickly switch which graph is active without going to Project Settings
-- **Activation Mode selector** — Click & Release / Click Only / Release Only, changeable directly from the panel
-- Support links: Discord, GitHub, Wiki (clickable icons)
+- Version and release badge
+- Report Bug button that opens GitHub issues
+- Active Graph dropdown plus quick create and open actions
+- Direct links to Discord, GitHub, and Documentation
 
-**Tab 1 — Shortcuts:**
-- Lists all keyboard shortcuts organized by section (Pie Menu, Node Spawn, Graph Editor)
-- Each shortcut has an editable key binding badge — click it, press a new key to rebind
-- Reset button appears when a binding has been changed from default
-- Node Spawn shortcuts show the hold+click shortcuts (W, S, C by default)
+**Tab 1 - Shortcuts:**
+- Lists graph editor, node-spawn, and pie menu shortcuts
+- Key bindings can be edited directly from the panel
 
-**Tab 2 — Docs:**
-- Built-in documentation of all node types and action types
-- Organized by category, browsable in-editor
+**Tab 2 - Docs:**
+- Searchable in-editor help for quick start, panel tour, controls, settings, action families, and support resources
+- Includes quick actions such as Create Graph plus direct links back to the full docs and support channels
 
-**Tab 3 — Console Commands:**
-- Lists custom console commands defined in Project Settings
-- Toggle commands on/off with one click
-- Edit command values inline (commands with parameters show editable value fields, not just Run buttons)
-- Tracks last-applied values and can reset to initial CVar values
-- Add/remove custom commands
+**Tab 3 - Console Commands:**
+- Surfaces ConsoleCommand nodes from the active graph
+- Includes built-in diagnostics and editable value commands
+- Supports add, edit, run, remove, and reset flows for custom commands
+
+**Tab 4 - Settings:**
+- Activation Mode plus appearance controls (icon size, wheel size, wedge gap, grayscale overrides)
+- Live preview footer can use a stable demo wheel or the active graph
+- Reset Wheel Appearance restores the appearance overrides to defaults
+
+**Tab 5 - About:**
+- Overview, version, author credit, and quick links to Docs, GitHub, and Support
+
+### Footer Behavior
+
+- On most tabs the footer shows the current active-graph status, open-key reminder, and quick links
+- On the Settings tab the footer switches to the read-only live preview widget
 
 ### Support Links
 
@@ -528,7 +555,7 @@ The Quick Menu Panel is a dockable editor tab (Window → Quick Menu Panel) that
 |------|-----|
 | Discord | https://discord.gg/YYc2v8k5BA |
 | GitHub | https://github.com/Bassounet/QuickMenu-Plugin |
-| Wiki | https://github.com/Bassounet/QuickMenu-Plugin/wiki |
+| Documentation | https://docs.quickmenuplugin.com/ |
 
 Report bugs via GitHub Issues. Join Discord for community support and feature requests.
 
@@ -538,6 +565,9 @@ Report bugs via GitHub Issues. Join Discord for community support and feature re
 
 ### Opening
 Press **V** (or your configured hotkey) anywhere in the editor. The pie menu appears centered at your cursor.
+
+- The same key can be bound to multiple gestures (`Tap`, `Hold`, `Drag`) that each open a different graph — see **Hotkey Bindings & Gestures** above
+- Works during **Play In Editor** when `Allow Wheel During Play In Editor` is enabled (default). Disable to let the game receive the keypress instead
 
 ### Navigation
 - **Hover** over a wedge to highlight it
@@ -623,12 +653,19 @@ Found at: **Edit → Project Settings → Plugins → Quick Menu**
 
 | Setting | Default | Description |
 |---------|---------|-------------|
-| **Active Graph** | None | The Quick Menu Graph asset to use. Must be set for the menu to work. |
-| **Open Menu Key** | V | Hotkey to open the pie menu |
+| **Hotkey Bindings** | 1 entry (V, Hold → Active Graph) | List of `(Key, Gesture, Graph)` bindings. Supports multiple gestures on the same key routing to different graphs. See "Hotkey Bindings & Gestures" above |
+| **Active Graph** *(Legacy)* | `QM_MasterDefault` | Migrated into Hotkey Bindings on first launch. Kept for backward reference only |
+| **Open Menu Key** *(Legacy)* | V | Migrated into Hotkey Bindings on first launch |
 | **Edit Wheel Key** | E | Hotkey to jump from pie menu to graph editor for the current wheel |
 | **Activation Mode** | Click and Release | When the hovered wedge executes (see Activation Modes above) |
-| **Node Spawn Shortcuts** | Empty | List of key + node class pairs for quick node creation in the graph editor |
+| **Node Spawn Shortcuts** | W, S, C | Key + node class pairs for quick node creation in the graph editor (W→WheelOutput, S→SubMenu, C→Switch: Editor Context) |
 | **Offer Create Wheel** | true | Show "Create Wheel" panel when no wheel matches the current context |
+| **Allow Wheel During Play In Editor** | true | When enabled, hotkeys open the pie menu even while PIE is running. Disable to let the game receive the keypress |
+| **Force Neutral Gray Wedges** | true | Overrides per-category wedge colors with a uniform editor-style gray. Disable to restore colored wedges |
+| **Gray Separator Darkness** | 3.0 | Darkness of wedge separator lines when neutral gray mode is on |
+| **Wheel Size Multiplier** | 1.4 | Base size multiplier for the pie menu (also persisted per-project, adjustable via mouse wheel while menu is open) |
+| **Icon Size Multiplier** | 1.1 | Multiplier applied to wedge icons |
+| **Wedge Gap** | 0 px | Pixel gap between adjacent wedges; adjustable live via middle-mouse drag on the wheel |
 | **Custom Console Commands** | Empty | User-defined console commands available in the Quick Menu panel |
 
 ---
@@ -906,10 +943,12 @@ All action nodes inherit from `UQMGraphNode_ActionBase`, which provides:
 | BP: Component Property | `UQMGraphNode_Action_BP_ComponentProperty` |
 | BP: Add Graph | `UQMGraphNode_Action_BP_AddGraph` |
 | BP: Add Variable | `UQMGraphNode_Action_BP_AddVariable` |
+| BP: Add Node | `UQMGraphNode_Action_BP_AddNode` |
 | BP: My Blueprint Op | `UQMGraphNode_Action_BP_MyBlueprintOp` |
 | BP: Interface | `UQMGraphNode_Action_BP_Interface` |
 | BP: Compile Op | `UQMGraphNode_Action_BP_CompileOp` |
 | Go To Wheel | `UQMGraphNode_Action_GoToWheel` |
+| Open Asset | `UQMGraphNode_Action_OpenAsset` |
 | Repeat Last | `UQMGraphNode_Action_RepeatLast` |
 | Graph Op | `UQMGraphNode_Action_GraphOp` |
 | Custom Code | `UQMGraphNode_Action_CustomCode` |
@@ -919,9 +958,8 @@ All action nodes inherit from `UQMGraphNode_ActionBase`, which provides:
 ## Links
 
 - Website: https://quickmenuplugin.com
-- Documentation: https://docs.quickmenuplugin.com
-- Discord: https://discord.gg/YYc2v8k5BA
+- Docs: https://docs.quickmenuplugin.com
+- Support: https://discord.gg/YYc2v8k5BA
 - GitHub: https://github.com/Bassounet/QuickMenu-Plugin
-- Wiki: https://github.com/Bassounet/QuickMenu-Plugin/wiki
-- YouTube: TBD
-- UE Marketplace: TBD
+- Changelog: https://docs.quickmenuplugin.com/changelog/
+- Fab: https://www.fab.com/listings/885143e3-d6ec-4c71-b9f1-32aed3bf60c8

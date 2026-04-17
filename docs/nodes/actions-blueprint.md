@@ -36,6 +36,16 @@ Adds a typed member variable to the Blueprint.
 
 **Options:** Bool, Byte, Int, Int64, Float, Double, Name, String, Text, Vector, Rotator, Transform.
 
+## BP: Add Node
+
+*Added in 1.0.3.*
+
+Spawns an arbitrary Blueprint node at the mouse position in the active Blueprint graph — functions, events, variables, macros, flow control, math, structs, etc. Replaces the need for a dedicated Quick Menu action node per Blueprint node type.
+
+**Property:** `SpawnAction` — pick any spawnable Blueprint action from a searchable picker (same database Unreal uses in its own right-click context menu).
+
+The wedge label and icon default to the picked action's display name and icon; both remain overridable via the inline property panel.
+
 ## BP: My Blueprint Op
 
 Operations on items in the My Blueprint panel.

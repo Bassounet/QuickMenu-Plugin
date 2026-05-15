@@ -10,7 +10,12 @@ All shortcuts are customizable in the Quick Menu Panel (Window → Quick Menu Pa
 | **Left Click** | Execute hovered wedge |
 | **Right Click** | Go back to parent menu / dismiss |
 | **Escape** | Close menu |
-| **Mouse Wheel** | Zoom pie menu |
+| **Mouse Wheel** | Zoom pie menu (pie mode) / adjust list distance to center (list mode, *1.0.4*) |
+| **Middle-drag** | Adjust Wedge Gap (pie mode) / scale buttons with `SCALE x.xx` readout (list mode, *1.0.4*) |
+| **Shift + Middle-drag** *(1.0.4)* | Rotate the open wheel live (hold `Ctrl` for ×0.1 fine mode). Live numeric angle overlay during drag |
+| **Shift + Double Middle-click** *(1.0.4)* | Reset wheel rotation to 0° |
+| **Alt** *(1.0.4)* | Enter [Wheel Edit Mode](pie-menu.md#wheel-edit-mode-1-0-4) — drag wedges to reorder. Toggle or hold depending on the `Wheel Edit Mode Activation` setting |
+| **Mouse Wheel in open submenu** *(1.0.4)* | Cycle the submenu options instead of resizing the wheel |
 | **Ctrl+Z** | Undo last action (refreshes menu) |
 | **Ctrl+Y** | Redo (refreshes menu) |
 | **E** (configurable) | Jump to graph editor for current wheel |

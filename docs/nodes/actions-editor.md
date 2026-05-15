@@ -61,3 +61,28 @@ PIE (Play In Editor) session controls.
 Engine quality and scalability settings.
 
 **Options:** Quality: Low/Medium/High/Epic/Cinematic + Material Quality: Low/Medium/High.
+
+## Show Flag
+
+Toggles a viewport show flag.
+
+**Property:** `ShowFlagName` — picked through a hierarchical, name-searchable tree that mirrors the viewport `Show` menu (Lighting Components, Lighting Features, Post Processing, Developer, Collision, Volumes, Advanced, etc.).
+
+*Since 1.0.4*, the picker stores the real Unreal show-flag name and falls back transparently from the legacy hardcoded enum so existing graphs keep working. The picker is exposed both in the inline property panel and directly on the node body.
+
+## Property Matrix
+
+*Added in 1.0.4 — Experimental.*
+
+Opens Unreal's Property Matrix toolkit on a configurable source for bulk-editing many objects at once. Mirrors the engine's `Asset Actions > Bulk Edit via Property Matrix` (Content Browser) and the Level Editor equivalent for selected actors.
+
+**Property:** `Source` — one of:
+
+| Source | Behavior |
+|--------|----------|
+| **Auto** | Tries Content Browser asset selection first, falls back to selected actors if no assets are selected |
+| **Content Browser Assets** | Bulk-edits the currently selected assets in the focused Content Browser |
+| **Selected Actors** | Bulk-edits the actors currently selected in the level viewport |
+
+!!! warning "Experimental"
+    Marked experimental in 1.0.4 while UX and source-handling iterate.

@@ -49,12 +49,18 @@ A searchable list of console commands with one-click Run buttons.
 
 ## Tab 4 — Settings
 
-Appearance settings for the pie menu:
+*Since 1.0.4*, the Settings tab **mirrors the Project Settings object directly** — the same underlying `UQuickMenuSettings` instance, with no separate handcrafted UI. Every setting you can change in `Edit → Project Settings → Plugins → Quick Menu` is editable here too, organized under the same groups:
 
-- **Icon Size** — multiplier for wedge icons (0.5–3.0)
-- **Wheel Size** — multiplier for overall pie menu size (0.5–2.0)
+- **Primary Binding** — Active Graph (Legacy), Open Menu Key (Legacy), Edit Wheel Key
+- **Hotkeys** — Enable Custom Gesture Hotkeys, Hotkey Bindings, Node Spawn Shortcuts
+- **Interaction** — Activation Mode, Wheel Edit Mode Activation
+- **Behavior** — Offer Create Wheel, Allow Wheel During Play In Editor
+- **Appearance** — Force Neutral Gray Wedges, Gray Separator Darkness, Icon Size Multiplier, Wheel Size Multiplier, Wedge Gap, List Menu Distance
+- **Console** — Custom Console Commands
 
-Changes apply immediately and persist across sessions.
+A read-only live preview of the wheel sits at the footer of this tab; it can show the active graph or a stable demo wheel. A `Reset Wheel Appearance` button restores the appearance overrides to defaults.
+
+See [Project Settings](settings.md) for the full reference.
 
 ## Support Links
 

@@ -18,6 +18,24 @@ Opens any referenced asset in its dedicated editor (Blueprint, Material, Level, 
 
 The wedge uses the asset's thumbnail as its icon by default, and its label defaults to the asset name. Both are overridable via the inline property panel.
 
+*Since 1.0.4*, the node stores the asset's soft path instead of resolving the full asset at pick time, so picking a heavy asset (large Level, etc.) no longer freezes the editor. Loading happens lazily on click — Levels (`UWorld`) are loaded one frame after the wheel dismisses, with the engine's `LoadMap` progress dialog suppressed.
+
+## Create Asset
+
+*Added in 1.0.4.*
+
+Creates a new asset in the focused Content Browser's current folder.
+
+**Property:** `FactoryClass` — picked through an inline searchable list (filter box + scrollable list filtered alphabetically by display name, showing the produced asset class).
+
+The picker is populated from every `UFactory` that satisfies `ShouldShowInNewMenu()` && `CanCreateNew()` — the same set of asset types as the Content Browser's "Add" menu (Material, Level Sequence, Blueprint Class, Data Asset, …). Factories that need extra input (`BlueprintClass`, structs, etc.) chain through `ConfigureProperties()` so the engine's parent-class / type pickers appear as expected.
+
+**Behavior:**
+
+- Names are auto-generated as `New<ClassName>` and made unique within the target folder
+- The new asset is selected in the Content Browser on success
+- Toasts a clear message when no Content Browser is currently open
+
 ## Repeat Last
 
 Re-executes the last action used via Quick Menu.
@@ -55,6 +73,7 @@ Run inline Python code when the wedge is clicked.
 - **Execute Code** — Python code to run on click
 - **Display Name Code** — Python expression returning a string (dynamic label)
 - **Is Visible Code** — Python expression returning bool (conditional visibility)
+- **Icon** — *(since 1.0.4)* same icon picker as every other action node (brush selection, custom texture support, title-bar preview)
 
 > Requires the **Python Editor Script Plugin** to be enabled.
 

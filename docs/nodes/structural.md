@@ -25,6 +25,9 @@ The terminal node that defines a pie menu wheel. Each input pin becomes one wedg
 | **Category** | String | — | Groups this wheel in the Wheel List sidebar |
 | **SortOrder** | int32 | 0 | Sort priority within its category |
 | **NumMenuPins** | int32 | 4 | Number of menu input pins (1–10) |
+| **Rotation (°)** *(1.0.4)* | float | 0 | Per-graph wheel rotation in degrees. Editable inline via `SpinBox` on the node and adjustable live with **Shift + Middle-drag** while the wheel is open |
+| **Snap to Angle** *(1.0.4)* | bool | false | When on, rotation snaps to multiples of `Snap Angle Degrees` |
+| **Snap Angle Degrees** *(1.0.4)* | float | 0 | Snap step in degrees. `0` = auto `360° / NumMenuPins` (snap to wedge boundaries) |
 
 > **Note:** Wedge colors and icons are set on individual action and SubMenu nodes (via `WedgeColor` and `IconBrushName`), not on the WheelOutput node.
 

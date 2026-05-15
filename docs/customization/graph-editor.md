@@ -68,6 +68,7 @@ Live, interactive rendering of the selected wheel as a pie menu.
 - **Interactive** — click wedges to test actions (they execute for real), hover to see highlights
 - **"+" button** — add actions to the wheel directly from the preview (opens action picker)
 - **"X" buttons** — remove wedges inline
+- **Click-drag reorder** *(1.0.4)* — drag wedges directly inside the preview to swap them, without first toggling Edit Mode. Each drop auto-exits the mode. Changes flow back to the `WheelOutput` pins so the runtime wheel reflects the new order on the next open
 - **Scale slider** — drag to preview at different sizes (1.0x to 2.0x)
 - **Sub-menu expansion** — hover a sub-menu wedge to see children expand as nested rings
 - **Toggleable** — show/hide with toolbar button or Ctrl+E
@@ -107,12 +108,22 @@ Opened with **Ctrl+F**. Search across all nodes in the current graph.
 
 ## Comment Nodes
 
+*Since 1.0.4*, Quick Menu graph comments use the **engine-default comment widget** — exact parity with Blueprint, AnimBP, Niagara, Material comments (resize handles, contained-node move, title-bar context menu, color picker, font size adjustment). Existing comments keep all of their data (`NodeComment`, `CommentColor`, dimensions) — only the rendering changes.
+
 - Press **C** with nodes selected to create a group comment around them
 - Double-click to rename
 - Click the color swatch to change the comment color
 - Resizable — drag edges to fit your node group
 - **Alt+E** — create a comment auto-named from the first SubMenu/WheelOutput found in selection, with a random saturated color
 - **Right-click a comment → Auto Name & Color** — automatically renames from contained SubMenu/WheelOutput and assigns a random color
+
+## Graph Op Actions in Any Graph Editor *(1.0.4)*
+
+`Auto-Layout Graph`, `Align Horizontal`, `Align Vertical`, `Auto Name & Color Comments`, and `Create Comment Around Selection` now operate on the **focused** graph editor regardless of editor type — Blueprint, Niagara, AnimBP, Material, etc. — using a new generic helper that walks the focused widget tree and finds the active `SGraphEditor`.
+
+- QM-specific operations (`AddWheelOutput`, `CollapseToSubMenu`, `PreviewWheel`, `SetAsActive`, …) keep their QM-only path
+- `Auto Name & Color Comments` falls back to color-only on non-QM graphs (no `SubMenu`/`WheelOutput` to derive comment names from)
+- Comment shortcuts (`C`, `Alt+E`) now route by user focus, so the comment lands in the editor under focus — even with multiple QM graphs open simultaneously
 
 <div class="video-container">
 <video autoplay="true" loop="true" muted="true" playsinline="true">

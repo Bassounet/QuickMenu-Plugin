@@ -1,4 +1,4 @@
-<img width="1920" height="1080" alt="Quick Menu — Pie Menu for Unreal Engine Editor" src="docs/img/ThumbnailV2.png" />
+<img width="1920" height="1080" alt="Quick Menu" src="https://github.com/user-attachments/assets/a44dc0bf-1d10-4fc7-9c5e-f61f038cdc2b" />
 
 # Quick Menu
 
@@ -38,14 +38,14 @@ Check the [**Troubleshooting**](https://docs.quickmenuplugin.com/troubleshooting
 
 | Engine Version | Plugin Version | Support |
 |:-:|:-:|:-:|
-| UE 5.7 | 1.0.3 | :white_check_mark: |
-| UE 5.6 | 1.0.3 | :white_check_mark: |
-| UE 5.5 | 1.0.3 | :white_check_mark: |
-| UE 5.4 | 1.0.3 | :white_check_mark: |
-| UE 5.3 | 1.0.3 | :white_check_mark: |
-| UE 5.2 | 1.0.3 | :white_check_mark: |
-| UE 5.1 | 1.0.3 | :white_check_mark: |
-| UE 5.0 | 1.0.3 | :white_check_mark: |
+| UE 5.7 | 1.0.4 | :white_check_mark: |
+| UE 5.6 | 1.0.4 | :white_check_mark: |
+| UE 5.5 | 1.0.4 | :white_check_mark: |
+| UE 5.4 | 1.0.4 | :white_check_mark: |
+| UE 5.3 | 1.0.4 | :white_check_mark: |
+| UE 5.2 | 1.0.4 | :white_check_mark: |
+| UE 5.1 | 1.0.4 | :white_check_mark: |
+| UE 5.0 | 1.0.4 | :white_check_mark: |
 
 ## Support
 

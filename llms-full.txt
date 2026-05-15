@@ -1,6 +1,6 @@
 # Quick Menu - Unreal Engine Plugin
 # Complete Reference (llms-full.txt)
-# Version: 1.0.3 | Engine: UE 5.0-5.7 | Site: quickmenuplugin.com
+# Version: 1.0.4 | Engine: UE 5.0-5.7 | Site: quickmenuplugin.com
 
 ## What is Quick Menu?
 

@@ -28,6 +28,7 @@ The terminal node that defines a pie menu wheel. Each input pin becomes one wedg
 | **Rotation (°)** *(1.0.4)* | float | 0 | Per-graph wheel rotation in degrees. Editable inline via `SpinBox` on the node and adjustable live with **Shift + Middle-drag** while the wheel is open |
 | **Snap to Angle** *(1.0.4)* | bool | false | When on, rotation snaps to multiples of `Snap Angle Degrees` |
 | **Snap Angle Degrees** *(1.0.4)* | float | 0 | Snap step in degrees. `0` = auto `360° / NumMenuPins` (snap to wedge boundaries) |
+| **Inherit Mode to Children** *(1.0.5)* | bool | true | When the wheel is in `Radial Buttons` (list) mode, all sub-menus opened from it also render as vertical list boxes instead of falling back to wedge rings, keeping the visual style consistent across nested rings. Uncheck to restore the previous alternating behavior (root in list, sub-menus in wedge). Wedges mode is unaffected. |
 
 > **Note:** Wedge colors and icons are set on individual action and SubMenu nodes (via `WedgeColor` and `IconBrushName`), not on the WheelOutput node.
 

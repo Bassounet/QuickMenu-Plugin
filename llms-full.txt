@@ -1,6 +1,6 @@
 # Quick Menu - Unreal Engine Plugin
 # Complete Reference (llms-full.txt)
-# Version: 1.0.4 | Engine: UE 5.0-5.7 | Site: quickmenuplugin.com
+# Version: 1.0.5 | Engine: UE 5.0-5.7 | Site: quickmenuplugin.com
 
 ## What is Quick Menu?
 
@@ -69,7 +69,7 @@ This means you can have one graph that shows transform tools in the Level Editor
 #### WheelOutput
 - Terminal node with exec input + N menu input pins
 - Each menu pin = one wedge in the pie menu
-- Properties: **WheelName** (displayed in editor), **Category** (for organization)
+- Properties: **WheelName** (displayed in editor), **Category** (for organization), **Inherit Mode to Children** (Appearance, default ON — when the wheel is in `Radial Buttons` (list) mode, all sub-menus opened from it also render as vertical list boxes instead of falling back to wedge rings, keeping the visual style consistent across nested rings; unchecking restores the previous alternating behavior — root in list, sub-menus in wedge. Wedges mode is unaffected.)
 - Maximum 10 wedges per wheel
 
 #### SubMenu
@@ -517,37 +517,40 @@ The Quick Menu Panel is a dockable editor tab that serves as the central hub for
 
 ### Panel Sections
 
-**Header:**
-- Version and release badge
-- Report Bug button that opens GitHub issues
-- Active Graph dropdown plus quick create and open actions
-- Direct links to Discord, GitHub, and Documentation
+**Header (hero card):**
+- Row 1 — 44 px logo, bold `Quick Menu Panel` title, dim subtitle `vX.Y.Z · RELEASE`
+- Row 2 — bordered toolbar block grouping `Graph: <active-graph picker> [+ New] [↗ Open]` and a vertical separator, followed by the `Wheel: <name | None>` chip showing the current active wheel
+- Row 3 — inline links: `Discord  GitHub  Docs  Website`
+- Report Bug button opens GitHub issues
 
-**Tab 1 - Shortcuts:**
+**Tabs are drag-reorderable** — every tab can be grabbed and dragged to reorder. Hovering shows an open-hand cursor and a subtle highlight; dragging swaps to a closed-hand cursor and shows a floating decorator widget (the tab label) following the mouse. Drop targets show a thin accent line on the left or right edge depending on the cursor X position within the target tab, so users can precisely insert between any two tabs. Order is persisted per project in `EditorPerProjectUserSettings.ini` under `[QuickMenuPanel] TabOrder=…`.
+
+**Tab — Shortcuts:**
 - Lists graph editor, node-spawn, and pie menu shortcuts
 - Key bindings can be edited directly from the panel
 
-**Tab 2 - Docs:**
+**Tab — Docs:**
 - Searchable in-editor help for quick start, panel tour, controls, settings, action families, and support resources
 - Includes quick actions such as Create Graph plus direct links back to the full docs and support channels
 
-**Tab 3 - Console Commands:**
+**Tab — Console Cmds:**
 - Surfaces ConsoleCommand nodes from the active graph
 - Includes built-in diagnostics and editable value commands
 - Supports add, edit, run, remove, and reset flows for custom commands
 
-**Tab 4 - Settings:**
+**Tab — Plugin settings:**
 - Activation Mode plus appearance controls (icon size, wheel size, wedge gap, grayscale overrides)
-- Live preview footer can use a stable demo wheel or the active graph
+- Uses the full tab height (no more vertical splitter sharing space with a preview)
 - Reset Wheel Appearance restores the appearance overrides to defaults
+- Settings now persist across editor restarts (writes routed through `TryUpdateDefaultConfigFile()` for the `defaultconfig` `UQuickMenuSettings` class)
 
-**Tab 5 - About:**
+**Tab — Live Preview (dedicated):**
+- Hosts the live wheel preview at full tab height (moved out of `Plugin settings` into its own tab)
+- Source picker in the section header: `Demo` (stable showcase) or `Active Graph`
+- Refreshes automatically when entering the tab
+
+**Tab — About:**
 - Overview, version, author credit, and quick links to Docs, GitHub, and Support
-
-### Footer Behavior
-
-- On most tabs the footer shows the current active-graph status, open-key reminder, and quick links
-- On the Settings tab the footer switches to the read-only live preview widget
 
 ### Support Links
 

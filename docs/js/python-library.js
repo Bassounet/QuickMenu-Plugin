@@ -1,56 +1,88 @@
 (function () {
   function initPythonLibrary() {
+    const searchInput = document.querySelector('.qm-py-search__input');
     const filters = document.querySelectorAll('.qm-py-filter');
     const cards = document.querySelectorAll('.qm-py-card');
     const intro = document.querySelector('.qm-py-intro__count strong');
     const empty = document.querySelector('.qm-py-empty');
     if (!filters.length || !cards.length) return;
 
-    // Compute counts per category from the actual cards
+    // Index each card: lowercased tag set + searchable text (title + description)
+    const cardData = [...cards].map(card => {
+      const tags = new Set(
+        [...card.querySelectorAll('.qm-py-card__tag')]
+          .map(t => t.textContent.replace(/^#/, '').trim().toLowerCase())
+          .filter(Boolean)
+      );
+      const titleText = (card.querySelector('h3')?.textContent || '').toLowerCase();
+      const descText = (card.querySelector('.qm-py-card__titles p')?.textContent || '').toLowerCase();
+      return { card, tags, search: `${titleText} ${descText}` };
+    });
+
+    // Count cards per tag (used for pill counts)
     const counts = { all: cards.length };
-    cards.forEach(card => {
-      const cat = (card.dataset.category || '').toLowerCase();
-      if (!cat) return;
-      counts[cat] = (counts[cat] || 0) + 1;
+    cardData.forEach(({ tags }) => {
+      tags.forEach(tag => { counts[tag] = (counts[tag] || 0) + 1; });
     });
 
-    // Update count badges, dim pills with 0 cards
+    // Populate pill counts + dim those with zero cards
     filters.forEach(pill => {
-      const cat = (pill.dataset.filter || '').toLowerCase();
+      const tag = (pill.dataset.filter || '').toLowerCase();
       const countEl = pill.querySelector('.qm-py-filter__count');
-      const count = counts[cat] || 0;
+      const count = counts[tag] || 0;
       if (countEl) countEl.textContent = count;
-      pill.classList.toggle('qm-py-filter--empty', cat !== 'all' && count === 0);
+      pill.classList.toggle('qm-py-filter--empty', tag !== 'all' && count === 0);
     });
-
     if (intro) intro.textContent = counts.all;
 
-    function applyFilter(cat) {
-      let visibleCount = 0;
-      cards.forEach(card => {
-        const cardCat = (card.dataset.category || '').toLowerCase();
-        const match = cat === 'all' || cardCat === cat;
-        card.style.display = match ? '' : 'none';
-        if (match) visibleCount++;
+    // Filter state
+    const activeTags = new Set();
+    let searchTerm = '';
+
+    function apply() {
+      let visible = 0;
+      cardData.forEach(({ card, tags, search }) => {
+        const tagMatch = activeTags.size === 0
+          || [...activeTags].some(t => tags.has(t));
+        const searchMatch = searchTerm === '' || search.includes(searchTerm);
+        const show = tagMatch && searchMatch;
+        card.style.display = show ? '' : 'none';
+        if (show) visible++;
       });
       filters.forEach(p => {
-        const isActive = (p.dataset.filter || '').toLowerCase() === cat;
+        const tag = (p.dataset.filter || '').toLowerCase();
+        const isActive = tag === 'all' ? activeTags.size === 0 : activeTags.has(tag);
         p.classList.toggle('qm-py-filter--active', isActive);
       });
       if (empty) {
-        empty.style.display = visibleCount === 0 ? '' : 'none';
-        const label = filters.length
-          ? ([...filters].find(f => f.classList.contains('qm-py-filter--active'))?.firstChild?.textContent || '').trim()
-          : '';
+        empty.style.display = visible === 0 ? '' : 'none';
         const labelEl = empty.querySelector('.qm-py-empty__cat');
-        if (labelEl) labelEl.textContent = label;
+        if (labelEl) {
+          if (activeTags.size === 0 && searchTerm === '') {
+            labelEl.textContent = 'this';
+          } else if (activeTags.size > 0 && searchTerm !== '') {
+            labelEl.textContent = [...activeTags].map(t => '#' + t).join(' + ') + ' + "' + searchTerm + '"';
+          } else if (activeTags.size > 0) {
+            labelEl.textContent = [...activeTags].map(t => '#' + t).join(' + ');
+          } else {
+            labelEl.textContent = '"' + searchTerm + '"';
+          }
+        }
       }
     }
 
     filters.forEach(pill => {
       pill.addEventListener('click', () => {
-        const cat = (pill.dataset.filter || '').toLowerCase();
-        applyFilter(cat);
+        if (pill.classList.contains('qm-py-filter--empty')) return;
+        const tag = (pill.dataset.filter || '').toLowerCase();
+        if (tag === 'all') {
+          activeTags.clear();
+        } else if (activeTags.has(tag)) {
+          activeTags.delete(tag);
+        } else {
+          activeTags.add(tag);
+        }
+        apply();
       });
       pill.setAttribute('role', 'button');
       pill.setAttribute('tabindex', '0');
@@ -62,8 +94,14 @@
       });
     });
 
-    // Initial state: ensure empty placeholder is hidden if cards present
-    if (empty) empty.style.display = 'none';
+    if (searchInput) {
+      searchInput.addEventListener('input', () => {
+        searchTerm = searchInput.value.trim().toLowerCase();
+        apply();
+      });
+    }
+
+    apply();
   }
 
   document.addEventListener('DOMContentLoaded', initPythonLibrary);

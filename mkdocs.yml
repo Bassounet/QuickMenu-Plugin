@@ -104,12 +104,12 @@ plugins:
 
 extra_css:
   - stylesheets/home.css?v=4
-  - stylesheets/python-library.css?v=3
+  - stylesheets/python-library.css?v=4
 
 extra_javascript:
   - javascripts/video-autoplay.js
   - js/pie-menu.js
-  - js/python-library.js?v=1
+  - js/python-library.js?v=2
 
 extra:
   social:

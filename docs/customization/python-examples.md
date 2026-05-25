@@ -17,6 +17,11 @@ Ready-to-use Python snippets for the **Custom Code** action node. Click the copy
   <span class="qm-py-filter" data-filter="graph">Graph <span class="qm-py-filter__count">0</span></span>
 </div>
 
+<div class="qm-py-empty" markdown>
+  <span class="qm-py-empty__icon">∅</span>
+  No scripts yet in <span class="qm-py-empty__cat">this</span> category — more are on the way.
+</div>
+
 <div class="qm-py-grid" markdown>
 
 <article class="qm-py-card" data-category="selection" markdown>

@@ -10,7 +10,7 @@ Everything is configured through a **visual node graph** — no config files, no
 
 **Key facts:**
 - Hotkey: **V** (configurable; same key can bind multiple gestures — `Tap`, `Hold`, `Drag` — to different graphs)
-- 46 built-in action types covering viewport, transforms, spawning, blueprints, materials, sequencer, and more
+- 48 built-in action types covering viewport, transforms, spawning, blueprints, materials, sequencer, and more
 - 5 context switch types for dynamic menus
 - Visual graph editor — drag, drop, connect; action-node properties are edited **inline on the node** (no Details panel roundtrip)
 - Supports nested sub-menus (up to 4 levels deep)

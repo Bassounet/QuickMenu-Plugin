@@ -92,5 +92,5 @@ for actor in unreal.EditorLevelLibrary.get_selected_level_actors():
 
 ## Related
 
-- [Python Examples](../customization/python-examples.md) — 11 ready-to-use snippets
+- [Python Library](../customization/python-examples.md) — 12 ready-to-use snippets with one-click copy
 - [Custom Code Node](../nodes/actions-utility.md#custom-code)

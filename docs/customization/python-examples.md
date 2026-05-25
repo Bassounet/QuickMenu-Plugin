@@ -1,8 +1,37 @@
-# Python Custom Code Examples
+# Python Library
 
-These examples work with the **Custom Code** action node. Requires the **Python Editor Script Plugin** to be enabled.
+Ready-to-use Python snippets for the **Custom Code** action node. Click the copy icon on any code block, paste it into the matching field on your Custom Code node, and you're set. Requires the **Python Editor Script Plugin** enabled.
 
-## 1. Toggle Wireframe on Selected Actor
+<div class="qm-py-intro" markdown>
+  <div class="qm-py-intro__count"><strong>12</strong> scripts ready</div>
+  <div class="qm-py-intro__hint">Each card tells you which field to paste into — Execute (runs on click), Display (sets the wedge label), or Visible (shows/hides the wedge).</div>
+</div>
+
+<div class="qm-py-filters" markdown>
+  <span class="qm-py-filter qm-py-filter--active" data-filter="all">All <span class="qm-py-filter__count">0</span></span>
+  <span class="qm-py-filter" data-filter="selection">Selection <span class="qm-py-filter__count">0</span></span>
+  <span class="qm-py-filter" data-filter="transform">Transform <span class="qm-py-filter__count">0</span></span>
+  <span class="qm-py-filter" data-filter="spawn">Spawn <span class="qm-py-filter__count">0</span></span>
+  <span class="qm-py-filter" data-filter="debug">Debug <span class="qm-py-filter__count">0</span></span>
+  <span class="qm-py-filter" data-filter="ui">UI Dynamic <span class="qm-py-filter__count">0</span></span>
+  <span class="qm-py-filter" data-filter="graph">Graph <span class="qm-py-filter__count">0</span></span>
+</div>
+
+<div class="qm-py-grid" markdown>
+
+<article class="qm-py-card" data-category="selection" markdown>
+
+<header class="qm-py-card__head" markdown>
+  <span class="qm-py-card__cat qm-py-card__cat--selection">S</span>
+  <div class="qm-py-card__titles" markdown>
+   <h3>Toggle Wireframe</h3>
+   <p>Flips the wireframe display on the first selected static mesh actor. Useful for inspecting geometry without leaving the viewport.</p>
+  </div>
+  <span class="qm-py-card__field" title="Paste into the Execute Code field of the Custom Code node">Execute</span>
+</header>
+
+<div class="qm-py-card__body" markdown>
+<div class="qm-py-card__code" markdown>
 
 ```python
 actors = unreal.EditorLevelLibrary.get_selected_level_actors()
@@ -13,7 +42,30 @@ if actors:
         comp.set_editor_property('bWireframe', not comp.get_editor_property('bWireframe'))
 ```
 
-## 2. Randomize Rotation of All Selected Actors
+</div>
+</div>
+
+<footer class="qm-py-card__foot" markdown>
+  <span class="qm-py-card__tag">#selection</span>
+  <span class="qm-py-card__tag">#render</span>
+  <span class="qm-py-card__tag">#toggle</span>
+</footer>
+
+</article>
+
+<article class="qm-py-card" data-category="transform" markdown>
+
+<header class="qm-py-card__head" markdown>
+  <span class="qm-py-card__cat qm-py-card__cat--transform">T</span>
+  <div class="qm-py-card__titles" markdown>
+   <h3>Randomize Rotation</h3>
+   <p>Gives every selected actor a random Yaw — instantly breaks up grid-aligned props, foliage, or debris.</p>
+  </div>
+  <span class="qm-py-card__field" title="Paste into the Execute Code field of the Custom Code node">Execute</span>
+</header>
+
+<div class="qm-py-card__body" markdown>
+<div class="qm-py-card__code" markdown>
 
 ```python
 import random
@@ -22,7 +74,31 @@ for actor in unreal.EditorLevelLibrary.get_selected_level_actors():
     actor.set_actor_rotation(rot, False)
 ```
 
-## 3. Scatter Selected Actors Randomly in a Radius
+</div>
+</div>
+
+<footer class="qm-py-card__foot" markdown>
+  <span class="qm-py-card__tag">#selection</span>
+  <span class="qm-py-card__tag">#transform</span>
+  <span class="qm-py-card__tag">#random</span>
+  <span class="qm-py-card__tag">#foliage</span>
+</footer>
+
+</article>
+
+<article class="qm-py-card" data-category="transform" markdown>
+
+<header class="qm-py-card__head" markdown>
+  <span class="qm-py-card__cat qm-py-card__cat--transform">T</span>
+  <div class="qm-py-card__titles" markdown>
+   <h3>Scatter in a Radius</h3>
+   <p>Nudges each selected actor by ±500 units on X and Y. Quick way to break up perfect grids before tweaking by hand.</p>
+  </div>
+  <span class="qm-py-card__field" title="Paste into the Execute Code field of the Custom Code node">Execute</span>
+</header>
+
+<div class="qm-py-card__body" markdown>
+<div class="qm-py-card__code" markdown>
 
 ```python
 import random
@@ -34,7 +110,31 @@ for a in actors:
     a.set_actor_location(loc, False, False)
 ```
 
-## 4. Select All Actors of the Same Class
+</div>
+</div>
+
+<footer class="qm-py-card__foot" markdown>
+  <span class="qm-py-card__tag">#selection</span>
+  <span class="qm-py-card__tag">#transform</span>
+  <span class="qm-py-card__tag">#random</span>
+  <span class="qm-py-card__tag">#scatter</span>
+</footer>
+
+</article>
+
+<article class="qm-py-card" data-category="selection" markdown>
+
+<header class="qm-py-card__head" markdown>
+  <span class="qm-py-card__cat qm-py-card__cat--selection">S</span>
+  <div class="qm-py-card__titles" markdown>
+   <h3>Select Same Class</h3>
+   <p>Picks the first selected actor's class and re-selects every actor of that class in the level. Handy before a bulk operation.</p>
+  </div>
+  <span class="qm-py-card__field" title="Paste into the Execute Code field of the Custom Code node">Execute</span>
+</header>
+
+<div class="qm-py-card__body" markdown>
+<div class="qm-py-card__code" markdown>
 
 ```python
 actors = unreal.EditorLevelLibrary.get_selected_level_actors()
@@ -45,7 +145,30 @@ if actors:
     unreal.EditorLevelLibrary.set_selected_level_actors(same)
 ```
 
-## 5. Log Selected Actor Properties (Quick Debug)
+</div>
+</div>
+
+<footer class="qm-py-card__foot" markdown>
+  <span class="qm-py-card__tag">#selection</span>
+  <span class="qm-py-card__tag">#class</span>
+  <span class="qm-py-card__tag">#batch</span>
+</footer>
+
+</article>
+
+<article class="qm-py-card" data-category="debug" markdown>
+
+<header class="qm-py-card__head" markdown>
+  <span class="qm-py-card__cat qm-py-card__cat--debug">D</span>
+  <div class="qm-py-card__titles" markdown>
+   <h3>Log Selected Actor Properties</h3>
+   <p>Dumps name, class, location and scale of the first selected actor to the Output Log. Handy when something looks off and you want a quick sanity check.</p>
+  </div>
+  <span class="qm-py-card__field" title="Paste into the Execute Code field of the Custom Code node">Execute</span>
+</header>
+
+<div class="qm-py-card__body" markdown>
+<div class="qm-py-card__code" markdown>
 
 ```python
 actors = unreal.EditorLevelLibrary.get_selected_level_actors()
@@ -57,7 +180,30 @@ if actors:
     unreal.log(f"Scale: {a.get_actor_scale3d()}")
 ```
 
-## 6. Align All Selected Actors to the Same Z Height
+</div>
+</div>
+
+<footer class="qm-py-card__foot" markdown>
+  <span class="qm-py-card__tag">#selection</span>
+  <span class="qm-py-card__tag">#debug</span>
+  <span class="qm-py-card__tag">#log</span>
+</footer>
+
+</article>
+
+<article class="qm-py-card" data-category="transform" markdown>
+
+<header class="qm-py-card__head" markdown>
+  <span class="qm-py-card__cat qm-py-card__cat--transform">T</span>
+  <div class="qm-py-card__titles" markdown>
+   <h3>Align to Same Z Height</h3>
+   <p>Snaps every selected actor to the Z height of the first one in the selection. Great for lining up props on a shared floor.</p>
+  </div>
+  <span class="qm-py-card__field" title="Paste into the Execute Code field of the Custom Code node">Execute</span>
+</header>
+
+<div class="qm-py-card__body" markdown>
+<div class="qm-py-card__code" markdown>
 
 ```python
 actors = unreal.EditorLevelLibrary.get_selected_level_actors()
@@ -69,7 +215,30 @@ if len(actors) > 1:
         a.set_actor_location(loc, False, False)
 ```
 
-## 7. Rename Selected Actors Sequentially
+</div>
+</div>
+
+<footer class="qm-py-card__foot" markdown>
+  <span class="qm-py-card__tag">#selection</span>
+  <span class="qm-py-card__tag">#transform</span>
+  <span class="qm-py-card__tag">#align</span>
+</footer>
+
+</article>
+
+<article class="qm-py-card" data-category="selection" markdown>
+
+<header class="qm-py-card__head" markdown>
+  <span class="qm-py-card__cat qm-py-card__cat--selection">S</span>
+  <div class="qm-py-card__titles" markdown>
+   <h3>Rename Sequentially</h3>
+   <p>Relabels every selected actor as Prop_000, Prop_001, etc. Useful before exporting or referencing them by name.</p>
+  </div>
+  <span class="qm-py-card__field" title="Paste into the Execute Code field of the Custom Code node">Execute</span>
+</header>
+
+<div class="qm-py-card__body" markdown>
+<div class="qm-py-card__code" markdown>
 
 ```python
 actors = unreal.EditorLevelLibrary.get_selected_level_actors()
@@ -77,7 +246,30 @@ for i, a in enumerate(actors):
     a.set_actor_label(f"Prop_{i:03d}")
 ```
 
-## 8. Create a Ring of Actors Around Selection
+</div>
+</div>
+
+<footer class="qm-py-card__foot" markdown>
+  <span class="qm-py-card__tag">#selection</span>
+  <span class="qm-py-card__tag">#rename</span>
+  <span class="qm-py-card__tag">#batch</span>
+</footer>
+
+</article>
+
+<article class="qm-py-card" data-category="spawn" markdown>
+
+<header class="qm-py-card__head" markdown>
+  <span class="qm-py-card__cat qm-py-card__cat--spawn">Sp</span>
+  <div class="qm-py-card__titles" markdown>
+   <h3>Ring of Actors</h3>
+   <p>Spawns 8 empty Static Mesh actors in a 500-unit ring around the first selected actor. Drop in your own mesh and you have a procedural circle.</p>
+  </div>
+  <span class="qm-py-card__field" title="Paste into the Execute Code field of the Custom Code node">Execute</span>
+</header>
+
+<div class="qm-py-card__body" markdown>
+<div class="qm-py-card__code" markdown>
 
 ```python
 import math
@@ -96,7 +288,30 @@ if actors:
         unreal.EditorLevelLibrary.spawn_actor_from_class(unreal.StaticMeshActor, loc)
 ```
 
-## 9. Toggle Collision on All Selected Actors
+</div>
+</div>
+
+<footer class="qm-py-card__foot" markdown>
+  <span class="qm-py-card__tag">#spawn</span>
+  <span class="qm-py-card__tag">#ring</span>
+  <span class="qm-py-card__tag">#procedural</span>
+</footer>
+
+</article>
+
+<article class="qm-py-card" data-category="selection" markdown>
+
+<header class="qm-py-card__head" markdown>
+  <span class="qm-py-card__cat qm-py-card__cat--selection">S</span>
+  <div class="qm-py-card__titles" markdown>
+   <h3>Toggle Collision</h3>
+   <p>Flips bGenerateOverlapEvents on every selected actor's primitive component. Useful when iterating on triggers or interactive props.</p>
+  </div>
+  <span class="qm-py-card__field" title="Paste into the Execute Code field of the Custom Code node">Execute</span>
+</header>
+
+<div class="qm-py-card__body" markdown>
+<div class="qm-py-card__code" markdown>
 
 ```python
 for actor in unreal.EditorLevelLibrary.get_selected_level_actors():
@@ -106,32 +321,108 @@ for actor in unreal.EditorLevelLibrary.get_selected_level_actors():
         comp.set_editor_property('bGenerateOverlapEvents', not enabled)
 ```
 
-## 10. Dynamic Label — Show Selection Count
+</div>
+</div>
 
-Use this in the **Display Name Code** field (not Execute Code):
+<footer class="qm-py-card__foot" markdown>
+  <span class="qm-py-card__tag">#selection</span>
+  <span class="qm-py-card__tag">#collision</span>
+  <span class="qm-py-card__tag">#toggle</span>
+</footer>
+
+</article>
+
+<article class="qm-py-card" data-category="ui" markdown>
+
+<header class="qm-py-card__head" markdown>
+  <span class="qm-py-card__cat qm-py-card__cat--ui">UI</span>
+  <div class="qm-py-card__titles" markdown>
+   <h3>Show Selection Count</h3>
+   <p>Returns "Selected: N actor(s)" for the wedge label. Paste in the Display Name Code field — the label updates every time the pie menu opens.</p>
+  </div>
+  <span class="qm-py-card__field qm-py-card__field--display" title="Paste into the Display Name Code field of the Custom Code node">Display</span>
+</header>
+
+<div class="qm-py-card__body" markdown>
+<div class="qm-py-card__code" markdown>
 
 ```python
 count = len(unreal.EditorLevelLibrary.get_selected_level_actors())
 result = f"Selected: {count} actor{'s' if count != 1 else ''}"
 ```
 
-## 11. Conditional Visibility — Only Show When in Landscape Mode
+</div>
+</div>
 
-Use this in the **Is Visible Code** field:
+<footer class="qm-py-card__foot" markdown>
+  <span class="qm-py-card__tag">#dynamic</span>
+  <span class="qm-py-card__tag">#label</span>
+  <span class="qm-py-card__tag">#selection</span>
+</footer>
+
+</article>
+
+<article class="qm-py-card" data-category="ui" markdown>
+
+<header class="qm-py-card__head" markdown>
+  <span class="qm-py-card__cat qm-py-card__cat--ui">UI</span>
+  <div class="qm-py-card__titles" markdown>
+   <h3>Hide Outside Landscape</h3>
+   <p>Returns True only when an editor world is loaded. Paste in Is Visible Code — the wedge disappears in contexts where this script can't run.</p>
+  </div>
+  <span class="qm-py-card__field qm-py-card__field--visible" title="Paste into the Is Visible Code field of the Custom Code node">Visible</span>
+</header>
+
+<div class="qm-py-card__body" markdown>
+<div class="qm-py-card__code" markdown>
 
 ```python
 result = unreal.EditorLevelLibrary.get_editor_world() is not None
 ```
 
-## 12. Set Wedge Colors by Label (Graph Scripting)
+</div>
+</div>
 
-Quick Menu exposes UFUNCTIONs for Python graph scripting:
+<footer class="qm-py-card__foot" markdown>
+  <span class="qm-py-card__tag">#dynamic</span>
+  <span class="qm-py-card__tag">#visibility</span>
+  <span class="qm-py-card__tag">#landscape</span>
+</footer>
 
-- `GetAllNodes()` — returns all nodes in the active graph
-- `SetWedgeColorByLabel(Label, Color)` — sets the wedge color for nodes matching a label
+</article>
+
+<article class="qm-py-card" data-category="graph" markdown>
+
+<header class="qm-py-card__head" markdown>
+  <span class="qm-py-card__cat qm-py-card__cat--graph">G</span>
+  <div class="qm-py-card__titles" markdown>
+   <h3>Color Wedges by Label</h3>
+   <p>Calls QuickMenu's exposed UFUNCTION to recolor every wedge whose label matches "Translate". Use as a starting point for building style presets.</p>
+  </div>
+  <span class="qm-py-card__field" title="Paste into the Execute Code field of the Custom Code node">Execute</span>
+</header>
+
+<div class="qm-py-card__body" markdown>
+<div class="qm-py-card__code" markdown>
 
 ```python
-# Example: color all "Translate" wedges blue
 graph = unreal.QuickMenuGraphAsset.get_active_graph()
 graph.set_wedge_color_by_label("Translate", unreal.LinearColor(0.2, 0.4, 1.0, 1.0))
 ```
+
+</div>
+</div>
+
+<footer class="qm-py-card__foot" markdown>
+  <span class="qm-py-card__tag">#graph</span>
+  <span class="qm-py-card__tag">#color</span>
+  <span class="qm-py-card__tag">#wedge</span>
+</footer>
+
+</article>
+
+</div>
+
+## Writing your own
+
+See [Custom Python Actions](../guides/custom-python-actions.md) for the full guide on creating new Custom Code nodes — including the three code fields, dynamic labels, and conditional visibility.

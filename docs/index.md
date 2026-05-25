@@ -43,8 +43,8 @@
 </a>
 
 <a href="customization/python-examples/">
-<strong>6. Python Examples</strong>
-<span>11 ready-to-use code snippets</span>
+<strong>6. Python Library</strong>
+<span>12 ready-to-use snippets with one-click copy</span>
 </a>
 
 <a href="troubleshooting/common-issues/">

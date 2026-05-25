@@ -77,4 +77,4 @@ Run inline Python code when the wedge is clicked.
 
 > Requires the **Python Editor Script Plugin** to be enabled.
 
-See [Python Examples](../customization/python-examples.md) for ready-to-use code snippets.
+See the [Python Library](../customization/python-examples.md) for 12 ready-to-use snippets with one-click copy.

@@ -67,7 +67,7 @@ nav:
     - Quick Menu Panel: customization/panel.md
     - Project Settings: customization/settings.md
     - Content Browser: customization/content-browser.md
-    - Python Examples: customization/python-examples.md
+    - Python Library: customization/python-examples.md
     - "C++ Reference": customization/cpp-reference.md
   - Guides:
     - Context-Aware Menu: guides/context-aware-menu.md
@@ -104,10 +104,12 @@ plugins:
 
 extra_css:
   - stylesheets/home.css?v=4
+  - stylesheets/python-library.css?v=3
 
 extra_javascript:
   - javascripts/video-autoplay.js
   - js/pie-menu.js
+  - js/python-library.js?v=1
 
 extra:
   social:

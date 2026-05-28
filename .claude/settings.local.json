@@ -19,7 +19,13 @@
       "Bash(ffprobe -hide_banner images/ContextWheels_x3.mp4)",
       "Bash(printf \"file ''''%s''''\\\\n\" D:/QuickMenu-Plugin/docs/img/BlueprintWheelDeleteUnusedVariable.mp4 D:/QuickMenu-Plugin/docs/img/Blueprintwheel.mp4 D:/QuickMenu-Plugin/docs/img/BlueprintAnimationWheel.mp4 D:/QuickMenu-Plugin/docs/img/SequencerWheel.mp4 D:/QuickMenu-Plugin/docs/img/NiagaraEmitter.mp4)",
       "Bash(ffmpeg -y -f concat -safe 0 -i concat_list.txt -vf setpts=0.333*PTS -an -c:v libx264 -preset fast -crf 23 images/ContextWheels_x3.mp4)",
-      "Bash(printf \"file ''''%s''''\\\\n\" D:/QuickMenu-Plugin/docs/img/AutoLayout+Comment+Name.mp4 D:/QuickMenu-Plugin/docs/img/BlueprintAnimationWheel.mp4 D:/QuickMenu-Plugin/docs/img/SequencerWheel.mp4 D:/QuickMenu-Plugin/docs/img/Blueprintwheel.mp4 D:/QuickMenu-Plugin/docs/img/NiagaraEmitter.mp4)"
+      "Bash(printf \"file ''''%s''''\\\\n\" D:/QuickMenu-Plugin/docs/img/AutoLayout+Comment+Name.mp4 D:/QuickMenu-Plugin/docs/img/BlueprintAnimationWheel.mp4 D:/QuickMenu-Plugin/docs/img/SequencerWheel.mp4 D:/QuickMenu-Plugin/docs/img/Blueprintwheel.mp4 D:/QuickMenu-Plugin/docs/img/NiagaraEmitter.mp4)",
+      "Bash(find D:QuickMenu-Plugin -type f -name CHANGELOG* -o -name *.uplugin -o -name *version* -o -name *VERSION*)",
+      "Bash(grep -r version D:/QuickMenu-Plugin --include=*.md --include=*.json --include=*.yml)",
+      "Bash(git -C D:/QuickMenu-Website remote -v)",
+      "Bash(curl -s -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36\" -L \"https://docs.quickmenuplugin.com\" -o D:/QuickMenu-Website/.tmp_docs.html -w \"HTTP=%{http_code}\\\\nFINAL_URL=%{url_effective}\\\\nSIZE=%{size_download}\\\\n\")",
+      "Bash(Get-ChildItem -Recurse \"D:\\\\QuickMenu-Website\\\\images\")",
+      "Bash(Select-Object FullName)"
     ]
   }
 }

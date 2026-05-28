@@ -849,6 +849,187 @@ section {
   display: inline-block;
 }
 
+/* ============================================
+   WHEEL DEMO — Pie ⇄ List mode toggle
+   ============================================ */
+.wheel-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.mode-toggle {
+  display: inline-flex;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 4px;
+  gap: 2px;
+  position: relative;
+  z-index: 3;
+}
+
+.mode-toggle-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 8px 20px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: color 0.25s, background 0.25s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mode-toggle-btn:hover { color: var(--text-primary); }
+
+.mode-toggle-btn.is-active {
+  background: var(--cyan);
+  color: #0a1614;
+}
+
+.mode-toggle-btn .toggle-glyph {
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+.mode-caption {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-align: center;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+  max-width: 320px;
+  margin: 0;
+}
+.mode-caption .accent { color: var(--text-secondary); }
+.mode-caption .sub {
+  display: block;
+  margin-top: 6px;
+  opacity: 0.55;
+  font-size: 0.72rem;
+}
+
+/* SVG layer (radial wedges) */
+.wheel-svg-layer {
+  position: absolute;
+  inset: 0;
+  transition: opacity 350ms ease-out;
+}
+
+/* Row layer (list mode buttons) */
+.wheel-row-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.wheel-row {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: max-content;
+  min-width: 118px;
+  max-width: 170px;
+  height: 36px;
+  background: linear-gradient(180deg, #2a2d34 0%, #23262c 100%);
+  border: 1px solid #3a3d44;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: stretch;
+  gap: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform, opacity;
+  text-align: left;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.04);
+  overflow: hidden;
+}
+
+.wheel-row:hover {
+  border-color: rgba(78, 166, 91, 0.55);
+  background: linear-gradient(180deg, #32363d 0%, #292c33 100%);
+}
+
+.wheel-row.is-active {
+  background: var(--cyan);
+  border-color: var(--cyan-dark);
+  color: #0a1614;
+  box-shadow: 0 0 16px rgba(78, 166, 91, 0.45), inset 0 1px 0 rgba(255,255,255,0.18);
+}
+.wheel-row.is-active .wheel-row-icon { background: rgba(0,0,0,0.16); color: #0a1614; }
+.wheel-row.is-active .wheel-row-icon img { filter: brightness(0); }
+.wheel-row.is-active .wheel-row-meta { color: rgba(10, 22, 20, 0.55); }
+
+.wheel-row.is-green {
+  border-color: rgba(74, 222, 128, 0.45);
+}
+
+.wheel-row-icon {
+  width: 30px;
+  background: rgba(0, 0, 0, 0.22);
+  border-right: 1px solid rgba(255, 255, 255, 0.04);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  color: var(--cyan);
+  flex-shrink: 0;
+}
+.wheel-row-icon img { width: 16px; height: 16px; }
+
+.wheel-row-label {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 6px 0 9px;
+  align-self: center;
+}
+
+.wheel-row-meta {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  opacity: 0.55;
+  padding-right: 9px;
+  align-self: center;
+}
+
+/* Mode-driven visibility (applies to any container with data-mode, e.g. .wheel-wrapper or .qm-wheel) */
+[data-mode="radial"] .wheel-svg-layer { opacity: 1; pointer-events: auto; }
+[data-mode="radial"] .wheel-row        { opacity: 0; pointer-events: none; }
+[data-mode="radial"] .wheel-center,
+[data-mode="radial"] .qm-wheel-center  { opacity: 1; }
+
+[data-mode="list"] .wheel-svg-layer { opacity: 0; pointer-events: none; }
+[data-mode="list"] .wheel-row        { opacity: 1; pointer-events: auto; }
+[data-mode="list"] .wheel-center,
+[data-mode="list"] .qm-wheel-center  { opacity: 0; }
+
+.wheel-wrapper .wheel-center,
+.qm-wheel .qm-wheel-center { transition: opacity 350ms ease-out, all 0.3s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .wheel-row, .wheel-svg-layer, .wheel-center {
+    transition-duration: 200ms !important;
+  }
+}
+
 @media (max-width: 900px) {
   .wheel-demo-layout {
     flex-direction: column;
@@ -858,6 +1039,9 @@ section {
   .wheel-wrapper { width: 360px; height: 360px; }
   .wheel-slice { width: 150px; height: 150px; }
   .wheel-center { width: 68px; height: 68px; }
+  .wheel-row { min-width: 100px; max-width: 140px; height: 32px; font-size: 0.74rem; }
+  .wheel-row-icon { width: 26px; }
+  .wheel-row-icon img { width: 14px; height: 14px; }
 }
 
 /* ============================================
@@ -1519,10 +1703,17 @@ section {
 <section class="wheel-demo" id="wheel-demo">
   <div class="container">
     <div class="wheel-demo-layout">
-      <div class="wheel-wrapper fade-in" id="wheelWrapper">
-        <div class="wheel-center" id="wheelCenter">V</div>
-        <div class="wheel-tooltip" id="wheelTooltip">Hover a slice</div>
-        <!-- Slices are generated by JS -->
+      <div class="wheel-stage fade-in">
+        <div class="mode-toggle" role="tablist" aria-label="Display mode">
+          <button class="mode-toggle-btn is-active" data-mode="radial" role="tab" aria-selected="true"><span class="toggle-glyph">&#9678;</span> Radial</button>
+          <button class="mode-toggle-btn" data-mode="list" role="tab" aria-selected="false"><span class="toggle-glyph">&#8801;</span> List</button>
+        </div>
+        <div class="wheel-wrapper" id="wheelWrapper" data-mode="radial">
+          <div class="wheel-center" id="wheelCenter">V</div>
+          <div class="wheel-tooltip" id="wheelTooltip">Hover a slice</div>
+          <!-- SVG layer & row layer generated by JS -->
+        </div>
+        <p class="mode-caption"><span class="accent">One data graph, two faces.</span><span class="sub">Switch at runtime &mdash; children inherit automatically.</span></p>
       </div>
       <div class="wheel-info fade-in">
         <div class="try-or-press">
@@ -1900,146 +2091,242 @@ const observer = new IntersectionObserver((entries) => {
 
 fadeEls.forEach(el => observer.observe(el));
 
-// ---- Interactive Wheel Demo ----
+// ---- Interactive Wheel Demo (Pie ⇄ List morph) ----
 (function() {
   const wrapper = document.getElementById('wheelWrapper');
   const tooltip = document.getElementById('wheelTooltip');
   const center  = document.getElementById('wheelCenter');
   if (!wrapper) return;
 
-  const themes = [
-    { name: 'Green',   color: '#4ea65b' },
-    { name: 'Violet',  color: '#7c3aed' },
-    { name: 'Orange',  color: '#f59e0b' },
-    { name: 'Rose',    color: '#f43f5e' },
-    { name: 'Green',   color: '#10b981' },
-  ];
-  let themeIdx = 0;
-
   const slices = [
-    { label: 'FAB',       icon: 'images/FAB.svg', type: 'active', action: 'https://www.fab.com/listings/885143e3-d6ec-4c71-b9f1-32aed3bf60c8'},
-    { label: 'GitHub',    icon: 'images/Github.svg',  type: '',       action: 'https://github.com/Bassounet/QuickMenu-Plugin' },
-    { label: 'Discord',   icon: 'images/Discord.svg', type: '',       action: 'https://discord.gg/YYc2v8k5BA' },
-    { label: 'Features',  icon: '✦',  type: '',       action: 'scroll-features' },
-    { label: 'Pricing',   icon: '💰', type: '',       action: 'scroll-pricing' },
-    { label: 'FAQ',       icon: '❓', type: '',       action: 'scroll-faq' },
-    { label: 'Docs',      icon: '📖', type: '',       action: 'https://docs.quickmenuplugin.com' },
-    { label: 'Top',       icon: '▲',  type: 'green',  action: 'scroll-top' },
+    { label: 'FAB',      icon: 'images/FAB.svg',     type: 'active', action: 'https://www.fab.com/listings/885143e3-d6ec-4c71-b9f1-32aed3bf60c8'},
+    { label: 'GitHub',   icon: 'images/Github.svg',  type: '',       action: 'https://github.com/Bassounet/QuickMenu-Plugin' },
+    { label: 'Discord',  icon: 'images/Discord.svg', type: '',       action: 'https://discord.gg/YYc2v8k5BA' },
+    { label: 'Features', icon: '✦',  type: '',       action: 'scroll-features' },
+    { label: 'Pricing',  icon: '💰', type: '',       action: 'scroll-pricing' },
+    { label: 'FAQ',      icon: '❓', type: '',       action: 'scroll-faq' },
+    { label: 'Docs',     icon: '📖', type: '',       action: 'https://docs.quickmenuplugin.com' },
+    { label: 'Top',      icon: '▲',  type: 'green',  action: 'scroll-top' },
   ];
 
+  const SVG_NS = 'http://www.w3.org/2000/svg';
   const n = slices.length;
   const angleStep = 360 / n;
-  const R = 200;    // outer radius
-  const r = 55;     // inner radius (center hole)
-  const pixelGap = 11; // uniform pixel gap between slices (compensates for 14px rounded stroke)
+  const R = 200;
+  const r = 55;
+  const pixelGap = 11;
+
+  // Position helpers
+  function polarPos(i) {
+    const midAngle = i * angleStep - 90;
+    const midRad = (midAngle + angleStep / 2) * Math.PI / 180;
+    const midR = (R + r) / 2 + 5;
+    return { x: Math.cos(midRad) * midR, y: Math.sin(midRad) * midR };
+  }
+  function listPos(i) {
+    // "List" mode in QuickMenu = radial buttons (horizontal pill rectangles)
+    // arranged around the center at the same angular slot as their wedge.
+    const midAngle = i * angleStep - 90;
+    const midRad = (midAngle + angleStep / 2) * Math.PI / 180;
+    const isMobile = window.innerWidth <= 900;
+    const buttonR = isMobile ? 135 : 210;
+    return { x: Math.cos(midRad) * buttonR, y: Math.sin(midRad) * buttonR };
+  }
+
+  // Shared interaction handlers
+  function runAction(s) {
+    if (!s.action) return;
+    if (s.action.startsWith('http')) {
+      window.open(s.action, '_blank');
+    } else if (s.action.startsWith('scroll-')) {
+      const el = document.getElementById(s.action.replace('scroll-', ''));
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+  function hoverIn(s) {
+    tooltip.textContent = s.label;
+    tooltip.style.opacity = '1';
+    if (s.icon.endsWith('.svg')) {
+      center.innerHTML = `<img src="${s.icon}" alt="" style="width:36px;height:36px;" />`;
+    } else {
+      center.textContent = s.icon;
+    }
+    center.style.borderColor = s.type === 'green' ? '#4ade80' : 'var(--cyan)';
+    center.style.color = s.type === 'green' ? '#4ade80' : 'var(--cyan)';
+  }
+  function hoverOut() {
+    tooltip.style.opacity = '0';
+    center.textContent = 'V';
+    center.style.borderColor = '#333';
+    center.style.color = 'var(--text-muted)';
+  }
+
+  // ---- SVG layer (one shared SVG with all wedges) ----
+  const svgLayer = document.createElement('div');
+  svgLayer.className = 'wheel-svg-layer';
+
+  const svgEl = document.createElementNS(SVG_NS, 'svg');
+  svgEl.setAttribute('viewBox', `${-R} ${-R} ${R*2} ${R*2}`);
+  svgEl.setAttribute('style', `position:absolute; top:50%; left:50%; width:${R*2}px; height:${R*2}px; transform:translate(-50%,-50%); overflow:visible;`);
 
   slices.forEach((s, i) => {
     const midAngle = i * angleStep - 90;
-    // Compute angular offsets per radius so the pixel gap is constant
     const gapAtOuter = Math.asin(pixelGap / R) * 180 / Math.PI;
     const gapAtInner = Math.asin(pixelGap / r) * 180 / Math.PI;
-
     const startDegOuter = midAngle + gapAtOuter;
     const endDegOuter   = midAngle + angleStep - gapAtOuter;
     const startDegInner = midAngle + gapAtInner;
     const endDegInner   = midAngle + angleStep - gapAtInner;
+    const sroR = startDegOuter * Math.PI / 180;
+    const eroR = endDegOuter * Math.PI / 180;
+    const sriR = startDegInner * Math.PI / 180;
+    const eriR = endDegInner * Math.PI / 180;
+    const ox1 = Math.cos(sroR) * R, oy1 = Math.sin(sroR) * R;
+    const ox2 = Math.cos(eroR) * R, oy2 = Math.sin(eroR) * R;
+    const ix1 = Math.cos(eriR) * r, iy1 = Math.sin(eriR) * r;
+    const ix2 = Math.cos(sriR) * r, iy2 = Math.sin(sriR) * r;
+    const largeArcOuter = (endDegOuter - startDegOuter) > 180 ? 1 : 0;
+    const largeArcInner = (endDegInner - startDegInner) > 180 ? 1 : 0;
+    const d = `M ${ix2} ${iy2} L ${ox1} ${oy1} A ${R} ${R} 0 ${largeArcOuter} 1 ${ox2} ${oy2} L ${ix1} ${iy1} A ${r} ${r} 0 ${largeArcInner} 0 ${ix2} ${iy2} Z`;
 
-    const startRadOuter = startDegOuter * Math.PI / 180;
-    const endRadOuter   = endDegOuter * Math.PI / 180;
-    const startRadInner = startDegInner * Math.PI / 180;
-    const endRadInner   = endDegInner * Math.PI / 180;
+    const p = polarPos(i);
+    const icy = p.y - 12;
+    const ly = p.y + 14;
 
-    // Outer arc points
-    const ox1 = Math.cos(startRadOuter) * R;
-    const oy1 = Math.sin(startRadOuter) * R;
-    const ox2 = Math.cos(endRadOuter) * R;
-    const oy2 = Math.sin(endRadOuter) * R;
+    const g = document.createElementNS(SVG_NS, 'g');
+    g.setAttribute('class', 'wheel-slice' + (s.type ? ' ' + s.type : ''));
+    g.style.cursor = 'pointer';
 
-    // Inner arc points
-    const ix1 = Math.cos(endRadInner) * r;
-    const iy1 = Math.sin(endRadInner) * r;
-    const ix2 = Math.cos(startRadInner) * r;
-    const iy2 = Math.sin(startRadInner) * r;
+    const path = document.createElementNS(SVG_NS, 'path');
+    path.setAttribute('class', 'wheel-slice-bg');
+    path.setAttribute('d', d);
+    g.appendChild(path);
 
-    const spanOuter = endDegOuter - startDegOuter;
-    const spanInner = endDegInner - startDegInner;
-    const largeArcOuter = spanOuter > 180 ? 1 : 0;
-    const largeArcInner = spanInner > 180 ? 1 : 0;
-
-    const path = [
-      `M ${ix2} ${iy2}`,
-      `L ${ox1} ${oy1}`,
-      `A ${R} ${R} 0 ${largeArcOuter} 1 ${ox2} ${oy2}`,
-      `L ${ix1} ${iy1}`,
-      `A ${r} ${r} 0 ${largeArcInner} 0 ${ix2} ${iy2}`,
-      'Z'
-    ].join(' ');
-
-    // Label position (midpoint angle, between inner and outer)
-    const midDeg = midAngle + angleStep / 2;
-    const midRad = midDeg * Math.PI / 180;
-    const midR = (R + r) / 2 + 5;
-    const cx = Math.cos(midRad) * midR;
-    const cy = Math.sin(midRad) * midR;
-    const icx = cx;
-    const icy = cy - 12;
-    const lx = cx;
-    const ly = cy + 14;
-
-    const div = document.createElement('div');
-    div.className = 'wheel-slice' + (s.type ? ' ' + s.type : '');
-    div.style.cssText = 'position:absolute; top:50%; left:50%; width:' + R*2 + 'px; height:' + R*2 + 'px; transform: translate(-50%, -50%); pointer-events:none;';
-
-    const iconEl = s.icon.endsWith('.svg')
-      ? `<image href="${s.icon}" x="${icx - 12}" y="${icy - 12}" width="24" height="24" />`
-      : `<text class="wheel-slice-icon" x="${icx}" y="${icy}" dy="0.35em">${s.icon}</text>`;
-    div.innerHTML = `
-      <svg viewBox="${-R} ${-R} ${R*2} ${R*2}" style="overflow:visible;">
-        <path class="wheel-slice-bg" d="${path}" style="pointer-events:all; cursor:pointer;" />
-        ${iconEl}
-        <text class="wheel-slice-label" x="${lx}" y="${ly}" dy="0.35em">${s.label}</text>
-      </svg>
-    `;
-
-    const pathEl = div.querySelector('path');
-    pathEl.addEventListener('mouseenter', () => {
-      tooltip.textContent = s.label;
-      tooltip.style.opacity = '1';
-      center.textContent = s.icon;
-      center.style.borderColor = s.type === 'green' ? '#4ade80' : 'var(--cyan)';
-      center.style.color = s.type === 'green' ? '#4ade80' : 'var(--cyan)';
-    });
-    pathEl.addEventListener('mouseleave', () => {
-      tooltip.style.opacity = '0';
-      center.textContent = 'V';
-      center.style.borderColor = '#333';
-      center.style.color = 'var(--text-muted)';
-    });
-
-    // Click actions
-    if (s.action) {
-      pathEl.addEventListener('click', () => {
-        if (s.action.startsWith('http')) {
-          window.open(s.action, '_blank');
-        } else if (s.action.startsWith('scroll-')) {
-          const target = s.action.replace('scroll-', '');
-          const el = document.getElementById(target);
-          if (el) el.scrollIntoView({ behavior: 'smooth' });
-        } else if (s.action === 'theme') {
-          themeIdx = (themeIdx + 1) % themes.length;
-          const t = themes[themeIdx];
-          document.documentElement.style.setProperty('--cyan', t.color);
-          document.documentElement.style.setProperty('--cyan-glow', t.color + '26');
-          document.documentElement.style.setProperty('--cyan-dark', t.color);
-          document.documentElement.style.setProperty('--border-hover', t.color);
-          tooltip.textContent = 'Theme → ' + t.name;
-          center.style.borderColor = t.color;
-          center.style.color = t.color;
-        }
-      });
+    if (s.icon.endsWith('.svg')) {
+      const img = document.createElementNS(SVG_NS, 'image');
+      img.setAttribute('href', s.icon);
+      img.setAttribute('x', p.x - 12);
+      img.setAttribute('y', icy - 12);
+      img.setAttribute('width', '24');
+      img.setAttribute('height', '24');
+      img.style.pointerEvents = 'none';
+      g.appendChild(img);
+    } else {
+      const t = document.createElementNS(SVG_NS, 'text');
+      t.setAttribute('class', 'wheel-slice-icon');
+      t.setAttribute('x', p.x);
+      t.setAttribute('y', icy);
+      t.setAttribute('dy', '0.35em');
+      t.style.pointerEvents = 'none';
+      t.textContent = s.icon;
+      g.appendChild(t);
     }
 
-    wrapper.appendChild(div);
+    const label = document.createElementNS(SVG_NS, 'text');
+    label.setAttribute('class', 'wheel-slice-label');
+    label.setAttribute('x', p.x);
+    label.setAttribute('y', ly);
+    label.setAttribute('dy', '0.35em');
+    label.style.pointerEvents = 'none';
+    label.textContent = s.label;
+    g.appendChild(label);
+
+    g.addEventListener('mouseenter', () => hoverIn(s));
+    g.addEventListener('mouseleave', hoverOut);
+    g.addEventListener('click', () => runAction(s));
+
+    svgEl.appendChild(g);
+  });
+
+  svgLayer.appendChild(svgEl);
+  wrapper.appendChild(svgLayer);
+
+  // ---- Row layer (HTML buttons, one per slice, absolutely positioned) ----
+  const rowLayer = document.createElement('div');
+  rowLayer.className = 'wheel-row-layer';
+
+  const rowEls = [];
+  slices.forEach((s, i) => {
+    const row = document.createElement('button');
+    row.className = 'wheel-row' + (s.type === 'active' ? ' is-active' : '') + (s.type === 'green' ? ' is-green' : '');
+    row.type = 'button';
+    row.dataset.idx = i;
+
+    const isExternal = s.action && s.action.startsWith('http');
+    const iconHtml = s.icon.endsWith('.svg')
+      ? `<img src="${s.icon}" alt="" />`
+      : `<span>${s.icon}</span>`;
+    row.innerHTML = `
+      <span class="wheel-row-icon">${iconHtml}</span>
+      <span class="wheel-row-label">${s.label}</span>
+      <span class="wheel-row-meta">${isExternal ? '↗' : '↓'}</span>
+    `;
+
+    // Initial position: at polar midpoint so the first morph slides outward to row
+    const p = polarPos(i);
+    row.style.transform = `translate(calc(-50% + ${p.x}px), calc(-50% + ${p.y}px))`;
+
+    row.addEventListener('mouseenter', () => hoverIn(s));
+    row.addEventListener('mouseleave', hoverOut);
+    row.addEventListener('click', () => runAction(s));
+
+    rowLayer.appendChild(row);
+    rowEls.push(row);
+  });
+  wrapper.appendChild(rowLayer);
+
+  // ---- Mode switching with FLIP-style position morph + cross-fade ----
+  let currentMode = 'radial';
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function applyRowTransitions(mode) {
+    rowEls.forEach((row, i) => {
+      const target = mode === 'radial' ? polarPos(i) : listPos(i);
+      const delay = reducedMotion ? 0 : i * 40;
+      row.style.transition = reducedMotion
+        ? 'opacity 200ms ease-out, transform 200ms ease-out, background 0.25s, border-color 0.25s, color 0.25s'
+        : `transform 600ms cubic-bezier(0.4, 0, 0.2, 1) ${delay}ms, opacity 350ms ease-out ${delay}ms, background 0.25s, border-color 0.25s, color 0.25s`;
+      row.style.transform = `translate(calc(-50% + ${target.x}px), calc(-50% + ${target.y}px))`;
+    });
+  }
+
+  function setMode(mode) {
+    if (mode === currentMode) return;
+    currentMode = mode;
+    wrapper.dataset.mode = mode;
+    applyRowTransitions(mode);
+
+    document.querySelectorAll('.mode-toggle-btn').forEach(btn => {
+      const isActive = btn.dataset.mode === mode;
+      btn.classList.toggle('is-active', isActive);
+      btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    });
+  }
+
+  document.querySelectorAll('.mode-toggle-btn').forEach(btn => {
+    btn.addEventListener('click', () => setMode(btn.dataset.mode));
+  });
+
+  // Default to list on small screens; recompute row positions on resize
+  const mq = window.matchMedia('(max-width: 768px)');
+  if (mq.matches) {
+    // Apply list mode without animation on initial load
+    currentMode = 'list';
+    wrapper.dataset.mode = 'list';
+    rowEls.forEach((row, i) => {
+      const target = listPos(i);
+      row.style.transition = 'none';
+      row.style.transform = `translate(calc(-50% + ${target.x}px), calc(-50% + ${target.y}px))`;
+    });
+    document.querySelectorAll('.mode-toggle-btn').forEach(btn => {
+      const isActive = btn.dataset.mode === 'list';
+      btn.classList.toggle('is-active', isActive);
+      btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    });
+  }
+  window.addEventListener('resize', () => {
+    // Re-apply current mode positions (handles row height changes between mobile/desktop)
+    applyRowTransitions(currentMode);
   });
 })();
 
@@ -2055,133 +2342,214 @@ document.querySelectorAll('.faq-question').forEach(btn => {
   });
 });
 
-// ---- Hero Mini Wheel ----
+// ---- Hero Mini Wheel (auto-cycles Pie ⇄ List every ~2.6s) ----
 (function() {
   const wrapper = document.getElementById('heroMiniWheel');
   if (!wrapper) return;
 
   const heroCenter = wrapper.querySelector('.wheel-center');
   const slices = [
-    { label: 'FAB',       icon: 'images/FAB.svg', type: 'active', action: 'https://www.fab.com/listings/885143e3-d6ec-4c71-b9f1-32aed3bf60c8'},
-    { label: 'GitHub',    icon: 'images/Github.svg',  type: '',       action: 'https://github.com/Bassounet/QuickMenu-Plugin' },
-    { label: 'Discord',   icon: 'images/Discord.svg', type: '',       action: 'https://discord.gg/YYc2v8k5BA' },
-    { label: 'Features',  icon: '✦',  type: '',       action: 'scroll-features' },
-    { label: 'Pricing',   icon: '💰', type: '',       action: 'scroll-pricing' },
-    { label: 'FAQ',       icon: '❓', type: '',       action: 'scroll-faq' },
-    { label: 'Docs',      icon: '📖', type: '',       action: 'https://docs.quickmenuplugin.com' },
-    { label: 'Top',       icon: '▲',  type: 'green',  action: 'scroll-top' },
+    { label: 'FAB',      icon: 'images/FAB.svg',     type: 'active', action: 'https://www.fab.com/listings/885143e3-d6ec-4c71-b9f1-32aed3bf60c8'},
+    { label: 'GitHub',   icon: 'images/Github.svg',  type: '',       action: 'https://github.com/Bassounet/QuickMenu-Plugin' },
+    { label: 'Discord',  icon: 'images/Discord.svg', type: '',       action: 'https://discord.gg/YYc2v8k5BA' },
+    { label: 'Features', icon: '✦',  type: '',       action: 'scroll-features' },
+    { label: 'Pricing',  icon: '💰', type: '',       action: 'scroll-pricing' },
+    { label: 'FAQ',      icon: '❓', type: '',       action: 'scroll-faq' },
+    { label: 'Docs',     icon: '📖', type: '',       action: 'https://docs.quickmenuplugin.com' },
+    { label: 'Top',      icon: '▲',  type: 'green',  action: 'scroll-top' },
   ];
 
+  const SVG_NS = 'http://www.w3.org/2000/svg';
   const R = 200;
   const r = 55;
   const pixelGap = 11;
   const n = slices.length;
   const angleStep = 360 / n;
 
+  // Set initial mode on wrapper
+  wrapper.dataset.mode = 'radial';
+
+  function polarPos(i) {
+    const midAngle = i * angleStep - 90;
+    const midRad = (midAngle + angleStep / 2) * Math.PI / 180;
+    const midR = (R + r) / 2 + 5;
+    return { x: Math.cos(midRad) * midR, y: Math.sin(midRad) * midR };
+  }
+  function listPos(i) {
+    const midAngle = i * angleStep - 90;
+    const midRad = (midAngle + angleStep / 2) * Math.PI / 180;
+    const buttonR = 175;
+    return { x: Math.cos(midRad) * buttonR, y: Math.sin(midRad) * buttonR };
+  }
+
+  function runAction(s) {
+    if (!s.action) return;
+    if (s.action.startsWith('http')) {
+      window.open(s.action, '_blank');
+    } else if (s.action.startsWith('scroll-')) {
+      const el = document.getElementById(s.action.replace('scroll-', ''));
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+  function hoverIn(s) {
+    if (s.icon.endsWith('.svg')) {
+      heroCenter.innerHTML = '<img src="' + s.icon + '" alt="" style="width:48px;height:48px;" />';
+    } else {
+      heroCenter.textContent = s.icon;
+    }
+    heroCenter.style.borderColor = s.type === 'green' ? '#4ade80' : 'var(--cyan)';
+    heroCenter.style.color = s.type === 'green' ? '#4ade80' : 'var(--cyan)';
+  }
+  function hoverOut() {
+    heroCenter.textContent = 'V';
+    heroCenter.style.borderColor = '#333';
+    heroCenter.style.color = 'var(--text-muted)';
+  }
+
+  // ---- SVG layer (radial wedges) ----
+  const svgLayer = document.createElement('div');
+  svgLayer.className = 'wheel-svg-layer';
+  const svgEl = document.createElementNS(SVG_NS, 'svg');
+  svgEl.setAttribute('viewBox', (-R) + ' ' + (-R) + ' ' + (R*2) + ' ' + (R*2));
+  svgEl.setAttribute('style', 'position:absolute; top:50%; left:50%; width:' + (R*2) + 'px; height:' + (R*2) + 'px; transform:translate(-50%,-50%); overflow:visible;');
+
   slices.forEach((s, i) => {
     const midAngle = i * angleStep - 90;
     const gapAtOuter = Math.asin(pixelGap / R) * 180 / Math.PI;
     const gapAtInner = Math.asin(pixelGap / r) * 180 / Math.PI;
-
     const startDegOuter = midAngle + gapAtOuter;
     const endDegOuter   = midAngle + angleStep - gapAtOuter;
     const startDegInner = midAngle + gapAtInner;
     const endDegInner   = midAngle + angleStep - gapAtInner;
-
-    const startRadOuter = startDegOuter * Math.PI / 180;
-    const endRadOuter   = endDegOuter * Math.PI / 180;
-    const startRadInner = startDegInner * Math.PI / 180;
-    const endRadInner   = endDegInner * Math.PI / 180;
-
-    const ox1 = Math.cos(startRadOuter) * R;
-    const oy1 = Math.sin(startRadOuter) * R;
-    const ox2 = Math.cos(endRadOuter) * R;
-    const oy2 = Math.sin(endRadOuter) * R;
-    const ix1 = Math.cos(endRadInner) * r;
-    const iy1 = Math.sin(endRadInner) * r;
-    const ix2 = Math.cos(startRadInner) * r;
-    const iy2 = Math.sin(startRadInner) * r;
+    const sroR = startDegOuter * Math.PI / 180, eroR = endDegOuter * Math.PI / 180;
+    const sriR = startDegInner * Math.PI / 180, eriR = endDegInner * Math.PI / 180;
+    const ox1 = Math.cos(sroR) * R, oy1 = Math.sin(sroR) * R;
+    const ox2 = Math.cos(eroR) * R, oy2 = Math.sin(eroR) * R;
+    const ix1 = Math.cos(eriR) * r, iy1 = Math.sin(eriR) * r;
+    const ix2 = Math.cos(sriR) * r, iy2 = Math.sin(sriR) * r;
     const largeArcOuter = (endDegOuter - startDegOuter) > 180 ? 1 : 0;
     const largeArcInner = (endDegInner - startDegInner) > 180 ? 1 : 0;
+    const d = 'M ' + ix2 + ' ' + iy2 + ' L ' + ox1 + ' ' + oy1 + ' A ' + R + ' ' + R + ' 0 ' + largeArcOuter + ' 1 ' + ox2 + ' ' + oy2 + ' L ' + ix1 + ' ' + iy1 + ' A ' + r + ' ' + r + ' 0 ' + largeArcInner + ' 0 ' + ix2 + ' ' + iy2 + ' Z';
 
-    const path = [
-      `M ${ix2} ${iy2}`, `L ${ox1} ${oy1}`,
-      `A ${R} ${R} 0 ${largeArcOuter} 1 ${ox2} ${oy2}`,
-      `L ${ix1} ${iy1}`,
-      `A ${r} ${r} 0 ${largeArcInner} 0 ${ix2} ${iy2}`, 'Z'
-    ].join(' ');
+    const p = polarPos(i);
+    const icy = p.y - 12, ly = p.y + 14;
 
-    const midDeg = midAngle + angleStep / 2;
-    const midRad = midDeg * Math.PI / 180;
-    const midR = (R + r) / 2 + 5;
-    const cx = Math.cos(midRad) * midR;
-    const cy = Math.sin(midRad) * midR;
-    const icx = cx;
-    const icy = cy - 12;
-    const lx = cx;
-    const ly = cy + 14;
+    const g = document.createElementNS(SVG_NS, 'g');
+    g.setAttribute('class', 'wheel-slice' + (s.type ? ' ' + s.type : ''));
+    g.style.cursor = 'pointer';
 
-    const div = document.createElement('div');
-    div.className = 'wheel-slice' + (s.type ? ' ' + s.type : '');
-    div.style.cssText = 'position:absolute;top:50%;left:50%;width:'+R*2+'px;height:'+R*2+'px;transform:translate(-50%,-50%);pointer-events:none;';
+    const path = document.createElementNS(SVG_NS, 'path');
+    path.setAttribute('class', 'wheel-slice-bg');
+    path.setAttribute('d', d);
+    g.appendChild(path);
 
-    const fontSize = 16;
-    const iconSize = 20;
-
-    const heroIconEl = s.icon.endsWith('.svg')
-      ? `<image href="${s.icon}" x="${icx - 12}" y="${icy - 12}" width="24" height="24" />`
-      : `<text class="wheel-slice-icon" x="${icx}" y="${icy}" dy="0.35em" style="font-size:${iconSize}px">${s.icon}</text>`;
-    div.innerHTML = `
-      <svg viewBox="${-R} ${-R} ${R*2} ${R*2}" style="overflow:visible;">
-        <path class="wheel-slice-bg" d="${path}" style="pointer-events:all;cursor:pointer;" />
-        ${heroIconEl}
-        <text class="wheel-slice-label" x="${lx}" y="${ly}" dy="0.35em" style="font-size:${fontSize}px">${s.label}</text>
-      </svg>
-    `;
-
-    const pathEl = div.querySelector('path');
-    pathEl.addEventListener('mouseenter', () => {
-      heroCenter.textContent = s.icon;
-      heroCenter.style.borderColor = s.type === 'green' ? '#4ade80' : 'var(--cyan)';
-      heroCenter.style.color = s.type === 'green' ? '#4ade80' : 'var(--cyan)';
-    });
-    pathEl.addEventListener('mouseleave', () => {
-      heroCenter.textContent = 'V';
-      heroCenter.style.borderColor = '#333';
-      heroCenter.style.color = 'var(--text-muted)';
-    });
-
-    // Click actions
-    if (s.action) {
-      pathEl.addEventListener('click', () => {
-        if (s.action.startsWith('http')) {
-          window.open(s.action, '_blank');
-        } else if (s.action.startsWith('scroll-')) {
-          const target = s.action.replace('scroll-', '');
-          const el = document.getElementById(target);
-          if (el) el.scrollIntoView({ behavior: 'smooth' });
-        } else if (s.action === 'theme') {
-          const themes = [
-            { name: 'Green', color: '#4ea65b' },
-            { name: 'Violet', color: '#7c3aed' },
-            { name: 'Orange', color: '#f59e0b' },
-            { name: 'Rose', color: '#f43f5e' },
-            { name: 'Green', color: '#10b981' },
-          ];
-          const current = getComputedStyle(document.documentElement).getPropertyValue('--cyan').trim();
-          let idx = themes.findIndex(t => t.color === current);
-          idx = (idx + 1) % themes.length;
-          const t = themes[idx];
-          document.documentElement.style.setProperty('--cyan', t.color);
-          document.documentElement.style.setProperty('--cyan-glow', t.color + '26');
-          document.documentElement.style.setProperty('--cyan-dark', t.color);
-          document.documentElement.style.setProperty('--border-hover', t.color);
-        }
-      });
+    if (s.icon.endsWith('.svg')) {
+      const img = document.createElementNS(SVG_NS, 'image');
+      img.setAttribute('href', s.icon);
+      img.setAttribute('x', p.x - 12);
+      img.setAttribute('y', icy - 12);
+      img.setAttribute('width', '24');
+      img.setAttribute('height', '24');
+      img.style.pointerEvents = 'none';
+      g.appendChild(img);
+    } else {
+      const t = document.createElementNS(SVG_NS, 'text');
+      t.setAttribute('class', 'wheel-slice-icon');
+      t.setAttribute('x', p.x);
+      t.setAttribute('y', icy);
+      t.setAttribute('dy', '0.35em');
+      t.style.pointerEvents = 'none';
+      t.textContent = s.icon;
+      g.appendChild(t);
     }
 
-    wrapper.appendChild(div);
+    const label = document.createElementNS(SVG_NS, 'text');
+    label.setAttribute('class', 'wheel-slice-label');
+    label.setAttribute('x', p.x);
+    label.setAttribute('y', ly);
+    label.setAttribute('dy', '0.35em');
+    label.style.pointerEvents = 'none';
+    label.textContent = s.label;
+    g.appendChild(label);
+
+    g.addEventListener('mouseenter', () => hoverIn(s));
+    g.addEventListener('mouseleave', hoverOut);
+    g.addEventListener('click', () => runAction(s));
+
+    svgEl.appendChild(g);
   });
+  svgLayer.appendChild(svgEl);
+  wrapper.appendChild(svgLayer);
+
+  // ---- Row layer (radial buttons for list mode) ----
+  const rowLayer = document.createElement('div');
+  rowLayer.className = 'wheel-row-layer';
+  const rowEls = [];
+
+  slices.forEach((s, i) => {
+    const row = document.createElement('button');
+    row.className = 'wheel-row' + (s.type === 'active' ? ' is-active' : '') + (s.type === 'green' ? ' is-green' : '');
+    row.type = 'button';
+    row.dataset.idx = i;
+    const isExternal = s.action && s.action.startsWith('http');
+    const iconHtml = s.icon.endsWith('.svg')
+      ? '<img src="' + s.icon + '" alt="" />'
+      : '<span>' + s.icon + '</span>';
+    row.innerHTML = '<span class="wheel-row-icon">' + iconHtml + '</span><span class="wheel-row-label">' + s.label + '</span><span class="wheel-row-meta">' + (isExternal ? '↗' : '↓') + '</span>';
+
+    const p = polarPos(i);
+    row.style.transform = 'translate(calc(-50% + ' + p.x + 'px), calc(-50% + ' + p.y + 'px))';
+
+    row.addEventListener('mouseenter', () => hoverIn(s));
+    row.addEventListener('mouseleave', hoverOut);
+    row.addEventListener('click', () => runAction(s));
+
+    rowLayer.appendChild(row);
+    rowEls.push(row);
+  });
+  wrapper.appendChild(rowLayer);
+
+  // ---- Auto-cycle Pie ⇄ List every 2.6s, pause on hover ----
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let currentMode = 'radial';
+  let paused = false;
+
+  function applyRowTransitions(mode) {
+    rowEls.forEach((row, i) => {
+      const target = mode === 'radial' ? polarPos(i) : listPos(i);
+      const delay = reducedMotion ? 0 : i * 35;
+      row.style.transition = reducedMotion
+        ? 'opacity 200ms ease-out, transform 200ms ease-out, background 0.25s, border-color 0.25s, color 0.25s'
+        : 'transform 600ms cubic-bezier(0.4, 0, 0.2, 1) ' + delay + 'ms, opacity 350ms ease-out ' + delay + 'ms, background 0.25s, border-color 0.25s, color 0.25s';
+      row.style.transform = 'translate(calc(-50% + ' + target.x + 'px), calc(-50% + ' + target.y + 'px))';
+    });
+  }
+
+  function toggleMode() {
+    if (paused) return;
+    currentMode = currentMode === 'radial' ? 'list' : 'radial';
+    wrapper.dataset.mode = currentMode;
+    applyRowTransitions(currentMode);
+  }
+
+  // Pause on hover so the user can interact without getting interrupted mid-morph
+  wrapper.addEventListener('mouseenter', () => { paused = true; });
+  wrapper.addEventListener('mouseleave', () => { paused = false; });
+
+  // Pause when the hero is scrolled out of view (perf + a11y)
+  if ('IntersectionObserver' in window) {
+    let inView = true;
+    const io = new IntersectionObserver(entries => {
+      inView = entries[0].isIntersecting;
+      paused = !inView;
+    }, { threshold: 0.1 });
+    io.observe(wrapper);
+  }
+
+  // Start cycling after a small delay so users see the radial state first
+  setTimeout(() => {
+    setInterval(toggleMode, 2600);
+  }, 1800);
 })();
 
 // ---- V-Key QuickMenu Popup ----
@@ -2253,12 +2621,51 @@ document.querySelectorAll('.faq-question').forEach(btn => {
       { label: 'Top',       icon: '▲',  type: 'green',  action: 'scroll-top' },
     ];
 
+    const SVG_NS = 'http://www.w3.org/2000/svg';
     const n = slices.length;
     const angleStep = 360 / n;
     const R = 140;
     const r = 35;
     const pixelGap = 11;
     const centerEl = wheel.querySelector('.qm-wheel-center');
+
+    function polarPos(i) {
+      const midAngle = i * angleStep - 90;
+      const midRad = (midAngle + angleStep / 2) * Math.PI / 180;
+      const midR = (R + r) / 2 + 5;
+      return { x: Math.cos(midRad) * midR, y: Math.sin(midRad) * midR };
+    }
+    function listPos(i) {
+      const midAngle = i * angleStep - 90;
+      const midRad = (midAngle + angleStep / 2) * Math.PI / 180;
+      const isMobile = window.innerWidth <= 900;
+      const buttonR = isMobile ? 110 : 150;
+      return { x: Math.cos(midRad) * buttonR, y: Math.sin(midRad) * buttonR };
+    }
+
+    function hoverIn(s) {
+      hoveredSlice = s;
+      if (s.icon.endsWith('.svg')) {
+        centerEl.innerHTML = '<img src="' + s.icon + '" alt="" style="width:28px;height:28px;" />';
+      } else {
+        centerEl.textContent = s.icon;
+      }
+      centerEl.style.borderColor = s.type === 'green' ? '#4ade80' : 'var(--cyan)';
+      centerEl.style.color = s.type === 'green' ? '#4ade80' : 'var(--cyan)';
+    }
+    function hoverOut() {
+      hoveredSlice = null;
+      centerEl.textContent = 'V';
+      centerEl.style.borderColor = 'var(--cyan)';
+      centerEl.style.color = 'var(--cyan)';
+    }
+
+    // ---- SVG layer (radial wedges) ----
+    const svgLayer = document.createElement('div');
+    svgLayer.className = 'wheel-svg-layer';
+    const svgEl = document.createElementNS(SVG_NS, 'svg');
+    svgEl.setAttribute('viewBox', (-R) + ' ' + (-R) + ' ' + (R*2) + ' ' + (R*2));
+    svgEl.setAttribute('style', 'position:absolute; top:50%; left:50%; width:' + (R*2) + 'px; height:' + (R*2) + 'px; transform:translate(-50%,-50%); overflow:visible;');
 
     slices.forEach((s, i) => {
       const midAngle = i * angleStep - 90;
@@ -2268,57 +2675,91 @@ document.querySelectorAll('.faq-question').forEach(btn => {
       const endDegOuter   = midAngle + angleStep - gapAtOuter;
       const startDegInner = midAngle + gapAtInner;
       const endDegInner   = midAngle + angleStep - gapAtInner;
-      const startRadOuter = startDegOuter * Math.PI / 180;
-      const endRadOuter   = endDegOuter * Math.PI / 180;
-      const startRadInner = startDegInner * Math.PI / 180;
-      const endRadInner   = endDegInner * Math.PI / 180;
-
-      const ox1 = Math.cos(startRadOuter) * R, oy1 = Math.sin(startRadOuter) * R;
-      const ox2 = Math.cos(endRadOuter) * R, oy2 = Math.sin(endRadOuter) * R;
-      const ix1 = Math.cos(endRadInner) * r, iy1 = Math.sin(endRadInner) * r;
-      const ix2 = Math.cos(startRadInner) * r, iy2 = Math.sin(startRadInner) * r;
+      const sroR = startDegOuter * Math.PI / 180, eroR = endDegOuter * Math.PI / 180;
+      const sriR = startDegInner * Math.PI / 180, eriR = endDegInner * Math.PI / 180;
+      const ox1 = Math.cos(sroR) * R, oy1 = Math.sin(sroR) * R;
+      const ox2 = Math.cos(eroR) * R, oy2 = Math.sin(eroR) * R;
+      const ix1 = Math.cos(eriR) * r, iy1 = Math.sin(eriR) * r;
+      const ix2 = Math.cos(sriR) * r, iy2 = Math.sin(sriR) * r;
       const largeArcOuter = (endDegOuter - startDegOuter) > 180 ? 1 : 0;
       const largeArcInner = (endDegInner - startDegInner) > 180 ? 1 : 0;
+      const d = 'M ' + ix2 + ' ' + iy2 + ' L ' + ox1 + ' ' + oy1 + ' A ' + R + ' ' + R + ' 0 ' + largeArcOuter + ' 1 ' + ox2 + ' ' + oy2 + ' L ' + ix1 + ' ' + iy1 + ' A ' + r + ' ' + r + ' 0 ' + largeArcInner + ' 0 ' + ix2 + ' ' + iy2 + ' Z';
 
-      const path = `M ${ix2} ${iy2} L ${ox1} ${oy1} A ${R} ${R} 0 ${largeArcOuter} 1 ${ox2} ${oy2} L ${ix1} ${iy1} A ${r} ${r} 0 ${largeArcInner} 0 ${ix2} ${iy2} Z`;
+      const p = polarPos(i);
+      const icy = p.y - 12, ly = p.y + 14;
 
-      const midDeg = midAngle + angleStep / 2;
-      const midRad = midDeg * Math.PI / 180;
-      const midR = (R + r) / 2 + 5;
-      const cx = Math.cos(midRad) * midR, cy = Math.sin(midRad) * midR;
-      const icx = cx, icy = cy - 12;
-      const lx = cx, ly = cy + 14;
+      const g = document.createElementNS(SVG_NS, 'g');
+      g.setAttribute('class', 'wheel-slice' + (s.type ? ' ' + s.type : ''));
+      g.style.cursor = 'pointer';
 
-      const div = document.createElement('div');
-      div.className = 'wheel-slice' + (s.type ? ' ' + s.type : '');
-      div.style.cssText = 'position:absolute;top:50%;left:50%;width:' + R * 2 + 'px;height:' + R * 2 + 'px;transform:translate(-50%,-50%);pointer-events:none;';
-      var qmIconEl = s.icon.endsWith('.svg')
-        ? '<image href="' + s.icon + '" x="' + (icx - 12) + '" y="' + (icy - 12) + '" width="24" height="24" />'
-        : '<text class="wheel-slice-icon" x="' + icx + '" y="' + icy + '" dy="0.35em">' + s.icon + '</text>';
-      div.innerHTML = '<svg viewBox="' + (-R) + ' ' + (-R) + ' ' + (R * 2) + ' ' + (R * 2) + '" style="overflow:visible;"><path class="wheel-slice-bg" d="' + path + '" style="pointer-events:all;cursor:pointer;" />' + qmIconEl + '<text class="wheel-slice-label" x="' + lx + '" y="' + ly + '" dy="0.35em">' + s.label + '</text></svg>';
+      const path = document.createElementNS(SVG_NS, 'path');
+      path.setAttribute('class', 'wheel-slice-bg');
+      path.setAttribute('d', d);
+      g.appendChild(path);
 
-      const pathEl = div.querySelector('path');
-      pathEl.addEventListener('mouseenter', () => {
-        hoveredSlice = s;
-        centerEl.textContent = s.icon;
-        centerEl.style.borderColor = s.type === 'green' ? '#4ade80' : 'var(--cyan)';
-        centerEl.style.color = s.type === 'green' ? '#4ade80' : 'var(--cyan)';
-      });
-      pathEl.addEventListener('mouseleave', () => {
-        hoveredSlice = null;
-        centerEl.textContent = 'V';
-        centerEl.style.borderColor = 'var(--cyan)';
-        centerEl.style.color = 'var(--cyan)';
-      });
+      if (s.icon.endsWith('.svg')) {
+        const img = document.createElementNS(SVG_NS, 'image');
+        img.setAttribute('href', s.icon);
+        img.setAttribute('x', p.x - 12);
+        img.setAttribute('y', icy - 12);
+        img.setAttribute('width', '24');
+        img.setAttribute('height', '24');
+        img.style.pointerEvents = 'none';
+        g.appendChild(img);
+      } else {
+        const t = document.createElementNS(SVG_NS, 'text');
+        t.setAttribute('class', 'wheel-slice-icon');
+        t.setAttribute('x', p.x);
+        t.setAttribute('y', icy);
+        t.setAttribute('dy', '0.35em');
+        t.style.pointerEvents = 'none';
+        t.textContent = s.icon;
+        g.appendChild(t);
+      }
 
-      // Click also triggers action
-      pathEl.addEventListener('click', () => {
-        executeAction(s.action);
-        hideWheel();
-      });
+      const label = document.createElementNS(SVG_NS, 'text');
+      label.setAttribute('class', 'wheel-slice-label');
+      label.setAttribute('x', p.x);
+      label.setAttribute('y', ly);
+      label.setAttribute('dy', '0.35em');
+      label.style.pointerEvents = 'none';
+      label.textContent = s.label;
+      g.appendChild(label);
 
-      wheel.appendChild(div);
+      g.addEventListener('mouseenter', () => hoverIn(s));
+      g.addEventListener('mouseleave', hoverOut);
+      g.addEventListener('click', () => { executeAction(s.action); hideWheel(); });
+
+      svgEl.appendChild(g);
     });
+    svgLayer.appendChild(svgEl);
+    wheel.appendChild(svgLayer);
+
+    // ---- Row layer (radial buttons for list mode) ----
+    const rowLayer = document.createElement('div');
+    rowLayer.className = 'wheel-row-layer';
+
+    slices.forEach((s, i) => {
+      const row = document.createElement('button');
+      row.className = 'wheel-row' + (s.type === 'active' ? ' is-active' : '') + (s.type === 'green' ? ' is-green' : '');
+      row.type = 'button';
+      row.dataset.idx = i;
+      const isExternal = s.action && s.action.startsWith('http');
+      const iconHtml = s.icon.endsWith('.svg')
+        ? '<img src="' + s.icon + '" alt="" />'
+        : '<span>' + s.icon + '</span>';
+      row.innerHTML = '<span class="wheel-row-icon">' + iconHtml + '</span><span class="wheel-row-label">' + s.label + '</span><span class="wheel-row-meta">' + (isExternal ? '↗' : '↓') + '</span>';
+
+      const p = listPos(i);
+      row.style.transform = 'translate(calc(-50% + ' + p.x + 'px), calc(-50% + ' + p.y + 'px))';
+
+      row.addEventListener('mouseenter', () => hoverIn(s));
+      row.addEventListener('mouseleave', hoverOut);
+      row.addEventListener('click', () => { executeAction(s.action); hideWheel(); });
+
+      rowLayer.appendChild(row);
+    });
+    wheel.appendChild(rowLayer);
   }
 
   function showWheel() {
@@ -2331,6 +2772,11 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     hoveredSlice = null;
     buildWheel();
     hint.classList.remove('active');
+
+    // Sync mode with the wheel-demo toggle (or default to radial)
+    const demoWrapper = document.getElementById('wheelWrapper');
+    const mode = (demoWrapper && demoWrapper.dataset.mode) || 'radial';
+    wheel.dataset.mode = mode;
 
     wheel.style.left = mouseX + 'px';
     wheel.style.top = mouseY + 'px';

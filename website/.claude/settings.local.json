@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Claude_Preview__preview_start",
+      "Bash(npm list:*)",
+      "Bash(npm install:*)",
+      "Bash(gh api:*)",
+      "Bash(where gh:*)",
+      "Bash(npx wrangler:*)",
+      "WebFetch(domain:docs.quickmenuplugin.com)",
+      "Bash(where ffmpeg:*)",
+      "Bash(export PATH=\"$PATH:/c/Users/Sentient3/AppData/Local/Microsoft/WinGet/Links\")",
+      "Bash(ffmpeg -version)",
+      "Bash(ls D:/QuickMenu-Website/images/*.svg D:/QuickMenu-Website/images/*.png)",
+      "Bash(/c/Users/Sentient3/AppData/Local/Microsoft/WinGet/Links/ffmpeg.exe -i \"D:/QuickMenu-Plugin/docs/img/RandomBigGroupGraph.mp4\" -i \"D:/QuickMenu-Plugin/docs/img/QuickMenuGraphLayout.mp4\" -filter_complex \"[0:v]setpts=0.333*PTS[v0];[1:v]setpts=0.333*PTS[v1];[v0][v1]concat=n=2:v=1:a=0[out]\" -map \"[out]\" -an images/GraphOverview_x3.mp4 -y)",
+      "Bash(/c/Users/Sentient3/AppData/Local/Microsoft/WinGet/Links/ffmpeg.exe -i \"D:/QuickMenu-Plugin/docs/img/RandomBigGroupGraph.mp4\" -i \"D:/QuickMenu-Plugin/docs/img/QuickMenuGraphLayout.mp4\" -filter_complex \"[0:v]setpts=0.333*PTS,scale=1584:1114:flags=lanczos,setsar=1[v0];[1:v]setpts=0.333*PTS,scale=1584:1114:flags=lanczos,setsar=1[v1];[v0][v1]concat=n=2:v=1:a=0[out]\" -map \"[out]\" -an -pix_fmt yuv420p images/GraphOverview_x3.mp4 -y)",
+      "Bash(ls D:/QuickMenu-Plugin/docs/img/AutoLayout* D:/QuickMenu-Plugin/docs/img/RandomBigGroupGraph* D:/QuickMenu-Plugin/docs/img/Comment* D:/QuickMenu-Plugin/docs/img/Name*)",
+      "Bash(/c/Users/Sentient3/AppData/Local/Microsoft/WinGet/Links/ffmpeg.exe -i images/GraphEditorShowcase.mp4 -i \"D:/QuickMenu-Plugin/docs/img/AutoLayout+Comment+Name.mp4\" -i \"D:/QuickMenu-Plugin/docs/img/RandomBigGroupGraph.mp4\" -filter_complex \"[0:v]setpts=0.333*PTS[v0];[1:v]setpts=0.333*PTS,scale=1920:1080:flags=lanczos,setsar=1[v1];[2:v]setpts=0.333*PTS,scale=1920:1080:flags=lanczos,setsar=1[v2];[v0]scale=1920:1080:flags=lanczos,setsar=1[v0s];[v0s][v1][v2]concat=n=3:v=1:a=0[out]\" -map \"[out]\" -an -pix_fmt yuv420p images/GraphEditorShowcase_combined_x3.mp4 -y)",
+      "Bash(ffprobe -hide_banner images/ContextWheels_x3.mp4)",
+      "Bash(printf \"file ''''%s''''\\\\n\" D:/QuickMenu-Plugin/docs/img/BlueprintWheelDeleteUnusedVariable.mp4 D:/QuickMenu-Plugin/docs/img/Blueprintwheel.mp4 D:/QuickMenu-Plugin/docs/img/BlueprintAnimationWheel.mp4 D:/QuickMenu-Plugin/docs/img/SequencerWheel.mp4 D:/QuickMenu-Plugin/docs/img/NiagaraEmitter.mp4)",
+      "Bash(ffmpeg -y -f concat -safe 0 -i concat_list.txt -vf setpts=0.333*PTS -an -c:v libx264 -preset fast -crf 23 images/ContextWheels_x3.mp4)",
+      "Bash(printf \"file ''''%s''''\\\\n\" D:/QuickMenu-Plugin/docs/img/AutoLayout+Comment+Name.mp4 D:/QuickMenu-Plugin/docs/img/BlueprintAnimationWheel.mp4 D:/QuickMenu-Plugin/docs/img/SequencerWheel.mp4 D:/QuickMenu-Plugin/docs/img/Blueprintwheel.mp4 D:/QuickMenu-Plugin/docs/img/NiagaraEmitter.mp4)",
+      "Bash(find D:QuickMenu-Plugin -type f -name CHANGELOG* -o -name *.uplugin -o -name *version* -o -name *VERSION*)",
+      "Bash(grep -r version D:/QuickMenu-Plugin --include=*.md --include=*.json --include=*.yml)",
+      "Bash(git -C D:/QuickMenu-Website remote -v)",
+      "Bash(curl -s -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36\" -L \"https://docs.quickmenuplugin.com\" -o D:/QuickMenu-Website/.tmp_docs.html -w \"HTTP=%{http_code}\\\\nFINAL_URL=%{url_effective}\\\\nSIZE=%{size_download}\\\\n\")",
+      "Bash(Get-ChildItem -Recurse \"D:\\\\QuickMenu-Website\\\\images\")",
+      "Bash(Select-Object FullName)"
+    ]
+  }
+}

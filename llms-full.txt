@@ -1,6 +1,6 @@
 # Quick Menu - Unreal Engine Plugin
 # Complete Reference (llms-full.txt)
-# Version: 1.0.5 | Engine: UE 5.0-5.7 | Site: quickmenuplugin.com
+# Version: 1.0.6 | Engine: UE 5.0-5.7 | Site: quickmenuplugin.com
 
 ## What is Quick Menu?
 
@@ -539,10 +539,22 @@ The Quick Menu Panel is a dockable editor tab that serves as the central hub for
 - Supports add, edit, run, remove, and reset flows for custom commands
 
 **Tab — Plugin settings:**
-- Activation Mode plus appearance controls (icon size, wheel size, wedge gap, grayscale overrides)
+- Activation Mode plus appearance controls (icon size, text size, wheel size, center button size, wedge gap, bold text, button drop shadows, grayscale overrides)
+- Icon Size and Radial Button Size go down to 0 (icons fully hidden); wheel labels render Regular by default with an opt-in Bold Text toggle
 - Uses the full tab height (no more vertical splitter sharing space with a preview)
 - Reset Wheel Appearance restores the appearance overrides to defaults
 - Settings now persist across editor restarts (writes routed through `TryUpdateDefaultConfigFile()` for the `defaultconfig` `UQuickMenuSettings` class)
+
+**Tab — Panels (Quick Panels):**
+- Quick Panels are small dockable toolbars that keep favorite actions visible while working — they reuse the wheel's graph/action system (labels, icons, Python actions, sequences, visibility conditions)
+- Each panel is a nomad tab: floats above the editor by default, docks anywhere, position persisted with the editor layout
+- Manage from this tab: create, rename inline, open/close, delete (confirmation), export, import
+- Live sync with the graph: labels/icons/visibility track the source nodes; context-hidden actions render disabled (grayed); actions re-resolve at click time with the current editor context; deleted nodes show a removable `Missing action` row
+- `+ Add Action` is a Blueprint-style picker (collapsed categories, instant search focus): `From Active Graph` group + the full 48-action catalog (a catalog pick creates a fresh unconnected node in the active graph — undoable, editable, never shown in the wheel)
+- Drag & drop: click-drag any wedge out of the open wheel (pie, radial-button, list, submenu items) and drop it on a panel; nothing can execute mid-drag
+- Right-click a panel button: `Edit Action…` (same inline property editor as the wheel) or `Remove from Panel`
+- Export/Import portable `.qmpanel` JSON files (entries reference graph assets by path + node guid — teammates on the same project import working panels)
+- 4 starter panels are seeded once per project on first run (`Viewport Essentials`, `Placement Tools`, `Lighting Tools`, `Optimization`), backed by a generated, editable `/Game/QuickMenu/QM_PanelActions` graph; deleting one is permanent
 
 **Tab — Live Preview (dedicated):**
 - Hosts the live wheel preview at full tab height (moved out of `Plugin settings` into its own tab)

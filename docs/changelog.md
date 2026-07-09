@@ -8,6 +8,50 @@ Each version includes a **Reported** section listing what was detected/reported,
 
 ---
 
+## [1.0.6] - 2026-07-09
+
+### Reported
+- Users wanted floating/dockable custom button panels reusing the wheel's graph/action system — reuse action nodes, Custom Python actions, Sequence nodes, icons, labels, colors, and visibility conditions, but displayed as always-visible toolbars ("Lighting Tools", "Optimization Tools", "Placement Tools"); radial menus stay for hotkeys, panels keep tools visible (user feature request)
+- While rotating or resizing the wheel / list with the middle-mouse gestures, actions stayed hoverable and could fire on hotkey release or click — tuning the wheel could accidentally trigger whatever slid under the cursor
+- The `Icon Size` multiplier bottomed out at 0.5 in the Quick Menu panel; icons could not be fully hidden. Same floor applied to the in-wheel radial-button scale gesture
+- Scaling `Radial Button Size` grew the button background but not its content — the label stayed at a fixed 11pt and the icon followed the wheel scale instead of the button scale
+- Vertical gaps between radial-button rows were much larger than horizontal ones: buttons sat on a perfect circle whose radius was tied to the (invisible in list mode) pie outer radius × `Wheel Size`, so large wheel scales inflated list-mode spacing
+- The center EDIT hub scaled with `Wheel Size` in pie mode but stayed frozen in list mode; users wanted the list-mode scroll to also resize the hub, independently from the pie-mode size
+- Wheel labels were hard-coded bold; users wanted a regular font by default with bold as an option
+- Radial-button cells drew a drop shadow that could not be disabled
+- The graph editor's right-click action menu opened with every category expanded, unlike Blueprint's collapsed-until-search behavior
+
+### Added
+- **Quick Panels** — pin any action into small dockable toolbars that stay visible while you work:
+  - Panels are **nomad dock tabs**: they float above the editor by default and dock anywhere like any native panel; position/docking persists with the editor layout
+  - New **`Panels` tab** in the Quick Menu panel: create, rename inline, open/close, delete (with confirm), export, import
+  - **Live sync with the graph** — button labels, icons, and Python visibility conditions track their source nodes (context-hidden actions render disabled, not hidden); actions re-resolve at click time so they use the current editor context; deleted nodes show a removable `Missing action` row
+  - **Blueprint-style add menu** (`SGraphActionMenu`): instant search focus, a `From Active Graph` section listing configured actions/submenus/sequences, and the **full 48-action catalog** — picking a catalog entry creates a fresh, unconnected, auto-labeled node in the active graph (parked below the graph, undoable, never affects the wheel)
+  - **Drag & drop from the wheel** — click-drag any wedge (pie, radial-button, list, and submenu items) past 8 px to carry it out of the wheel with an icon+label decorator and drop it on any panel (drop highlight); the wheel stays open during the drag, nothing can fire mid-drag, and a successful drop dismisses the wheel
+  - **Right-click a panel button** → `Edit Action…` opens the same inline property editor as the wheel's right-click (new window-hosted mode), `Remove from Panel` unpins the button without touching the graph
+  - **Export / Import `.qmpanel`** — panels serialize to a portable JSON file (name + graph/node references) for sharing between teammates on the same project, with success/failure notifications
+  - **4 starter panels present by default** (`Viewport Essentials`, `Placement Tools`, `Lighting Tools`, `Optimization`) — seeded once per project on first run, backed by a generated, fully editable `/Game/QuickMenu/QM_PanelActions` graph (no shipped `.uasset`, so no cross-version asset issues); deleting a starter panel is permanent
+  - New module dependencies: `Json`, `DesktopPlatform`
+- **`Text Size Multiplier`** (0–3) — scales all menu label text (wedges, radial buttons, list rows); measurements follow so button/list widths stay consistent
+- **`Bold Text` toggle** — wheel labels now render Regular by default; opt back into bold from the panel or Project Settings
+- **`Button Drop Shadows` toggle** — radial-button cells and list panels draw flat by default; shadows are opt-in
+- **`Center Button Size` multiplier** (0.25–3) — scales the center EDIT hub on top of the mode scale; the pencil glyph and label scale along
+- **`List Hub Size` multiplier** — the hub has its own size while a list/radial-button layout is active; scrolling in list mode adjusts distance and hub together without touching the pie-mode wheel size
+
+### Changed
+- **`Icon Size` and `Radial Button Size` minimums relaxed from 0.5 to 0** across the panel spinboxes, Project Settings clamps, widget setters, and in-wheel gestures — 0 hides wedge icons entirely
+- **Radial button content scales proportionally** — font, icon, and paddings follow `RadialButtonSizeMultiplier`; measurement and rendering share the same scaled font so truncation and hit-testing stay consistent
+- **Radial button orbit tightened** — anchored to the center hub instead of the pie outer radius (so `Wheel Size` no longer inflates list-mode spacing), arc packing reduced to 65% of the widest button, and buttons now sit on a **vertically squashed ellipse** (×0.7) to close the row gaps
+- **Wheel click execution moved from mouse-down to mouse-up** (standard button behavior) to make room for the drag & drop gesture; release-in-place behaves exactly as before
+- **Graph editor right-click menu is Blueprint-style** — categories start collapsed and only expand while the search text matches entries inside them (`AutoExpandActionMenu(false)` on both root and subgraph editors)
+
+### Fixed
+- **Actions can no longer fire while editing the wheel** — during middle-mouse appearance gestures (rotate, resize, gap) hover is locked and cleared so nothing highlights, expands, or executes; after any adjustment (scroll resize, list distance, gesture release) a 0.35 s grace window closes the wheel without firing and the stale hover is dropped, requiring a deliberate re-aim
+- **Center hub radius stays in sync with the material renderer** — the `DeadZoneRadius` scalar was only pushed at material init; it now refreshes every frame, so hub resizes are always visually accurate
+- **Inline property panel renders correctly when hosted in a window** — new `bInWindow` mode skips the wheel-overlay anchor canvas and self-hit-test-invisible visibility that clipped and offset the content in the Quick Panel edit popup
+
+---
+
 ## [1.0.5] - 2026-05-18
 
 ### Reported

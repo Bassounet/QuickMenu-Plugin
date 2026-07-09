@@ -1,6 +1,6 @@
 site_name: Quick Menu Plugin Documentation
 site_url: https://docs.quickmenuplugin.com
-site_description: Radial pie menu plugin for Unreal Engine — press V to access 46+ editor actions instantly.
+site_description: Radial pie menu plugin for Unreal Engine — press V to access 48+ editor actions instantly.
 site_author: Quick Menu
 
 repo_url: https://github.com/Bassounet/QuickMenu-Plugin
@@ -65,6 +65,7 @@ nav:
     - Pie Menu: customization/pie-menu.md
     - Keyboard Shortcuts: customization/shortcuts.md
     - Quick Menu Panel: customization/panel.md
+    - Quick Panels: customization/quick-panels.md
     - Project Settings: customization/settings.md
     - Content Browser: customization/content-browser.md
     - Python Library: customization/python-examples.md

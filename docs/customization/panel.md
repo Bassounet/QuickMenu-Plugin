@@ -4,6 +4,9 @@ The Quick Menu Panel is a dockable editor tab that serves as a central hub for c
 
 **Open it:** Window → Quick Menu Panel (auto-opens on first plugin activation)
 
+!!! tip "New in 1.0.6 — Panels tab"
+    The panel now hosts a **Panels** tab to manage [Quick Panels](quick-panels.md): small dockable toolbars that keep your favorite actions visible while you work, with drag & drop from the wheel and file-based sharing.
+
 ![Quick Menu Panel](/img/QuickMenuPanel.png)
 
 ## Header (hero card, redesigned in 1.0.5)

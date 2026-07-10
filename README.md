@@ -39,6 +39,7 @@ Check the [**Troubleshooting**](https://docs.quickmenuplugin.com/troubleshooting
 
 | Engine Version | Plugin Version | Support |
 |:-:|:-:|:-:|
+| UE 5.8 | 1.0.6 | :white_check_mark: |
 | UE 5.7 | 1.0.6 | :white_check_mark: |
 | UE 5.6 | 1.0.6 | :white_check_mark: |
 | UE 5.5 | 1.0.6 | :white_check_mark: |

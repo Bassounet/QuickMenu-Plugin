@@ -10,6 +10,9 @@ Each version includes a **Reported** section listing what was detected/reported,
 
 ## [1.0.6] - 2026-07-09
 
+### Engine Support
+- **UE 5.8 supported** — the supported range is now **UE 5.0 – 5.8**. The dev project moved to 5.8; the removed `GLevelEditorModeToolsIsValid()` engine function is shimmed in `QuickMenuCompat.h` (`QM_LEVEL_MODE_TOOLS_VALID()` checks the LevelEditor module on 5.8+)
+
 ### Reported
 - Users wanted floating/dockable custom button panels reusing the wheel's graph/action system — reuse action nodes, Custom Python actions, Sequence nodes, icons, labels, colors, and visibility conditions, but displayed as always-visible toolbars ("Lighting Tools", "Optimization Tools", "Placement Tools"); radial menus stay for hotkeys, panels keep tools visible (user feature request)
 - While rotating or resizing the wheel / list with the middle-mouse gestures, actions stayed hoverable and could fire on hotkey release or click — tuning the wheel could accidentally trigger whatever slid under the cursor

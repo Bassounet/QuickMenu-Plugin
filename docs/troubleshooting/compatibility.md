@@ -1,10 +1,10 @@
 # Version Compatibility
 
-Quick Menu supports Unreal Engine 5.0 through 5.7.
+Quick Menu supports Unreal Engine 5.0 through 5.8.
 
 ## Feature Support by Version
 
-| Feature | UE 5.0-5.1 | UE 5.2-5.4 | UE 5.5-5.7 |
+| Feature | UE 5.0-5.1 | UE 5.2-5.4 | UE 5.5-5.8 |
 |---------|-------------|-------------|-------------|
 | Core pie menu | Yes | Yes | Yes |
 | Graph editor | Yes | Yes | Yes |

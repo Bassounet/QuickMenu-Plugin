@@ -1,6 +1,6 @@
 # Quick Menu - Unreal Engine Plugin
 # Complete Reference (llms-full.txt)
-# Version: 1.0.6 | Engine: UE 5.0-5.7 | Site: quickmenuplugin.com
+# Version: 1.0.6 | Engine: UE 5.0-5.8 | Site: quickmenuplugin.com
 
 ## What is Quick Menu?
 
@@ -17,7 +17,7 @@ Everything is configured through a **visual node graph** — no config files, no
 - Python scripting support for custom actions
 - Works across Level Editor, Blueprint Editor, Material Editor, Sequencer, Niagara, PCG, and 49 editor contexts total
 - Usable during Play In Editor (togglable via `Allow Wheel During Play In Editor` setting)
-- Compatible with UE 5.0 through 5.7
+- Compatible with UE 5.0 through 5.8
 
 ---
 

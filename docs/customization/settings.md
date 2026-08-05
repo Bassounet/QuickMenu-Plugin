@@ -2,7 +2,7 @@
 
 Found at: **Edit → Project Settings → Plugins → Quick Menu**
 
-*Since 1.0.4*, settings are organized under clearer grouped categories — `Primary Binding`, `Hotkeys`, `Interaction`, `Behavior`, `Appearance`, `Console`. The Quick Menu Panel's Settings tab mirrors this exact same object — there's no longer a separate handcrafted UI in the panel.
+*Since 1.0.4*, settings are organized under clearer grouped categories — `Primary Binding`, `Hotkeys`, `Interaction`, `Behavior`, `Appearance`, `Console`. The Quick Menu Panel's **Plugin settings** tab mirrors this exact same object — there's no longer a separate handcrafted UI in the panel.
 
 ## Primary Binding
 
@@ -52,12 +52,15 @@ Found at: **Edit → Project Settings → Plugins → Quick Menu**
 | **Radial Button Size Multiplier** *(1.0.5)* | 1.0 | Independent multiplier for radial-button / list buttons (text, padding, icon inside the button). Decoupled from `Wheel Size Multiplier` so scrolling in list mode resizes the buttons without pushing them closer or farther from the center. Range 0.5–2.0 |
 | **Wedge Gap** | 5 px | Pixel gap between adjacent wedges (0–20). Adjustable live via middle-mouse drag on the wheel. Pie mode only |
 | **List Menu Distance** *(1.0.4)* | 0 | Absolute pixel offset that pushes/pulls list-style menus and radial-button rings toward/away from the wheel center. Clamp widened to ±10000. In list / radial-button layouts this is adjustable live via the **mouse wheel** while the menu is open (previously this gesture resized the wheel) |
-| **Force List Mode On All Wheels** | false | When enabled, every wheel uses the list-style layout regardless of its WheelOutput setting. Submenus also expand as list panels |
+| **Force List Mode On All Wheels** | true | When enabled, every wheel uses the list-style layout regardless of its WheelOutput setting. Submenus also expand as list panels |
 | **Snap Rotation** *(1.0.5)* | false | When enabled, **Shift + Middle-drag** rotation of the wheel snaps to `Rotation Snap Angle` increments instead of being continuous |
 | **Rotation Snap Angle (°)** *(1.0.5)* | 0 | Snap increment in degrees when `Snap Rotation` is on. `0` means *auto* (360° / wedge count, so wedge boundaries always line up). Range 0–180 |
 
 !!! info "Per-graph wheel rotation"
     Rotation is stored **per-wheel** on the [WheelOutput](../nodes/structural.md#wheeloutput) node (`Rotation (°)`, `Snap to Angle`, `Snap Angle Degrees`), not as a global appearance setting. Adjust it from the inline `SpinBox` on the node or with **Shift + Middle-drag** while the wheel is open.
+
+!!! info "Wheel Display Mode default (1.0.7)"
+    `Wheel Display Mode` is a per-wheel setting on the [WheelOutput](../nodes/structural.md#wheeloutput) node. *Since 1.0.7*, new WheelOutput nodes (and the generated default menus) default to **Radial Buttons** (list layout), matching the `Force List Mode On All Wheels` default — the per-wheel setting and the effective default no longer disagree. The classic wedge wheel remains one click away on any WheelOutput node.
 
 ## Console
 
@@ -87,3 +90,7 @@ Each entry has:
 - **Description** — shown in the Quick Menu Panel
 - **Is Toggle** — whether the command toggles on/off
 - **Default Value** — initial value for toggle commands
+
+## Setup Transfer *(1.0.7)*
+
+The Quick Menu Panel's **Plugin settings** tab adds a `Setup Transfer` section below the mirrored settings: `Export Setup…` / `Import Setup…` buttons that save and load the complete plugin configuration as a portable **`.qmsetup`** file — every setting on this page plus all Quick Panels. See [Quick Menu Panel → Setup Transfer](panel.md#setup-transfer-1-0-7) for details.

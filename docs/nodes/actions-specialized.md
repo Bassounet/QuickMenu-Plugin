@@ -10,7 +10,12 @@ Material editor operations.
 
 Sequencer playback and controls.
 
-**Options:** Play / Pause, Stop, Go to Start, Go to End, Step Forward, Step Backward, Toggle Loop, Set Playback Speed (0.25x/0.5x/1x/2x), Toggle Auto Key, Refresh Tree, Force Evaluate, Save Sequence.
+**Options:** Play / Pause, Stop, Go to Start, Go to End, Step Forward, Step Backward, Toggle Loop, Set Playback Speed (0.25x/0.5x/1x/2x), Toggle Auto Key, Refresh Tree, Force Evaluate, Save Sequence, Toggle Curve Editor, Create Camera + Cut Track.
+
+Two operations added in 1.0.7:
+
+- **Toggle Curve Editor** — shows/hides the focused Level Sequencer's animation curve editor from the wheel.
+- **Create Camera + Cut Track** — one wedge spawns a CineCamera at the viewport camera position, binds it to the open sequence (spawnable or possessable, following the Sequencer's `Create Spawnable Cameras` setting), creates the Camera Cut track, and locks the viewport to the new camera — same behavior as the Sequencer toolbar button.
 
 ## Static Mesh Op
 

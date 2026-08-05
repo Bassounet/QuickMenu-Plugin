@@ -71,6 +71,7 @@ All action nodes inherit from `UQMGraphNode_ActionBase`, which provides:
 | Edit Op | `UQMGraphNode_Action_EditOp` |
 | Reset Transform | `UQMGraphNode_Action_ResetTransform` |
 | Property Toggle | `UQMGraphNode_Action_PropertyToggle` |
+| Property Clipboard | `UQMGraphNode_Action_PropertyClipboard` |
 | Show Flag | `UQMGraphNode_Action_ShowFlag` |
 | Viewport View | `UQMGraphNode_Action_ViewportView` |
 | Viewport Layout | `UQMGraphNode_Action_ViewportLayout` |

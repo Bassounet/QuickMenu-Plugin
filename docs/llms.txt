@@ -1,5 +1,6 @@
 # Quick Menu
-> Radial pie menu plugin for Unreal Engine. Press V to access 46+ editor actions across 49 editor contexts. Context-aware, graph-configured, fully customizable. Same key can bind multiple gestures (Tap/Hold/Drag) to different graphs.
+> Version: 1.0.7 | Engine: UE 5.0-5.8
+> Radial pie menu plugin for Unreal Engine. Press V to access 49+ editor actions across 49 editor contexts. Context-aware, graph-configured, fully customizable. Same key can bind multiple gestures (Tap/Hold/Drag) to different graphs. Quick Panels pin any action into dockable toolbars (drag & drop from the wheel, shareable as files, 4 starter panels included). Setup Transfer exports/imports the complete plugin configuration as a portable `.qmsetup` file (settings + Quick Panels, cross-version). Sequencer wedges can toggle the curve editor and create a CineCamera + Camera Cut track in one click.
 
 ## Documentation
 - [Getting Started](https://docs.quickmenuplugin.com/getting-started/)

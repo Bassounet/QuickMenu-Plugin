@@ -8,6 +8,46 @@ Each version includes a **Reported** section listing what was detected/reported,
 
 ---
 
+## [1.0.7] - 2026-08-05
+
+### Reported
+- Copying camera settings between CineCameras — and more generally reusing a tuned actor's Details panel values on other actors — required manual property-by-property work (Discord feedback, Bongane_VizDev, originally scoped as "Camera Presets" and generalized)
+- Quick access to the Sequencer's animation curve editor from the wheel (Discord feedback, Bongane_VizDev)
+- Adding a new CineCamera + camera track on the Sequencer timeline from the wheel (Discord feedback, Bongane_VizDev)
+- No way to carry a tuned Quick Menu configuration (hotkeys, gestures, appearance, console commands, Quick Panels) from one project or machine to another — everything had to be redone by hand
+- With two Quick Menu panels open at once (e.g. one docked in the Level Editor, one next to the graph editor), each panel kept its own copy of the shortcut values: editing a key in one did not update the other, and the stale display made it easy to end up with conflicting bindings
+- The `Live Preview` tab duplicated what the real wheel (and the graph editor preview) already shows — it took a whole tab slot for little value
+- Tab reordering existed since 1.0.5 but nothing hinted that tabs were draggable
+- New wheels defaulted to the classic wedge layout even though the plugin ships with `Force List Mode On All Wheels` enabled — the per-wheel setting and the effective default disagreed
+
+### Added
+- **Setup Transfer (`.qmsetup`)** — export / import the complete plugin configuration as a portable JSON file, from `Plugin settings > Setup Transfer`:
+  - Export covers **every config setting by reflection** (hotkeys and gesture bindings, node-spawn shortcuts, custom console commands, activation mode, active graph, all appearance values) plus **all Quick Panels** (same graph/node reference model as `.qmpanel`)
+  - Import asks for confirmation before overwriting, then applies instantly: settings persist to the project + per-user inis, the wheel hotkey re-binds, and the pie menu refreshes — no editor restart
+  - **Quick Panels import additively**: a panel from the file is recreated only if no existing panel has the same name; your current panels are never overwritten
+  - Validated cross-version: setup exported from a UE 5.8 project imports cleanly into a UE 5.0 project
+- **Property Clipboard** — the 49th action node (`Actions > Actor`): copy the whole Details panel of an actor and paste it onto any selection:
+  - **Copy Properties** captures every editable property of the first selected actor **and all its components** — exactly what the Details panel shows (asset references included; instanced component references excluded)
+  - **Paste All Properties** applies everything to all selected actors in a single undoable transaction — except relative Location/Rotation/Scale, excluded by default so targets don't teleport onto the source
+  - **Paste Properties…** opens a picker window grouped by actor/component, with search, All/None, per-property value previews, and a live `Paste N properties onto M actors` button; relative transform entries start unchecked
+  - **Cross-class smart paste** — pasting onto a different actor class writes only the properties that match (components matched by name, then by class; same-type check per property); everything else is skipped safely
+  - Paste actions stay hidden until something has been copied; the clipboard is session-scoped
+- **Sequencer Op: `Toggle Curve Editor`** — show/hide the focused Level Sequencer's curve editor from the wheel. Uses the direct `ISequencer` API on 5.7+ (the 5.8 MVVM sequencer asserts when the toolbar command binding is executed from outside its own UI context) and the native `ToggleShowCurveEditor` command binding on older engines
+- **Sequencer Op: `Create Camera + Cut Track`** — one wedge spawns a CineCamera at the viewport camera position, binds it to the open sequence (spawnable or possessable following the Sequencer's `Create Spawnable Cameras` setting), creates the Camera Cut track, and locks the viewport to the new camera — same behavior as the Sequencer toolbar button. Direct `FSequencerUtilities::CreateCamera` on 5.7+, native `CreateCamera` command binding on ≤ 5.6
+
+### Changed
+- **Shortcuts now have a single source of truth across every panel instance** — a new module-level `OnShortcutsChanged` broadcast fires on any binding change (panel shortcut rows, the settings details view, graph editor command chords, setup import); every open Quick Menu panel rebuilds its `Shortcuts` tab from `UQuickMenuSettings` on the next tick, so all instances always show the same live values
+- **`List` is now the default wheel display mode** — new `WheelOutput` nodes (and the generated default menus) are born in the list layout, matching the `Force List Mode On All Wheels` default; the classic wedge wheel remains one click away on any `WheelOutput`
+- **Default tab order is now `Panels, Shortcuts, Plugin settings, Docs, Console Cmds, About`** — and the first tab in the bar is the active one when the panel opens (users who already reordered their tabs keep their arrangement)
+- **Tabs advertise their drag-reorder** — each tab shows a small drag-handle icon (stronger on the active tab) and a `Drag to reorder tabs` tooltip
+- **`Live Preview` tab removed** — the panel is down to 6 tabs; appearance tuning feedback lives in the wheel itself and the graph editor preview
+
+### Fixed
+- **Setup Transfer buttons were unreachable** — the `Export Setup… / Import Setup…` UI was orphaned behind an early `return` in the settings tab build code and never appeared on screen; the section now actually renders at the bottom of `Plugin settings` (found while wiring the shortcut sync; also purged ~800 lines of dead legacy settings UI from the same function)
+- **Two shortcuts could silently share one key across panel instances** — consequence of the per-panel copies described above; with the shared-source rebuild, every instance now reflects a binding change immediately
+
+---
+
 ## [1.0.6] - 2026-07-09
 
 ### Engine Support

@@ -1,6 +1,6 @@
 # Quick Menu - Unreal Engine Plugin
 # Complete Reference (llms-full.txt)
-# Version: 1.0.4 | Engine: UE 5.0-5.7 | Site: quickmenuplugin.com
+# Version: 1.0.7 | Engine: UE 5.0-5.8 | Site: quickmenuplugin.com
 
 ## What is Quick Menu?
 
@@ -10,14 +10,14 @@ Everything is configured through a **visual node graph** — no config files, no
 
 **Key facts:**
 - Hotkey: **V** (configurable; same key can bind multiple gestures — `Tap`, `Hold`, `Drag` — to different graphs)
-- 46 built-in action types covering viewport, transforms, spawning, blueprints, materials, sequencer, and more
+- 49 built-in action types covering viewport, transforms, spawning, blueprints, materials, sequencer, and more
 - 5 context switch types for dynamic menus
 - Visual graph editor — drag, drop, connect; action-node properties are edited **inline on the node** (no Details panel roundtrip)
 - Supports nested sub-menus (up to 4 levels deep)
 - Python scripting support for custom actions
 - Works across Level Editor, Blueprint Editor, Material Editor, Sequencer, Niagara, PCG, and 49 editor contexts total
 - Usable during Play In Editor (togglable via `Allow Wheel During Play In Editor` setting)
-- Compatible with UE 5.0 through 5.7
+- Compatible with UE 5.0 through 5.8
 
 ---
 
@@ -69,7 +69,7 @@ This means you can have one graph that shows transform tools in the Level Editor
 #### WheelOutput
 - Terminal node with exec input + N menu input pins
 - Each menu pin = one wedge in the pie menu
-- Properties: **WheelName** (displayed in editor), **Category** (for organization)
+- Properties: **WheelName** (displayed in editor), **Category** (for organization), **Display Mode** (`Wedges` or `Radial Buttons` (list); default `List` — new WheelOutput nodes and the generated default menus are born in the list layout, matching the `Force List Mode On All Wheels` default; the classic wedge wheel is one click away on any WheelOutput), **Inherit Mode to Children** (Appearance, default ON — when the wheel is in `Radial Buttons` (list) mode, all sub-menus opened from it also render as vertical list boxes instead of falling back to wedge rings, keeping the visual style consistent across nested rings; unchecking restores the previous alternating behavior — root in list, sub-menus in wedge. Wedges mode is unaffected.)
 - Maximum 10 wedges per wheel
 
 #### SubMenu
@@ -182,11 +182,12 @@ Icons prefixed with `QuickMenu.` are resolved from the QuickMenu style set rathe
 | **Select Op** | Selection operations | All, None, Invert, All of Same Class, All Lights, All Static Meshes, All Skeletal Meshes, Same Material, Immediate Children, All Descendants |
 | **Reset Transform** | Resets actor transform | Reset All, Location, Rotation, Scale, Snap to Grid |
 
-#### Actor Operations (4 actions)
+#### Actor Operations (5 actions)
 
 | Action | What it does | Options |
 |--------|-------------|---------|
 | **Actor Op** | Common actor operations | Focus Selected, Pilot Actor, Stop Piloting, Group, Ungroup, Lock, Unlock, Hide Selected, Unhide All, Snap to Floor, Isolate Selected, Mirror X/Y/Z, Snap Camera to Actor, Snap Actor to Camera, Attach to Last, Detach from Parent, Merge Actors, Convert to Blueprint |
+| **Property Clipboard** | Copies the whole Details panel of an actor and pastes it onto any selection | Copy Properties (captures every editable property of the first selected actor and all its components — asset references included, instanced component references excluded), Paste All Properties (applies everything to all selected actors in one undoable transaction, except relative Location/Rotation/Scale so targets don't teleport onto the source), Paste Properties… (picker window grouped by actor/component with search, All/None, per-property value previews, and a live `Paste N properties onto M actors` button; relative transform entries start unchecked). Cross-class smart paste: pasting onto a different actor class writes only matching properties (components matched by name, then by class; same-type check per property). Paste actions stay hidden until something has been copied; the clipboard is session-scoped |
 | **Property Toggle** | Toggles actor properties | Cycle Mobility, Cycle Collision, Toggle Hidden In Game, Toggle Cast Shadows, Toggle Simulate Physics |
 | **Align Op** | Alignment and snapping | Snap Origin to Grid, Align to Floor, Snap Pivot to Floor, Snap Bounds to Floor, Align to Actor, Snap to Actor |
 | **Pivot Op** | Pivot point operations | Pivot to Center, Reset Pivot, Save Pivot, Reset Pre-Pivot, Pivot Here (Cursor), Pivot Here (Snapped) |
@@ -246,7 +247,7 @@ Icons prefixed with `QuickMenu.` are resolved from the QuickMenu style set rathe
 
 | Action | What it does | Options |
 |--------|-------------|---------|
-| **Sequencer Op** | Sequencer controls | Play / Pause, Stop, Go to Start, Go to End, Step Forward, Step Backward, Toggle Loop, Speed: 0.25x/0.5x/1x/2x, Toggle Auto-Key, Refresh Tree, Force Evaluate, Save Sequence |
+| **Sequencer Op** | Sequencer controls | Play / Pause, Stop, Go to Start, Go to End, Step Forward, Step Backward, Toggle Loop, Speed: 0.25x/0.5x/1x/2x, Toggle Auto-Key, Refresh Tree, Force Evaluate, Save Sequence, Toggle Curve Editor (show/hide the focused Level Sequencer's curve editor — direct `ISequencer` API on 5.7+, native `ToggleShowCurveEditor` command binding on older engines), Create Camera + Cut Track (spawns a CineCamera at the viewport camera position, binds it to the open sequence — spawnable or possessable following the Sequencer's `Create Spawnable Cameras` setting — creates the Camera Cut track, and locks the viewport to the new camera; same behavior as the Sequencer toolbar button) |
 
 #### Static Mesh Editor (1 action)
 
@@ -517,37 +518,53 @@ The Quick Menu Panel is a dockable editor tab that serves as the central hub for
 
 ### Panel Sections
 
-**Header:**
-- Version and release badge
-- Report Bug button that opens GitHub issues
-- Active Graph dropdown plus quick create and open actions
-- Direct links to Discord, GitHub, and Documentation
+**Header (hero card):**
+- Row 1 — 44 px logo, bold `Quick Menu Panel` title, dim subtitle `vX.Y.Z · RELEASE`
+- Row 2 — bordered toolbar block grouping `Graph: <active-graph picker> [+ New] [↗ Open]` and a vertical separator, followed by the `Wheel: <name | None>` chip showing the current active wheel
+- Row 3 — inline links: `Discord  GitHub  Docs  Website`
+- Report Bug button opens GitHub issues
 
-**Tab 1 - Shortcuts:**
+**The panel has 6 tabs, all drag-reorderable** — every tab can be grabbed and dragged to reorder. Each tab shows a small drag-handle icon (stronger on the active tab) and a `Drag to reorder tabs` tooltip. Hovering shows an open-hand cursor and a subtle highlight; dragging swaps to a closed-hand cursor and shows a floating decorator widget (the tab label) following the mouse. Drop targets show a thin accent line on the left or right edge depending on the cursor X position within the target tab, so users can precisely insert between any two tabs. The default order is `Panels, Shortcuts, Plugin settings, Docs, Console Cmds, About`, and the first tab in the bar is the active one when the panel opens (users who already reordered their tabs keep their arrangement). Order is persisted per project in `EditorPerProjectUserSettings.ini` under `[QuickMenuPanel] TabOrder=…`.
+
+**Tab — Panels (Quick Panels):**
+- Quick Panels are small dockable toolbars that keep favorite actions visible while working — they reuse the wheel's graph/action system (labels, icons, Python actions, sequences, visibility conditions)
+- Each panel is a nomad tab: floats above the editor by default, docks anywhere, position persisted with the editor layout
+- Manage from this tab: create, rename inline, open/close, delete (confirmation), export, import
+- Live sync with the graph: labels/icons/visibility track the source nodes; context-hidden actions render disabled (grayed); actions re-resolve at click time with the current editor context; deleted nodes show a removable `Missing action` row
+- `+ Add Action` is a Blueprint-style picker (collapsed categories, instant search focus): `From Active Graph` group + the full 49-action catalog (a catalog pick creates a fresh unconnected node in the active graph — undoable, editable, never shown in the wheel)
+- Drag & drop: click-drag any wedge out of the open wheel (pie, radial-button, list, submenu items) and drop it on a panel; nothing can execute mid-drag
+- Right-click a panel button: `Edit Action…` (same inline property editor as the wheel) or `Remove from Panel`
+- Export/Import portable `.qmpanel` JSON files (entries reference graph assets by path + node guid — teammates on the same project import working panels)
+- 4 starter panels are seeded once per project on first run (`Viewport Essentials`, `Placement Tools`, `Lighting Tools`, `Optimization`), backed by a generated, editable `/Game/QuickMenu/QM_PanelActions` graph; deleting one is permanent
+
+**Tab — Shortcuts:**
 - Lists graph editor, node-spawn, and pie menu shortcuts
 - Key bindings can be edited directly from the panel
+- Shortcuts have a single source of truth across every panel instance — any binding change (panel shortcut rows, the settings details view, graph editor command chords, setup import) fires a module-level `OnShortcutsChanged` broadcast, and every open Quick Menu panel rebuilds its `Shortcuts` tab from `UQuickMenuSettings` on the next tick, so all instances always show the same live values
 
-**Tab 2 - Docs:**
+**Tab — Plugin settings:**
+- Activation Mode plus appearance controls (icon size, text size, wheel size, center button size, wedge gap, bold text, button drop shadows, grayscale overrides)
+- Icon Size and Radial Button Size go down to 0 (icons fully hidden); wheel labels render Regular by default with an opt-in Bold Text toggle
+- Uses the full tab height (no more vertical splitter sharing space with a preview)
+- Reset Wheel Appearance restores the appearance overrides to defaults
+- Settings now persist across editor restarts (writes routed through `TryUpdateDefaultConfigFile()` for the `defaultconfig` `UQuickMenuSettings` class)
+- **Setup Transfer** section at the bottom — `Export Setup… / Import Setup…` the complete plugin configuration as a portable `.qmsetup` JSON file:
+  - Export covers every config setting by reflection (hotkeys and gesture bindings, node-spawn shortcuts, custom console commands, activation mode, active graph, all appearance values) plus all Quick Panels (same graph/node reference model as `.qmpanel`)
+  - Import asks for confirmation before overwriting, then applies instantly: settings persist to the project + per-user inis, the wheel hotkey re-binds, and the pie menu refreshes — no editor restart
+  - Quick Panels import additively: a panel from the file is recreated only if no existing panel has the same name; current panels are never overwritten
+  - Validated cross-version: a setup exported from a UE 5.8 project imports cleanly into a UE 5.0 project
+
+**Tab — Docs:**
 - Searchable in-editor help for quick start, panel tour, controls, settings, action families, and support resources
 - Includes quick actions such as Create Graph plus direct links back to the full docs and support channels
 
-**Tab 3 - Console Commands:**
+**Tab — Console Cmds:**
 - Surfaces ConsoleCommand nodes from the active graph
 - Includes built-in diagnostics and editable value commands
 - Supports add, edit, run, remove, and reset flows for custom commands
 
-**Tab 4 - Settings:**
-- Activation Mode plus appearance controls (icon size, wheel size, wedge gap, grayscale overrides)
-- Live preview footer can use a stable demo wheel or the active graph
-- Reset Wheel Appearance restores the appearance overrides to defaults
-
-**Tab 5 - About:**
+**Tab — About:**
 - Overview, version, author credit, and quick links to Docs, GitHub, and Support
-
-### Footer Behavior
-
-- On most tabs the footer shows the current active-graph status, open-key reminder, and quick links
-- On the Settings tab the footer switches to the read-only live preview widget
 
 ### Support Links
 
@@ -661,6 +678,7 @@ Found at: **Edit → Project Settings → Plugins → Quick Menu**
 | **Node Spawn Shortcuts** | W, S, C | Key + node class pairs for quick node creation in the graph editor (W→WheelOutput, S→SubMenu, C→Switch: Editor Context) |
 | **Offer Create Wheel** | true | Show "Create Wheel" panel when no wheel matches the current context |
 | **Allow Wheel During Play In Editor** | true | When enabled, hotkeys open the pie menu even while PIE is running. Disable to let the game receive the keypress |
+| **Force List Mode On All Wheels** | true | Every wheel uses the list-style (radial buttons) layout regardless of its WheelOutput setting; submenus also expand as list panels. New WheelOutput nodes default to `List` display mode to match |
 | **Force Neutral Gray Wedges** | true | Overrides per-category wedge colors with a uniform editor-style gray. Disable to restore colored wedges |
 | **Gray Separator Darkness** | 3.0 | Darkness of wedge separator lines when neutral gray mode is on |
 | **Wheel Size Multiplier** | 1.4 | Base size multiplier for the pie menu (also persisted per-project, adjustable via mouse wheel while menu is open) |
@@ -926,6 +944,7 @@ All action nodes inherit from `UQMGraphNode_ActionBase`, which provides:
 | Edit Op | `UQMGraphNode_Action_EditOp` |
 | Reset Transform | `UQMGraphNode_Action_ResetTransform` |
 | Property Toggle | `UQMGraphNode_Action_PropertyToggle` |
+| Property Clipboard | `UQMGraphNode_Action_PropertyClipboard` |
 | Show Flag | `UQMGraphNode_Action_ShowFlag` |
 | Viewport View | `UQMGraphNode_Action_ViewportView` |
 | Viewport Layout | `UQMGraphNode_Action_ViewportLayout` |

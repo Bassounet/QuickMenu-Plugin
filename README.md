@@ -4,7 +4,7 @@
 
 The graph-powered radial menu for Unreal Engine.
 
-Press **V** to open a fully customizable pie menu. Design your menus visually with a node graph editor, add context-aware switching, submenus, and 48+ built-in action types.
+Press **V** to open a fully customizable pie menu. Design your menus visually with a node graph editor, add context-aware switching, submenus, and 49+ built-in action types.
 
 <p align="center">
   <a href="https://docs.quickmenuplugin.com">
@@ -26,7 +26,7 @@ Check the [**Troubleshooting**](https://docs.quickmenuplugin.com/troubleshooting
 
 - **Graph-Based Configuration** - Design your menus visually with a powerful node graph editor. Drag, drop, and connect nodes to build your ideal workflow.
 - **Context-Aware Menus** - Menus adapt automatically based on your selection, editor mode, active tab, and more. 49 editor contexts supported.
-- **48+ Built-in Action Types** - Viewport, transform, play, build, spawn, blueprint operations, material, sequencer, Niagara, PCG, and more.
+- **49+ Built-in Action Types** - Viewport, transform, play, build, spawn, blueprint operations, material, sequencer, Niagara, PCG, and more.
 - **Submenus & Navigation** - Nest menus with SubMenu nodes, navigate between wheels with GoToWheel.
 - **Live Editing** - Add or remove actions directly from the pie menu without restarting the editor.
 - **Python Integration** - Write custom Python actions with inline code execution, dynamic labels, and visibility conditions.
@@ -39,15 +39,15 @@ Check the [**Troubleshooting**](https://docs.quickmenuplugin.com/troubleshooting
 
 | Engine Version | Plugin Version | Support |
 |:-:|:-:|:-:|
-| UE 5.8 | 1.0.6 | :white_check_mark: |
-| UE 5.7 | 1.0.6 | :white_check_mark: |
-| UE 5.6 | 1.0.6 | :white_check_mark: |
-| UE 5.5 | 1.0.6 | :white_check_mark: |
-| UE 5.4 | 1.0.6 | :white_check_mark: |
-| UE 5.3 | 1.0.6 | :white_check_mark: |
-| UE 5.2 | 1.0.6 | :white_check_mark: |
-| UE 5.1 | 1.0.6 | :white_check_mark: |
-| UE 5.0 | 1.0.6 | :white_check_mark: |
+| UE 5.8 | 1.0.7 | :white_check_mark: |
+| UE 5.7 | 1.0.7 | :white_check_mark: |
+| UE 5.6 | 1.0.7 | :white_check_mark: |
+| UE 5.5 | 1.0.7 | :white_check_mark: |
+| UE 5.4 | 1.0.7 | :white_check_mark: |
+| UE 5.3 | 1.0.7 | :white_check_mark: |
+| UE 5.2 | 1.0.7 | :white_check_mark: |
+| UE 5.1 | 1.0.7 | :white_check_mark: |
+| UE 5.0 | 1.0.7 | :white_check_mark: |
 
 ## Support
 

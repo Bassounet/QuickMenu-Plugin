@@ -1,4 +1,4 @@
-<img width="1920" height="1080" alt="Quick Menu" src="https://github.com/user-attachments/assets/a44dc0bf-1d10-4fc7-9c5e-f61f038cdc2b" />
+<img width="1920" height="1080" alt="Quick Menu — fully customizable pie menu for the Unreal Engine editor" src="https://github.com/Bassounet/QuickMenu-Plugin/raw/main/docs/img/ReadmeHero.png" />
 
 # Quick Menu
 
